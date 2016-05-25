@@ -110,16 +110,6 @@ public:
 
 	//void DeleteBoolValue(const QString& strScope, QString strBoolName);	/*删除特定变量*/
 
-	/*字符串表相关*/
-	void InsertStringValue(const QString& strScope, const QString& strStringName, const QString& stringValue);	/*插入变量*/
-
-	void UpdateStringValue(const QString& strScope, const QString& strOldStringName, const QString& strNewStringName,
-		const QString& stringValue);	/*更新变量（包括变量名）*/
-	void UpdateStringValue(const QString& strScope, const QString& strStringName, const QString& stringValue);	/*更新变量（不包括变量名）*/
-
-	void SelectStringValue(const QString& strScope, CValue::TYPE_MAP_STRING& mapString);	/*查询所有变量*/
-
-	void DeleteStringValue(const QString& strScope, const QString& strStringName);	/*删除特定变量*/
 
 	/*自定义私有函数*/
 private:
@@ -132,7 +122,6 @@ private:
 	void CreateIntTable();		/*创建整数表*/
 	void CreateBoolTable();		/*创建布尔数表*/
 	void CreateStringTable();	/*创建字符串表*/
-
 
 	//////////////////////////////////////////////////////////////////////////
 	/*存储单个值*/
@@ -150,14 +139,6 @@ private:
 
 	void DeleteValue(const QString& strTableName, const QString& strColumnVariable, const QString& strScope, const QString& strVariable);	/*删除特定变量*/
 	void DeleteValue(const QString& strTableName, const QString& strScope);		/*删除作用内的变量*/
-
-	/*查询所有变量值（此函数单独编写，不采用模板）*/
-	void SelectOneValue(const QString& strTableName, const QString& strScope, CValue::TYPE_MAP_DOUBLE& mapVariable);
-
-	void SelectOneValue(const QString& strTableName, const QString& strScope, CValue::TYPE_MAP_INT& mapVariable);
-
-
-	void SelectOneValue(const QString& strTableName, const QString& strScope, CValue::TYPE_MAP_STRING& mapVariable);
 
 
 	//////////////////////////////////////////////////////////////////////////

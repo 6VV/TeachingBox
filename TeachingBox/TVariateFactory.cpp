@@ -3,32 +3,37 @@
 #include "TInteger.h"
 #include "TDouble.h"
 #include "TBool.h"
+#include "TString.h"
 
 
 
 TVariate* TVariateFactory::CreateVariate(QByteArray& dataBytes)
 {
-	TVariate* result = nullptr;
 	QDataStream dataStream(&dataBytes, QIODevice::ReadOnly);
-	TVariate variate(dataStream);
+	CSymbol symbol(dataStream);
+	//TVariate variate(dataStream);
 	dataStream.device()->seek(0);
-	switch (variate.GetType())
+	switch (symbol.GetType())
 	{
 	case CSymbol::TYPE_INTERGER:
 	{
-		result = new TInteger(dataStream);
+		return new TInteger(dataStream);
 	}break;
 	case CSymbol::TYPE_DOUBLE:
 	{
-		result = new TDouble(dataStream);
+		return new TDouble(dataStream);
 	}break;
 	case CSymbol::TYPE_BOOL:
 	{
-		result = new TBool(dataStream);
+		return new TBool(dataStream);
+	}break;
+	case CSymbol::TYPE_STRING:
+	{
+		return new TString(dataStream);
 	}break;
 	default:
-		break;
+	{
+		return nullptr;
+	}break;
 	}
-
-	return result;
 }

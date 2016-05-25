@@ -66,7 +66,7 @@ TEST_F(TStringTests, TBool_Create_Equal)
 
 TEST_F(TStringTests, UpdateFrom_Update_Equal)
 {
-	m_variate->UpdateFrom(TString("c", "d", "info"));
+	m_variate->UpdateFromVariate(TString("c", "d", "info"));
 
 	EXPECT_STREQ(m_variate->GetScope().toStdString().c_str(), "c");
 	EXPECT_STREQ(m_variate->GetName().toStdString().c_str(), "d");

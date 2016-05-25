@@ -70,7 +70,7 @@ TEST_F(TDoubleTests, TInteger_Create_Equal)
 
 TEST_F(TDoubleTests, UpdateFrom_Update_Equal)
 {
-	m_double->UpdateFrom(TDouble("c", "d", 6.6));
+	m_double->UpdateFromVariate(TDouble("c", "d", 6.6));
 
 	EXPECT_STREQ(m_double->GetScope().toStdString().c_str(), "c");
 	EXPECT_STREQ(m_double->GetName().toStdString().c_str(), "d");

@@ -260,7 +260,7 @@ void TVariateManager::UpdateInMap(const QString& scope, const QString& name, TVa
 	auto& iterVar = iterMap.value().find(name);
 
 	auto ptrVariate = iterVar.value();
-	ptrVariate->UpdateFrom(newVariate);
+	ptrVariate->UpdateFromVariate(newVariate);
 
 	iterMap.value().erase(iterVar);
 

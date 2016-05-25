@@ -27,18 +27,19 @@ public:
 	QString GetName() const;
 	CSymbol::SymbolType GetType() const;
 
-	virtual void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget){};
+	virtual void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget)=0;
 	void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget, 
 		const CSymbol::SymbolType type);
 
 	void ReadDataStream(QDataStream& dataStream);
 	void ReadCollection(SET& collection,const CSymbol::SymbolType type);
 
-	virtual void UpdateFrom(TVariate& variate);
+	void UpdateFromVariate(TVariate& variate);
 	void UpdateRamAndDatabaseFrom(TVariate& variate) const;
 
 protected:
-	virtual void ReadValueStream(QDataStream& dataStream){};
+	virtual void ReadValueStream(QDataStream& dataStream)=0;
+	virtual void UpdateFromValue(TVariate& variate) =0;
 
 protected:
 	CSymbol m_symbol;

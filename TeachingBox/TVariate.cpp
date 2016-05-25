@@ -52,12 +52,14 @@ void TVariate::ReadCollection(SET& collection, const CSymbol::SymbolType type)
 	}
 }
 
-void TVariate::UpdateFrom(TVariate& variate)
+void TVariate::UpdateFromVariate(TVariate& variate)
 {
 	m_symbol = variate.m_symbol;
+	UpdateFromValue(variate);
 }
 
 void TVariate::UpdateRamAndDatabaseFrom(TVariate& variate) const
 {
 	TVariateManager::GetInstance()->Update(m_symbol.GetScope(), m_symbol.GetName(), variate);
 }
+

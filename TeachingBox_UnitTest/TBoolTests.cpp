@@ -64,7 +64,7 @@ TEST_F(TBoolTests, TBool_Create_Equal)
 
 TEST_F(TBoolTests, UpdateFrom_Update_Equal)
 {
-	m_bool->UpdateFrom(TBool("c", "d", false));
+	m_bool->UpdateFromVariate(TBool("c", "d", false));
 
 	EXPECT_STREQ(m_bool->GetScope().toStdString().c_str(), "c");
 	EXPECT_STREQ(m_bool->GetName().toStdString().c_str(), "d");

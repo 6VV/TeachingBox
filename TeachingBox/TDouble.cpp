@@ -44,13 +44,13 @@ void TDouble::ReadValueStream(QDataStream& dataStream)
 	dataStream << m_value;
 }
 
+void TDouble::UpdateFromValue(TVariate& variate)
+{
+	m_value = static_cast<TDouble&>(variate).m_value;
+}
+
 void TDouble::SlotOnTextChanged(const QString& newValue)
 {
 	UpdateRamAndDatabaseFrom(TDouble(m_symbol.GetScope(), m_symbol.GetName(), newValue.toDouble()));
 }
 
-void TDouble::UpdateFrom(TVariate& variate)
-{
-	TVariate::UpdateFrom(variate);
-	m_value = static_cast<TDouble&>(variate).m_value;
-}

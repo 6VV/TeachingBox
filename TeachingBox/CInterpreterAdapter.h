@@ -79,17 +79,6 @@ public:
 	bool GetOverlapValueFromEnclosingScope(const QString& scope, const std::string& strName, CValue::TYPE_OVERLAP& vecValue);	/*获取位置变量*/
 	bool IsOverlapValueExist(const QString& strScope, const std::string& strName);
 
-	/*字符串变量相关*/
-	void GetStringListFromEnclosingScope(QStringList &strListPositions, const QString& scope);	/*获取位置变量列表*/
-
-	void InsertStringValue(const QString& scope, CValue::TYPE_PAIR_STRING& pairNewString);
-	void UpdateStringValue(const QString& scope, const std::string& strOldSName, CValue::TYPE_PAIR_STRING& pairNew);
-	void UpdateStringValue(const QString& scope, const std::string& strOldName, const std::string& strNewName,std::string& value );
-	void DeleteStringValue(const QString& strScope, std::string& strName);
-	void UpdateStringValueFromDatabase(const QString& strScope);
-	bool GetStringValue(const QString& strScope, const std::string& strName, std::string& value);
-	bool GetStringValueFromEnclosingScope(const QString& scope, const std::string& strName, std::string& value);	/*获取位置变量*/
-	bool IsStringValueExist(const QString& strScope, const std::string& strStringName);
 	/*私有变量*/
 private:
 	CDatabaseManager* m_databaseManager=NULL;	/*数据库管理器*/

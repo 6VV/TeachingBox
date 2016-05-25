@@ -20,10 +20,10 @@ public:
 	void SetValue(const bool value);
 
 	virtual void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget) override;
-	virtual void UpdateFrom(TVariate& variate) override;
 
 protected:
 	virtual void ReadValueStream(QDataStream& dataStream) override;
+	virtual void UpdateFromValue(TVariate& variate) override;
 
 protected slots:
 	void SlotOnIndexChanged(const QString&);

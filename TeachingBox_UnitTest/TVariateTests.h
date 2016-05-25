@@ -3,13 +3,17 @@
 
 #include "gtest/gtest.h"
 #include "QDataStream"
+#include "../TeachingBox/TVariate.h"
 
 class TVariateTests:public testing::Test
 {
 protected:
+	virtual void SetUp() override;
+	virtual void TearDown() override;
+
 	void ExpectVariate(QDataStream& dataStream);
 
-private:
+	TVariate* m_variate=nullptr;
 };
 
 #endif

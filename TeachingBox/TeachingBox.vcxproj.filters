@@ -904,6 +904,12 @@
     <ClCompile Include="TString.cpp">
       <Filter>Source Files\Variate</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TString.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TString.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -1260,6 +1266,9 @@
     <CustomBuild Include="TBool.h">
       <Filter>Header Files\Variate</Filter>
     </CustomBuild>
+    <CustomBuild Include="TString.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TeachingBox.rc" />
@@ -1272,9 +1281,6 @@
       <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </ClInclude>
     <ClInclude Include="TVariateFactory.h">
-      <Filter>Header Files\Variate</Filter>
-    </ClInclude>
-    <ClInclude Include="TString.h">
       <Filter>Header Files\Variate</Filter>
     </ClInclude>
   </ItemGroup>

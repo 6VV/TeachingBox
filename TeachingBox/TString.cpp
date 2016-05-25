@@ -38,15 +38,14 @@ void TString::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeW
 	connect(lineEditValue, SIGNAL(textChanged(const QString&)), this, SLOT(SlotOnTextChanged(const QString&)));
 }
 
-void TString::UpdateFrom(TVariate& variate)
-{
-	TVariate::UpdateFrom(variate);
-	m_string = static_cast<TString&>(variate).m_string;
-}
-
 void TString::ReadValueStream(QDataStream& dataStream)
 {
 	dataStream << m_string;
+}
+
+void TString::UpdateFromValue(TVariate& variate)
+{
+	m_string = static_cast<TString&>(variate).m_string;
 }
 
 void TString::SlotOnTextChanged(const QString& text)

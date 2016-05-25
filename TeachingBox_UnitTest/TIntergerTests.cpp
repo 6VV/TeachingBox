@@ -60,7 +60,7 @@ TEST_F(TIntergerTests, TInteger_Create_Equal)
 
 TEST_F(TIntergerTests, UpdateFrom_Update_Equal)
 {
-	m_interger->UpdateFrom(TInteger("c", "d", 6));
+	m_interger->UpdateFromVariate(TInteger("c", "d", 6));
 
 	EXPECT_STREQ(m_interger->GetScope().toStdString().c_str(), "c");
 	EXPECT_STREQ(m_interger->GetName().toStdString().c_str(), "d");

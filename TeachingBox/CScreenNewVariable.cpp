@@ -12,6 +12,7 @@
 #include "TInteger.h"
 #include "TDouble.h"
 #include "TBool.h"
+#include "TString.h"
 
 
 void CScreenNewVariable::SetScope(QString& strScopeName)
@@ -86,7 +87,6 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 	else if (currentType == CParameterManager::STR_TYPE_DOUBLE)
 	{
 		double varValue = (static_cast<CLineEditWithClickedSignal*>(m_tableWidget->cellWidget(INIT_ROW_NUM, 1)))->text().toDouble();
-		CValue::TYPE_PAIR_DOUBLE pairVariable(varName.toStdString(), varValue);
 
 		/*存储变量*/
 		TVariateManager::GetInstance()->Add(new TDouble(m_strScopeInDatabase, varName, varValue));
@@ -109,11 +109,13 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 	}
 	else if (currentType == CParameterManager::STR_TYPE_STRING)
 	{
-		std::string varValue = (static_cast<CLineEditWithClickedSignal*>(m_tableWidget->cellWidget(INIT_ROW_NUM, 1)))->text().toStdString();
-		CValue::TYPE_PAIR_STRING pairVariable(varName.toStdString(), varValue);
+		std::string varValue = (static_cast<CLineEditWithClickedSignal*>(
+			m_tableWidget->cellWidget(INIT_ROW_NUM, 1)))->text().toStdString();
 
 		/*存储变量*/
-		CInterpreterAdapter::GetInstance()->InsertStringValue(m_strScopeInDatabase, pairVariable);
+		TVariateManager::GetInstance()->Add(
+			new TString(m_strScopeInDatabase, varName, QString::fromStdString(varValue)));
+		//CInterpreterAdapter::GetInstance()->InsertStringValue(m_strScopeInDatabase, pairVariable);
 	}
 
 	else if (currentType == CParameterManager::STR_TYPE_POSITION)

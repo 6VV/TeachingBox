@@ -34,17 +34,16 @@ void TInteger::ReadValueStream(QDataStream& dataStream)
 	dataStream << m_value;
 }
 
+void TInteger::UpdateFromValue(TVariate& variate)
+{
+	m_value = static_cast<TInteger&>(variate).m_value;
+}
+
 void TInteger::SlotOnTextChanged(const QString& newValue)
 {
 	UpdateRamAndDatabaseFrom(TInteger(m_symbol.GetScope(), m_symbol.GetName(), newValue.toInt()));
 }
 
-
-void TInteger::UpdateFrom(TVariate& variate)
-{
-	TVariate::UpdateFrom(variate);
-	m_value = static_cast<TInteger&>(variate).m_value;
-}
 
 void TInteger::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget)
 {

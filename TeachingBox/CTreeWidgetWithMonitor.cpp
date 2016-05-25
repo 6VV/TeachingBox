@@ -7,6 +7,7 @@
 #include "CLineEditWithClickedSignal.h"
 #include "TDouble.h"
 #include "TBool.h"
+#include "TString.h"
 
 
 
@@ -74,7 +75,9 @@ void CTreeWidgetWithMonitor::SlotItemTextChanged(QTreeWidgetItem* item)
 	{
 		QLineEdit* lineEdit = static_cast<QLineEdit*>(item->treeWidget()->itemWidget(item, 1));
 
-		interpreterAdapter->UpdateStringValue(varScope, varName.toStdString(), varName.toStdString(), lineEdit->text().toStdString());
+		TVariateManager::GetInstance()->Update(varScope, varName, TString(varScope, varName, lineEdit->text()));
+
+		//interpreterAdapter->UpdateStringValue(varScope, varName.toStdString(), varName.toStdString(), lineEdit->text().toStdString());
 	}
 	/*若为位置变量*/
 	else if (varType==CParameterManager::STR_TYPE_POSITION)

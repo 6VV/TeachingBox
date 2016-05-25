@@ -47,6 +47,11 @@ void TBool::ReadValueStream(QDataStream& dataStream)
 	dataStream << m_value;
 }
 
+void TBool::UpdateFromValue(TVariate& variate)
+{
+	m_value = static_cast<TBool&>(variate).m_value;
+}
+
 void TBool::SlotOnIndexChanged(const QString& text)
 {
 	bool value = false;
@@ -55,11 +60,5 @@ void TBool::SlotOnIndexChanged(const QString& text)
 		value = true;
 	}
 	UpdateRamAndDatabaseFrom(TBool(m_symbol.GetScope(), m_symbol.GetName(), value));
-}
-
-void TBool::UpdateFrom(TVariate& variate)
-{
-	TVariate::UpdateFrom(variate);
-	m_value = static_cast<TBool&>(variate).m_value;
 }
 

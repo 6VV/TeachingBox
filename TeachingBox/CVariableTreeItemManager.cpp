@@ -214,36 +214,3 @@ void CVariableTreeItemManager::GetAllOverlapTreeWidgetItemInExactScope(const QSt
 	}
 }
 
-
-void CVariableTreeItemManager::GetStringTreeWidgetItem(const QString& strName, const std::string& value, QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget)
-{
-	item->setText(0, strName);
-	item->setText(1, CParameterManager::STR_TYPE_STRING);
-
-	QTreeWidgetItem* itemString = new QTreeWidgetItem(item, QStringList("Value"));
-
-	CLineEditWithClickedSignal* lineEditValue = new CLineEditWithClickedSignal(QString::fromStdString(value));
-
-	treeWidget->setItemWidget(itemString, 1, lineEditValue);
-
-	/*添加信号槽*/
-	lineEditValue->SetTreeWidgetItem(itemString, treeWidget);
-}
-
-void CVariableTreeItemManager::GetStringTreeWidgetItem(const QString& strScope, const QString& strName, 
-	QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget)
-{
-	GetStringTreeWidgetItem(strName, CValue::GetInstance()->m_mapScopeString[strScope.toStdString()][strName.toStdString()], 
-		item, treeWidget);
-
-}
-
-void CVariableTreeItemManager::GetAllStringTreeWidgetItemInExactScope(const QString& strScope, QTreeWidgetItem* parentItem, CTreeWidgetWithMonitor* treeWidget)
-{
-	for each (auto var in CValue::GetInstance()->m_mapScopeString[strScope.toStdString()])
-	{
-		QTreeWidgetItem* item = new QTreeWidgetItem(parentItem);
-		item->setText(2, strScope);
-		GetStringTreeWidgetItem(QString::fromStdString(var.first), var.second, item, treeWidget);
-	}
-}
