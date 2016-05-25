@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CCodeEditor">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CCodeEditor::OperatorType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CCodeEditor.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IABCACIQAAQQICEAAUAAEQAABAAgCAIkBRAgAACEYwE=</HashCode>
+      <FileName>CCodeEditor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CButtonKeyBoard" Collapsed="true">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>CButtonKeyBoard.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CComboBoxWithTreeItem" Collapsed="true">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAAAAAAAAAAAAAAAAAQAAACAAAAAAEAAAAAA=</HashCode>
+      <FileName>CComboBoxWithTreeItem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CCommandRemoteParser" Collapsed="true">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAgAAAAgAAACAAAAgAAAIIACCgAAAAAAA=</HashCode>
+      <FileName>CCommandRemoteParser.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

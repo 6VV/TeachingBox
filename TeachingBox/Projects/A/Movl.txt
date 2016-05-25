@@ -1,0 +1,6 @@
+Movl p1, v1, z1
+Movc p1, p2, v1, z2
+MOVC P1,P3,V1,Z1
+MOVC P1,P3,V1,Z1
+MOVL P1,V1,Z1
+MOVL P3,A45,Z1

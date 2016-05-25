@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/TeachingBox">
+        <file>Image/default.txt</file>
+    </qresource>
+    <qresource prefix="/Image">
+        <file>Image/Light_Black.png</file>
+        <file>Image/Light_Green.png</file>
+        <file>Image/Light_Red.png</file>
+        <file>Image/IconLocal.png</file>
+        <file>Image/IconGlobal.png</file>
+    </qresource>
+    <qresource prefix="/Translate">
+        <file>teachingbox_zh.qm</file>
+    </qresource>
+    <qresource prefix="/Grammar">
+        <file>Grammar.xml</file>
+    </qresource>
+</RCC>

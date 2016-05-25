@@ -1,0 +1,36 @@
+A=3
+B=2
+if A>B
+ for i=1 to A step 1
+   for j=1 to B step 1
+     C=A*B
+   next
+ next
+endif
+switch C
+ case 1
+  D=1
+  break
+ case 2
+  D=2
+ case 3
+  D=3
+  break
+ case 4
+  D=4
+  Break
+ case 5
+  D=5
+ case 6
+  D=6
+ case 7
+  D=7
+  Break
+ case 8
+  D=8 
+  Break
+ case 9
+  D=9
+ default
+  D=10
+endswitch	

@@ -1,0 +1,1269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{ae1381bf-839b-4518-9878-8f8b8f0cd31b}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{10b38cab-dacc-4546-b933-1e45088f18b6}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\TeachingBox">
+      <UniqueIdentifier>{2b873a7b-b5ab-4bc4-93d3-0e347b83e776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Init">
+      <UniqueIdentifier>{7430c3ef-ac1d-4088-9fbd-0b1c1130de47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Init">
+      <UniqueIdentifier>{d4d780d4-39c9-48d0-83cc-4f5bd71dfabe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TeachingBox">
+      <UniqueIdentifier>{ef82f573-8eca-4471-b7b7-2f7c0fac4e18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainScreen">
+      <UniqueIdentifier>{4aaa4b72-2523-4e9f-908f-7d97e6908d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MainScreen">
+      <UniqueIdentifier>{0016816c-76dd-4ae1-b4ec-54e0318ec4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files\Controls">
+      <UniqueIdentifier>{c720ef84-92a4-4370-9927-45c902fd1db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Controls">
+      <UniqueIdentifier>{272d7995-d818-491c-b964-d13321d83423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Model">
+      <UniqueIdentifier>{79d9691e-a294-4288-b493-4ed187cef2c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\View">
+      <UniqueIdentifier>{271a0ab6-22db-456a-9fe7-2449545c0313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{238067e5-fb29-46c5-9316-87c0c46f852f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget">
+      <UniqueIdentifier>{94bbd827-1397-4831-9c6d-b66fb82a8fc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget">
+      <UniqueIdentifier>{62895b33-8211-4685-ba33-8b6f0b0e8a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Others">
+      <UniqueIdentifier>{40143dde-5b91-4bb7-9ff4-0b447a0ad447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Others">
+      <UniqueIdentifier>{f4850de7-91b9-4b73-bac2-5675237d1c0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Layout">
+      <UniqueIdentifier>{752e2dc7-0abe-4568-89a4-f3febabef4f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Layout">
+      <UniqueIdentifier>{9eee8e7d-40c3-4500-a982-eed30bd3c679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\View">
+      <UniqueIdentifier>{11ff14d7-4dc2-487f-a41c-790b6d72c7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Function">
+      <UniqueIdentifier>{908352e6-11d3-4ab7-b030-ae9c31224ae9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Function">
+      <UniqueIdentifier>{6f67f3b3-0ab4-4426-a73b-a5f0f5326b8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Grammar">
+      <UniqueIdentifier>{f4ffae0f-aeae-4ebb-ba46-a2be3ab45dec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Test">
+      <UniqueIdentifier>{75b0f488-1118-4bfa-881a-9d8afbdae43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Test">
+      <UniqueIdentifier>{9d7e3557-0c8e-4e7c-86d1-11b201e69d12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Macro">
+      <UniqueIdentifier>{a9978523-643c-444c-92fc-c067853ac507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Macro">
+      <UniqueIdentifier>{2d61c745-c9a9-4de6-94aa-3d05d183b465}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter">
+      <UniqueIdentifier>{1e640b85-b0b9-428c-b706-ddd906483fc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter">
+      <UniqueIdentifier>{dc070771-d156-484d-8c3b-d3349295b6e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataPersistence">
+      <UniqueIdentifier>{9bc950a4-2ad6-4229-bdab-39d20730fa99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataPersistence">
+      <UniqueIdentifier>{1c3f2bb4-9a58-4963-b545-a4685c3b9699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\User">
+      <UniqueIdentifier>{57f74837-83bf-4bb7-8066-8b1ecf9fd7fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\User">
+      <UniqueIdentifier>{4271b992-6886-4598-a870-9f805e4602b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MacroParameter">
+      <UniqueIdentifier>{373dd637-4a9b-4ce4-a6a7-4d1f38f426a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MacroParameter">
+      <UniqueIdentifier>{7a460b3a-b7c9-4b72-9042-19889ff72093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MainScreen\ScreenService">
+      <UniqueIdentifier>{f53cf814-bf3a-48c3-8b23-01ddf148f7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainScreen\ScreenService">
+      <UniqueIdentifier>{119fc353-5a0a-41c3-9c21-e623c8e13f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MainScreen\ScreenVariables">
+      <UniqueIdentifier>{769111f4-d4e5-446a-826f-2fef18daeb85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainScreen\ScreenVariables">
+      <UniqueIdentifier>{922201f3-ecac-4dd8-96a4-047c87d3916a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\Scope">
+      <UniqueIdentifier>{4480b4d1-d82e-4134-83b3-ae8a4c8cfa50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter\Scope">
+      <UniqueIdentifier>{2ea4b51e-b248-4e4c-88b4-61d516f5ae0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MainScreen\ScreenService\Dialog">
+      <UniqueIdentifier>{91085ebd-4f7b-4c1f-beac-6102f142a4ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainScreen\ScreenService\Dialog">
+      <UniqueIdentifier>{9a217ca1-82ce-4461-b52d-6042d8195465}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor">
+      <UniqueIdentifier>{2f6ed019-f8ce-4bea-8279-76f3b8a67e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor">
+      <UniqueIdentifier>{860ff4f9-eaa5-4950-82be-536439ee3a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MainScreen\CScreenProgram">
+      <UniqueIdentifier>{e5c0fbb0-1988-4ba6-8008-ebe77beac0de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainScreen\CScreenProgram">
+      <UniqueIdentifier>{2c19663c-3276-4ab7-b836-e8de9576bba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MainScreen\ScreenMacro">
+      <UniqueIdentifier>{ff241f33-5fee-44bc-90ed-62d1751f4b42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainScreen\ScreenMacro">
+      <UniqueIdentifier>{9a17d820-f493-4915-9e65-797221e3d8e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Internet">
+      <UniqueIdentifier>{6e5d52bc-bde9-4d5f-935b-d59b8f9f255c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Internet">
+      <UniqueIdentifier>{5200ee85-7721-4e76-b188-b8493f4221af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Remote">
+      <UniqueIdentifier>{1729013f-2d35-4ff1-b8ca-3562630d53d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Remote">
+      <UniqueIdentifier>{35a4501b-3e40-44f3-9fa2-e6b409b44543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Variate">
+      <UniqueIdentifier>{44b479e4-f183-405f-8798-8e5c37536b5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Variate">
+      <UniqueIdentifier>{6eac60a7-3ebb-4220-b5cc-c9d7b095c16d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_teachingbox.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreen.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreen.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLabel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLabel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenBottom.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenBottom.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenWarning.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenWarning.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CButton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CButton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files\Init</Filter>
+    </ClCompile>
+    <ClCompile Include="CLabel.cpp">
+      <Filter>Source Files\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton.cpp">
+      <Filter>Source Files\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenWarning.cpp">
+      <Filter>Source Files\TeachingBox</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreen.cpp">
+      <Filter>Source Files\TeachingBox</Filter>
+    </ClCompile>
+    <ClCompile Include="CLabelPixmap.cpp">
+      <Filter>Source Files\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLabelPixmap.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLabelPixmap.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLabelLight.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLabelLight.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CLabelLight.cpp">
+      <Filter>Source Files\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="CTreeItem.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CTreeModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CModelProject.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenRight.cpp">
+      <Filter>Source Files\TeachingBox</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenRight.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenRight.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenMain.cpp">
+      <Filter>Source Files\MainScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CTreeModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CTreeModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenMain.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenMain.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenProject.cpp">
+      <Filter>Source Files\MainScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenMainParent.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenMainParent.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenProject.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenProject.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenBottom.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CModelProject.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CModelProject.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenMainParent.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="CRefreshDateTime.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CRefreshDateTime.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CRefreshDateTime.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenSetting.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenSetting.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyBoard.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CKeyBoard.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CKeyBoard.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CButtonKeyBoard.cpp">
+      <Filter>Source Files\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="CLineNumberArea.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CCodeEditor.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CCodeEditor.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLineNumberArea.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLineNumberArea.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CWidgetButtonListVertical.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CTeachingBox.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CTeachingBox.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CTeachingBox.cpp">
+      <Filter>Source Files\TeachingBox</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenNewMacro.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenNewMacro.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CModelCategory.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CModelCategory.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CModelCategory.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CModelMacro.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CModelMacro.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CModelMacro.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CModelCategoryFromXml.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CModeMacroFromXml.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenEditMacro.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenEditMacro.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CWidgetTest.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="CGrammarManagerFactory.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="CGrammarManagerFromProgram.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="CGrammarManagerFromXml.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenEditMacroParameter.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenEditMacroParameter.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterParent.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterParent.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterParent.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CWidgetTest.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CWidgetTest.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterPosition.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterPosition.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterPosition.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CTestMessagebox.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="CDatabaseManager.cpp">
+      <Filter>Source Files\DataPersistence</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterVelocity.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterVelocity.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterVelocity.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterZone.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="CXmlVariable.cpp">
+      <Filter>Source Files\DataPersistence</Filter>
+    </ClCompile>
+    <ClCompile Include="CXmlVariableManager.cpp">
+      <Filter>Source Files\DataPersistence</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterZone.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterZone.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterLabel.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="CLexer.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CToken.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CValue.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CAstTreeNode.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterpreterAdapter.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterpreterManager.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CTokenCategory.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CTokenString.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CTokenConstantNum.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CWidgetStack.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterFloat.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterFloat.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterFloat.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CParseGrammar.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CParseSemantic.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CWarningInformation.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CExceptionInterpreter.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterInt.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterInt.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterBool.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterBool.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterString.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterString.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterBool.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="CMacroParameterInt.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterString.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files\User</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterpreter.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="UserManager.cpp">
+      <Filter>Source Files\User</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterprerterState.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CThreadInterpreterManager.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CThreadInterpreterManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CThreadInterpreterManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLineEditWithClickedSignal.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLineEditWithClickedSignal.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyBoardInterface.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="CEditParameter.cpp">
+      <Filter>Source Files\MacroParameter</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CEditParameter.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CEditParameter.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CTestWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CTestWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CTestWidget.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="CRegExpManager.cpp">
+      <Filter>Source Files\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="CParameterManager.cpp">
+      <Filter>Source Files\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="CWarningManager.cpp">
+      <Filter>Source Files\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenSetting.cpp">
+      <Filter>Source Files\MainScreen\ScreenService</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenState.cpp">
+      <Filter>Source Files\TeachingBox</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenState.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenState.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenUser.cpp">
+      <Filter>Source Files\MainScreen\ScreenService</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenService.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenService.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenService.cpp">
+      <Filter>Source Files\MainScreen\ScreenService</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenUser.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenUser.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenUserManager.cpp">
+      <Filter>Source Files\MainScreen\ScreenService</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CDialogEditUser.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CDialogEditUser.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenUserManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenUserManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CDialogLockScreen.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CDialogLockScreen.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenNetwork.cpp">
+      <Filter>Source Files\MainScreen\ScreenService</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenNetwork.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenNetwork.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenVariables.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables</Filter>
+    </ClCompile>
+    <ClCompile Include="CSymbol.cpp">
+      <Filter>Source Files\Interpreter\Scope</Filter>
+    </ClCompile>
+    <ClCompile Include="CVariableSymbol.cpp">
+      <Filter>Source Files\Interpreter\Scope</Filter>
+    </ClCompile>
+    <ClCompile Include="CMethodSymbol.cpp">
+      <Filter>Source Files\Interpreter\Scope</Filter>
+    </ClCompile>
+    <ClCompile Include="CScope.cpp">
+      <Filter>Source Files\Interpreter\Scope</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenVariables.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenVariables.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenNewVariable.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenNewVariable.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenNewVariable.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CDialogLockScreen.cpp">
+      <Filter>Source Files\MainScreen\ScreenService\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="CDialogEditUser.cpp">
+      <Filter>Source Files\MainScreen\ScreenService\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="CVariableTreeItemManager.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CComboBoxWithTreeItem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CComboBoxWithTreeItem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboBoxWithTreeItem.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="CLineEditWithClickedSignal.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileManager.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables</Filter>
+    </ClCompile>
+    <ClCompile Include="CTextFormat.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="CCodeEditor.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="CHighLighter.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CHighLighter.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CHighLighter.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CLabelWithSignal.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLabelWithSignal.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLabelWithSignal.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenLineEditor.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenLineEditor.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenLineEditor.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLineEditor.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLineEditor.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CLineEditor.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="CVariableInterface.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenNewMacro.cpp">
+      <Filter>Source Files\MainScreen\ScreenMacro</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenEditMacroParameter.cpp">
+      <Filter>Source Files\MainScreen\ScreenMacro</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenEditMacro.cpp">
+      <Filter>Source Files\MainScreen\ScreenMacro</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenPragram.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenPragram.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenPragram.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CTcpManager.cpp">
+      <Filter>Source Files\Internet</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CTcpManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CTcpManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CInterpreterTcpAdapter.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CInterpreterTcpAdapter.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterpreterTcpAdapter.cpp">
+      <Filter>Source Files\Interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CCommandRemoteParser.cpp">
+      <Filter>Source Files\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="CTcpSpecialCommand.cpp">
+      <Filter>Source Files\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CCommandRemoteParser.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CCommandRemoteParser.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TInteger.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="TVariateManager.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TVariateManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TVariateManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TVariate.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="CTreeWidgetWithMonitor.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CTreeWidgetWithMonitor.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CTreeWidgetWithMonitor.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TInteger.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TInteger.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CSymbol.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CSymbol.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CTreeWidgetItemWithVariate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TVariate.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TVariate.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TDouble.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TDouble.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TDouble.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TBool.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TBool.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TBool.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="teachingbox.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="teachingbox.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreen.h">
+      <Filter>Header Files\TeachingBox</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenWarning.h">
+      <Filter>Header Files\TeachingBox</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CButton.h">
+      <Filter>Header Files\Controls</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLabel.h">
+      <Filter>Header Files\Controls</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLabelPixmap.h">
+      <Filter>Header Files\Controls</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLabelLight.h">
+      <Filter>Header Files\Controls</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTreeModel.h">
+      <Filter>Header Files\Model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenRight.h">
+      <Filter>Header Files\TeachingBox</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenMain.h">
+      <Filter>Header Files\MainScreen</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenProject.h">
+      <Filter>Header Files\MainScreen</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenBottom.h">
+      <Filter>Header Files\Layout</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CModelProject.h">
+      <Filter>Header Files\Model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenMainParent.h">
+      <Filter>Header Files\Layout</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CRefreshDateTime.h">
+      <Filter>Header Files\Function</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CKeyBoard.h">
+      <Filter>Header Files\Widget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="resource.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Init.h">
+      <Filter>Header Files\Init</Filter>
+    </CustomBuild>
+    <CustomBuild Include="stdafx.h">
+      <Filter>Header Files\Init</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CButtonKeyBoard.h">
+      <Filter>Header Files\Controls</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTreeItem.h">
+      <Filter>Header Files\Model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CSingleTon.h">
+      <Filter>Header Files\Others</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_teachingbox.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="teachingbox_zh.qm">
+      <Filter>Translation Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="teachingbox_zh.ts">
+      <Filter>Translation Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLineNumberArea.h">
+      <Filter>Header Files\Widget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTeachingBox.h">
+      <Filter>Header Files\TeachingBox</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CModelCategory.h">
+      <Filter>Header Files\Model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CModelMacro.h">
+      <Filter>Header Files\Model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterParent.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CWidgetTest.h">
+      <Filter>Header Files\Test</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterPosition.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterVelocity.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterZone.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterFloat.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterInt.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterBool.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterString.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterpreter.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CThreadInterpreterManager.h">
+      <Filter>Header Files\Function</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CEditParameter.h">
+      <Filter>Header Files\MacroParameter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTestWidget.h">
+      <Filter>Header Files\Test</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CWarningManager.h">
+      <Filter>Header Files\Function</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenSetting.h">
+      <Filter>Header Files\MainScreen\ScreenService</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenState.h">
+      <Filter>Header Files\TeachingBox</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenService.h">
+      <Filter>Header Files\MainScreen\ScreenService</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenUser.h">
+      <Filter>Header Files\MainScreen\ScreenService</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenUserManager.h">
+      <Filter>Header Files\MainScreen\ScreenService</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenNetwork.h">
+      <Filter>Header Files\MainScreen\ScreenService</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenVariables.h">
+      <Filter>Header Files\MainScreen\ScreenVariables</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenNewVariable.h">
+      <Filter>Header Files\MainScreen\ScreenVariables</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CDialogLockScreen.h">
+      <Filter>Header Files\MainScreen\ScreenService\Dialog</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CDialogEditUser.h">
+      <Filter>Header Files\MainScreen\ScreenService\Dialog</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLineEditWithClickedSignal.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CComboBoxWithTreeItem.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CCodeEditor.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CHighLighter.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLabelWithSignal.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenLineEditor.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLineEditor.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenNewMacro.h">
+      <Filter>Header Files\MainScreen\ScreenMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenEditMacro.h">
+      <Filter>Header Files\MainScreen\ScreenMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenEditMacroParameter.h">
+      <Filter>Header Files\MainScreen\ScreenMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScreenPragram.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTcpManager.h">
+      <Filter>Header Files\Internet</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterpreterTcpAdapter.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DataStruct.h">
+      <Filter>Header Files\Init</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CFileManager.h">
+      <Filter>Header Files\MainScreen\ScreenVariables</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVariableInterface.h">
+      <Filter>Header Files\MainScreen\ScreenVariables</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVariableTreeItemManager.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CProgramInterface.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTextFormat.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MacroInterface.h">
+      <Filter>Header Files\MainScreen\ScreenMacro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CModelCategoryFromXml.h">
+      <Filter>Header Files\Model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CModeMacroFromXml.h">
+      <Filter>Header Files\Model</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CKeyBoardInterface.h">
+      <Filter>Header Files\Widget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CWidgetButtonListVertical.h">
+      <Filter>Header Files\Widget</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CParameterManager.h">
+      <Filter>Header Files\Others</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CRegExpManager.h">
+      <Filter>Header Files\Others</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CGrammarManagerFactory.h">
+      <Filter>Header Files\Function</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CGrammarManagerFromProgram.h">
+      <Filter>Header Files\Function</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CGrammarManagerFromXml.h">
+      <Filter>Header Files\Function</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CWidgetStack.h">
+      <Filter>Header Files\Function</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTestMessagebox.h">
+      <Filter>Header Files\Test</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMacroParameterLabel.h">
+      <Filter>Header Files\Macro</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CExceptionInterpreter.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterprerterState.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterpreterManager.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterpreterAdapter.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CParseGrammar.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CParseSemantic.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CToken.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLexer.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTokenCategory.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CAstTreeNode.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTokenConstantNum.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTokenString.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CValue.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CWarningInformation.h">
+      <Filter>Header Files\Interpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMethodSymbol.h">
+      <Filter>Header Files\Interpreter\Scope</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CScope.h">
+      <Filter>Header Files\Interpreter\Scope</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CSymbol.h">
+      <Filter>Header Files\Interpreter\Scope</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CVariableSymbol.h">
+      <Filter>Header Files\Interpreter\Scope</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CDatabaseManager.h">
+      <Filter>Header Files\DataPersistence</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CXmlVariable.h">
+      <Filter>Header Files\DataPersistence</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CXmlVariableManager.h">
+      <Filter>Header Files\DataPersistence</Filter>
+    </CustomBuild>
+    <CustomBuild Include="User.h">
+      <Filter>Header Files\User</Filter>
+    </CustomBuild>
+    <CustomBuild Include="UserManager.h">
+      <Filter>Header Files\User</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTcpSpecialCommand.h">
+      <Filter>Header Files\Remote</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Grammar.xml">
+      <Filter>Grammar</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CCommandRemoteParser.h">
+      <Filter>Header Files\Remote</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TVariateManager.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTreeWidgetWithMonitor.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TInteger.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TVariate.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TDouble.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TBool.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TeachingBox.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CTreeWidgetItemWithVariate.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

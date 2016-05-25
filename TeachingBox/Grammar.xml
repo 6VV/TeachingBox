@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--运动分类,name为名称-->
+  <category name="Movement">
+    <!--格式为：MOVL *,*,*,"edit="widget"表示需新建一个窗口进行编辑操作-->
+    <macro name="MOVL" edit="table">
+      <!--copy表示复制当前文本值-->
+      <grammar type="copy">MOVL </grammar>
+      <!--position表示该值类型为位置变量,*表示该值需手动输入-->
+      <grammar type="position">*</grammar>
+      <grammar type="copy">,</grammar>
+      <!--velocity为速度-->
+      <grammar type="velocity">*</grammar>
+      <grammar type="copy">,</grammar>
+      <!--zone为过渡区域-->
+      <grammar type="zone">*</grammar>
+    </macro>
+    <macro name="MOVC">
+      <grammar type="copy">MOVC </grammar>
+      <grammar type="position">*</grammar>
+      <grammar type="copy">,</grammar>
+      <grammar type="position">*</grammar>
+      <grammar type="copy">,</grammar>
+      <grammar type="velocity">*</grammar>
+      <grammar type="copy">,</grammar>
+      <grammar type="zone">*</grammar>
+    </macro>
+  </category>
+  <!--系统分类-->
+  <category name="System">
+    <!--数学函数-->
+    <category name="Math">
+      <macro name="SIN">
+        <grammar type="copy">SIN(</grammar>
+        <!--double表示该类型为double变量-->
+        <grammar type="double">*</grammar>
+        <grammar type="copy">)</grammar>
+      </macro>
+      <macro name="COS">
+        <grammar type="copy">COS(</grammar>
+        <grammar type="double">*</grammar>
+        <grammar type="copy">)</grammar>
+      </macro>
+      <macro name="TAN">
+        <grammar type="copy">TAN(</grammar>
+        <grammar type="double">*</grammar>
+        <grammar type="copy">)</grammar>
+      </macro>
+      <macro name="SQRT">
+        <grammar type="copy">SQRT(</grammar>
+        <grammar type="double">*</grammar>
+        <grammar type="copy">)</grammar>
+      </macro>
+    </category>
+    <!--结构-->
+    <category name="Structure">
+      <macro name="LABEL">
+        <grammar type="copy">LABEL </grammar>
+        <!--int表示该类型为int变量-->
+        <grammar type="int">*</grammar>
+      </macro>
+      <macro name="GOTO">
+        <grammar type="copy">GOTO </grammar>
+        <!--label表示该类型为标签-->
+        <grammar type="label">*</grammar>
+      </macro>
+      <macro name="GOSUB">
+        <grammar type="copy">GOSUB </grammar>
+        <grammar type="label ">*</grammar>
+      </macro>
+      <macro name="FOR...NEXT">
+        <grammar type="copy">FOR *=* to * step *</grammar>
+        <!--escape表示文本为转义字符，需要对文本进行特殊操作-->
+        <grammar type="escape">\n</grammar>
+        <grammar type="copy">NEXT</grammar>
+      </macro>
+      <macro name="IF...ENDIF">
+        <grammar type="copy">IF *</grammar>
+        <grammar type="escape">\n</grammar>
+        <grammar type="copy">ENDIF</grammar>
+      </macro>
+      <macro name="ELSEIF...">
+        <grammar type="copy">ELSEIF *</grammar>
+      </macro>
+      <macro name="SWITCH...DEFAULT...ENDSWITCH">
+        <grammar type="copy">SWITCH *</grammar>
+        <grammar type="escape">\n</grammar>
+        <grammar type="copy">DEFAULT</grammar>
+        <grammar type="escape">\n</grammar>
+        <grammar tpye="copy">ENDSWITCH</grammar>
+      </macro>
+      <macro name="CASE...">
+        <grammar type="copy">CASE *</grammar>
+      </macro>
+      <macro name="BREAK">
+        <grammar tpye="copy">BREAK</grammar>
+      </macro>
+    </category>
+  </category>
+</root>
