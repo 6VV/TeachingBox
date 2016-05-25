@@ -923,60 +923,64 @@ bool CInterpreterAdapter::IsCorrectName(std::string& strName)
 
 void CInterpreterAdapter::ClearProjectValue()
 {
-	/*清空项目作用域符号*/
-	m_scopeGlobal->ClearChildren();
+	TVariateManager::GetInstance()->ClearProjectData();
 
-	/*清空位置保存数据*/
-	std::list<std::string> strList;
-	for each (auto var in m_value->m_mapScopePosition)
-	{
-		/*若不为全局或协作作用域变量*/
-		if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
-			&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
-			&& var.first!=CScope::STR_SCOPE_SYSTEM.toStdString())
-		{
-			strList.push_back(var.first);
-		}
-	}
-	for each (auto var in strList)
-	{
-		m_value->m_mapScopePosition.erase(var);
-	}
 
-	/*清空动态保存数据*/
-	strList.clear();
-	for each (auto var in m_value->m_mapScopeDynamic)
-	{
-		/*若不为全局或协作作用域变量*/
-		if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
-			&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
-			&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
-		{
-			strList.push_back(var.first);
-		}
-	}
-	for each (auto var in strList)
-	{
-		m_value->m_mapScopeDynamic.erase(var);
-	}
+	///*清空项目作用域符号*/
+	//m_scopeGlobal->ClearChildren();
 
-	/*清空过度保存数据*/
-	/*清空动态保存数据*/
-	strList.clear();
-	for each (auto var in m_value->m_mapScopeOverlap)
-	{
-		/*若不为全局或协作作用域变量*/
-		if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
-			&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
-			&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
-		{
-			strList.push_back(var.first);
-		}
-	}
-	for each (auto var in strList)
-	{
-		m_value->m_mapScopeOverlap.erase(var);
-	}
+	///*清空位置保存数据*/
+	//std::list<std::string> strList;
+	//for each (auto var in m_value->m_mapScopePosition)
+	//{
+	//	/*若不为全局或协作作用域变量*/
+	//	if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
+	//		&& var.first!=CScope::STR_SCOPE_SYSTEM.toStdString())
+	//	{
+	//		strList.push_back(var.first);
+	//	}
+	//}
+	//for each (auto var in strList)
+	//{
+	//	m_value->m_mapScopePosition.erase(var);
+	//}
+
+
+	///*清空动态保存数据*/
+	//strList.clear();
+	//for each (auto var in m_value->m_mapScopeDynamic)
+	//{
+	//	/*若不为全局或协作作用域变量*/
+	//	if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
+	//	{
+	//		strList.push_back(var.first);
+	//	}
+	//}
+	//for each (auto var in strList)
+	//{
+	//	m_value->m_mapScopeDynamic.erase(var);
+	//}
+
+	///*清空过度保存数据*/
+	///*清空动态保存数据*/
+	//strList.clear();
+	//for each (auto var in m_value->m_mapScopeOverlap)
+	//{
+	//	/*若不为全局或协作作用域变量*/
+	//	if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
+	//	{
+	//		strList.push_back(var.first);
+	//	}
+	//}
+	//for each (auto var in strList)
+	//{
+	//	m_value->m_mapScopeOverlap.erase(var);
+	//}
 
 	///*清空Int保存数据*/
 	//strList.clear();
@@ -994,7 +998,6 @@ void CInterpreterAdapter::ClearProjectValue()
 	//{
 	//	m_value->m_mapScopeInt.erase(var);
 	//}
-	TVariateManager::GetInstance()->ClearProjectData();
 	
 
 	///*清空Double保存数据*/
@@ -1014,39 +1017,39 @@ void CInterpreterAdapter::ClearProjectValue()
 	//	m_value->m_mapScopeDouble.erase(var);
 	//}
 
-	/*清空Bool保存数据*/
-	strList.clear();
-	for each (auto var in m_value->m_mapScopeBool)
-	{
-		/*若不为全局或协作作用域变量*/
-		if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
-			&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
-			&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
-		{
-			strList.push_back(var.first);
-		}
-	}
-	for each (auto var in strList)
-	{
-		m_value->m_mapScopeBool.erase(var);
-	}
+	///*清空Bool保存数据*/
+	//strList.clear();
+	//for each (auto var in m_value->m_mapScopeBool)
+	//{
+	//	/*若不为全局或协作作用域变量*/
+	//	if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
+	//	{
+	//		strList.push_back(var.first);
+	//	}
+	//}
+	//for each (auto var in strList)
+	//{
+	//	m_value->m_mapScopeBool.erase(var);
+	//}
 
-	/*清空String保存数据*/
-	strList.clear();
-	for each (auto var in m_value->m_mapScopeString)
-	{
-		/*若不为全局或协作作用域变量*/
-		if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
-			&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
-			&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
-		{
-			strList.push_back(var.first);
-		}
-	}
-	for each (auto var in strList)
-	{
-		m_value->m_mapScopeString.erase(var);
-	}
+	///*清空String保存数据*/
+	//strList.clear();
+	//for each (auto var in m_value->m_mapScopeString)
+	//{
+	//	/*若不为全局或协作作用域变量*/
+	//	if (var.first != CScope::STR_SCOPE_SYNERGIC.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_GLOBAL.toStdString()
+	//		&& var.first != CScope::STR_SCOPE_SYSTEM.toStdString())
+	//	{
+	//		strList.push_back(var.first);
+	//	}
+	//}
+	//for each (auto var in strList)
+	//{
+	//	m_value->m_mapScopeString.erase(var);
+	//}
 }
 
 void CInterpreterAdapter::DeleteDatabaseData(const QString& strScope)

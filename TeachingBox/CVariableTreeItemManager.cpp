@@ -214,46 +214,6 @@ void CVariableTreeItemManager::GetAllOverlapTreeWidgetItemInExactScope(const QSt
 	}
 }
 
-void CVariableTreeItemManager::GetBoolTreeWidgetItem(const QString& strName, const int value, QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget)
-{
-	item->setText(0, strName);
-	item->setText(1, CParameterManager::STR_TYPE_BOOL);
-
-	QTreeWidgetItem* itemBool = new QTreeWidgetItem(item, QStringList("Value"));
-
-	CComboBoxWithTreeItem* comboValue = new CComboBoxWithTreeItem(itemBool);
-	comboValue->addItem(CParameterManager::STR_BOOL_FALSE);
-	comboValue->addItem(CParameterManager::STR_BOOL_TRUE);
-
-	if (value)
-	{
-		comboValue->setCurrentText(CParameterManager::STR_BOOL_TRUE);
-	}
-	else
-	{
-		comboValue->setCurrentText(CParameterManager::STR_BOOL_FALSE);
-	}
-
-	treeWidget->setItemWidget(itemBool, 1, comboValue);
-
-	/*设置信号槽*/
-	comboValue->SetTreeWidgetItem(itemBool, treeWidget);
-}
-
-void CVariableTreeItemManager::GetBoolTreeWidgetItem(const QString& strScope, const QString& strName, QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget)
-{
-	GetBoolTreeWidgetItem(strName, CValue::GetInstance()->m_mapScopeBool[strScope.toStdString()][strName.toStdString()], item, treeWidget);
-}
-
-void CVariableTreeItemManager::GetAllBoolTreeWidgetItemInExactScope(const QString& strScope, QTreeWidgetItem* parentItem, CTreeWidgetWithMonitor* treeWidget)
-{
-	for each (auto var in CValue::GetInstance()->m_mapScopeBool[strScope.toStdString()])
-	{
-		QTreeWidgetItem* item = new QTreeWidgetItem(parentItem);
-		item->setText(2, strScope);
-		GetBoolTreeWidgetItem(QString::fromStdString(var.first), var.second, item, treeWidget);
-	}
-}
 
 void CVariableTreeItemManager::GetStringTreeWidgetItem(const QString& strName, const std::string& value, QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget)
 {

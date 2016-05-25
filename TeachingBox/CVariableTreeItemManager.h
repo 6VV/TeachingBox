@@ -39,13 +39,6 @@ public:
 	void GetAllOverlapTreeWidgetItemInExactScope(const QString& strScope,
 		QTreeWidgetItem* parentItem, CTreeWidgetWithMonitor* treeWidget);	/*获取某特定作用域内所有变量*/
 
-	/*获取布尔变量*/
-	void GetBoolTreeWidgetItem(const QString& strName, const int value,
-		QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget);	/*获取特定变量节点*/
-	void GetBoolTreeWidgetItem(const QString& strScope, const QString& strName, QTreeWidgetItem* item,
-		CTreeWidgetWithMonitor* treeWidget);	/*获取某作用域及上层作用域内的最近变量*/
-	void GetAllBoolTreeWidgetItemInExactScope(const QString& strScope,
-		QTreeWidgetItem* parentItem, CTreeWidgetWithMonitor* treeWidget);	/*获取某特定作用域内所有变量*/
 
 	/*获取字符串变量*/
 	void GetStringTreeWidgetItem(const QString& strName, const std::string& value,

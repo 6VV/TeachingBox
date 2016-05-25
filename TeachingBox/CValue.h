@@ -44,7 +44,6 @@ public:
 	typedef std::pair<std::string, TYPE_POSITION> TYPE_PAIR_POSITION;
 
 	typedef std::unordered_map<std::string, double> TYPE_MAP_DOUBLE;
-	typedef std::unordered_map<std::string, std::unordered_map<std::string, double>> TYPE_MAP_SCOPE_DOUBLE;	/*浮点数类型*/
 	typedef std::pair<std::string, double> TYPE_PAIR_DOUBLE;
 
 	typedef std::unordered_map<std::string, int> TYPE_MAP_INT;
@@ -55,10 +54,6 @@ public:
 	typedef std::unordered_map<std::string, std::string> TYPE_MAP_STRING;
 	typedef std::unordered_map<std::string, std::unordered_map<std::string, std::string>> TYPE_MAP_SCOPE_STRING;	/*字符串类型*/
 	typedef std::pair<std::string, std::string> TYPE_PAIR_STRING;
-
-	typedef std::unordered_map<std::string, int> TYPE_MAP_BOOL;
-	typedef std::unordered_map<std::string, std::unordered_map<std::string, int>> TYPE_MAP_SCOPE_BOOL;	/*布尔类型*/
-	typedef std::pair<std::string, int> TYPE_PAIR_BOOL;
 
 	typedef std::unordered_map<std::string, TYPE_DYNAMIC> TYPE_MAP_DYNAMIC;
 	typedef std::unordered_map<std::string, std::unordered_map<std::string, TYPE_DYNAMIC>> TYPE_MAP_SCOPE_DYNAMIC;
@@ -78,7 +73,6 @@ public:
 	TYPE_MAP_SCOPE_POSITION m_mapScopePosition;	/*数据库中位置变量Map*/
 	TYPE_MAP_SCOPE_DYNAMIC m_mapScopeDynamic;	/*数据库中速度变量Map*/
 	TYPE_MAP_SCOPE_OVERLAP m_mapScopeOverlap;	/*数据库中过渡变量Map*/
-	TYPE_MAP_SCOPE_BOOL m_mapScopeBool;	/*数据库中Bool类型*/
 	TYPE_MAP_SCOPE_STRING m_mapScopeString;	/*数据库中String类型*/
 
 private:

@@ -12,6 +12,7 @@
 #include "TVariateManager.h"
 #include "TInteger.h"
 #include "TDouble.h"
+#include "TBool.h"
 
 
 //
@@ -315,7 +316,10 @@ void CInterpreter::ExecuteAssignExp()
 	{
 	case CSymbol::TYPE_BOOL:
 	{
-		m_value->m_mapScopeBool[scopeSymbol.scope->GetScopeName().toStdString()][scopeSymbol.symbol->GetName().toStdString()] = result.intResult;
+		//m_value->m_mapScopeBool[scopeSymbol.scope->GetScopeName().toStdString()]
+		//	[scopeSymbol.symbol->GetName().toStdString()] = result.intResult;
+		static_cast<TBool*>(TVariateManager::GetInstance()->GetVariate(scopeSymbol.scope->GetScopeName(),
+			scopeSymbol.symbol->GetName()))->SetValue(result.intResult);
 	}break;
 	case CSymbol::TYPE_INTERGER:
 	{
@@ -366,9 +370,11 @@ void CInterpreter::ExecuteIfSentence()
 	if (GetBoolResult(m_currentNode))
 	{
 		m_currentNode = m_currentNode->m_nextSiblingNode;
+		CLexer::DisplayToken(m_currentNode->m_token);
 		if (m_currentNode->m_firstChildNode!=NULL)
 		{
 			m_currentNode = m_currentNode->m_firstChildNode;
+			CLexer::DisplayToken(m_currentNode->m_token);
 		}
 		else
 		{
@@ -853,8 +859,10 @@ bool CInterpreter::GetBoolResult(CAstTreeNode* rootNode)
 	{
 		CScope::ScopeSymbol scopeSymbol = m_scope->FindSymbolScopeScrollUp(
 			QString::fromStdString(rootNode->m_token->m_strName));
-		//CTokenString* tokenString = (CTokenString*)(rootNode->m_token);
-		return m_value->m_mapScopeBool[scopeSymbol.scope->GetScopeName().toStdString()][scopeSymbol.symbol->GetName().toStdString()];
+		return static_cast<TBool*>(TVariateManager::GetInstance()->GetVariate(
+			scopeSymbol.scope->GetScopeName(), scopeSymbol.symbol->GetName()))->GetValue();
+		//return m_value->m_mapScopeBool[.toStdString()]
+		//	[scopeSymbol.symbol->GetName().toStdString()];
 	}break;
 	/*若为常数*/
 	case CTokenCategory::tokenConstantNumber:

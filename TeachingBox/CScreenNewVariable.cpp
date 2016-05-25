@@ -103,8 +103,6 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 			boolValue = 1;
 		}
 
-		CValue::TYPE_PAIR_BOOL pairVariable(varName.toStdString(), boolValue);
-
 		/*存储变量*/
 		//CInterpreterAdapter::GetInstance()->InsertBoolValue(m_strScopeInDatabase, pairVariable);
 		TVariateManager::GetInstance()->Add(new TBool(m_strScopeInDatabase, varName, boolValue));
