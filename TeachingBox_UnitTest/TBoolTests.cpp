@@ -1,6 +1,16 @@
 #include "TBoolTests.h"
 
-void ExpectVariate(QDataStream& dataStream)
+void TBoolTests::SetUp()
+{
+	m_bool = new TBool("a", "b", true);
+}
+
+void TBoolTests::TearDown()
+{
+	delete m_bool;
+}
+
+void TBoolTests::ExpectVariate(QDataStream& dataStream)
 {
 	QString scope;
 	QString name;
@@ -12,17 +22,6 @@ void ExpectVariate(QDataStream& dataStream)
 	EXPECT_STREQ(name.toStdString().c_str(), "b");
 	EXPECT_EQ(type, CSymbol::TYPE_BOOL);
 	EXPECT_EQ(value, true);
-}
-
-
-void TBoolTests::SetUp()
-{
-	m_bool = new TBool("a", "b", true);
-}
-
-void TBoolTests::TearDown()
-{
-	delete m_bool;
 }
 
 TEST_F(TBoolTests, ReadDataStream_ReadRightData_ReturnTrue)

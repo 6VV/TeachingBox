@@ -1355,33 +1355,7 @@ void CDatabaseManager::DeleteDoubleValue(const QString& strScope, const QString&
 //////////////////////////////////////////////////////////////////////////
 
 
-void CDatabaseManager::InsertBoolValue(const QString& strScope, const QString& strBoolName, int boolValue)
-{
-	InsertOneValue(TABLE_BOOL, strScope, strBoolName, boolValue);
-}
 
-
-void CDatabaseManager::UpdateBoolValue(const QString& strScope, const QString& strOldBoolName, const QString& strNewBoolName, int boolValue)
-{
-	UpdateOneValue(TABLE_BOOL, TABLE_COLUMN_NAME, TABLE_COLUMN_BOOL_VALUE, strScope, strOldBoolName, strNewBoolName, boolValue);
-}
-
-void CDatabaseManager::UpdateBoolValue(const QString& strScope, const QString& strBoolName, int boolValue)
-{
-	UpdateBoolValue(strScope, strBoolName, strBoolName, boolValue);
-}
-
-
-void CDatabaseManager::SelectBoolValue(const QString& strScope, CValue::TYPE_MAP_INT& mapBool)
-{
-	SelectOneValue(TABLE_BOOL,strScope, mapBool);
-}
-
-
-void CDatabaseManager::DeleteBoolValue(const QString& strScope, QString strBoolName)
-{
-	DeleteValue(TABLE_BOOL, TABLE_COLUMN_NAME, strScope, strBoolName);
-}
 
 //////////////////////////////////////////////////////////////////////////
 

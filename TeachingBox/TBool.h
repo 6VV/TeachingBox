@@ -1,5 +1,5 @@
-﻿#ifndef _TBOOL_H_
-#define _TBOOL_H_
+﻿#ifndef _TEACHING_BOX_TBOOL_H_
+#define _TEACHING_BOX_TBOOL_H_
 
 #include "TVariate.h"
 #include "QString"

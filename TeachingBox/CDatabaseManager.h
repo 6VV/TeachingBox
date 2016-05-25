@@ -101,14 +101,14 @@ public:
 
 
 	/*布尔表相关*/
-	void InsertBoolValue(const QString& strScope, const QString& strBoolName, int boolValue);	/*插入变量*/
+	//void InsertBoolValue(const QString& strScope, const QString& strBoolName, int boolValue);	/*插入变量*/
 
-	void UpdateBoolValue(const QString& strScope, const QString&  strOldBoolName, const QString&  strNewBoolName, int boolValue);	/*更新变量（包括变量名）*/
-	void UpdateBoolValue(const QString& strScope, const QString&  strBoolName, int boolValue);	/*更新变量（不包括变量名）*/
+	//void UpdateBoolValue(const QString& strScope, const QString&  strOldBoolName, const QString&  strNewBoolName, int boolValue);	/*更新变量（包括变量名）*/
+	//void UpdateBoolValue(const QString& strScope, const QString&  strBoolName, int boolValue);	/*更新变量（不包括变量名）*/
 
-	void SelectBoolValue(const QString& strScope, CValue::TYPE_MAP_INT& mapBool);	/*查询所有变量*/
+	//void SelectBoolValue(const QString& strScope, CValue::TYPE_MAP_INT& mapBool);	/*查询所有变量*/
 
-	void DeleteBoolValue(const QString& strScope, QString strBoolName);	/*删除特定变量*/
+	//void DeleteBoolValue(const QString& strScope, QString strBoolName);	/*删除特定变量*/
 
 	/*字符串表相关*/
 	void InsertStringValue(const QString& strScope, const QString& strStringName, const QString& stringValue);	/*插入变量*/

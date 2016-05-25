@@ -10,6 +10,8 @@ protected:
 	virtual void SetUp() override;
 	virtual void TearDown() override;
 
+	void ExpectVariate(QDataStream& dataStream);
+
 	TBool* m_bool;
 };
 

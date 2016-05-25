@@ -28,11 +28,6 @@ CSymbol::SymbolType TVariate::GetType() const
 	return m_symbol.GetType();
 }
 
-void TVariate::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget)
-{
-
-}
-
 void TVariate::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget,
 	const CSymbol::SymbolType type)
 {

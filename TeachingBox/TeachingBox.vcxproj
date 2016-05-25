@@ -768,6 +768,7 @@
     <ClCompile Include="TBool.cpp" />
     <ClCompile Include="TDouble.cpp" />
     <ClCompile Include="TInteger.cpp" />
+    <ClCompile Include="TString.cpp" />
     <ClCompile Include="TVariate.cpp" />
     <ClCompile Include="TVariateFactory.cpp" />
     <ClCompile Include="TVariateManager.cpp" />
@@ -3531,6 +3532,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTreeWidgetItemWithVariate.h" />
+    <ClInclude Include="TString.h" />
     <ClInclude Include="TVariateFactory.h" />
     <CustomBuild Include="TBool.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

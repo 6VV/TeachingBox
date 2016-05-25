@@ -901,6 +901,9 @@
     <ClCompile Include="TVariateFactory.cpp">
       <Filter>Source Files\Variate</Filter>
     </ClCompile>
+    <ClCompile Include="TString.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -1269,6 +1272,9 @@
       <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </ClInclude>
     <ClInclude Include="TVariateFactory.h">
+      <Filter>Header Files\Variate</Filter>
+    </ClInclude>
+    <ClInclude Include="TString.h">
       <Filter>Header Files\Variate</Filter>
     </ClInclude>
   </ItemGroup>
