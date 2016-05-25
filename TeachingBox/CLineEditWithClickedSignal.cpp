@@ -61,6 +61,22 @@ void CLineEditWithClickedSignal::SetTreeWidgetItem(QTreeWidgetItem* item, CTreeW
 	connect(this, SIGNAL(textChangedWithTreeItem(QTreeWidgetItem*)), treeWidget, SLOT(SlotItemTextChanged(QTreeWidgetItem*)));
 }
 
+void CLineEditWithClickedSignal::SetTreeItem(QTreeWidgetItem* const item, QTreeWidget* const treeWidget)
+{
+	m_treeWidgetItem = item;
+	m_treeWidget = treeWidget;
+}
+
+QTreeWidgetItem* const CLineEditWithClickedSignal::GetTreeWidgetItem() const
+{
+	return m_treeWidgetItem;
+}
+
+QTreeWidget* const CLineEditWithClickedSignal::GetTreeWidget() const
+{
+	return m_treeWidget;
+}
+
 void CLineEditWithClickedSignal::SlotTextChanged()
 {
 	emit textChangedWithTreeItem(m_treeWidgetItem);

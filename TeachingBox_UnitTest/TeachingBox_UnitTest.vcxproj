@@ -144,6 +144,7 @@
     <ClCompile Include="TBoolTests.cpp" />
     <ClCompile Include="TDoubleTests.cpp" />
     <ClCompile Include="TIntergerTests.cpp" />
+    <ClCompile Include="TPositionTests.cpp" />
     <ClCompile Include="TStringTests.cpp" />
     <ClCompile Include="TVariateManagerTests.cpp" />
     <ClCompile Include="TVariateTests.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="TBoolTests.h" />
     <ClInclude Include="TDoubleTests.h" />
     <ClInclude Include="TIntergerTests.h" />
+    <ClInclude Include="TPositionTests.h" />
     <ClInclude Include="TStringTests.h" />
     <ClInclude Include="TVariateManagerTests.h" />
     <ClInclude Include="TVariateTests.h" />

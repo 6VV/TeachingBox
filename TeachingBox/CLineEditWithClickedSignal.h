@@ -22,7 +22,10 @@ public:
 	void SetRegExpString(const QString& strText);
 	void SetKeyboardShowModel(const int showModel);	/*设置键盘显示方式*/
 	void SetTreeWidgetItem(QTreeWidgetItem* item,CTreeWidgetWithMonitor*);
+	void SetTreeItem(QTreeWidgetItem* const item,QTreeWidget* const treeWidget);
 
+	QTreeWidgetItem* const GetTreeWidgetItem() const;
+	QTreeWidget* const GetTreeWidget() const;
 signals:
 	void clicked();
 	void textChangedWithTreeItem(QTreeWidgetItem*);
@@ -46,6 +49,7 @@ private:
 	QString m_strRegExp;
 
 	QTreeWidgetItem* m_treeWidgetItem;	/*所在树形节点*/
+	QTreeWidget* m_treeWidget;
 };
 
 #endif

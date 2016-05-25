@@ -910,6 +910,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_TString.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="TPosition.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TPosition.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TPosition.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -1267,6 +1276,9 @@
       <Filter>Header Files\Variate</Filter>
     </CustomBuild>
     <CustomBuild Include="TString.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TPosition.h">
       <Filter>Header Files\Variate</Filter>
     </CustomBuild>
   </ItemGroup>
