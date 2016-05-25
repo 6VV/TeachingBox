@@ -36,12 +36,7 @@ public:
 
 	typedef tTransitionMode TYPE_TRANSITION_MODE;
 
-	//typedef std::pair<std::string, TYPE_SYMBOL> TYPE_PAIR_SYMBOL;	/*符号表*/
-	//typedef std::unordered_map<std::string, TYPE_SYMBOL> TYPE_MAP_SYMBOL;
-
 	typedef std::unordered_map<std::string, TYPE_POSITION> TYPE_MAP_POSITION;
-	typedef std::unordered_map<std::string,std::unordered_map<std::string, TYPE_POSITION>> TYPE_MAP_SCOPE_POSITION;		/*位置类型*/
-	typedef std::pair<std::string, TYPE_POSITION> TYPE_PAIR_POSITION;
 
 	typedef std::unordered_map<std::string, TYPE_DYNAMIC> TYPE_MAP_DYNAMIC;
 	typedef std::unordered_map<std::string, std::unordered_map<std::string, TYPE_DYNAMIC>> TYPE_MAP_SCOPE_DYNAMIC;
@@ -58,7 +53,6 @@ public:
 	//TYPE_MAP_SYMBOL m_mapSymbol;	/*符号表*/
 	CScope m_scopeSystem;			/*系统作用域（根作用域）*/
 
-	TYPE_MAP_SCOPE_POSITION m_mapScopePosition;	/*数据库中位置变量Map*/
 	TYPE_MAP_SCOPE_DYNAMIC m_mapScopeDynamic;	/*数据库中速度变量Map*/
 	TYPE_MAP_SCOPE_OVERLAP m_mapScopeOverlap;	/*数据库中过渡变量Map*/
 

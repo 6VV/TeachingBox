@@ -167,30 +167,28 @@ TVariate* TVariateManager::GetVariate(const QString& scope, const QString& name)
 	return iterVar.value();
 }
 
-bool TVariateManager::IsExistVariateScrollUp(const QString& scope, const QString& name)
+TVariate* TVariateManager::GetVariateSrollUp(const QString& scope, const QString& name)
 {
 	CScope* currentScope = m_scopeRoot.FindScopeScrollDown(scope);
 	if (!currentScope)
 	{
-		return false;
+		return nullptr;
 	}
-	if (!currentScope->FindSymbolScrollUp(name))
+	CSymbol* symbol = currentScope->FindSymbolScrollUp(name);
+	if (!symbol)
 	{
-		return false;
+		return nullptr;
 	}
-	return true;
+	return GetVariate(symbol->GetScope(), symbol->GetName());
+}
 
-	//auto iterMap = m_objectMap.find(scope);
-	//if (iterMap==m_objectMap.end())
-	//{
-	//	return false;
-	//}
-
-	//if (iterMap.value().find(name)==iterMap.value().end())
-	//{
-	//	return false;
-	//}
-	//return true;
+bool TVariateManager::IsExistVariateScrollUp(const QString& scope, const QString& name)
+{
+	if (GetVariateSrollUp(scope, name))
+	{
+		return true;
+	}
+	return false;
 }
 
 void TVariateManager::LoadProjectDataFromDatabase(const QString& project, const QStringList& programs)

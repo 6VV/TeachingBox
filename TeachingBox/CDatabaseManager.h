@@ -56,18 +56,6 @@ public:
 	bool IsExistVariable(const QString& strScope, const QString& strVariableName);	/*作用域是否存在某变量*/
 	bool IsExistVariable(const QString& strTableName, const QString& strScope, const QString& strVaribaleName);		/*某表内、某作用域内是否存在某变量*/
 
-
-	/*位置变量相关*/
-	void InsertPositionValue(const QString& strScope, const QString& strPosition, CValue::TYPE_POSITION& position);	/*插入位置变量*/
-
-	void UpdatePositionValue(const QString& scope, const QString& strOldPosition,const QString& strNewPosition, CValue::TYPE_POSITION& position);	/*更新位置变量（包括变量名）*/
-	void UpdatePositionValue(const QString& scope, const QString& strPositionName, CValue::TYPE_POSITION& position);	/*更新位置变量（不包括变量名）*/
-
-	void SelectPositionValue(const QString& strScope, CValue::TYPE_MAP_POSITION& mapPosition);
-
-
-	void DeletePositionValue(const QString& strScope, const QString& strPosition);	/*删除特定位置变量*/
-
 	/*动态参数变量相关*/
 	void InsertDynamicValue(const QString& scope, const QString& strDynamicName, const tDynamicConstraint& dynamic);	/*插入速度变量*/
 
@@ -98,18 +86,6 @@ public:
 	//void SelectDoubleValue(const QString& strScope, CValue::TYPE_MAP_DOUBLE& mapDouble);
 
 	void DeleteDoubleValue(const QString& strScope, const QString& strVariableName);	/*删除特定浮点数变量*/
-
-
-	/*布尔表相关*/
-	//void InsertBoolValue(const QString& strScope, const QString& strBoolName, int boolValue);	/*插入变量*/
-
-	//void UpdateBoolValue(const QString& strScope, const QString&  strOldBoolName, const QString&  strNewBoolName, int boolValue);	/*更新变量（包括变量名）*/
-	//void UpdateBoolValue(const QString& strScope, const QString&  strBoolName, int boolValue);	/*更新变量（不包括变量名）*/
-
-	//void SelectBoolValue(const QString& strScope, CValue::TYPE_MAP_INT& mapBool);	/*查询所有变量*/
-
-	//void DeleteBoolValue(const QString& strScope, QString strBoolName);	/*删除特定变量*/
-
 
 	/*自定义私有函数*/
 private:

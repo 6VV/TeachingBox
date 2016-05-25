@@ -8,6 +8,7 @@
 #include "TDouble.h"
 #include "TBool.h"
 #include "TString.h"
+#include "TPosition.h"
 
 
 
@@ -89,7 +90,16 @@ void CTreeWidgetWithMonitor::SlotItemTextChanged(QTreeWidgetItem* item)
 
 			position.m_AxisPosition[i]=lineEdit->text().toDouble();
 		}
-		interpreterAdapter->UpdatePositionValue(varScope, varName.toStdString(), varName.toStdString(), position);
+
+		QVector<double> vecPosition;
+		for (int i = 0; i < TPosition::AXIS_SIZE; ++i)
+		{
+			vecPosition.push_back(position.m_AxisPosition[i]);
+		}
+		TVariateManager::GetInstance()->Update(varScope, varName, TPosition(varScope, varName, vecPosition));
+
+
+		//interpreterAdapter->UpdatePositionValue(varScope, varName.toStdString(), varName.toStdString(), position);
 
 	}
 	/*若为动态参数*/

@@ -101,7 +101,7 @@ private:
 
 	//void AddDataSendedWithoutCommand(char* head, const int commandId);	/*添加所用发送的字节（不含命令段）*/
 
-	CValue::TYPE_POSITION &GetPosition(const std::string& name);
+	CValue::TYPE_POSITION GetPosition(const std::string& name);
 	CValue::TYPE_DYNAMIC &GetDynamic(const std::string& name);
 	CValue::TYPE_OVERLAP &GetOverlap(const std::string& name);
 

@@ -15,6 +15,7 @@
 #include "TVariateManager.h"
 #include "TInteger.h"
 #include "TDouble.h"
+#include "TPosition.h"
 
 
 
@@ -453,7 +454,13 @@ void CScreenVariables::SlotOnResivePosition(tAxesAllPositions& position)
 	{
 		QString scope = GetScope(currentItem);
 		QString name = currentItem->text(0);
-		CInterpreterAdapter::GetInstance()->UpdatePositionValue(scope, name.toStdString(), name.toStdString(), position);
+		QVector<double> vecPosition;
+		for (int i = 0; i < TPosition::AXIS_SIZE;++i)
+		{
+			vecPosition.push_back(position.m_AxisPosition[i]);
+		}
+		TVariateManager::GetInstance()->Update(scope, name, TPosition(scope, name, vecPosition));
+		//CInterpreterAdapter::GetInstance()->UpdatePositionValue(scope, name.toStdString(), name.toStdString(), position);
 		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(0), 1)))->setText(QString::number(position.m_AxisPosition[0]));
 		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(1), 1)))->setText(QString::number(position.m_AxisPosition[1]));
 		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(2), 1)))->setText(QString::number(position.m_AxisPosition[2]));
@@ -612,12 +619,15 @@ void CScreenVariables::InitTreeWidgetDataFromScope(QTreeWidgetItem* item, const 
 {
 	CVariableTreeItemManager variableTreeItemManager;
 
-	variableTreeItemManager.GetAllPositionTreeWidgetItemInExactScope(
-		QString::fromStdString(strScopeName), item, m_treeWidget);
+	//variableTreeItemManager.GetAllPositionTreeWidgetItemInExactScope(
+	//	QString::fromStdString(strScopeName), item, m_treeWidget);
 	variableTreeItemManager.GetAllDynamicTreeWidgetItemInExactScope(
 		QString::fromStdString(strScopeName), item, m_treeWidget);
 	variableTreeItemManager.GetAllOverlapTreeWidgetItemInExactScope(
 		QString::fromStdString(strScopeName), item, m_treeWidget);
+
+	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
+		QString::fromStdString(strScopeName), CSymbol::TYPE_POSITION);
 
 	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
 		QString::fromStdString(strScopeName), CSymbol::TYPE_INTERGER);

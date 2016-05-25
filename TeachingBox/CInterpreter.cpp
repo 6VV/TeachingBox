@@ -13,6 +13,7 @@
 #include "TInteger.h"
 #include "TDouble.h"
 #include "TBool.h"
+#include "TPosition.h"
 
 
 //
@@ -1512,10 +1513,19 @@ void CInterpreter::AddCommandAttribute(char* head, int& offset, int commandCode,
 //	AddCommandAttribute(head, offset, commandId, 0);
 //}
 
-CValue::TYPE_POSITION &CInterpreter::GetPosition(const std::string& name)
+CValue::TYPE_POSITION CInterpreter::GetPosition(const std::string& name)
 {
-	CScope::ScopeSymbol scopeSymbol = m_scope->FindSymbolScopeScrollUp(QString::fromStdString(name));
-	return m_value->m_mapScopePosition[scopeSymbol.scope->GetScopeName().toStdString()][name];
+	const TPosition::TYPE_POSITION& tPosition=static_cast<TPosition*>(TVariateManager::GetInstance()
+		->GetVariateSrollUp(m_scope->GetScopeName(), QString::fromStdString(name)))->GetValue();
+	tAxesAllPositions position;
+
+	for (int i = 0; i < tPosition.size();++i)
+	{
+		position.m_AxisPosition[i] = tPosition[i];
+	}
+	//CScope::ScopeSymbol scopeSymbol = m_scope->FindSymbolScopeScrollUp(QString::fromStdString(name));
+	//return m_value->m_mapScopePosition[scopeSymbol.scope->GetScopeName().toStdString()][name];
+	return position;
 }
 
 CValue::TYPE_DYNAMIC &CInterpreter::GetDynamic(const std::string& name)

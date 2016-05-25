@@ -784,231 +784,6 @@ bool CDatabaseManager::IsExistVariable(const QString& strScope, const QString& s
 	return false;
 }
 
-//////////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////////
-/*位置表相关*/
-//////////////////////////////////////////////////////////////////////////
-
-//void CDatabaseManager::InsertPositionValue(const QString& strScope, const QString& strProject, const QString& strProgram, CValue::TYPE_PAIR_POSITION& position)
-//{
-//	InsertPositionValue(strScope, strProject, strProgram, QString::fromStdString(position.first), position.second);
-//}
-//
-//void CDatabaseManager::InsertPositionValue(const QString& strScope, const QString& strProject, const QString& strProgram, 
-//	const QString& strPosition, CValue::TYPE_POSITION& position)
-//{
-//	QSqlQuery query(m_db);
-//	query.prepare("insert into " + TABLE_POSITION + " values(?,?,?,?,?,?,?,?,?,?)");
-//
-//	query.bindValue(0, strScope);
-//	query.bindValue(1, strProject);
-//	query.bindValue(2, strProgram);
-//
-//	query.bindValue(3, strPosition);
-//
-//	int positionLength = position.m_AxisPositon.size();
-//
-//	for (int i = 0; i < positionLength; i++)
-//	{
-//		query.bindValue(i + 4, position.m_AxisPositon.at(i));
-//	}
-//
-//	if (query.exec())
-//	{
-//		qDebug() << "insert position table successed";
-//	}
-//	else
-//	{
-//		qDebug() << "insert position table failed";
-//	}
-//}
-
-
-void CDatabaseManager::InsertPositionValue(const QString& strScope, const QString& strPosition, CValue::TYPE_POSITION& position)
-{
-	QSqlQuery query(m_db);
-	query.prepare("insert into " + TABLE_POSITION + " values(?,?,?,?,?,?,?,?)");
-
-	query.bindValue(0, strScope);
-	query.bindValue(1, strPosition);
-
-	int positionLength = 6;
-
-	for (int i = 0; i < positionLength; i++)
-	{
-		query.bindValue(i + 2, position.m_AxisPosition[i]);
-	}
-
-	if (query.exec())
-	{
-		qDebug() << "insert position table successed";
-	}
-	else
-	{
-		qDebug() << "insert position table failed";
-	}
-}
-
-//void CDatabaseManager::UpdatePositionValue(const QString& scope, const QString& strProject, const QString& strProgram, const QString& strOldPosition, const QString& strNewPosition, CValue::TYPE_POSITION& position)
-//{
-//	QSqlQuery query(m_db);
-//	query.prepare("update " + TABLE_POSITION + " set "
-//		+ TABLE_COLUMN_POSITION_NAME + "=?,"
-//		+ TABLE_COLUMN_POSITION_AXIS1 + "=?,"
-//		+ TABLE_COLUMN_POSITION_AXIS2 + "=?,"
-//		+ TABLE_COLUMN_POSITION_AXIS3 + "=?,"
-//		+ TABLE_COLUMN_POSITION_AXIS4 + "=?,"
-//		+ TABLE_COLUMN_POSITION_AXIS5 + "=?,"
-//		+ TABLE_COLUMN_POSITION_AXIS6 + "=?"
-//		+ " where " + TABLE_COLUMN_POSITION_NAME + "=?"
-//		+ " and " + TABLE_COLUMN_PROGRAM + "=?"
-//		+ " and " + TABLE_COLUMN_PROJECT + "=?"
-//		+ " and " + TABLE_COLUMN_SCOPE + "=?");
-//
-//	query.bindValue(0, strNewPosition);
-//
-//	int length = position.m_AxisPositon.size();
-//
-//	for (int i = 0; i < length; ++i)
-//	{
-//		query.bindValue(i + 1, position.m_AxisPositon[i]);
-//	}
-//
-//	query.bindValue(length + 1, strOldPosition);
-//	query.bindValue(length + 2, strProgram);
-//	query.bindValue(length + 3, strProject);
-//	query.bindValue(length + 4, scope);
-//
-//	if (query.exec())
-//	{
-//		qDebug() << "update positon successed";
-//	}
-//	else
-//	{
-//		qDebug() << "update position failed";
-//	}
-//}
-//
-//void CDatabaseManager::UpdatePositionValue(const QString& scope, const QString& strProject, const QString& strProgram, const QString& strPositionName, CValue::TYPE_POSITION& position)
-//{
-//	UpdatePositionValue(scope, strProject, strProgram, strPositionName, position);
-//}
-
-
-void CDatabaseManager::UpdatePositionValue(const QString& scope, const QString& strOldPosition, const QString& strNewPosition, CValue::TYPE_POSITION& position)
-{
-	QSqlQuery query(m_db);
-	query.prepare("update " + TABLE_POSITION + " set "
-		+ TABLE_COLUMN_NAME + "=?,"
-		+ TABLE_COLUMN_POSITION_AXIS1 + "=?,"
-		+ TABLE_COLUMN_POSITION_AXIS2 + "=?,"
-		+ TABLE_COLUMN_POSITION_AXIS3 + "=?,"
-		+ TABLE_COLUMN_POSITION_AXIS4 + "=?,"
-		+ TABLE_COLUMN_POSITION_AXIS5 + "=?,"
-		+ TABLE_COLUMN_POSITION_AXIS6 + "=?"
-		+ " where " + TABLE_COLUMN_NAME + "=?"
-		+ " and " + TABLE_COLUMN_SCOPE + "=?");
-
-	query.bindValue(0, strNewPosition);
-
-	int length = 6;
-
-	for (int i = 0; i < length; ++i)
-	{
-		query.bindValue(i + 1, position.m_AxisPosition[i]);
-	}
-
-	query.bindValue(length + 1, strOldPosition);
-	query.bindValue(length + 2, scope);
-
-	if (query.exec())
-	{
-		qDebug() << "update positon successed";
-	}
-	else
-	{
-		qDebug() << "update position failed";
-	}
-}
-
-void CDatabaseManager::UpdatePositionValue(const QString& scope, const QString& strPositionName, CValue::TYPE_POSITION& position)
-{
-	UpdatePositionValue(scope, strPositionName, strPositionName, position);
-}
-
-
-void CDatabaseManager::SelectPositionValue(const QString& strScope, CValue::TYPE_MAP_POSITION& mapPosition)
-{
-	QSqlQuery query(m_db);
-	query.prepare(QString("select * from %1 where %2='%3'")
-		.arg(TABLE_POSITION)
-		.arg(TABLE_COLUMN_SCOPE).arg(strScope));
-	if (query.exec())
-	{
-		qDebug() << "select successed";
-	}
-	else
-	{
-		qDebug() << "select failed";
-		return;
-	}
-
-	CValue::TYPE_POSITION positon;
-
-	while (query.next())
-	{
-		positon.m_AxisPosition[0]=query.value(2).toDouble();
-		positon.m_AxisPosition[1] = query.value(3).toDouble();
-		positon.m_AxisPosition[2] = query.value(4).toDouble();
-		positon.m_AxisPosition[3] = query.value(5).toDouble();
-		positon.m_AxisPosition[4] = query.value(6).toDouble();
-		positon.m_AxisPosition[5] = query.value(7).toDouble();
-
-		mapPosition[query.value(1).toString().toStdString()] = positon;
-	}
-}
-
-
-void CDatabaseManager::DeletePositionValue(const QString& strScope, const QString& strPosition)
-{
-	DeleteValue(TABLE_POSITION, TABLE_COLUMN_NAME, strScope, strPosition);
-}
-
-//////////////////////////////////////////////////////////////////////////
-/*速度变量相关*/
-//////////////////////////////////////////////////////////////////////////
-//void CDatabaseManager::InsertDynamicValue(const QString& strProject, const QString& strProgram, const QString& strVelocity, double velValue)
-//{
-//	InsertOneValue(TABLE_DYNAMIC, strProject, strProgram, strVelocity, velValue);
-//}
-
-//void CDatabaseManager::InsertDynamicValue(const QString& strProject, const QString& strProgram, std::pair<std::string, double>& pairVelParameter)
-//{
-//	InsertDynamicValue(strProject, strProgram, QString::fromStdString(pairVelParameter.first), pairVelParameter.second);
-//}
-
-//void CDatabaseManager::InsertDynamicValue(const QString& scope, const QString& strProject, const QString& strProgram, const QString& strDynamicName, 
-//	const tDynamicConstraint& dynamic)
-//{
-//	QSqlQuery query(m_db);
-//
-//	query.prepare("insert into " + TABLE_DYNAMIC + " values(?,?,?,?,?,?,?,?,?,?)");
-//
-//	query.bindValue(0, scope);
-//	query.bindValue(1, strProject);
-//	query.bindValue(2, strProgram);
-//	query.bindValue(3, strDynamicName);
-//	query.bindValue(4, dynamic.m_Velocity);
-//	query.bindValue(5, dynamic.m_Acceleration);
-//	query.bindValue(6, dynamic.m_Deceleration);
-//	query.bindValue(7, dynamic.m_PostureVelocity);
-//	query.bindValue(8, dynamic.m_PostureAcceleration);
-//	query.bindValue(9, dynamic.m_PostureDeceleration);
-//
-//	query.exec();
-//}
 
 
 void CDatabaseManager::InsertDynamicValue(const QString& scope, const QString& strDynamicName, const tDynamicConstraint& dynamic)
@@ -1031,45 +806,6 @@ void CDatabaseManager::InsertDynamicValue(const QString& scope, const QString& s
 		qDebug() << "insert dynamic table successed";
 	}
 }
-
-//void CDatabaseManager::UpdateDynamicValue(const QString& strScope, const QString& strProject, const QString& strProgram, const QString& strOldDynamicName,
-//	const QString& strNewDynamicName, const tDynamicConstraint& dynamic)
-//{
-//	QSqlQuery query(m_db);
-//
-//	query.prepare("update " + TABLE_DYNAMIC + " set "
-//		+ TABLE_COLUMN_DYNAMIC_NAME + "=?,"
-//		+ TABLE_COLUMN_DYNAMIC_VELOCITY + "=?,"
-//		+ TABLE_COLUMN_DYNAMIC_ACCELERATION + "=?,"
-//		+ TABLE_COLUMN_DYNAMIC_DECELERATION + "=?,"
-//		+ TABLE_COLUMN_DYNAMIC_POSTURE_VELOCITY + "=?,"
-//		+ TABLE_COLUMN_DYNAMIC_POSTURE_ACCELERATION + "=?,"
-//		+ TABLE_COLUMN_DYNAMIC_POSTURE_DECELERATION + "=?"
-//		+ " where " + TABLE_COLUMN_DYNAMIC_NAME + "=?"
-//		+ " and " + TABLE_COLUMN_PROGRAM + "=?"
-//		+ " and " + TABLE_COLUMN_PROJECT + "=?"
-//		+ " and " + TABLE_COLUMN_SCOPE + " =?");
-//
-//	query.bindValue(0, strNewDynamicName);
-//	query.bindValue(1, dynamic.m_Velocity);
-//	query.bindValue(2, dynamic.m_Acceleration);
-//	query.bindValue(3, dynamic.m_Deceleration);
-//	query.bindValue(4, dynamic.m_PostureVelocity);
-//	query.bindValue(5, dynamic.m_PostureAcceleration);
-//	query.bindValue(6, dynamic.m_PostureDeceleration);
-//	query.bindValue(7, strOldDynamicName);
-//	query.bindValue(8, strProgram);
-//	query.bindValue(9, strProject);
-//	query.bindValue(10, strScope);
-//
-//	query.exec();
-//}
-
-//void CDatabaseManager::UpdateDynamicValue(const QString& strScope, const QString& strProject, const QString& strProgram, const QString& strDynamicName, 
-//	const tDynamicConstraint& dynamic)
-//{
-//	UpdateDynamicValue(strScope, strProject, strProgram, strDynamicName, strDynamicName, dynamic);
-//}
 
 void CDatabaseManager::UpdateDynamicValue(const QString& strScope, const QString& strOldDynamicName, const QString& strNewDynamicName, 
 	const tDynamicConstraint& dynamic)
@@ -1153,38 +889,6 @@ void CDatabaseManager::InsertOverlapValue(const QString& strScope, const QString
 	query.exec();
 }
 
-//void CDatabaseManager::UpdateOverlapValue(const QString& strScope, const QString& strProject, const QString& strProgram,
-//	const QString& strOldOverlapName, const QString& strNewOverlapName, const tOverlapConstraint& overlapValue)
-//{
-//	QSqlQuery query(m_db);
-//
-//	query.prepare("update " + TABLE_OVERLAP + " set "
-//		+ TABLE_COLUMN_OVERLAP_NAME + "=?,"
-//		+ TABLE_COLUMN_OVERLAP_MODE + "=?,"
-//		+ TABLE_COLUMN_OVERLAP_VALUE + "=?"
-//		+ " where " + TABLE_COLUMN_OVERLAP_NAME + "=?"
-//		+ " and " + TABLE_COLUMN_PROGRAM + "=?"
-//		+ " and " + TABLE_COLUMN_PROJECT + "=?"
-//		+ " and " + TABLE_COLUMN_SCOPE + "=?"
-//		);
-//
-//	query.bindValue(0, strNewOverlapName);
-//	query.bindValue(1, overlapValue.m_TransitionMode);
-//	query.bindValue(2, overlapValue.m_TransitionParameter);
-//	query.bindValue(3, strOldOverlapName);
-//	query.bindValue(4, strProgram);
-//	query.bindValue(5, strProject);
-//	query.bindValue(6, strScope);
-//
-//	query.exec();
-//}
-
-//void CDatabaseManager::UpdateOverlapValue(const QString& strScope, const QString& strProject, const QString& strProgram,
-//	const QString& strOverlapName, const tOverlapConstraint& overlapValue)
-//{
-//	UpdateOverlapValue(strScope, strProject, strProgram, strOverlapName, strOverlapName, overlapValue);
-//}
-
 void CDatabaseManager::UpdateOverlapValue(const QString& strScope, const QString& strOldOverlapName, const QString& strNewOverlapName,
 	const tOverlapConstraint& overlapValue)
 {
@@ -1219,15 +923,6 @@ void CDatabaseManager::UpdateOverlapValue(const QString& strScope, const QString
 {
 	UpdateOverlapValue(strScope, strOverlapName, strOverlapName, overlapValue);
 }
-
-//void CDatabaseManager::SelectOverlapValue(const QString& strProject, const QString& strProgram, CValue::TYPE_MAP_OVERLAP& mapSynergic,
-//	CValue::TYPE_MAP_OVERLAP& mapGlobal, CValue::TYPE_MAP_OVERLAP& mapProject, CValue::TYPE_MAP_OVERLAP& mapLocal)
-//{
-//	SelectGlobalOverlapValue(mapSynergic);
-//	SelectGlobalOverlapValue(mapGlobal);
-//	SelectProjectOverlapValue(strProject, mapProject);
-//	SelectLocalOverlapValue(strProject, strProgram, mapLocal);
-//}
 
 void CDatabaseManager::SelectOverlapValue(const QString& strScope, CValue::TYPE_MAP_OVERLAP& mapOverlap)
 {
@@ -1271,12 +966,6 @@ void CDatabaseManager::UpdateDoubleValue(const QString& strScope, const QString&
 {
 	UpdateOneValue(TABLE_DOUBLE, TABLE_COLUMN_NAME, TABLE_COLUMN_DOUBLE_VALUE, strScope, strOldVariabelName, strNewVariableName, variableValue);
 }
-
-//void CDatabaseManager::SelectDoubleValue(const QString& strScope, CValue::TYPE_MAP_DOUBLE& mapDouble)
-//{
-//	SelectOneValue(TABLE_DOUBLE, strScope, mapDouble);
-//}
-
 
 void CDatabaseManager::DeleteDoubleValue(const QString& strScope, const QString& strVariableName)
 {

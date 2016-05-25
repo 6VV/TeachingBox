@@ -47,15 +47,7 @@ public:
 	bool IsCorrectName(std::string& strName);	/*是否是正确的变量名*/
 
 	/*位置变量相关*/
-	void GetPositionListFromEnclosingScope(QStringList &strListPositions,const QString& scope);	/*获取位置变量列表*/
-	void InsertPositionValue(const QString& scope, CValue::TYPE_PAIR_POSITION &pairNewPosition);		/*插入位置变量*/
-	void UpdatePositionValue(const QString& scope, std::string &strOldPosition, CValue::TYPE_PAIR_POSITION &pairNewPosition);	/*更新位置变量*/
-	void UpdatePositionValue(const QString& scope, std::string &strOldPosition, std::string &strNewPosition,CValue::TYPE_POSITION &pairNewPosition);	/*更新位置变量*/
-	void DeletePositionValue(const QString& strScope, std::string& strName);
-	void UpdatePositionValueFromDatabase(const QString& strScope);	/*获取作用域的位置变量*/
-	bool GetPositionValue(const QString& scope, const std::string& strPositionName, CValue::TYPE_POSITION& vecPositionValue);	/*获取位置变量*/
-	bool GetPositionValueFromEnclosingScope(const QString& scope, const std::string& strPositionName, CValue::TYPE_POSITION& vecPositionValue);	/*获取位置变量*/
-	bool IsPositionValueExist(const QString& strScope, const std::string &strPositionName);	/*位置变量是否存在*/
+	//void GetPositionListFromEnclosingScope(QStringList &strListPositions,const QString& scope);	/*获取位置变量列表*/
 
 	/*速度变量相关*/
 	void GetDynamicListFromEnclosingScope(QStringList &strListPositions, const QString& scope);	/*获取位置变量列表*/

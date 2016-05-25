@@ -14,6 +14,7 @@
 #include "TDouble.h"
 #include "TBool.h"
 #include "TString.h"
+#include "TPosition.h"
 
 
 CInterpreterAdapter::CInterpreterAdapter()
@@ -74,98 +75,6 @@ CInterpreterAdapter* CInterpreterAdapter::GetInstance()
 	return CSingleTon<CInterpreterAdapter>::GetInstance();
 }
 
-
-void CInterpreterAdapter::GetPositionListFromEnclosingScope(QStringList &strListPositions, const QString& scope)
-{
-	std::vector<CScope*> vecScope = GetEnclosingScope(scope.toStdString());
-	std::set<std::string> setList;
-
-	for each (auto scope in vecScope)
-	{
-		for each (auto variable in m_value->m_mapScopePosition[scope->GetScopeName().toStdString()])
-		{
-			setList.insert(variable.first);
-		}
-	}
-
-	for each (auto variable in setList)
-	{
-		strListPositions.append(QString::fromStdString(variable));
-	}
-}
-
-
-void CInterpreterAdapter::InsertPositionValue(const QString& scope, CValue::TYPE_PAIR_POSITION &pairNewPosition)
-{
-	m_value->m_mapScopePosition[scope.toStdString()].insert(pairNewPosition);
-
-	m_databaseManager->InsertPositionValue(scope, QString::fromStdString(pairNewPosition.first), pairNewPosition.second);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope,QString::fromStdString(pairNewPosition.first), CSymbol::TYPE_POSITION);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)->DefineSymbol(symbol);
-}
-
-
-void CInterpreterAdapter::UpdatePositionValue(const QString& scope, std::string &strOldPosition, CValue::TYPE_PAIR_POSITION &pairNewPosition)
-{
-	m_value->m_mapScopePosition[scope.toStdString()].erase(strOldPosition);
-	m_value->m_mapScopePosition[scope.toStdString()].insert(pairNewPosition);
-
-	m_databaseManager->UpdatePositionValue(scope, QString::fromStdString(strOldPosition), QString::fromStdString(pairNewPosition.first), pairNewPosition.second);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(pairNewPosition.first), CSymbol::TYPE_POSITION);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-		->RenameSymbol(QString::fromStdString(strOldPosition), QString::fromStdString(pairNewPosition.first), 
-		symbol);
-}
-
-void CInterpreterAdapter::UpdatePositionValue(const QString& scope, std::string &strOldPosition, std::string &strNewPosition, CValue::TYPE_POSITION &position)
-{
-	m_value->m_mapScopePosition[scope.toStdString()].erase(strOldPosition);
-	m_value->m_mapScopePosition[scope.toStdString()][strNewPosition] = position;
-
-	m_databaseManager->UpdatePositionValue(scope, QString::fromStdString(strOldPosition), QString::fromStdString(strNewPosition), position);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(strNewPosition), CSymbol::TYPE_POSITION);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-		->RenameSymbol(QString::fromStdString(strOldPosition),
-		QString::fromStdString(strNewPosition), symbol);
-}
-
-void CInterpreterAdapter::DeletePositionValue(const QString& strScope, std::string& strName)
-{
-	/*从符号表中删除*/
-	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-	scope->DeleteSymbol(QString::fromStdString(strName));
-
-	/*从内存中删除*/
-	m_value->m_mapScopePosition[strScope.toStdString()].erase(strName);
-
-	/*从数据库中删除*/
-	m_databaseManager->DeletePositionValue(strScope, QString::fromStdString(strName));
-}
-
-
-bool CInterpreterAdapter::IsPositionValueExist(const QString& strScope, const std::string &strName)
-{
-	auto iter1 = m_value->m_mapScopePosition.find(strScope.toStdString());
-
-	if (iter1 == m_value->m_mapScopePosition.end())
-	{
-		return false;
-	}
-	
-	auto iter2 = iter1->second.find(strName);
-	if (iter2==iter1->second.end())
-	{
-		return false;
-	}
-
-	return true;
-}
 
 void CInterpreterAdapter::GetDynamicListFromEnclosingScope(QStringList &strListPositions, const QString& scope)
 {
@@ -449,178 +358,6 @@ bool CInterpreterAdapter::IsOverlapValueExist(const QString& strScope, const std
 }
 
 
-
-
-//////////////////////////////////////////////////////////////////////////
-/*布尔变量相关*/
-//////////////////////////////////////////////////////////////////////////
-
-
-//void CInterpreterAdapter::UpdateBoolValue(const QString& scope, const std::string& strOldName, CValue::TYPE_PAIR_BOOL& pairNew)
-//{
-//	m_value->m_mapScopeBool[scope.toStdString()].erase(strOldName);
-//	m_value->m_mapScopeBool[scope.toStdString()].insert(pairNew);
-//
-//	m_databaseManager->UpdateBoolValue(scope, QString::fromStdString(strOldName), QString::fromStdString(pairNew.first), pairNew.second);
-//
-//	/*更新符号表*/
-//	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(pairNew.first), CSymbol::TYPE_BOOL);
-//	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-//		->RenameSymbol(QString::fromStdString(strOldName),
-//		QString::fromStdString(pairNew.first), symbol);
-//}
-//
-//void CInterpreterAdapter::UpdateBoolValue(const QString& scope, const std::string& strOldName, const std::string& strNewName, int value)
-//{
-//	m_value->m_mapScopeBool[scope.toStdString()].erase(strOldName);
-//	m_value->m_mapScopeBool[scope.toStdString()][strNewName]=value;
-//
-//	m_databaseManager->UpdateBoolValue(scope, QString::fromStdString(strOldName), QString::fromStdString(strNewName), value);
-//
-//	/*更新符号表*/
-//	CVariableSymbol* symbol = new CVariableSymbol(scope,QString::fromStdString(strNewName), CSymbol::TYPE_BOOL);
-//	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-//		->RenameSymbol(QString::fromStdString(strOldName),
-//		QString::fromStdString(strNewName), symbol);
-//}
-
-//void CInterpreterAdapter::DeleteBoolValue(const QString& strScope, std::string& strName)
-//{
-//	/*从符号表中删除*/
-//	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-//	scope->DeleteSymbol(QString::fromStdString(strName));
-//
-//	/*从内存中删除*/
-//	m_value->m_mapScopeBool[strScope.toStdString()].erase(strName);
-//
-//	/*从数据库中删除*/
-//	m_databaseManager->DeleteBoolValue(strScope, QString::fromStdString(strName));
-//}
-
-
-//void CInterpreterAdapter::UpdateBoolValueFromDatabase(const QString& strScope)
-//{
-//	/*添加作用域内位置变量*/
-//	CValue::TYPE_MAP_BOOL map;
-//	m_value->m_mapScopeBool[strScope.toStdString()] = map;
-//	CValue::TYPE_MAP_BOOL& mapFind = m_value->m_mapScopeBool[strScope.toStdString()];
-//	m_databaseManager->SelectBoolValue(strScope, mapFind);
-//
-//
-//	/*更新符号表*/
-//	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-//
-//	for each (auto var in mapFind)
-//	{
-//		CVariableSymbol* symbol = new CVariableSymbol(strScope,QString::fromStdString(var.first), CSymbol::TYPE_BOOL);
-//		scope->DefineSymbol(symbol);
-//	}
-//}
-
-//bool CInterpreterAdapter::GetBoolValue(const QString& strScope, const std::string& strName, int& value)
-//{
-//	auto iter = m_value->m_mapScopeBool.at(strScope.toStdString()).find(strName);
-//	if (iter == m_value->m_mapScopeBool.at(strScope.toStdString()).end())
-//	{
-//		return false;
-//	}
-//	value = m_value->m_mapScopeBool[strScope.toStdString()].at(strName);
-//	return true;
-//}
-
-//bool CInterpreterAdapter::GetBoolValueFromEnclosingScope(const QString& scope, const std::string& strName, int& value)
-//{
-//	std::vector<CScope*> vecScope = GetEnclosingScope(scope.toStdString());
-//
-//	for each (auto var in vecScope)
-//	{
-//		if (GetBoolValue(var->GetScopeName(), strName, value))
-//		{
-//			return true;
-//		}
-//	}
-//
-//	return false;
-//}
-
-
-//bool CInterpreterAdapter::IsBoolValueExist(const QString& strScope, const std::string& strName)
-//{
-//	auto iter1 = m_value->m_mapScopeBool.find(strScope.toStdString());
-//
-//	if (iter1 == m_value->m_mapScopeBool.end())
-//	{
-//		return false;
-//	}
-//
-//	auto iter2 = iter1->second.find(strName);
-//	if (iter2 == iter1->second.end())
-//	{
-//		return false;
-//	}
-//
-//	return true;
-//}
-
-
-
-//////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////
-/*字符串变量相关*/
-//////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////
-/*位置变量相关*/
-//////////////////////////////////////////////////////////////////////////
-
-void CInterpreterAdapter::UpdatePositionValueFromDatabase(const QString& strScope)
-{
-	/*添加作用域内位置变量*/
-	CValue::TYPE_MAP_POSITION mapPosition;
-	m_value->m_mapScopePosition[strScope.toStdString()] = mapPosition;
-	CValue::TYPE_MAP_POSITION& mapPositionFind = m_value->m_mapScopePosition[strScope.toStdString()];
-
-	m_databaseManager->SelectPositionValue(strScope, mapPositionFind);
-
-	
-	/*更新符号表*/
-	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-
-	for each (auto var in mapPositionFind)
-	{
-		CVariableSymbol* symbol = new CVariableSymbol(strScope,QString::fromStdString(var.first), CSymbol::TYPE_POSITION);
-		scope->DefineSymbol(symbol);
-	}
-
-}
-
-bool CInterpreterAdapter::GetPositionValue(const QString& scope, const std::string& strName, CValue::TYPE_POSITION& vecValue)
-{
-	auto iter = m_value->m_mapScopePosition.at(scope.toStdString()).find(strName);
-	if (iter == m_value->m_mapScopePosition.at(scope.toStdString()).end())
-	{
-		return false;
-	}
-	vecValue = m_value->m_mapScopePosition[scope.toStdString()].at(strName);
-	return true;
-}
-
-bool CInterpreterAdapter::GetPositionValueFromEnclosingScope(const QString& scope, const std::string& strPositionName, CValue::TYPE_POSITION& vecPositionValue)
-{
-	std::vector<CScope*> vecScope = GetEnclosingScope(scope.toStdString());
-
-	for each (auto var in vecScope)
-	{
-		if (GetPositionValue(var->GetScopeName(),strPositionName,vecPositionValue))
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
 void CInterpreterAdapter::UpdateValueFromDatabase()
 {
 	//auto t1 = clock();
@@ -717,7 +454,11 @@ void CInterpreterAdapter::UpdateVariableName(const QString& strOldName, const QS
 	}
 	else if (strType == CParameterManager::STR_TYPE_POSITION)
 	{
-		UpdatePositionValue(strScope, strOldName.toStdString(), strNewName.toStdString(), m_value->m_mapScopePosition[strScope.toStdString()][strOldName.toStdString()]);
+		TVariateManager::GetInstance()->Update(strScope, strOldName,
+			TPosition(strScope, strNewName,
+			static_cast<TPosition*>(TVariateManager::GetInstance()->GetVariate(strScope, strOldName))->GetValue()));
+
+		//UpdatePositionValue(strScope, strOldName.toStdString(), strNewName.toStdString(), m_value->m_mapScopePosition[strScope.toStdString()][strOldName.toStdString()]);
 	}
 	else if (strType == CParameterManager::STR_TYPE_DYNAMIC)
 	{

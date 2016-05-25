@@ -37,6 +37,7 @@ public:
 
 	CScope& GetRootScope();
 	TVariate* GetVariate(const QString& scope, const QString& name);
+	TVariate* GetVariateSrollUp(const QString& scope, const QString& name);
 
 	bool IsExistVariateScrollUp(const QString& scope, const QString& name);
 

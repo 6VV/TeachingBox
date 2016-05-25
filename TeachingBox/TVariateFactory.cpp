@@ -4,6 +4,7 @@
 #include "TDouble.h"
 #include "TBool.h"
 #include "TString.h"
+#include "TPosition.h"
 
 
 
@@ -30,6 +31,10 @@ TVariate* TVariateFactory::CreateVariate(QByteArray& dataBytes)
 	case CSymbol::TYPE_STRING:
 	{
 		return new TString(dataStream);
+	}break;
+	case CSymbol::TYPE_POSITION:
+	{
+		return new TPosition(dataStream);
 	}break;
 	default:
 	{

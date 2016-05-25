@@ -13,6 +13,7 @@
 #include "TDouble.h"
 #include "TBool.h"
 #include "TString.h"
+#include "TPosition.h"
 
 
 void CScreenNewVariable::SetScope(QString& strScopeName)
@@ -127,10 +128,15 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 			position.m_AxisPosition[i-INIT_ROW_NUM]=lineEdit->text().toDouble();
 		}
 
-		CValue::TYPE_PAIR_POSITION pairPosition(varName.toStdString(), position);
-
 		/*存储变量*/
-		CInterpreterAdapter::GetInstance()->InsertPositionValue(m_strScopeInDatabase, pairPosition);
+		TPosition::TYPE_POSITION vecPosition;
+		for (int i = 0; i < TPosition::AXIS_SIZE;++i)
+		{
+			vecPosition.push_back(position.m_AxisPosition[i]);
+		}
+		TVariateManager::GetInstance()->Add(
+			new TPosition(m_strScopeInDatabase, varName, vecPosition));
+		//CInterpreterAdapter::GetInstance()->InsertPositionValue(m_strScopeInDatabase, pairPosition);
 	}
 	else if (currentType == CParameterManager::STR_TYPE_DYNAMIC)
 	{

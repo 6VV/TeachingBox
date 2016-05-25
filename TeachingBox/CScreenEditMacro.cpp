@@ -10,6 +10,8 @@
 #include "CInterpreterManager.h"
 #include "CTokenCategory.h"
 #include "CValue.h"
+#include "TVariate.h"
+#include "TVariateManager.h"
 
 CScreenEditMacro::CScreenEditMacro(QWidget* parent/*=0*/) :CScreenMainParent(parent)
 {
@@ -327,7 +329,13 @@ QWidget* CScreenEditMacro::GetPositionValueWidget()
 {
 	QComboBox* positonBox = new QComboBox;
 	QStringList strListPositions;
-	CInterpreterAdapter::GetInstance()->GetPositionListFromEnclosingScope(strListPositions,"");
+	/*TVariate::SET collection;
+	TVariateManager::GetInstance()->ReadCollection(collection, m_strScope, CSymbol::TYPE_POSITION);
+	for (auto var : collection)
+	{
+		strListPositions.push_back(var->GetName());
+	}*/
+	//CInterpreterAdapter::GetInstance()->GetPositionListFromEnclosingScope(strListPositions,"");
 	for each (QString strPosition in strListPositions)
 	{
 		positonBox->addItem(strPosition);

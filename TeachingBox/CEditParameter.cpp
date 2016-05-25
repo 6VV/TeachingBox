@@ -15,6 +15,7 @@
 #include "CWidgetStack.h"
 #include "CScreenMain.h"
 #include "TVariateManager.h"
+#include "TPosition.h"
 
 
 
@@ -343,7 +344,13 @@ CComboBoxWithTreeItem* CEditParameter::GetComboBoxPosition()
 	CValue* value = CValue::GetInstance();
 
 	QStringList strList;
-	m_interpreterAdapter->GetPositionListFromEnclosingScope(strList,m_strScope);
+	TVariate::SET collection;
+	TVariateManager::GetInstance()->ReadCollection(collection, m_strScope, CSymbol::TYPE_POSITION);
+	for (auto var:collection)
+	{
+		strList.push_back(var->GetName());
+	}
+	//m_interpreterAdapter->GetPositionListFromEnclosingScope(strList,m_strScope);
 
 	for each (auto var in strList)
 	{
@@ -400,16 +407,16 @@ void CEditParameter::RefreshPositionParameter(QString strName,QTreeWidgetItem* w
 
 	CValue* value = CValue::GetInstance();
 
-	//qDebug() << CScreenProject::GetInstance()->GetOpenedFileName();
-	//qDebug() << strName;
 	CValue::TYPE_POSITION vecDouble;
-	m_interpreterAdapter->GetPositionValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), vecDouble);
+	//m_interpreterAdapter->GetPositionValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), vecDouble);
 
-	///*若未找到*/
-	//if (iterValue == value->m_mapScopePosition.end())
-	//{
-	//	return;
-	//}
+	TPosition::TYPE_POSITION position = static_cast<TPosition*>(TVariateManager::GetInstance()
+		->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))
+		->GetValue();
+	for (int i = 0; i < position.size();++i)
+	{
+		vecDouble.m_AxisPosition[i] = position[i];
+	}
 
 	///*更新字符*/
 	//CValue::TYPE_POSITION vecDouble = iterValue->second;
