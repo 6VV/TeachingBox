@@ -6,6 +6,7 @@
 #include "TInteger.h"
 #include "CLineEditWithClickedSignal.h"
 #include "TDouble.h"
+#include "TBool.h"
 
 
 
@@ -56,16 +57,17 @@ void CTreeWidgetWithMonitor::SlotItemTextChanged(QTreeWidgetItem* item)
 	{
 		QComboBox* comboBox = static_cast<QComboBox*>(item->treeWidget()->itemWidget(item, 1));
 
-		int value;
+		bool value;
 		if (comboBox->currentText()== CParameterManager::STR_BOOL_TRUE)
 		{
-			value = 1;
+			value = true;
 		}
 		else
 		{
-			value = 0;
+			value = false;
 		}
-		interpreterAdapter->UpdateBoolValue(varScope, varName.toStdString(), varName.toStdString(), value);
+		TVariateManager::GetInstance()->Update(varScope,varName,TBool(varScope, varName, value));
+		//interpreterAdapter->UpdateBoolValue(varScope, varName.toStdString(), varName.toStdString(), value);
 	}
 	/*若为字符串*/
 	else if (varType==CParameterManager::STR_TYPE_STRING)

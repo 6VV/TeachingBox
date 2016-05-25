@@ -45,9 +45,6 @@ public:
 	void UpdateValueFromDatabase();	/*从数据库中更新数据*/
 
 	bool IsCorrectName(std::string& strName);	/*是否是正确的变量名*/
-	//bool IsExist(const QString& strScope, const  std::string& strName);	/*查找变量是否存在*/
-	//bool IsExist(CScope* scope, const std::string& strName);	/*在作用域内查找字符是否存在*/
-	//bool IsSymbolExist(const QString& strScopeName, const  std::string& strName);
 
 	/*位置变量相关*/
 	void GetPositionListFromEnclosingScope(QStringList &strListPositions,const QString& scope);	/*获取位置变量列表*/
@@ -81,19 +78,6 @@ public:
 	bool GetOverlapValue(const QString& strScope, const std::string& strName, CValue::TYPE_OVERLAP& value);
 	bool GetOverlapValueFromEnclosingScope(const QString& scope, const std::string& strName, CValue::TYPE_OVERLAP& vecValue);	/*获取位置变量*/
 	bool IsOverlapValueExist(const QString& strScope, const std::string& strName);
-
-
-	/*布尔变量相关*/
-	void GetBoolListFromEnclosingScope(QStringList &strListPositions, const QString& scope);	/*获取位置变量列表*/
-	void InsertBoolValue(const QString& scope, CValue::TYPE_PAIR_BOOL& pairNewBool);
-	void UpdateBoolValue(const QString& scope, const std::string& strOldName, CValue::TYPE_PAIR_BOOL& pairNew);
-	void UpdateBoolValue(const QString& scope, const std::string& strOldName, const std::string& strNewName, int value);
-	void DeleteBoolValue(const QString& strScope, std::string& strName);
-	void UpdateBoolValueFromDatabase(const QString& strScope);
-
-	bool GetBoolValue(const QString& strScope, const std::string& strName, int& value);
-	bool GetBoolValueFromEnclosingScope(const QString& scope, const std::string& strName, int& value);	/*获取位置变量*/
-	bool IsBoolValueExist(const QString& strScope, const std::string& strName);
 
 	/*字符串变量相关*/
 	void GetStringListFromEnclosingScope(QStringList &strListPositions, const QString& scope);	/*获取位置变量列表*/

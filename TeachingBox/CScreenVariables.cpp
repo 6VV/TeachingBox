@@ -624,11 +624,12 @@ void CScreenVariables::InitTreeWidgetDataFromScope(QTreeWidgetItem* item, const 
 
 	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
 		QString::fromStdString(strScopeName), CSymbol::TYPE_DOUBLE);
-
+	TVariateManager::GetInstance()->ReadTreeItemCollection(item,m_treeWidget,
+		QString::fromStdString(strScopeName), CSymbol::TYPE_BOOL);
 	/*variableTreeItemManager.GetAllDoubleTreeWidgetItemInExactScope(
 		QString::fromStdString(strScopeName), item, m_treeWidget);*/
-	variableTreeItemManager.GetAllBoolTreeWidgetItemInExactScope(
-		QString::fromStdString(strScopeName), item, m_treeWidget);
+	//variableTreeItemManager.GetAllBoolTreeWidgetItemInExactScope(
+	//	QString::fromStdString(strScopeName), item, m_treeWidget);
 }
 
 void CScreenVariables::RefreshText()

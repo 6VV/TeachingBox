@@ -11,6 +11,7 @@
 #include "TVariateManager.h"
 #include "TInteger.h"
 #include "TDouble.h"
+#include "TBool.h"
 
 
 void CScreenNewVariable::SetScope(QString& strScopeName)
@@ -105,7 +106,8 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 		CValue::TYPE_PAIR_BOOL pairVariable(varName.toStdString(), boolValue);
 
 		/*存储变量*/
-		CInterpreterAdapter::GetInstance()->InsertBoolValue(m_strScopeInDatabase, pairVariable);
+		//CInterpreterAdapter::GetInstance()->InsertBoolValue(m_strScopeInDatabase, pairVariable);
+		TVariateManager::GetInstance()->Add(new TBool(m_strScopeInDatabase, varName, boolValue));
 	}
 	else if (currentType == CParameterManager::STR_TYPE_STRING)
 	{
@@ -115,10 +117,7 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 		/*存储变量*/
 		CInterpreterAdapter::GetInstance()->InsertStringValue(m_strScopeInDatabase, pairVariable);
 	}
-	//else if (currentType == TYPE_LABEL)
-	//{
-	//	//CInterpreterAdapter::GetInstance()->InsertLabelValue(varName.toStdString());
-	//}
+
 	else if (currentType == CParameterManager::STR_TYPE_POSITION)
 	{
 		CValue::TYPE_POSITION position;
