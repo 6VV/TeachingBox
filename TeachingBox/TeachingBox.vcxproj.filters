@@ -898,6 +898,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_TBool.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="TVariateFactory.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -1264,6 +1267,9 @@
   <ItemGroup>
     <ClInclude Include="CTreeWidgetItemWithVariate.h">
       <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClInclude>
+    <ClInclude Include="TVariateFactory.h">
+      <Filter>Header Files\Variate</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

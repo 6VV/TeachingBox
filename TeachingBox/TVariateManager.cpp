@@ -2,10 +2,8 @@
 #include "TVariateManager.h"
 #include "CWarningManager.h"
 #include "QVector"
-#include "TInteger.h"
 #include "CVariableSymbol.h"
-#include <xmemory>
-#include "TDouble.h"
+#include "TVariateFactory.h"
 
 
 TVariateManager* TVariateManager::GetInstance()
@@ -89,29 +87,6 @@ void TVariateManager::ClearMap()
 	m_objectMap.clear();
 }
 
-TVariate* TVariateManager::CreateVariate(QByteArray& dataBytes)
-{
-	TVariate* result=nullptr;
-	QDataStream dataStream(&dataBytes, QIODevice::ReadOnly);
-	TVariate variate(dataStream);
-	dataStream.device()->seek(0);
-	switch (variate.GetType())
-	{
-	case CSymbol::TYPE_INTERGER:
-	{
-		result = new TInteger(dataStream);
-	}break;
-	case CSymbol::TYPE_DOUBLE:
-	{
-		result = new TDouble(dataStream);
-	}break;
-	default:
-		break;
-	}
-	
-	return result;
-}
-
 void TVariateManager::AddInDatabase(TVariate* const object)
 {
 	QByteArray data;
@@ -172,7 +147,7 @@ void TVariateManager::LoadScopeDataFromDatabase(const QString& scope)
 	CDatabaseManager::GetInstance()->SelectVariatesFromScope(variates,scope);
 	for (auto var : variates)
 	{
-		TVariate* v = CreateVariate(var);
+		TVariate* v = TVariateFactory::CreateVariate(var);
 		AddInMemory(v);
 	}
 }

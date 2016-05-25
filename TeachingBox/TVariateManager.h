@@ -59,8 +59,6 @@ private:
 	void ClearMap();
 	void ClearScope();
 
-	TVariate* CreateVariate(QByteArray& dataBytes);
-
 	void DeleteFromMap(const QString& scope, const QString& name);
 	void DeleteFromDatabase(const QString& scope, const QString& name);
 	void DeleteFromScope(const QString& scope, const QString& name);
