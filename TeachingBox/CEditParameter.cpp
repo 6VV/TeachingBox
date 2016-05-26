@@ -414,7 +414,7 @@ void CEditParameter::RefreshPositionParameter(QString strName,QTreeWidgetItem* w
 
 	CValue* value = CValue::GetInstance();
 
-	CValue::TYPE_POSITION vecDouble;
+	CValue::TYPE_POSITION vecDouble{};
 	//m_interpreterAdapter->GetPositionValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), vecDouble);
 
 	TPosition::TYPE_POSITION position = static_cast<TPosition*>(TVariateManager::GetInstance()

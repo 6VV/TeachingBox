@@ -1518,7 +1518,7 @@ CValue::TYPE_POSITION CInterpreter::GetPosition(const std::string& name)
 {
 	const TPosition::TYPE_POSITION& tPosition=static_cast<TPosition*>(TVariateManager::GetInstance()
 		->GetVariateSrollUp(m_scope->GetScopeName(), QString::fromStdString(name)))->GetValue();
-	tAxesAllPositions position;
+	tAxesAllPositions position{};
 
 	for (int i = 0; i < tPosition.size();++i)
 	{

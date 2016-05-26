@@ -1409,7 +1409,7 @@ CAstTreeNode* CParseGrammar::GetNumTreeFromSuffixList(std::list<CAstTreeNode*>& 
 bool CParseGrammar::MatchLabelSentence(CAstTreeNode* rootNode)
 {
 	CToken* currentToken = m_tokenList->at(m_tokenPointer);
-	CAstTreeNode* labelNode;
+	CAstTreeNode* labelNode=nullptr;
 	/*若为label命令*/
 	if (currentToken->m_largeCategory == CTokenCategory::tokenCommand && currentToken->m_smallCategory == CTokenCategory::commLabel)
 	{
