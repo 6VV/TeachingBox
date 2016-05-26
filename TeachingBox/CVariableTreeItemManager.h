@@ -15,14 +15,6 @@ public:
 	void GetVariableTreeWidgetItem(const QString& strName, const QString& strType, const QString& strScope,
 		QTreeWidgetItem* item,CTreeWidgetWithMonitor* treeWidget);
 
-	/*动态变量*/
-	void GetDynamicTreeWidgetItem(const QString& strName, const CValue::TYPE_DYNAMIC& dynamic,
-		QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget);	/*获取特定变量节点*/
-	void GetDynamicTreeWidgetItem(const QString& strScope, const QString& strName, QTreeWidgetItem* item,
-		CTreeWidgetWithMonitor* treeWidget);	/*获取某作用域及上层作用域内的最近变量*/
-	void GetAllDynamicTreeWidgetItemInExactScope(const QString& strScope,
-		QTreeWidgetItem* parentItem, CTreeWidgetWithMonitor* treeWidget);	/*获取某特定作用域内所有变量*/
-
 protected:
 	
 private:

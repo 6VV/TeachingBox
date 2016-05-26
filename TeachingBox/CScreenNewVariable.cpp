@@ -156,7 +156,6 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 		dynamic.m_PostureAcceleration = vectorDynamic.at(4);
 		dynamic.m_PostureDeceleration = vectorDynamic.at(5);
 
-		CValue::TYPE_PAIR_DYNAMIC pairVariable(varName.toStdString(), dynamic);
 
 		/*存储变量*/
 		TVariateManager::GetInstance()->Add(

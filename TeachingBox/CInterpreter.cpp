@@ -14,6 +14,7 @@
 #include "TDouble.h"
 #include "TBool.h"
 #include "TPosition.h"
+#include "TDynamic.h"
 
 
 //
@@ -1528,10 +1529,13 @@ CValue::TYPE_POSITION CInterpreter::GetPosition(const std::string& name)
 	return position;
 }
 
-CValue::TYPE_DYNAMIC &CInterpreter::GetDynamic(const std::string& name)
+CValue::TYPE_DYNAMIC CInterpreter::GetDynamic(const std::string& name)
 {
 	CScope::ScopeSymbol scopeSymbol = m_scope->FindSymbolScopeScrollUp(QString::fromStdString(name));
-	return m_value->m_mapScopeDynamic[scopeSymbol.scope->GetScopeName().toStdString()][name];
+	return static_cast<TDynamic*>(TVariateManager::GetInstance()
+		->GetVariate(scopeSymbol.scope->GetScopeName(),QString::fromStdString(name)))
+		->GetValue();
+	//return m_value->m_mapScopeDynamic[scopeSymbol.scope->GetScopeName().toStdString()][name];
 }
 
 CValue::TYPE_OVERLAP &CInterpreter::GetOverlap(const std::string& name)

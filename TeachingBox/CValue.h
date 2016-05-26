@@ -24,23 +24,11 @@ public:
 	}
 
 public:
-	//typedef struct
-	//{
-	//	int scope;
-	//	int type;
-	//}TYPE_SYMBOL;
-
 	typedef tAxesAllPositions TYPE_POSITION;	/*位置类型*/
 	typedef tDynamicConstraint TYPE_DYNAMIC;	/*动态类型*/
 	typedef tOverlapConstraint TYPE_OVERLAP;	/*过度类型*/
 
 	typedef tTransitionMode TYPE_TRANSITION_MODE;
-
-	typedef std::unordered_map<std::string, TYPE_POSITION> TYPE_MAP_POSITION;
-
-	typedef std::unordered_map<std::string, TYPE_DYNAMIC> TYPE_MAP_DYNAMIC;
-	typedef std::unordered_map<std::string, std::unordered_map<std::string, TYPE_DYNAMIC>> TYPE_MAP_SCOPE_DYNAMIC;
-	typedef std::pair<std::string, TYPE_DYNAMIC> TYPE_PAIR_DYNAMIC;	/*动态参数*/
 
 	typedef std::unordered_map<std::string, TYPE_OVERLAP> TYPE_MAP_OVERLAP;
 	typedef std::unordered_map<std::string, std::unordered_map<std::string, TYPE_OVERLAP>> TYPE_MAP_SCOPE_OVERLAP;
@@ -53,7 +41,6 @@ public:
 	//TYPE_MAP_SYMBOL m_mapSymbol;	/*符号表*/
 	CScope m_scopeSystem;			/*系统作用域（根作用域）*/
 
-	TYPE_MAP_SCOPE_DYNAMIC m_mapScopeDynamic;	/*数据库中速度变量Map*/
 	TYPE_MAP_SCOPE_OVERLAP m_mapScopeOverlap;	/*数据库中过渡变量Map*/
 
 private:

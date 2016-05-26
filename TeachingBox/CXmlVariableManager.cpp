@@ -90,30 +90,30 @@ void CXmlVariableManager::WritePositionVariable(QXmlStreamWriter& writer)
 
 void CXmlVariableManager::WriteVelocityVariable(QXmlStreamWriter& writer)
 {
-	writer.writeStartElement("Velocity");
+	//writer.writeStartElement("Velocity");
 
-	{
-		CInterpreterAdapter* interpreter = CInterpreterAdapter::GetInstance();
-		CValue::TYPE_MAP_DYNAMIC map;
-		//CDatabaseManager::GetInstance()->SelectLocalDynamicValue(m_projectName, m_programName, map);
-		
-		for each (auto velocity in map)
-		{
-			writer.writeStartElement(QString::fromStdString(velocity.first));
+	//{
+	//	CInterpreterAdapter* interpreter = CInterpreterAdapter::GetInstance();
+	//	CValue::TYPE_MAP_DYNAMIC map;
+	//	//CDatabaseManager::GetInstance()->SelectLocalDynamicValue(m_projectName, m_programName, map);
+	//	
+	//	for each (auto velocity in map)
+	//	{
+	//		writer.writeStartElement(QString::fromStdString(velocity.first));
 
-			writer.writeTextElement("Velocity", QString::number(velocity.second.m_Velocity));
-			writer.writeTextElement("Accelerate", QString::number(velocity.second.m_Acceleration));
-			writer.writeTextElement("Decelerate", QString::number(velocity.second.m_Deceleration));
-			writer.writeTextElement("PostureVelocity", QString::number(velocity.second.m_PostureVelocity));
-			writer.writeTextElement("PostureAccelerate", QString::number(velocity.second.m_PostureAcceleration));
-			writer.writeTextElement("PostureDecelerate", QString::number(velocity.second.m_PostureDeceleration));
+	//		writer.writeTextElement("Velocity", QString::number(velocity.second.m_Velocity));
+	//		writer.writeTextElement("Accelerate", QString::number(velocity.second.m_Acceleration));
+	//		writer.writeTextElement("Decelerate", QString::number(velocity.second.m_Deceleration));
+	//		writer.writeTextElement("PostureVelocity", QString::number(velocity.second.m_PostureVelocity));
+	//		writer.writeTextElement("PostureAccelerate", QString::number(velocity.second.m_PostureAcceleration));
+	//		writer.writeTextElement("PostureDecelerate", QString::number(velocity.second.m_PostureDeceleration));
 
 
-			writer.writeEndElement();
-		}
-	}
+	//		writer.writeEndElement();
+	//	}
+	//}
 
-	writer.writeEndElement();
+	//writer.writeEndElement();
 }
 
 void CXmlVariableManager::WriteZoneVariable(QXmlStreamWriter& writer)
