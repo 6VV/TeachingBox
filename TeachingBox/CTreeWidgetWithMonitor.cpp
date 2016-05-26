@@ -9,6 +9,7 @@
 #include "TBool.h"
 #include "TString.h"
 #include "TPosition.h"
+#include "TDynamic.h"
 
 
 
@@ -121,7 +122,9 @@ void CTreeWidgetWithMonitor::SlotItemTextChanged(QTreeWidgetItem* item)
 		dynamic.m_PostureAcceleration = lineEdit5->text().toDouble();
 		dynamic.m_PostureDeceleration = lineEdit6->text().toDouble();
 
-		interpreterAdapter->UpdateDynamicValue(varScope, varName.toStdString(), varName.toStdString(), dynamic);
+		TVariateManager::GetInstance()->Update(varScope, varName, TDynamic(varScope, varName, dynamic));
+
+		//interpreterAdapter->UpdateDynamicValue(varScope, varName.toStdString(), varName.toStdString(), dynamic);
 
 	}
 	/*若为过渡参数*/

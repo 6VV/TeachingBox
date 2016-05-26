@@ -208,14 +208,14 @@ void CDatabaseManager::CreateTable()
 	CreateVariateTable();
 	CreateUserTable();	/*创建用户表*/
 	//CreateSymbolTable();	/*创建符号表*/
-	CreatePositionTable();	/*创建位置表*/
-	CreateDynamicTable();	/*创建速度表*/
+	//CreatePositionTable();	/*创建位置表*/
+	//CreateDynamicTable();	/*创建速度表*/
 	CreateOverlapTable();	/*创建过渡表*/
-	CreateDoubleTable();	/*创建浮点数表*/
-	//CreateLabelTable();	/*创建label表*/
-	CreateIntTable();	/*创建整数表*/
-	CreateBoolTable();	/*创建布尔数表*/
-	CreateStringTable();	/*创建字符串表*/
+	//CreateDoubleTable();	/*创建浮点数表*/
+	////CreateLabelTable();	/*创建label表*/
+	//CreateIntTable();	/*创建整数表*/
+	//CreateBoolTable();	/*创建布尔数表*/
+	//CreateStringTable();	/*创建字符串表*/
 	m_db.commit();
 }
 //////////////////////////////////////////////////////////////////////////
@@ -786,95 +786,6 @@ bool CDatabaseManager::IsExistVariable(const QString& strScope, const QString& s
 
 
 
-void CDatabaseManager::InsertDynamicValue(const QString& scope, const QString& strDynamicName, const tDynamicConstraint& dynamic)
-{
-	QSqlQuery query(m_db);
-
-	query.prepare("insert into " + TABLE_DYNAMIC + " values(?,?,?,?,?,?,?,?)");
-
-	query.bindValue(0, scope);
-	query.bindValue(1, strDynamicName);
-	query.bindValue(2, dynamic.m_Velocity);
-	query.bindValue(3, dynamic.m_Acceleration);
-	query.bindValue(4, dynamic.m_Deceleration);
-	query.bindValue(5, dynamic.m_PostureVelocity);
-	query.bindValue(6, dynamic.m_PostureAcceleration);
-	query.bindValue(7, dynamic.m_PostureDeceleration);
-
-	if (query.exec())
-	{
-		qDebug() << "insert dynamic table successed";
-	}
-}
-
-void CDatabaseManager::UpdateDynamicValue(const QString& strScope, const QString& strOldDynamicName, const QString& strNewDynamicName, 
-	const tDynamicConstraint& dynamic)
-{
-	QSqlQuery query(m_db);
-
-	query.prepare("update " + TABLE_DYNAMIC + " set "
-		+ TABLE_COLUMN_NAME + "=?,"
-		+ TABLE_COLUMN_DYNAMIC_VELOCITY + "=?,"
-		+ TABLE_COLUMN_DYNAMIC_ACCELERATION + "=?,"
-		+ TABLE_COLUMN_DYNAMIC_DECELERATION + "=?,"
-		+ TABLE_COLUMN_DYNAMIC_POSTURE_VELOCITY + "=?,"
-		+ TABLE_COLUMN_DYNAMIC_POSTURE_ACCELERATION + "=?,"
-		+ TABLE_COLUMN_DYNAMIC_POSTURE_DECELERATION + "=?"
-		+ " where " + TABLE_COLUMN_NAME + "=?"
-		+ " and " + TABLE_COLUMN_SCOPE + " =?");
-
-	query.bindValue(0, strNewDynamicName);
-	query.bindValue(1, dynamic.m_Velocity);
-	query.bindValue(2, dynamic.m_Acceleration);
-	query.bindValue(3, dynamic.m_Deceleration);
-	query.bindValue(4, dynamic.m_PostureVelocity);
-	query.bindValue(5, dynamic.m_PostureAcceleration);
-	query.bindValue(6, dynamic.m_PostureDeceleration);
-	query.bindValue(7, strOldDynamicName);
-	query.bindValue(8, strScope);
-
-	query.exec();
-}
-
-void CDatabaseManager::UpdateDynamicValue(const QString& strScope, const QString& strDynamicName, const tDynamicConstraint& dynamic)
-{
-	UpdateDynamicValue(strScope, strDynamicName, strDynamicName, dynamic);
-}
-
-
-void CDatabaseManager::SelectDynamicValue(const QString& strScope, CValue::TYPE_MAP_DYNAMIC& mapDynamic)
-{
-	QSqlQuery query(m_db);
-
-	query.prepare("select * from " + TABLE_DYNAMIC
-		+ " where " + TABLE_COLUMN_SCOPE + "=?");
-
-	query.bindValue(0, strScope);
-
-	query.exec();
-
-	tDynamicConstraint dynamic;
-	while (query.next())
-	{
-		dynamic.m_Velocity = query.value(2).toDouble();
-		dynamic.m_Acceleration = query.value(3).toDouble();
-		dynamic.m_Deceleration = query.value(4).toDouble();
-		dynamic.m_PostureVelocity = query.value(5).toDouble();
-		dynamic.m_PostureAcceleration = query.value(6).toDouble();
-		dynamic.m_PostureDeceleration = query.value(7).toDouble();
-
-		mapDynamic[query.value(1).toString().toStdString()] = dynamic;
-	}
-}
-
-
-void CDatabaseManager::DeleteDynamicValue(const QString& strScope, const QString& strVelocity)
-{
-	DeleteValue(TABLE_DYNAMIC, TABLE_COLUMN_NAME, strScope, strVelocity);
-
-}
-
-
 void CDatabaseManager::InsertOverlapValue(const QString& strScope, const QString& strOverlap, const tOverlapConstraint& overlapValue)
 {
 	QSqlQuery query(m_db);
@@ -950,25 +861,3 @@ void CDatabaseManager::DeleteOverlapValue(const QString& strScope, const QString
 	DeleteValue(TABLE_OVERLAP, TABLE_COLUMN_NAME, strScope, strOverlap);
 
 }
-
-void CDatabaseManager::InsertDoubleValue(const QString& strScope, const QString& strVariableName, double variableValue)
-{
-	InsertOneValue(TABLE_DOUBLE, strScope, strVariableName, variableValue);
-
-}
-
-void CDatabaseManager::UpdateDoubleValue(const QString& strScope, const QString& strVariableName, double variableValue)
-{
-	UpdateDoubleValue(strScope, strVariableName, strVariableName, variableValue);
-}
-
-void CDatabaseManager::UpdateDoubleValue(const QString& strScope, const QString& strOldVariabelName, const QString& strNewVariableName, double variableValue)
-{
-	UpdateOneValue(TABLE_DOUBLE, TABLE_COLUMN_NAME, TABLE_COLUMN_DOUBLE_VALUE, strScope, strOldVariabelName, strNewVariableName, variableValue);
-}
-
-void CDatabaseManager::DeleteDoubleValue(const QString& strScope, const QString& strVariableName)
-{
-	DeleteValue(TABLE_DOUBLE, TABLE_COLUMN_NAME, strScope, strVariableName);
-}
-

@@ -17,7 +17,6 @@
 #include "CMacroParameterPosition.h"
 #include "CWidgetTest.h"
 #include "QIcon"
-#include "CEditParameter.h"
 #include "CTestWidget.h"
 #include "CTestMessagebox.h"
 #include "CScreenUser.h"

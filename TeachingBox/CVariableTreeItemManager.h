@@ -23,15 +23,6 @@ public:
 	void GetAllDynamicTreeWidgetItemInExactScope(const QString& strScope,
 		QTreeWidgetItem* parentItem, CTreeWidgetWithMonitor* treeWidget);	/*获取某特定作用域内所有变量*/
 
-	/*过渡变量*/
-	void GetOverlapTreeWidgetItem(const QString& strName, const CValue::TYPE_OVERLAP& overlap,
-		QTreeWidgetItem* item, CTreeWidgetWithMonitor* treeWidget);	/*获取特定变量节点*/
-	void GetOverlapTreeWidgetItem(const QString& strScope, const QString& strName, QTreeWidgetItem* item,
-		CTreeWidgetWithMonitor* treeWidget);	/*获取某作用域及上层作用域内的最近变量*/
-	void GetAllOverlapTreeWidgetItemInExactScope(const QString& strScope,
-		QTreeWidgetItem* parentItem, CTreeWidgetWithMonitor* treeWidget);	/*获取某特定作用域内所有变量*/
-
-
 protected:
 	
 private:

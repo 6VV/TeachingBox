@@ -56,16 +56,6 @@ public:
 	bool IsExistVariable(const QString& strScope, const QString& strVariableName);	/*作用域是否存在某变量*/
 	bool IsExistVariable(const QString& strTableName, const QString& strScope, const QString& strVaribaleName);		/*某表内、某作用域内是否存在某变量*/
 
-	/*动态参数变量相关*/
-	void InsertDynamicValue(const QString& scope, const QString& strDynamicName, const tDynamicConstraint& dynamic);	/*插入速度变量*/
-
-	void UpdateDynamicValue(const QString& strScope, const QString& strOldDynamicName, const QString& strNewDynamicName, const tDynamicConstraint& dynamic);	/*更新速度变量（包括变量名）*/
-	void UpdateDynamicValue(const QString& strScope, const QString& strDynamicName, const tDynamicConstraint& dynamic);	/*更新速度变量（不包括变量名）*/
-
-	void SelectDynamicValue(const QString& strScope, CValue::TYPE_MAP_DYNAMIC& mapDynamic);
-
-	void DeleteDynamicValue(const QString& strScope, const QString& strVelocity);	/*删除特定速度变量*/
-
 	/*过渡变量相关*/
 	void InsertOverlapValue(const QString& strScope, const QString& strOverlap, const tOverlapConstraint& overlapValue);	/*插入过渡变量*/
 
@@ -75,17 +65,6 @@ public:
 	void SelectOverlapValue(const QString& strScope, CValue::TYPE_MAP_OVERLAP& mapOverlap);
 
 	void DeleteOverlapValue(const QString& strScope, const QString& strOverlap);	/*删除特定过渡变量*/
-
-
-	/*单个浮点数变量*/
-	void InsertDoubleValue(const QString& strScope, const QString& strVariableName, double variableValue);	/*插入浮点数变量*/
-	
-	void UpdateDoubleValue(const QString& strScope, const QString& strVariableName, double variableValue);	/*更新浮点数变量（不包括变量名）*/
-	void UpdateDoubleValue(const QString& strScope, const QString& strOldVariabelName, const QString& strNewVariableName, double variableValue);	/*更新浮点数变量（包括变量名）*/
-
-	//void SelectDoubleValue(const QString& strScope, CValue::TYPE_MAP_DOUBLE& mapDouble);
-
-	void DeleteDoubleValue(const QString& strScope, const QString& strVariableName);	/*删除特定浮点数变量*/
 
 	/*自定义私有函数*/
 private:
@@ -101,17 +80,6 @@ private:
 
 	//////////////////////////////////////////////////////////////////////////
 	/*存储单个值*/
-	template<typename Type>
-	void InsertOneValue(const QString& strTableName,const QString& strScope, const QString& strVariableName, const Type& variableValue);	/*插入单个变量*/
-
-	template<typename Type>
-	void UpdateOneValue(const QString& strTableName, const QString& strColumnVariable, const QString& strColumnValue, 
-		const QString& strScope, const QString& strOldVariableName, const QString& strNewVariableName, 
-		const Type& variableValue);	/*更新单个变量（包括变量名）*/
-	
-	template<typename Type>
-	void UpdateOneValue(const QString& strTableName, const QString& strColumnVariable, const QString& strColumnValue, 
-		const QString& strScope, const QString& strVariableName, const Type& variableValue);	/*更新单个变量（不包括变量名）*/
 
 	void DeleteValue(const QString& strTableName, const QString& strColumnVariable, const QString& strScope, const QString& strVariable);	/*删除特定变量*/
 	void DeleteValue(const QString& strTableName, const QString& strScope);		/*删除作用内的变量*/
@@ -221,59 +189,5 @@ private:
 	const QString TABLE_COLUMN_STRING_VALUE = "value";	/*字符串表，字符串值*/
 };
 
-
-template<typename Type>
-void CDatabaseManager::InsertOneValue(const QString& strTableName, const QString& strScope, const QString& strVariableName, const Type& variableValue)
-{
-	QSqlQuery query(m_db);
-	query.prepare("insert into " + strTableName + " values(?,?,?)");
-
-	query.bindValue(0, strScope);
-	query.bindValue(1, strVariableName);
-	query.bindValue(2, variableValue);
-
-	//qDebug() << "insert into " + strTableName + " values(" + strScope + "," + strVariableName + "," + variableValue + ")";
-
-	if (query.exec())
-	{
-		qDebug() << "insert table successed";
-	}
-	else
-	{
-		qDebug() << "insert table failed";
-	}
-}
-
-
-template<typename Type>
-void CDatabaseManager::UpdateOneValue(const QString& strTableName, const QString& strColumnVariable, const QString& strColumnValue, const QString& strScope, const QString& strOldVariableName, const QString& strNewVariableName, const Type& variableValue)
-{
-	QSqlQuery query(m_db);
-	query.prepare("update " + strTableName + " set "
-		+ strColumnVariable + "=?,"
-		+ strColumnValue + "=?"
-		+ " where " + strColumnVariable + "=?"
-		+ " and " + TABLE_COLUMN_SCOPE + "=?");
-
-	query.bindValue(0, strNewVariableName);
-	query.bindValue(1, variableValue);
-	query.bindValue(2, strOldVariableName);
-	query.bindValue(3, strScope);
-
-	if (query.exec())
-	{
-		qDebug() << "update successed";
-	}
-	else
-	{
-		qDebug() << "update failed";
-	}
-}
-
-template<typename Type>
-void CDatabaseManager::UpdateOneValue(const QString& strTableName, const QString& strColumnVariable, const QString& strColumnValue, const QString& strScope, const QString& strVariableName, const Type& variableValue)
-{
-	UpdateOneValue(strTableName, strColumnVariable, strColumnValue, strScope, strVariableName, strVariableName, variableValue);
-}
 
 #endif

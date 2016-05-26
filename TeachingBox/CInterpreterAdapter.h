@@ -46,20 +46,6 @@ public:
 
 	bool IsCorrectName(std::string& strName);	/*是否是正确的变量名*/
 
-	/*位置变量相关*/
-	//void GetPositionListFromEnclosingScope(QStringList &strListPositions,const QString& scope);	/*获取位置变量列表*/
-
-	/*速度变量相关*/
-	void GetDynamicListFromEnclosingScope(QStringList &strListPositions, const QString& scope);	/*获取位置变量列表*/
-	void InsertDynamicValue(const QString& scope, CValue::TYPE_PAIR_DYNAMIC& pairNewVelocity);
-	void UpdateDynamicValue(const QString& scope, std::string& strOldVelocity, CValue::TYPE_PAIR_DYNAMIC& pairNewVelocity);
-	void UpdateDynamicValue(const QString& scope, std::string& strOldVelocity, std::string& strNewVelocity,CValue::TYPE_DYNAMIC& dynamic);
-	void DeleteDynamicValue(const QString& scope, std::string& strName);
-	void UpdateDynamicValueFromDatabase(const QString& strScope);	/*获取作用域的动态变量*/
-	bool GetDynamicValue(const QString& strScope, const std::string& strName, CValue::TYPE_DYNAMIC& velocityValue);
-	bool GetDynamicValueFromEnclosingScope(const QString& scope, const std::string& strName, CValue::TYPE_DYNAMIC& vecValue);	/*获取位置变量*/
-	bool IsDynamicValueExist(const QString& strScope, const std::string& strName);
-
 	/*过渡变量相关*/
 	void GetOverlapListFromEnclosingScope(QStringList &strListPositions, const QString& scope);	/*获取位置变量列表*/
 	void InsertOverlapValue(const QString& scope, CValue::TYPE_PAIR_OVERLAP& pairNewZone);

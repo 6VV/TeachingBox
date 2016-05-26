@@ -14,6 +14,7 @@
 #include "TBool.h"
 #include "TString.h"
 #include "TPosition.h"
+#include "TDynamic.h"
 
 
 void CScreenNewVariable::SetScope(QString& strScopeName)
@@ -158,7 +159,9 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 		CValue::TYPE_PAIR_DYNAMIC pairVariable(varName.toStdString(), dynamic);
 
 		/*存储变量*/
-		CInterpreterAdapter::GetInstance()->InsertDynamicValue(m_strScopeInDatabase, pairVariable);
+		TVariateManager::GetInstance()->Add(
+			new TDynamic(m_strScopeInDatabase, varName, dynamic));
+		//CInterpreterAdapter::GetInstance()->InsertDynamicValue(m_strScopeInDatabase, pairVariable);
 		
 	}
 	else if (currentType == CParameterManager::STR_TYPE_OVERLAP)

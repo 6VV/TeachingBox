@@ -16,6 +16,7 @@
 #include "CScreenMain.h"
 #include "TVariateManager.h"
 #include "TPosition.h"
+#include "TDynamic.h"
 
 
 
@@ -365,8 +366,14 @@ CComboBoxWithTreeItem* CEditParameter::GetComboBoxDynamic()
 	CComboBoxWithTreeItem* comboBox = new CComboBoxWithTreeItem;
 
 	QStringList strList;
-	m_interpreterAdapter->GetDynamicListFromEnclosingScope(strList, m_strScope);
+	//m_interpreterAdapter->GetDynamicListFromEnclosingScope(strList, m_strScope);
 
+	TVariate::SET collection;
+	TVariateManager::GetInstance()->ReadCollection(collection, m_strScope, CSymbol::TYPE_DYNAMIC);
+	for (auto var:collection)
+	{
+		strList.push_back(var->GetName());
+	}
 	for each (auto var in strList)
 	{
 		comboBox->addItem(var);
@@ -442,14 +449,10 @@ void CEditParameter::RefreshDynamicParameter(QString strName, QTreeWidgetItem* w
 
 	CValue* value = CValue::GetInstance();
 
-	CValue::TYPE_DYNAMIC dynamic;
-	m_interpreterAdapter->GetDynamicValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), dynamic);
 
-	///*若未找到*/
-	//if (iterValue == value->m_mapScopeDynamic.end())
-	//{
-	//	return;
-	//}
+	CValue::TYPE_DYNAMIC dynamic = static_cast<TDynamic*>(TVariateManager::GetInstance()
+		->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))
+		->GetValue();
 
 	///*更新字符*/
 	//CValue::TYPE_DYNAMIC dynamic = iterValue->second;

@@ -15,6 +15,7 @@
 #include "TBool.h"
 #include "TString.h"
 #include "TPosition.h"
+#include "TDynamic.h"
 
 
 CInterpreterAdapter::CInterpreterAdapter()
@@ -73,147 +74,6 @@ std::vector<CScope*> CInterpreterAdapter::GetEnclosingScope(const std::string& c
 CInterpreterAdapter* CInterpreterAdapter::GetInstance()
 {
 	return CSingleTon<CInterpreterAdapter>::GetInstance();
-}
-
-
-void CInterpreterAdapter::GetDynamicListFromEnclosingScope(QStringList &strListPositions, const QString& scope)
-{
-	std::vector<CScope*> vecScope = GetEnclosingScope(scope.toStdString());
-	std::set<std::string> setList;
-
-	for each (auto scope in vecScope)
-	{
-		for each (auto variable in m_value->m_mapScopeDynamic[scope->GetScopeName().toStdString()])
-		{
-			setList.insert(variable.first);
-		}
-	}
-
-	for each (auto variable in setList)
-	{
-		strListPositions.append(QString::fromStdString(variable));
-	}
-}
-
-
-
-void CInterpreterAdapter::InsertDynamicValue(const QString& scope, CValue::TYPE_PAIR_DYNAMIC& pairNewVelocity)
-{
-	m_value->m_mapScopeDynamic[scope.toStdString()].insert(pairNewVelocity);
-
-	m_databaseManager->InsertDynamicValue(scope, QString::fromStdString(pairNewVelocity.first), pairNewVelocity.second);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(pairNewVelocity.first), CSymbol::TYPE_DYNAMIC);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)->DefineSymbol(symbol);
-
-}
-
-void CInterpreterAdapter::UpdateDynamicValue(const QString& scope, std::string& strOldVelocity, CValue::TYPE_PAIR_DYNAMIC& pairNewVelocity)
-{
-	m_value->m_mapScopeDynamic[scope.toStdString()].erase(strOldVelocity);
-	m_value->m_mapScopeDynamic[scope.toStdString()].insert(pairNewVelocity);
-
-	m_databaseManager->UpdateDynamicValue(scope, QString::fromStdString(strOldVelocity), QString::fromStdString(pairNewVelocity.first), pairNewVelocity.second);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(pairNewVelocity.first), CSymbol::TYPE_DYNAMIC);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-		->RenameSymbol(QString::fromStdString(strOldVelocity), 
-		QString::fromStdString(pairNewVelocity.first), symbol);
-}
-
-void CInterpreterAdapter::UpdateDynamicValue(const QString& scope, std::string& strOldVelocity, std::string& strNewVelocity, CValue::TYPE_DYNAMIC& dynamic)
-{
-	m_value->m_mapScopeDynamic[scope.toStdString()].erase(strOldVelocity);
-	m_value->m_mapScopeDynamic[scope.toStdString()][strNewVelocity]=dynamic;
-
-	m_databaseManager->UpdateDynamicValue(scope, QString::fromStdString(strOldVelocity), QString::fromStdString(strNewVelocity), dynamic);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(strNewVelocity), CSymbol::TYPE_DYNAMIC);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-		->RenameSymbol(QString::fromStdString(strOldVelocity), 
-		QString::fromStdString(strNewVelocity), symbol);
-}
-
-void CInterpreterAdapter::DeleteDynamicValue(const QString& strScope, std::string& strName)
-{
-	/*从符号表中删除*/
-	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-	scope->DeleteSymbol(QString::fromStdString(strName));
-
-	/*从内存中删除*/
-	m_value->m_mapScopeDynamic[strScope.toStdString()].erase(strName);
-
-	/*从数据库中删除*/
-	m_databaseManager->DeleteDynamicValue(strScope, QString::fromStdString(strName));
-}
-
-
-void CInterpreterAdapter::UpdateDynamicValueFromDatabase(const QString& strScope)
-{
-	/*添加作用域内位置变量*/
-	CValue::TYPE_MAP_DYNAMIC map;
-	m_value->m_mapScopeDynamic[strScope.toStdString()] = map;
-	CValue::TYPE_MAP_DYNAMIC& mapFind = m_value->m_mapScopeDynamic[strScope.toStdString()];
-	m_databaseManager->SelectDynamicValue(strScope, mapFind);
-
-
-	/*更新符号表*/
-	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-
-	for each (auto var in mapFind)
-	{
-		CVariableSymbol* symbol = new CVariableSymbol(QString::fromStdString(scope->GetScopeName().toStdString()), QString::fromStdString(var.first), CSymbol::TYPE_DYNAMIC);
-		scope->DefineSymbol(symbol);
-	}
-}
-
-
-bool CInterpreterAdapter::GetDynamicValue(const QString& strScope, const std::string& strName, CValue::TYPE_DYNAMIC& velocityValue)
-{
-	auto iter = m_value->m_mapScopeDynamic.at(strScope.toStdString()).find(strName);
-	if (iter == m_value->m_mapScopeDynamic.at(strScope.toStdString()).end())
-	{
-		return false;
-	}
-	velocityValue = m_value->m_mapScopeDynamic.at(strScope.toStdString()).at(strName);
-	return true;
-}
-
-bool CInterpreterAdapter::GetDynamicValueFromEnclosingScope(const QString& scope, const std::string& strName, CValue::TYPE_DYNAMIC& vecValue)
-{
-	std::vector<CScope*> vecScope = GetEnclosingScope(scope.toStdString());
-
-	for each (auto var in vecScope)
-	{
-		if (GetDynamicValue(QString::fromStdString(var->GetScopeName().toStdString()), strName, vecValue))
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
-bool CInterpreterAdapter::IsDynamicValueExist(const QString& strScope, const std::string& strName)
-{
-	auto iter1 = m_value->m_mapScopeDynamic.find(strScope.toStdString());
-
-	if (iter1 == m_value->m_mapScopeDynamic.end())
-	{
-		return false;
-	}
-
-	auto iter2 = iter1->second.find(strName);
-	if (iter2 == iter1->second.end())
-	{
-		return false;
-	}
-
-	return true;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -462,7 +322,11 @@ void CInterpreterAdapter::UpdateVariableName(const QString& strOldName, const QS
 	}
 	else if (strType == CParameterManager::STR_TYPE_DYNAMIC)
 	{
-		UpdateDynamicValue(strScope, strOldName.toStdString(), strNewName.toStdString(), m_value->m_mapScopeDynamic[strScope.toStdString()][strOldName.toStdString()]);
+		TVariateManager::GetInstance()->Update(strScope, strOldName,
+			TDynamic(strScope, strNewName,
+			static_cast<TDynamic*>(TVariateManager::GetInstance()->GetVariate(strScope, strOldName))->GetValue()));
+
+		//UpdateDynamicValue(strScope, strOldName.toStdString(), strNewName.toStdString(), m_value->m_mapScopeDynamic[strScope.toStdString()][strOldName.toStdString()]);
 	}
 	else if (strType == CParameterManager::STR_TYPE_OVERLAP)
 	{

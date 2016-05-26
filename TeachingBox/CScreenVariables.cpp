@@ -623,13 +623,14 @@ void CScreenVariables::InitTreeWidgetDataFromScope(QTreeWidgetItem* item, const 
 	//	QString::fromStdString(strScopeName), item, m_treeWidget);
 	variableTreeItemManager.GetAllDynamicTreeWidgetItemInExactScope(
 		QString::fromStdString(strScopeName), item, m_treeWidget);
-	variableTreeItemManager.GetAllOverlapTreeWidgetItemInExactScope(
-		QString::fromStdString(strScopeName), item, m_treeWidget);
+
 
 	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
 		QString::fromStdString(strScopeName), CSymbol::TYPE_POSITION);
-
 	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
+		QString::fromStdString(strScopeName), CSymbol::TYPE_DYNAMIC);
+	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
+
 		QString::fromStdString(strScopeName), CSymbol::TYPE_INTERGER);
 
 	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
