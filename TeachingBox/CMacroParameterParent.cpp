@@ -1,9 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterParent.h"
-#include "CScreenEditMacro.h"
-#include "CScreenMain.h"
-#include "CKeyBoard.h"
-#include "CInterpreterAdapter.h"
 
 CMacroParameterParent::CMacroParameterParent(QWidget* parent/*=0*/)
 {

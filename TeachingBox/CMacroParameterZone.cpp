@@ -1,10 +1,6 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterZone.h"
-#include "CGrammarManagerFactory.h"
-#include "CInterpreterAdapter.h"
 #include "CKeyBoard.h"
-#include "CScreenEditMacro.h"
-#include "CScreenMain.h"
 
 
 CMacroParameterZone::CMacroParameterZone(QWidget* parent/*=0*/) :CMacroParameterParent(parent)

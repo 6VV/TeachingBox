@@ -2,7 +2,6 @@
 #include "CCommandRemoteParser.h"
 #include "QString"
 #include "DataStruct.h"
-#include "CInterpreterManager.h"
 #include "CScreenProject.h"
 
 

@@ -8,14 +8,10 @@
 #include "CFileManager.h"
 #include "CKeyBoard.h"
 #include "QRegExp"
-#include "CRegExpManager.h"
-#include "CTcpSpecialCommand.h"
-#include "CTcpManager.h"
-#include "CInterpreterAdapter.h"
 #include "TVariateManager.h"
-#include "TInteger.h"
-#include "TDouble.h"
 #include "TPosition.h"
+#include "CTcpSpecialCommand.h"
+
 
 
 

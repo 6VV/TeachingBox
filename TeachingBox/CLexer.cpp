@@ -1,7 +1,6 @@
 ﻿#include "stdafx.h"
 #include "CLexer.h"
 #include "CTokenCategory.h"
-#include <string>
 #include "CValue.h"
 #include "CInterpreterManager.h"
 #include "CTokenConstantNum.h"

@@ -1,10 +1,6 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterPosition.h"
-#include "CGrammarManagerFactory.h"
-#include "CScreenMain.h"
 #include "CKeyBoard.h"
-#include "CInterpreterAdapter.h"
-#include "Init.h"
 
 
 CMacroParameterPosition::CMacroParameterPosition(QWidget* parent /*= 0*/) :CMacroParameterParent(parent)

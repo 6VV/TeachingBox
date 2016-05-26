@@ -4,12 +4,10 @@
 #include "QLine"
 #include "QAbstractSpinBox"
 #include "QCoreApplication"
-#include "CSingleTon.h"
 #include "CKeyBoard.h"
 #include "UserManager.h"
 #include "CWarningManager.h"
 #include "CScreenState.h"
-#include "qlogging.h"
 #include "CDialogLockScreen.h"
 
 CScreenSetting::CScreenSetting(QWidget* parent/*=0*/) :QWidget(parent)

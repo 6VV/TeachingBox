@@ -5,10 +5,8 @@
 #include "CExceptionInterpreter.h"
 #include "CWarningInformation.h"
 #include "CInterpreter.h"
-#include <time.h>
 #include "CInterprerterState.h"
 #include "CTokenString.h"
-#include "CWarningManager.h"
 
 bool CInterpreterManager::IsInterpreting()
 {

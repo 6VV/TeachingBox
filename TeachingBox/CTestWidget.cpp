@@ -1,7 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CTestWidget.h"
-#include "CInterpreterAdapter.h"
-#include "CVariableTreeItemManager.h"
 #include "CFileManager.h"
 
 

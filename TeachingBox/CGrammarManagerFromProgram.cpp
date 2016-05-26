@@ -1,8 +1,7 @@
 ﻿#include "stdafx.h"
 #include "CGrammarManagerFromProgram.h"
-#include "CScreenMain.h"
 #include "CModelCategory.h"
-#include "CScreenPragram.h"
+#include "CScreenMain.h"
 
 CGrammarManagerFromProgram::CGrammarManagerFromProgram()
 {

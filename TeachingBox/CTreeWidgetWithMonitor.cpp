@@ -3,7 +3,6 @@
 #include "CInterpreterAdapter.h"
 #include "CParameterManager.h"
 #include "TVariateManager.h"
-#include "TInteger.h"
 #include "CLineEditWithClickedSignal.h"
 #include "TDouble.h"
 #include "TBool.h"

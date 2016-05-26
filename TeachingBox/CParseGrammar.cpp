@@ -1,9 +1,7 @@
 ﻿#include "stdafx.h"
 #include "CParseGrammar.h"
-#include "CLexer.h"
 #include "CWarningInformation.h"
 #include "CExceptionInterpreter.h"
-#include "CTokenString.h"
 
 
 //CParseGrammar::CParseGrammar(std::vector<CToken*>& tokenList)

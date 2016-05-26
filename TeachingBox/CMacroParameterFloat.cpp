@@ -1,9 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterFloat.h"
-#include "CGrammarManagerFactory.h"
-#include "CInterpreterAdapter.h"
-#include "CScreenEditMacro.h"
-#include "CScreenMain.h"
 #include "CKeyBoard.h"
 
 

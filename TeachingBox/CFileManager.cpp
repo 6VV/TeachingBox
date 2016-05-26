@@ -2,8 +2,6 @@
 #include "CFileManager.h"
 #include "QFile"
 #include "QTextStream"
-#include "Init.h"
-
 
 
 CFileManager::CFileManager()

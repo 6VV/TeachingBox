@@ -3,12 +3,6 @@
 #include "CScreenPragram.h"
 #include "CScreenProject.h"
 #include "CScreenMain.h"
-#include "CScreenSetting.h"
-#include "CScreenEditMacro.h"
-#include "CScreenEditMacroParameter.h"
-#include "CScreenNewMacro.h"
-
-
 
 CWidgetStack::CWidgetStack()
 {

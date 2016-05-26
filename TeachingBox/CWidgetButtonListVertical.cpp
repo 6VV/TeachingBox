@@ -3,7 +3,6 @@
 #include "QBoxLayout"
 #include "Init.h"
 #include "CScreenMain.h"
-#include "CTeachingBox.h"
 
 
 CWidgetButtonListVertical::CWidgetButtonListVertical(QList<CButton*>& btnlist, QWidget* parent /*= 0*/) : QWidget(parent)

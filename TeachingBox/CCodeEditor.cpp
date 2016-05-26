@@ -2,8 +2,6 @@
 #include <QtWidgets>
 #include "CCodeEditor.h"
 #include "CLineNumberArea.h"
-#include "CTextFormat.h"
-#include "CInterpreterManager.h"
 #include "CScreenProject.h"
 #include "CWarningManager.h"
 #include "CFileManager.h"

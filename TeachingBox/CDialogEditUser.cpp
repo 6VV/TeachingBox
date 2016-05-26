@@ -5,9 +5,7 @@
 #include "CRegExpManager.h"
 #include "CWarningManager.h"
 #include "UserManager.h"
-#include "CScreenMain.h"
-#include "CTeachingBox.h"
-
+#include "CScreen.h"
 
 
 CDialogEditUser::CDialogEditUser(CScreenUserManager* screenUserManager)

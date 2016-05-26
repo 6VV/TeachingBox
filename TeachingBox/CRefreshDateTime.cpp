@@ -2,7 +2,6 @@
 #include "CRefreshDateTime.h"
 #include "CScreenSetting.h"
 #include "CScreenState.h"
-#include "CSingleTon.h"
 
 CRefreshDateTime::CRefreshDateTime()
 {

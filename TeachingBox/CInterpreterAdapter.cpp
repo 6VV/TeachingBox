@@ -1,14 +1,7 @@
 ﻿#include "stdafx.h"
 #include "CInterpreterAdapter.h"
 #include "CScreenProject.h"
-#include "CInterpreterManager.h"
 #include "CValue.h"
-#include <time.h>
-#include "CSymbol.h"
-#include "CVariableSymbol.h"
-#include "CMethodSymbol.h"
-#include "CParameterManager.h"
-#include "TInteger.h"
 #include "TVariateManager.h"
 #include "QSet"
 #include "TDouble.h"
@@ -16,6 +9,10 @@
 #include "TString.h"
 #include "TPosition.h"
 #include "TDynamic.h"
+#include "CVariableSymbol.h"
+#include "CMethodSymbol.h"
+#include "CParameterManager.h"
+#include "TInteger.h"
 
 
 CInterpreterAdapter::CInterpreterAdapter()

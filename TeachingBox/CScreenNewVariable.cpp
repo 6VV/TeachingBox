@@ -1,20 +1,16 @@
 ﻿#include "stdafx.h"
 #include "CScreenNewVariable.h"
-#include "CKeyBoard.h"
-#include "CScreenEditMacroParameter.h"
-#include "CScreenMain.h"
-#include "QTableWidget"
-#include "QVector"
-#include "CParameterManager.h"
-#include "CInterpreterAdapter.h"
+#include "CScreenProject.h"
 #include "CWarningManager.h"
 #include "TVariateManager.h"
 #include "TInteger.h"
 #include "TDouble.h"
 #include "TBool.h"
-#include "TString.h"
 #include "TPosition.h"
 #include "TDynamic.h"
+#include "TString.h"
+#include "CRegExpManager.h"
+
 
 
 void CScreenNewVariable::SetScope(QString& strScopeName)

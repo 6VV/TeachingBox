@@ -1,8 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterBool.h"
-#include "CGrammarManagerFactory.h"
-#include "CInterpreterAdapter.h"
-#include "CScreenEditMacroParameter.h"
 #include "CKeyBoard.h"
 
 CMacroParameterBool::CMacroParameterBool(QWidget* parent /*= 0*/)

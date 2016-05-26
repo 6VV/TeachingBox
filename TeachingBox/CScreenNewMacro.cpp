@@ -1,10 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CScreenNewMacro.h"
-#include "CModelCategory.h"
-#include "CModelMacro.h"
-#include "CModelCategoryFromXml.h"
-#include "CModeMacroFromXml.h"
-#include "CScreenMain.h"
 
 CScreenNewMacro::CScreenNewMacro(QWidget* parent/*=0*/) :CScreenMainParent(parent)
 {

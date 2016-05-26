@@ -1,15 +1,7 @@
 ﻿#include "stdafx.h"
 #include "CVariableTreeItemManager.h"
-#include "CLineEditWithClickedSignal.h"
-#include "CRegExpManager.h"
-#include "CValue.h"
-#include "CParameterManager.h"
-#include "CComboBoxWithTreeItem.h"
-#include "CTreeWidgetWithMonitor.h"
-#include "DataStruct.h"
 #include "TVariateManager.h"
-#include "TInteger.h"
-#include "CTreeWidgetItemWithVariate.h"
+
 
 
 CVariableTreeItemManager::CVariableTreeItemManager()

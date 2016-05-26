@@ -1,10 +1,8 @@
 ﻿#include "stdafx.h"
 #include "CParseSemantic.h"
-#include "CValue.h"
 #include "CTokenString.h"
 #include "CExceptionInterpreter.h"
 #include "CWarningInformation.h"
-#include "CTokenConstantNum.h"
 #include "TVariateManager.h"
 
 

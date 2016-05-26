@@ -1,11 +1,7 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterVelocity.h"
 #include "QLabel"
-#include "CGrammarManagerFactory.h"
-#include "CInterpreterAdapter.h"
 #include "CKeyBoard.h"
-#include "CScreenEditMacro.h"
-#include "CScreenMain.h"
 
 CMacroParameterVelocity::CMacroParameterVelocity(QWidget* widget/*=0*/) :CMacroParameterParent(widget)
 {

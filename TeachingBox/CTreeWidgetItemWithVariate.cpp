@@ -1,8 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CTreeWidgetItemWithVariate.h"
-#include "CSymbol.h"
-
-
 
 CTreeWidgetItemWithVariate::CTreeWidgetItemWithVariate(QTreeWidgetItem* parentItem, TVariate* variate)
 	:QTreeWidgetItem(parentItem), m_variate(variate)

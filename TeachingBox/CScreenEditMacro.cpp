@@ -1,17 +1,8 @@
 ﻿#include "stdafx.h"
-#include "CScreenEditMacro.h"
-#include "CGrammarManagerFactory.h"
-#include "CInterpreterAdapter.h"
-#include "CScreenMain.h"
-#include "CWidgetTest.h"
-#include "CMacroParameterPosition.h"
 #include "CMacroParameterParent.h"
+#include "CScreenMain.h"
 #include "CKeyBoard.h"
-#include "CInterpreterManager.h"
-#include "CTokenCategory.h"
-#include "CValue.h"
-#include "TVariate.h"
-#include "TVariateManager.h"
+
 
 CScreenEditMacro::CScreenEditMacro(QWidget* parent/*=0*/) :CScreenMainParent(parent)
 {

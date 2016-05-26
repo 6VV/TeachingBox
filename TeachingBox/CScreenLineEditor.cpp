@@ -1,11 +1,7 @@
 ﻿#include "stdafx.h"
-#include "CScreenLineEditor.h"
 #include "QBoxLayout"
-#include "CLabelWithSignal.h"
 #include "CScreenMain.h"
-#include "CScreenVariables.h"
 #include "CKeyBoard.h"
-
 
 CScreenLineEditor* CScreenLineEditor::GetInstance(MacroInterface* newInterface)
 {

@@ -2,18 +2,10 @@
 #include "CScreenPragram.h"
 #include "CScreenProject.h"
 #include "QFile"
-#include "Init.h"
 #include "CKeyBoard.h"
 #include "CCodeEditor.h"
-#include "CXmlVariableManager.h"
 #include "CScreenMain.h"
-#include "CInterpreterAdapter.h"
-#include "CExceptionInterpreter.h"
-#include "CInterpreterManager.h"
-#include "CTextFormat.h"
-#include "CScreenLineEditor.h"
-#include "CFileManager.h"
-#include "CEditParameter.h"
+
 
 CScreenPragram::CScreenPragram(QWidget* parent/*=0*/) :CScreenMainParent(parent)
 {

@@ -3,16 +3,7 @@
 #include "QBoxLayout"
 #include "QList"
 #include "CScreenMain.h"
-#include "CMacroParameterPosition.h"
-#include "CMacroParameterVelocity.h"
-#include "CMacroParameterZone.h"
-#include "CMacroParameterFloat.h"
-#include "CMacroParameterLabel.h"
-#include "CScreenNewVariable.h"
-#include "CMacroParameterInt.h"
-#include "CMacroParameterBool.h"
-#include "CMacroParameterString.h"
-#include "CScreenEditMacro.h"
+
 
 const int CKeyboard::CONFIRM_SCREEN_SETTING_LOGIN = 1;
 const int CKeyboard::CONFIRM_SCREEN_PROGRAM_EDIT_PROGRAM = 2;

@@ -3,11 +3,7 @@
 #include "QPushButton"
 #include "QBoxLayout"
 #include "CDatabaseManager.h"
-#include <vector>
-#include "CTestMessagebox.h"
-#include "CXmlVariableManager.h"
 #include "UserManager.h"
-
 
 CWidgetTest::CWidgetTest(QWidget* parent/*=0*/) :QWidget(parent)
 {

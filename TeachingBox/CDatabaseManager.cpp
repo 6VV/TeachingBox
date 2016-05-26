@@ -2,11 +2,7 @@
 #include "CDatabaseManager.h"
 #include "QSqlDatabase"
 #include "QSqlQuery"
-#include "CInterpreterAdapter.h"
-#include <time.h>
-#include "Init.h"
 #include "QFile"
-#include <exception>
 
 CDatabaseManager::CDatabaseManager()
 {

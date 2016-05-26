@@ -1,6 +1,4 @@
 ﻿#include "stdafx.h"
-#include "CModelMacro.h"
-#include "CModelCategory.h"
 #include "CGrammarManagerFactory.h"
 
 CModelMacro::CModelMacro()

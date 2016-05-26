@@ -2,16 +2,16 @@
 #include "CScreenEditMacroParameter.h"
 #include "CGrammarManagerFactory.h"
 #include "CMacroParameterPosition.h"
-#include "CMacroParameterVelocity.h"
-#include "CMacroParameterZone.h"
-#include "CScreenMain.h"
-#include "CMacroParameterFloat.h"
-#include "CMacroParameterLabel.h"
-#include "CScreenNewVariable.h"
 #include "CWidgetStack.h"
-#include "CMacroParameterInt.h"
+#include "CScreenEditMacro.h"
+#include "CMacroParameterVelocity.h"
+#include "CMacroParameterLabel.h"
+#include "CMacroParameterFloat.h"
+#include "CMacroParameterZone.h"
 #include "CMacroParameterBool.h"
+#include "CMacroParameterInt.h"
 #include "CMacroParameterString.h"
+
 
 CScreenEditMacroParameter::CScreenEditMacroParameter()
 {

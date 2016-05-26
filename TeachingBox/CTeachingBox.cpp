@@ -2,14 +2,8 @@
 #include "CTeachingBox.h"
 #include "QBoxLayout"
 #include "CRefreshDateTime.h"
-#include "UserManager.h"
-#include "CInterpreterManager.h"
-#include "CInterpreterAdapter.h"
 #include "CInterprerterState.h"
-#include "CWarningManager.h"
-#include "CTcpManager.h"
 #include "CTcpSpecialCommand.h"
-#include "CInterpreterTcpAdapter.h"
 
 CTeachingBox::CTeachingBox(QWidget *parent)
 	: QWidget(parent)

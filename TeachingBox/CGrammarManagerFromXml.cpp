@@ -1,7 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CGrammarManagerFromXml.h"
-#include "CScreenEditMacro.h"
-#include "CScreenMain.h"
 
 CGrammarManagerFromXml::CGrammarManagerFromXml()
 {

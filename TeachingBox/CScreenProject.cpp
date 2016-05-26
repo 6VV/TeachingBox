@@ -2,13 +2,9 @@
 #include "CScreenProject.h"
 #include "QFileSystemModel"
 #include "QTreeView"
-#include "CTreeModel.h"
 #include "CScreenMain.h"
 #include "CKeyBoard.h"
-#include "CXmlVariable.h"
-#include "CXmlVariableManager.h"
 #include "CDatabaseManager.h"
-#include "CInterpreterAdapter.h"
 #include "CWarningManager.h"
 
 CScreenProject::CScreenProject(QWidget* parent /*= 0*/) :CScreenMainParent(parent)

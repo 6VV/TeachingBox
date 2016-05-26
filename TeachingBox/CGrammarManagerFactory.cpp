@@ -1,10 +1,8 @@
 ﻿#include "stdafx.h"
 #include "CGrammarManagerFactory.h"
 #include "qdom.h"
-#include "CCodeEditor.h"
-#include "CScreenMain.h"
 #include "CGrammarManagerFromProgram.h"
-#include "CGrammarManagerFromXml.h"
+
 
 const QString CGrammarManagerFactory::STR_PARAMETER_TYPE_POSITON = "position";
 const QString CGrammarManagerFactory::STR_PARAMETER_TYPE_VELOCITY = "velocity";

@@ -1,7 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CLabelWithSignal.h"
-#include "CKeyBoard.h"
-
 
 
 CLabelWithSignal::CLabelWithSignal(QWidget* parent/*=0*/) :QLabel(parent)

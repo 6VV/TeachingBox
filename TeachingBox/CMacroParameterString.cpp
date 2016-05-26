@@ -1,7 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterString.h"
-#include "CGrammarManagerFactory.h"
-#include "CInterpreterAdapter.h"
 #include "CKeyBoard.h"
 
 
