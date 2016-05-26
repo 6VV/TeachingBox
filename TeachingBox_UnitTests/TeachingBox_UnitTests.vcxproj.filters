@@ -24,30 +24,28 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
-    <ClCompile Include="TVariateTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TIntergerTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TVariateManagerTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CDatabaseManagerTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TDoubleTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TBoolTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TStringTests.cpp">
+    <ClCompile Include="TDoubleTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TIntergerTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TPositionTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TStringTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TVariateManagerTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TVariateTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -55,28 +53,28 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TVariateTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TIntergerTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TVariateManagerTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CDatabaseManagerTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TDoubleTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TBoolTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TStringTests.h">
+    <ClInclude Include="TDoubleTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TIntergerTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TPositionTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TStringTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TVariateManagerTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TVariateTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -371,11 +371,11 @@ void CInterpreter::ExecuteIfSentence()
 	if (GetBoolResult(m_currentNode))
 	{
 		m_currentNode = m_currentNode->m_nextSiblingNode;
-		CLexer::DisplayToken(m_currentNode->m_token);
+		//CLexer::DisplayToken(m_currentNode->m_token);
 		if (m_currentNode->m_firstChildNode!=NULL)
 		{
 			m_currentNode = m_currentNode->m_firstChildNode;
-			CLexer::DisplayToken(m_currentNode->m_token);
+			//CLexer::DisplayToken(m_currentNode->m_token);
 		}
 		else
 		{

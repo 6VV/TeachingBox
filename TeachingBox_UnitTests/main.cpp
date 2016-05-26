@@ -1,4 +1,3 @@
-#include <QtCore/QCoreApplication>
 #include "TVariate.h"
 #include <gtest/gtest.h>
 
