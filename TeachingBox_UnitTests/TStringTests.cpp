@@ -1,4 +1,4 @@
-#include "TStringTests.h"
+﻿#include "TStringTests.h"
 
 
 
@@ -26,7 +26,7 @@ void TStringTests::ExpectVariate(QDataStream& dataStream)
 	EXPECT_STREQ(value.toStdString().c_str(), "text");
 }
 
-TEST_F(TStringTests, ReadDataStream_ReadRightData_ReturnTrue)
+TEST_F(TStringTests, ReadDataStream_CreateFromData_Equal)
 {
 	QByteArray data;
 	QDataStream dataStream(&data, QIODevice::ReadWrite);
@@ -35,33 +35,6 @@ TEST_F(TStringTests, ReadDataStream_ReadRightData_ReturnTrue)
 
 	ExpectVariate(dataStream);
 
-}
-
-TEST_F(TStringTests, ReadDataStream_WriteToByteArray_ReturnTrue)
-{
-	QByteArray data;
-	QDataStream dataStream(&data, QIODevice::ReadWrite);
-	m_variate->ReadDataStream(dataStream);
-	dataStream.device()->seek(0);
-
-	QByteArray dataW = dataStream.device()->readAll();
-	QDataStream dataStreamW(&dataW, QIODevice::ReadWrite);
-
-	ExpectVariate(dataStreamW);
-}
-
-TEST_F(TStringTests, TBool_Create_Equal)
-{
-	QByteArray data;
-	QDataStream dataStream(&data, QIODevice::ReadWrite);
-	m_variate->ReadDataStream(dataStream);
-
-	dataStream.device()->seek(0);
-	TString newVariate(dataStream);
-	EXPECT_STREQ(m_variate->GetScope().toStdString().c_str(), newVariate.GetScope().toStdString().c_str());
-	EXPECT_STREQ(m_variate->GetName().toStdString().c_str(), newVariate.GetName().toStdString().c_str());
-	EXPECT_EQ(m_variate->GetType(), newVariate.GetType());
-	EXPECT_STREQ(m_variate->GetValue().toStdString().c_str(), newVariate.GetValue().toStdString().c_str());
 }
 
 TEST_F(TStringTests, UpdateFrom_Update_Equal)

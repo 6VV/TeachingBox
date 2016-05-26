@@ -1,4 +1,4 @@
-//#include "TVariateManagerTests.h"
+﻿//#include "TVariateManagerTests.h"
 //#include "..\TeachingBox\TInteger.h"
 //#include "..\TeachingBox\TVariateManager.h"
 //#include <exception>

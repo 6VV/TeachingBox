@@ -1,18 +1,18 @@
-﻿#ifndef _TBOOL_TESTS_H_
-#define _TBOOL_TESTS_H_
+﻿#ifndef _TDYNAMIC_TESTS_H_
+#define _TDYNAMIC_TESTS_H_
 
 #include <..\packages\gmock.1.7.0\lib\native\include\gtest\gtest.h>
-#include "..\TeachingBox\TBool.h"
+#include "..\TeachingBox\TDynamic.h"
 
-class TBoolTests:public testing::Test
+class TDynamicTests:public testing::Test
 {
-protected:
+public:
 	virtual void SetUp() override;
 	virtual void TearDown() override;
 
 	void ExpectVariate(QDataStream& dataStream);
 
-	TBool* m_bool;
+	TDynamic* m_variate = nullptr;
 };
 
 #endif

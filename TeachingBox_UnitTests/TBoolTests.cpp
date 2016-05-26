@@ -1,4 +1,4 @@
-#include "TBoolTests.h"
+﻿#include "TBoolTests.h"
 
 void TBoolTests::SetUp()
 {
@@ -24,7 +24,7 @@ void TBoolTests::ExpectVariate(QDataStream& dataStream)
 	EXPECT_EQ(value, true);
 }
 
-TEST_F(TBoolTests, ReadDataStream_ReadRightData_ReturnTrue)
+TEST_F(TBoolTests, ReadDataStream_CreateFromData_Equal)
 {
 	QByteArray data;
 	QDataStream dataStream(&data, QIODevice::ReadWrite);
@@ -33,33 +33,6 @@ TEST_F(TBoolTests, ReadDataStream_ReadRightData_ReturnTrue)
 
 	ExpectVariate(dataStream);
 
-}
-
-TEST_F(TBoolTests, ReadDataStream_WriteToByteArray_ReturnTrue)
-{
-	QByteArray data;
-	QDataStream dataStream(&data, QIODevice::ReadWrite);
-	m_bool->ReadDataStream(dataStream);
-	dataStream.device()->seek(0);
-
-	QByteArray dataW = dataStream.device()->readAll();
-	QDataStream dataStreamW(&dataW, QIODevice::ReadWrite);
-
-	ExpectVariate(dataStreamW);
-}
-
-TEST_F(TBoolTests, TBool_Create_Equal)
-{
-	QByteArray data;
-	QDataStream dataStream(&data, QIODevice::ReadWrite);
-	m_bool->ReadDataStream(dataStream);
-
-	dataStream.device()->seek(0);
-	TBool newVariate(dataStream);
-	EXPECT_STREQ(m_bool->GetScope().toStdString().c_str(), newVariate.GetScope().toStdString().c_str());
-	EXPECT_STREQ(m_bool->GetName().toStdString().c_str(), newVariate.GetName().toStdString().c_str());
-	EXPECT_EQ(m_bool->GetType(), newVariate.GetType());
-	EXPECT_EQ(m_bool->GetValue(), newVariate.GetValue());
 }
 
 TEST_F(TBoolTests, UpdateFrom_Update_Equal)

@@ -1,4 +1,4 @@
-#include "TVariateTests.h"
+﻿#include "TVariateTests.h"
 #include "QDataStream"
 #include "..\TeachingBox\TVariate.h"
 #include "..\TeachingBox\TInteger.h"
@@ -24,7 +24,7 @@ void TVariateTests::TearDown()
 	delete m_variate;
 }
 
-TEST_F(TVariateTests, ReadDataStream_ReadRightData_ReaturnTrue)
+TEST_F(TVariateTests, ReadDataStream_CreateFromData_Equal)
 {
 	QByteArray data;
 	QDataStream dataStream(&data, QIODevice::ReadWrite);

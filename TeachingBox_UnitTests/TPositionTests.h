@@ -1,4 +1,4 @@
-#ifndef _TPOSITION_TESTS_H_
+﻿#ifndef _TPOSITION_TESTS_H_
 #define _TPOSITION_TESTS_H_
 
 #include <..\packages\gmock.1.7.0\lib\native\include\gtest\gtest.h>

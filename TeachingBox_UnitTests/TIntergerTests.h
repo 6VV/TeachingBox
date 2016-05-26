@@ -1,4 +1,4 @@
-#ifndef _TINTERGER_TESTS_H_
+﻿#ifndef _TINTERGER_TESTS_H_
 #define _TINTERGER_TESTS_H_
 
 #include "gtest/gtest.h"

@@ -1,4 +1,4 @@
-#ifndef _TVARIATE_TESTS_H_
+﻿#ifndef _TVARIATE_TESTS_H_
 #define _TVARIATE_TESTS_H_
 
 #include "gtest/gtest.h"

@@ -1,4 +1,4 @@
-#ifndef _TSTRING_TESTS_H_
+﻿#ifndef _TSTRING_TESTS_H_
 #define _TSTRING_TESTS_H_
 
 #include <..\packages\gmock.1.7.0\lib\native\include\gtest\gtest.h>

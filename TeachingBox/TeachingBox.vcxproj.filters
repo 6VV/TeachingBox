@@ -919,6 +919,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_TPosition.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="TDynamic.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TDynamic.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TDynamic.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -1279,6 +1288,9 @@
       <Filter>Header Files\Variate</Filter>
     </CustomBuild>
     <CustomBuild Include="TPosition.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TDynamic.h">
       <Filter>Header Files\Variate</Filter>
     </CustomBuild>
   </ItemGroup>

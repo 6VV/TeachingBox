@@ -5,6 +5,7 @@
 #include "TBool.h"
 #include "TString.h"
 #include "TPosition.h"
+#include "TDynamic.h"
 
 
 
@@ -35,6 +36,10 @@ TVariate* TVariateFactory::CreateVariate(QByteArray& dataBytes)
 	case CSymbol::TYPE_POSITION:
 	{
 		return new TPosition(dataStream);
+	}break;
+	case CSymbol::TYPE_DYNAMIC:
+	{
+		return new TDynamic(dataStream);
 	}break;
 	default:
 	{

@@ -1,4 +1,4 @@
-//#include "CDatabaseManagerTests.h"
+﻿//#include "CDatabaseManagerTests.h"
 //#include "..\TeachingBox\CDatabaseManager.h"
 //#include "..\TeachingBox\TVariate.h"
 //#include "QVector"

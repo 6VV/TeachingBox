@@ -143,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TBoolTests.cpp" />
     <ClCompile Include="TDoubleTests.cpp" />
+    <ClCompile Include="TDynamicTests.cpp" />
     <ClCompile Include="TIntergerTests.cpp" />
     <ClCompile Include="TPositionTests.cpp" />
     <ClCompile Include="TStringTests.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="CDatabaseManagerTests.h" />
     <ClInclude Include="TBoolTests.h" />
     <ClInclude Include="TDoubleTests.h" />
+    <ClInclude Include="TDynamicTests.h" />
     <ClInclude Include="TIntergerTests.h" />
     <ClInclude Include="TPositionTests.h" />
     <ClInclude Include="TStringTests.h" />

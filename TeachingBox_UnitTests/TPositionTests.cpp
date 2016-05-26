@@ -1,4 +1,4 @@
-#include "TPositionTests.h"
+﻿#include "TPositionTests.h"
 #include "QVector"
 
 
@@ -29,7 +29,7 @@ void TPositionTests::ExpectVariate(QDataStream& dataStream)
 	}
 }
 
-TEST_F(TPositionTests, ReadDataStream_ReadRightData_ReturnTrue)
+TEST_F(TPositionTests, ReadDataStream_CreateFromData_Equal)
 {
 	QByteArray data;
 	QDataStream dataStream(&data, QIODevice::ReadWrite);
@@ -38,37 +38,6 @@ TEST_F(TPositionTests, ReadDataStream_ReadRightData_ReturnTrue)
 
 	ExpectVariate(dataStream);
 
-}
-
-TEST_F(TPositionTests, ReadDataStream_WriteToByteArray_ReturnTrue)
-{
-	QByteArray data;
-	QDataStream dataStream(&data, QIODevice::ReadWrite);
-	m_variate->ReadDataStream(dataStream);
-	dataStream.device()->seek(0);
-
-	QByteArray dataW = dataStream.device()->readAll();
-	QDataStream dataStreamW(&dataW, QIODevice::ReadWrite);
-
-	ExpectVariate(dataStreamW);
-}
-
-TEST_F(TPositionTests, TBool_Create_Equal)
-{
-	QByteArray data;
-	QDataStream dataStream(&data, QIODevice::ReadWrite);
-	m_variate->ReadDataStream(dataStream);
-
-	dataStream.device()->seek(0);
-	TPosition newVariate(dataStream);
-	EXPECT_STREQ(m_variate->GetScope().toStdString().c_str(), newVariate.GetScope().toStdString().c_str());
-	EXPECT_STREQ(m_variate->GetName().toStdString().c_str(), newVariate.GetName().toStdString().c_str());
-	EXPECT_EQ(m_variate->GetType(), newVariate.GetType());
-
-	for (int i = 0; i < TPosition::AXIS_SIZE; ++i)
-	{
-		EXPECT_EQ(newVariate.GetValue()[i], m_variate->GetValue()[i]);
-	}
 }
 
 TEST_F(TPositionTests, UpdateFrom_Update_Equal)
