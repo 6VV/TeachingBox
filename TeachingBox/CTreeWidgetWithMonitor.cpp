@@ -3,12 +3,13 @@
 #include "CInterpreterAdapter.h"
 #include "CParameterManager.h"
 #include "TVariateManager.h"
-#include "CLineEditWithClickedSignal.h"
 #include "TDouble.h"
 #include "TBool.h"
 #include "TString.h"
 #include "TPosition.h"
 #include "TDynamic.h"
+#include "TVariate.h"
+#include "TOverlap.h"
 
 
 
@@ -86,7 +87,7 @@ void CTreeWidgetWithMonitor::SlotItemTextChanged(QTreeWidgetItem* item)
 		CValue::TYPE_POSITION position;
 		for (int i = 0; i < itemParent->childCount();++i)
 		{
-			CLineEditWithClickedSignal* lineEdit = static_cast<CLineEditWithClickedSignal*>(item->treeWidget()->itemWidget(itemParent->child(i), 1));
+			QLineEdit* lineEdit = static_cast<QLineEdit*>(item->treeWidget()->itemWidget(itemParent->child(i), 1));
 
 			position.m_AxisPosition[i]=lineEdit->text().toDouble();
 		}
@@ -145,6 +146,7 @@ void CTreeWidgetWithMonitor::SlotItemTextChanged(QTreeWidgetItem* item)
 		QLineEdit* lineEdit = static_cast<QLineEdit*>(item->treeWidget()->itemWidget(itemParent->child(1), 1));
 		overlap.m_TransitionParameter = lineEdit->text().toDouble();
 
-		interpreterAdapter->UpdateOverlapValue(varScope, varName.toStdString(), varName.toStdString(), overlap);
+		TVariateManager::GetInstance()->Update(varScope, varName, TOverlap(varScope,varName,overlap));
+		//interpreterAdapter->UpdateOverlapValue(varScope, varName.toStdString(), varName.toStdString(), overlap);
 	}
 }

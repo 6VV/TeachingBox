@@ -1,8 +1,8 @@
 ﻿#include "stdafx.h"
 #include "TPosition.h"
 #include "CTreeWidgetItemWithVariate.h"
-#include "CLineEditWithClickedSignal.h"
 #include "CRegExpManager.h"
+#include "CLineEditWithTree.h"
 
 
 
@@ -35,22 +35,21 @@ void TPosition::SetValue(const TYPE_POSITION& value)
 
 void TPosition::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget)
 {
-	CTreeWidgetItemWithVariate* VariateItem = new CTreeWidgetItemWithVariate(parentItem, this);
+	CTreeWidgetItemWithVariate* variateItem = new CTreeWidgetItemWithVariate(parentItem, this);
 
 	QVector<QTreeWidgetItem*> treeItems;
 	for (int i = 0; i < AXIS_SIZE;++i)
 	{
 		QString name = "Axis"+QString::number(i + 1);
 
-		treeItems.push_back(new QTreeWidgetItem(VariateItem, QStringList{ name }));
+		treeItems.push_back(new QTreeWidgetItem(variateItem, QStringList{ name }));
 	}
 
-	QVector<CLineEditWithClickedSignal*> lineEdits;
+	QVector<CLineEditWithTree*> lineEdits;
 	for (int i = 0; i < treeItems.size();++i)
 	{
-		CLineEditWithClickedSignal* lineEdit = new CLineEditWithClickedSignal(
+		CLineEditWithTree* lineEdit = new CLineEditWithTree(variateItem,treeWidget,
 			QString::number(m_value[i]), CRegExpManager::STR_REG_FLOAT);
-		lineEdit->SetTreeItem(VariateItem,treeWidget);
 
 		lineEdits.push_back(lineEdit);
 		treeWidget->setItemWidget(treeItems.at(i), 1, lineEdit);
@@ -75,8 +74,8 @@ void TPosition::UpdateFromValue(TVariate& variate)
 
 void TPosition::SlotOnTextChanged()
 {
-	CLineEditWithClickedSignal* currentWidget = static_cast<CLineEditWithClickedSignal*>(sender());
-	QTreeWidgetItem* parentItem = currentWidget->GetTreeWidgetItem();
+	CLineEditWithTree* currentWidget = static_cast<CLineEditWithTree*>(sender());
+	QTreeWidgetItem* parentItem = currentWidget->GetParentItem();
 	QTreeWidget* treeWidget = currentWidget->GetTreeWidget();
 
 	TYPE_POSITION position;

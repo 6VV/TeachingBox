@@ -66,8 +66,6 @@ void CScreenVariables::KeyboardEdit()
 	QString strScope = currentItem->parent()->text(2);
 
 	/*已存在新变量名*/
-	//bool isExist = TVariateManager::GetInstance()->IsExistVariateScrollUp(strScope, strNewName);
-	//bool isExist = CInterpreterAdapter::GetInstance()->IsExist(strScope, strNewName.toStdString());
 	if (TVariateManager::GetInstance()->IsExistVariateScrollUp(strScope, strNewName))
 	{
 		CWarningManager::GetInstance()->Warning(this, CWarningManager::AlreadyExitVariable);
@@ -457,12 +455,12 @@ void CScreenVariables::SlotOnResivePosition(tAxesAllPositions& position)
 		}
 		TVariateManager::GetInstance()->Update(scope, name, TPosition(scope, name, vecPosition));
 		//CInterpreterAdapter::GetInstance()->UpdatePositionValue(scope, name.toStdString(), name.toStdString(), position);
-		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(0), 1)))->setText(QString::number(position.m_AxisPosition[0]));
-		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(1), 1)))->setText(QString::number(position.m_AxisPosition[1]));
-		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(2), 1)))->setText(QString::number(position.m_AxisPosition[2]));
-		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(3), 1)))->setText(QString::number(position.m_AxisPosition[3]));
-		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(4), 1)))->setText(QString::number(position.m_AxisPosition[4]));
-		(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(currentItem->child(5), 1)))->setText(QString::number(position.m_AxisPosition[5]));
+		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(0), 1)))->setText(QString::number(position.m_AxisPosition[0]));
+		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(1), 1)))->setText(QString::number(position.m_AxisPosition[1]));
+		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(2), 1)))->setText(QString::number(position.m_AxisPosition[2]));
+		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(3), 1)))->setText(QString::number(position.m_AxisPosition[3]));
+		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(4), 1)))->setText(QString::number(position.m_AxisPosition[4]));
+		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(5), 1)))->setText(QString::number(position.m_AxisPosition[5]));
 	}
 }
 

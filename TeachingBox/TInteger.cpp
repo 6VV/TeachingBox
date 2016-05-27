@@ -1,10 +1,10 @@
 ﻿#include "stdafx.h"
 #include "TInteger.h"
 #include "CParameterManager.h"
-#include "CLineEditWithClickedSignal.h"
 #include "CRegExpManager.h"
 #include "CSymbol.h"
 #include "CTreeWidgetItemWithVariate.h"
+#include "CLineEditWithRegExpAndKeyboard.h"
 
 
 
@@ -50,7 +50,7 @@ void TInteger::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* tree
 	CTreeWidgetItemWithVariate* VariateItem = new CTreeWidgetItemWithVariate(parentItem, this);
 	QTreeWidgetItem* item = new QTreeWidgetItem(VariateItem, QStringList("Value"));
 
-	CLineEditWithClickedSignal* lineEditValue = new CLineEditWithClickedSignal(
+	CLineEditWithRegExpAndKeyboard* lineEditValue = new CLineEditWithRegExpAndKeyboard(
 		QString::number(m_value), CRegExpManager::STR_REG_INT);
 
 	treeWidget->setItemWidget(item, 1, lineEditValue);

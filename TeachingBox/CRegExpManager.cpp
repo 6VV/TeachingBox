@@ -3,6 +3,9 @@
 
 
 
+
+const char* CRegExpManager::STR_REG_ANY_CHAR=".*";
+
 const char* CRegExpManager::STR_REG_NONEGATIVE_INT = "^\\d + $";
 
 /*ÕýÕûÊý*/

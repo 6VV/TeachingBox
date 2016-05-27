@@ -10,6 +10,7 @@
 #include "TDynamic.h"
 #include "TString.h"
 #include "CRegExpManager.h"
+#include "TOverlap.h"
 
 
 
@@ -52,7 +53,7 @@ CScreenNewVariable* CScreenNewVariable::GetInstance()
 
 void CScreenNewVariable::SlotOnButtonConfirmClicked()
 {
-	QString varName = (static_cast<CLineEditWithClickedSignal*>(m_tableWidget->cellWidget(0, 1)))->text();
+	QString varName = (static_cast<QLineEdit*>(m_tableWidget->cellWidget(0, 1)))->text();
 
 	/*若变量名为空*/
 	if (varName.isEmpty())
@@ -75,7 +76,7 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 	/*若为整数类型*/
 	if (currentType == CParameterManager::STR_TYPE_INT)
 	{
-		int varValue = (static_cast<CLineEditWithClickedSignal*>(
+		int varValue = (static_cast<QLineEdit*>(
 			m_tableWidget->cellWidget(INIT_ROW_NUM, 1)))->text().toInt();
 
 		/*存储变量*/
@@ -84,7 +85,7 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 	}
 	else if (currentType == CParameterManager::STR_TYPE_DOUBLE)
 	{
-		double varValue = (static_cast<CLineEditWithClickedSignal*>(m_tableWidget->cellWidget(INIT_ROW_NUM, 1)))->text().toDouble();
+		double varValue = (static_cast<QLineEdit*>(m_tableWidget->cellWidget(INIT_ROW_NUM, 1)))->text().toDouble();
 
 		/*存储变量*/
 		TVariateManager::GetInstance()->Add(new TDouble(m_strScopeInDatabase, varName, varValue));
@@ -107,7 +108,7 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 	}
 	else if (currentType == CParameterManager::STR_TYPE_STRING)
 	{
-		std::string varValue = (static_cast<CLineEditWithClickedSignal*>(
+		std::string varValue = (static_cast<QLineEdit*>(
 			m_tableWidget->cellWidget(INIT_ROW_NUM, 1)))->text().toStdString();
 
 		/*存储变量*/
@@ -121,7 +122,7 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 		CValue::TYPE_POSITION position;
 		for (int i = INIT_ROW_NUM; i < INIT_ROW_NUM+6; i++)
 		{
-			CLineEditWithClickedSignal* lineEdit = static_cast<CLineEditWithClickedSignal*>(m_tableWidget->cellWidget(i, 1));
+			QLineEdit* lineEdit = static_cast<QLineEdit*>(m_tableWidget->cellWidget(i, 1));
 			position.m_AxisPosition[i-INIT_ROW_NUM]=lineEdit->text().toDouble();
 		}
 
@@ -141,7 +142,7 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 		QVector<double> vectorDynamic;
 		for (int i = INIT_ROW_NUM; i < INIT_ROW_NUM + 6; i++)
 		{
-			CLineEditWithClickedSignal* lineEdit = static_cast<CLineEditWithClickedSignal*>(m_tableWidget->cellWidget(i, 1));
+			QLineEdit* lineEdit = static_cast<QLineEdit*>(m_tableWidget->cellWidget(i, 1));
 			vectorDynamic.push_back(lineEdit->text().toDouble());
 		}
 
@@ -173,13 +174,14 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 			mode = kTransitionModeRelative;
 		}
 
-		int value = (static_cast<CLineEditWithClickedSignal*>(m_tableWidget->cellWidget(INIT_ROW_NUM + 1, 1)))->text().toDouble();
+		int value = (static_cast<QLineEdit*>(m_tableWidget->cellWidget(INIT_ROW_NUM + 1, 1)))->text().toDouble();
 		
 		CValue::TYPE_OVERLAP overlap{ mode, value };
 		CValue::TYPE_PAIR_OVERLAP pairVariable(varName.toStdString(), overlap);
 
 		/*存储变量*/
-		CInterpreterAdapter::GetInstance()->InsertOverlapValue(m_strScopeInDatabase,pairVariable);
+		TVariateManager::GetInstance()->Add(new TOverlap(m_strScopeInDatabase, varName, overlap));
+		//CInterpreterAdapter::GetInstance()->InsertOverlapValue(m_strScopeInDatabase,pairVariable);
 		
 	}
 
@@ -346,15 +348,16 @@ void CScreenNewVariable::InitLayoutTableWidget()
 	QLabel* lbScope = new QLabel(QCoreApplication::translate(CLASS_NAME, "Scope"));
 	QLabel* lbType = new QLabel(QCoreApplication::translate(CLASS_NAME, "Type"));
 
-	m_lineEidtName = new CLineEditWithClickedSignal("",CRegExpManager::STR_REG_STRING_NAME);
+	m_lineEidtName = new CLineEditWithRegExpAndKeyboard();
+	m_lineEidtName->SetRegExp(CRegExpManager::STR_REG_STRING_NAME);
 	m_lineEidtName->setEnabled(false);
 
-	m_lineEditScope = new CLineEditWithClickedSignal;
+	m_lineEditScope = new CLineEditWithRegExpAndKeyboard;
 	m_lineEditScope->setEnabled(false);
 	//m_lineEditScope->addItem(QString::fromStdString(CScope::STR_SCOPE_GLOBAL));
 	//m_lineEditScope->addItem(QString::fromStdString(CScope::STR_SCOPE_GLOBAL));
 
-	m_lineEditType = new CLineEditWithClickedSignal;
+	m_lineEditType = new CLineEditWithRegExpAndKeyboard;
 	m_lineEditType->setEnabled(false);
 	//m_lineEditType->addItem(CParameterManager::STR_TYPE_INT);
 	//m_lineEditType->addItem(CParameterManager::STR_TYPE_FLOAT);
@@ -451,7 +454,7 @@ void CScreenNewVariable::InitIntParameter()
 	QLabel* lbValue = new QLabel(QCoreApplication::translate(CLASS_NAME, "Value"));
 	m_tableWidget->setCellWidget(INIT_ROW_NUM, 0, lbValue);
 
-	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_INT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_INT));
 }
 
 void CScreenNewVariable::InitDoubleParameter()
@@ -460,7 +463,9 @@ void CScreenNewVariable::InitDoubleParameter()
 	QLabel* lbValue = new QLabel(QCoreApplication::translate(CLASS_NAME, "Value"));
 	m_tableWidget->setCellWidget(INIT_ROW_NUM, 0, lbValue);
 
-	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
+	CLineEditWithRegExpAndKeyboard* lineEidt = new CLineEditWithRegExpAndKeyboard("0");
+	lineEidt->SetRegExp(CRegExpManager::STR_REG_FLOAT);
+	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, lineEidt);
 }
 
 void CScreenNewVariable::InitBoolParameter()
@@ -480,7 +485,7 @@ void CScreenNewVariable::InitStringParameter()
 	QLabel* lbValue = new QLabel(QCoreApplication::translate(CLASS_NAME, "Value"));
 	m_tableWidget->setCellWidget(INIT_ROW_NUM, 0, lbValue);
 
-	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithClickedSignal);
+	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithRegExpAndKeyboard);
 }
 
 void CScreenNewVariable::InitPositionParameter()
@@ -501,12 +506,12 @@ void CScreenNewVariable::InitPositionParameter()
 	m_tableWidget->setCellWidget(INIT_ROW_NUM + 4, 0, lbValue5);
 	m_tableWidget->setCellWidget(INIT_ROW_NUM + 5, 0, lbValue6);
 
-	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithClickedSignal("0",CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 1, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 2, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 3, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 4, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 5, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithRegExpAndKeyboard("0",CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 1, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 2, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 3, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 4, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 5, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
 }
 
 void CScreenNewVariable::InitDynamicParameter()
@@ -519,12 +524,12 @@ void CScreenNewVariable::InitDynamicParameter()
 	m_tableWidget->setCellWidget(INIT_ROW_NUM + 4, 0, new QLabel(QCoreApplication::translate(CLASS_NAME, "PostureAcceleration")));
 	m_tableWidget->setCellWidget(INIT_ROW_NUM + 5, 0, new QLabel(QCoreApplication::translate(CLASS_NAME, "PostureDeceleration")));
 
-	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 1, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 2, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 3, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 4, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
-	m_tableWidget->setCellWidget(INIT_ROW_NUM + 5, 1, new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 1, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 2, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 3, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 4, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
+	m_tableWidget->setCellWidget(INIT_ROW_NUM + 5, 1, new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT));
 }
 
 void CScreenNewVariable::InitOverlapParameter()
@@ -536,7 +541,7 @@ void CScreenNewVariable::InitOverlapParameter()
 	QComboBox* comboBoxMode = new QComboBox;
 	comboBoxMode->addItem(CParameterManager::STR_TRANSITION_MODE_RELATIVE);
 	comboBoxMode->addItem(CParameterManager::STR_TRANSITION_MODE_ABSOLUTE);
-	CLineEditWithClickedSignal* lineEdit = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEdit = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
 	m_tableWidget->setCellWidget(INIT_ROW_NUM, 1, comboBoxMode);
 	m_tableWidget->setCellWidget(INIT_ROW_NUM + 1, 1, lineEdit);
 }

@@ -7,9 +7,8 @@
 #include "CScreenMainParent.h"
 #include "CSingleTon.h"
 #include "QList"
-#include "CLineEditWithClickedSignal.h"
 #include "CRegExpManager.h"
-#include "CComboBoxWithTreeItem.h"
+#include "CComboBoxWithTree_Old.h"
 #include "CInterpreterAdapter.h"
 #include "MacroInterface.h"
 
@@ -56,9 +55,9 @@ private:
 	void AddDynamicParameter(const QString& strText);		/*获取速度参数*/
 	void AddOverlapParameter(const QString& strText);		/*获取过渡区域参数*/
 
-	CComboBoxWithTreeItem* GetComboBoxPosition();	/*获取位置列表*/
-	CComboBoxWithTreeItem* GetComboBoxDynamic();	/*获取速度列表*/
-	CComboBoxWithTreeItem* GetComboBoxOverlap();	/*获取过渡区域列表*/
+	CComboBoxWithTree_Old* GetComboBoxPosition();	/*获取位置列表*/
+	CComboBoxWithTree_Old* GetComboBoxDynamic();	/*获取速度列表*/
+	CComboBoxWithTree_Old* GetComboBoxOverlap();	/*获取过渡区域列表*/
 
 	void RefreshPositionParameter(QString strName,QTreeWidgetItem* widgetItem);	/*刷新位置参数*/
 	void RefreshDynamicParameter(QString strName, QTreeWidgetItem* widgetItem);	/*刷新位置参数*/

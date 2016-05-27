@@ -13,6 +13,7 @@
 #include "CMethodSymbol.h"
 #include "CParameterManager.h"
 #include "TInteger.h"
+#include "TOverlap.h"
 
 
 CInterpreterAdapter::CInterpreterAdapter()
@@ -28,31 +29,7 @@ CInterpreterAdapter::~CInterpreterAdapter()
 void CInterpreterAdapter::Init()
 {
 	m_databaseManager = CDatabaseManager::GetInstance();
-	m_value = CValue::GetInstance();
 
-	InitScope();
-}
-
-void CInterpreterAdapter::InitScope()
-{
-	m_value->m_scopeSystem.SetScopeName(CScope::STR_SCOPE_SYSTEM);	/*设置系统作用域*/
-
-	m_scopeSynergic = new CScope(CScope::STR_SCOPE_SYNERGIC);	/*初始化协作作用域*/
-	m_scopeGlobal = new CScope(CScope::STR_SCOPE_GLOBAL);		/*初始化全局作用域*/
-
-	m_value->m_scopeSystem.PushScope(m_scopeSynergic);			/*添加协作作用域*/
-	m_scopeSynergic->PushScope(m_scopeGlobal);					/*添加全局作用域*/
-
-	QStringList strListScope;
-	strListScope <<CScope::STR_SCOPE_SYSTEM
-		<< CScope::STR_SCOPE_SYNERGIC
-		<< CScope::STR_SCOPE_GLOBAL;
-
-	/*添加作用域内的符号*/
-	for each (auto var in strListScope)
-	{
-		UpdateValueFromDatabase(var);
-	}
 }
 
 std::vector<CScope*> CInterpreterAdapter::GetEnclosingScope(const std::string& currentScope)
@@ -71,208 +48,6 @@ std::vector<CScope*> CInterpreterAdapter::GetEnclosingScope(const std::string& c
 CInterpreterAdapter* CInterpreterAdapter::GetInstance()
 {
 	return CSingleTon<CInterpreterAdapter>::GetInstance();
-}
-
-//////////////////////////////////////////////////////////////////////////
-/*过渡变量相关*/
-//////////////////////////////////////////////////////////////////////////
-void CInterpreterAdapter::GetOverlapListFromEnclosingScope(QStringList &strListPositions, const QString& scope)
-{
-	std::vector<CScope*> vecScope = GetEnclosingScope(scope.toStdString());
-	std::set<std::string> setList;
-
-	for each (auto scope in vecScope)
-	{
-		for each (auto variable in m_value->m_mapScopeOverlap[scope->GetScopeName().toStdString()])
-		{
-			setList.insert(variable.first);
-		}
-	}
-
-	for each (auto variable in setList)
-	{
-		strListPositions.append(QString::fromStdString(variable));
-	}
-}
-
-
-void CInterpreterAdapter::InsertOverlapValue(const QString& scope, CValue::TYPE_PAIR_OVERLAP& pairNewZone)
-{
-	m_value->m_mapScopeOverlap[scope.toStdString()].insert(pairNewZone);
-
-	m_databaseManager->InsertOverlapValue(scope, QString::fromStdString(pairNewZone.first), pairNewZone.second);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(pairNewZone.first), CSymbol::TYPE_OVERLAP);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)->DefineSymbol(symbol);
-}
-
-
-void CInterpreterAdapter::UpdateOverlapValue(const QString& scope, const std::string& strOldZone, CValue::TYPE_PAIR_OVERLAP& pairNewZone)
-{
-	m_value->m_mapScopeOverlap[scope.toStdString()].erase(strOldZone);
-	m_value->m_mapScopeOverlap[scope.toStdString()].insert(pairNewZone);
-
-	m_databaseManager->UpdateOverlapValue(scope, QString::fromStdString(strOldZone), QString::fromStdString(pairNewZone.first), pairNewZone.second);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(pairNewZone.first), CSymbol::TYPE_OVERLAP);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-		->RenameSymbol(QString::fromStdString(strOldZone), 
-		QString::fromStdString(pairNewZone.first), symbol);
-}
-
-void CInterpreterAdapter::UpdateOverlapValue(const QString& scope, const std::string& strOldZone, const std::string& strNewZone, CValue::TYPE_OVERLAP& overlap)
-{
-	m_value->m_mapScopeOverlap[scope.toStdString()].erase(strOldZone);
-	m_value->m_mapScopeOverlap[scope.toStdString()][strNewZone]=overlap;
-
-	m_databaseManager->UpdateOverlapValue(scope, QString::fromStdString(strOldZone), QString::fromStdString(strNewZone), overlap);
-
-	/*更新符号表*/
-	CVariableSymbol* symbol = new CVariableSymbol(scope, QString::fromStdString(strNewZone), CSymbol::TYPE_OVERLAP);
-	m_value->m_scopeSystem.FindScopeScrollDown(scope)
-		->RenameSymbol(QString::fromStdString(strOldZone), QString::fromStdString(strNewZone), symbol);
-}
-
-void CInterpreterAdapter::DeleteOverlapValue(const QString& strScope, std::string& strName)
-{
-	/*从符号表中删除*/
-	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-	scope->DeleteSymbol(QString::fromStdString(strName));
-
-	/*从内存中删除*/
-	m_value->m_mapScopeOverlap[strScope.toStdString()].erase(strName);
-
-	/*从数据库中删除*/
-	m_databaseManager->DeleteOverlapValue(strScope, QString::fromStdString(strName));
-}
-
-
-void CInterpreterAdapter::UpdateOverlapValueFromDatabase(const QString& strScope)
-{
-	/*添加作用域内位置变量*/
-	CValue::TYPE_MAP_OVERLAP map;
-	m_value->m_mapScopeOverlap[strScope.toStdString()] = map;
-	CValue::TYPE_MAP_OVERLAP& mapFind = m_value->m_mapScopeOverlap[strScope.toStdString()];
-	m_databaseManager->SelectOverlapValue(strScope, mapFind);
-
-
-	/*更新符号表*/
-	CScope* scope = m_value->m_scopeSystem.FindScopeScrollDown(strScope);
-
-	for each (auto var in mapFind)
-	{
-		CVariableSymbol* symbol = new CVariableSymbol(scope->GetScopeName(), QString::fromStdString(var.first), CSymbol::TYPE_OVERLAP);
-		scope->DefineSymbol(symbol);
-	}
-}
-
-
-bool CInterpreterAdapter::GetOverlapValue(const QString& strScope, const std::string& strName, CValue::TYPE_OVERLAP& value)
-{
-	auto iter = m_value->m_mapScopeOverlap.at(strScope.toStdString()).find(strName);
-	if (iter == m_value->m_mapScopeOverlap.at(strScope.toStdString()).end())
-	{
-		return false;
-	}
-	value = m_value->m_mapScopeOverlap[strScope.toStdString()].at(strName);
-	return true;
-}
-
-bool CInterpreterAdapter::GetOverlapValueFromEnclosingScope(const QString& scope, const std::string& strName, CValue::TYPE_OVERLAP& vecValue)
-{
-	std::vector<CScope*> vecScope = GetEnclosingScope(scope.toStdString());
-
-	for each (auto var in vecScope)
-	{
-		if (GetOverlapValue(var->GetScopeName(), strName, vecValue))
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
-bool CInterpreterAdapter::IsOverlapValueExist(const QString& strScope, const std::string& strName)
-{
-	auto iter1 = m_value->m_mapScopeOverlap.find(strScope.toStdString());
-
-	if (iter1 == m_value->m_mapScopeOverlap.end())
-	{
-		return false;
-	}
-
-	auto iter2 = iter1->second.find(strName);
-	if (iter2 == iter1->second.end())
-	{
-		return false;
-	}
-
-	return true;
-}
-
-
-void CInterpreterAdapter::UpdateValueFromDatabase()
-{
-	//auto t1 = clock();
-
-	/*清空项目内的所有数据*/
-	ClearProjectValue();
-	
-	CScreenProject* project=CScreenProject::GetInstance();
-
-	/*若未打开任何项目*/
-	if (!project->IsLoadProject())
-	{
-		return;
-	}
-
-	QStringList strListScope;
-	strListScope << project->GetLoadedProjectNameInDatabase();	/*添加项目名*/
-	CScope* scopeProject = new CScope(project->GetLoadedProjectNameInDatabase());
-	m_scopeGlobal->PushScope(scopeProject);	 /*添加项目作用域*/
-
-	/*添加文件名*/
-	for each (auto var in project->GetAllFiles()[project->GetLoadedProjectNameInDatabase()].keys())
-	{
-		strListScope << var;
-		CMethodSymbol* methodSymbol = new CMethodSymbol(scopeProject->GetScopeName(),
-			var, CSymbol::TYPE_VOID);
-		CScope* methodScope = new CScope(var);
-		scopeProject->PushScope(methodScope);	/*添加文件作用域*/
-		scopeProject->DefineSymbol(methodSymbol);		/*定义文件名*/
-	}
-
-
-	/*添加作用域内的数据*/
-	for each (auto var in strListScope)
-	{
-		UpdateValueFromDatabase(var);
-	}
-
-	strListScope.pop_front();
-	TVariateManager::GetInstance()->LoadProjectDataFromDatabase(
-		project->GetLoadedProjectNameInDatabase(), strListScope);
-
-	//auto t2 = clock();
-	//qDebug() << (t2 - t1) * 1000 / CLOCKS_PER_SEC;
-}
-
-void CInterpreterAdapter::UpdateValueFromDatabase(const QString& strScope)
-{
-	//UpdatePositionValueFromDatabase(strScope);
-	//UpdateDynamicValueFromDatabase(strScope);
-	//UpdateOverlapValueFromDatabase(strScope);
-	//UpdateDoubleValueFromDatabase(strScope);
-	//UpdateIntValueFromDatabase(strScope);
-	/*UpdateStringValueFromDatabase*/(strScope);
-	//UpdateBoolValueFromDatabase(strScope);
-
-
-	//TVariateManager::GetInstance()->LoadProjectObjectFromDatabase();
 }
 
 void CInterpreterAdapter::UpdateVariableName(const QString& strOldName, const QString& strNewName, 
@@ -327,7 +102,10 @@ void CInterpreterAdapter::UpdateVariableName(const QString& strOldName, const QS
 	}
 	else if (strType == CParameterManager::STR_TYPE_OVERLAP)
 	{
-		UpdateOverlapValue(strScope, strOldName.toStdString(), strNewName.toStdString(), m_value->m_mapScopeOverlap[strScope.toStdString()][strOldName.toStdString()]);
+		TVariateManager::GetInstance()->Update(strScope, strOldName,
+			TOverlap(strScope, strNewName,
+			static_cast<TOverlap*>(TVariateManager::GetInstance()->GetVariate(strScope, strOldName))->GetValue()));
+		//UpdateOverlapValue(strScope, strOldName.toStdString(), strNewName.toStdString(), m_value->m_mapScopeOverlap[strScope.toStdString()][strOldName.toStdString()]);
 	}
 }
 

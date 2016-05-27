@@ -6,6 +6,7 @@
 #include "CKeyBoard.h"
 #include "CDatabaseManager.h"
 #include "CWarningManager.h"
+#include "TVariateManager.h"
 
 CScreenProject::CScreenProject(QWidget* parent /*= 0*/) :CScreenMainParent(parent)
 {
@@ -546,7 +547,8 @@ bool CScreenProject::LoadProject(QTreeWidgetItem* item)
 
 	/*从数据库中更新项目数据*/
 	m_isLoadProject = true;
-	UpdateDataFromDatabase();
+	TVariateManager::GetInstance()->LoadProjectDataFromDatabase(m_strProjectLoaded,m_strListFileNames);
+	//UpdateDataFromDatabase();
 	QString currentFileName;
 	/*加载项目文本*/
 	try
@@ -725,11 +727,6 @@ void CScreenProject::UpdateTreeWidget()
 			}
 		}
 	}
-}
-
-void CScreenProject::UpdateDataFromDatabase()
-{
-	CInterpreterAdapter::GetInstance()->UpdateValueFromDatabase();
 }
 
 /*重置视图各列宽度*/

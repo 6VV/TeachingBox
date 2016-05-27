@@ -6,6 +6,7 @@
 #include "TString.h"
 #include "TPosition.h"
 #include "TDynamic.h"
+#include "TOverlap.h"
 
 
 
@@ -40,6 +41,10 @@ TVariate* TVariateFactory::CreateVariate(QByteArray& dataBytes)
 	case CSymbol::TYPE_DYNAMIC:
 	{
 		return new TDynamic(dataStream);
+	}break;
+	case CSymbol::TYPE_OVERLAP:
+	{
+		return new TOverlap(dataStream);
 	}break;
 	default:
 	{

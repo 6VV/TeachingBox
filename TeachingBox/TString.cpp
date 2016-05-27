@@ -1,7 +1,6 @@
 ﻿#include "stdafx.h"
 #include "TString.h"
 #include "CTreeWidgetItemWithVariate.h"
-#include "CLineEditWithClickedSignal.h"
 
 
 
@@ -31,7 +30,7 @@ void TString::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeW
 	CTreeWidgetItemWithVariate* VariateItem = new CTreeWidgetItemWithVariate(parentItem, this);
 	QTreeWidgetItem* item = new QTreeWidgetItem(VariateItem, QStringList("Value"));
 
-	CLineEditWithClickedSignal* lineEditValue = new CLineEditWithClickedSignal(m_string);
+	QLineEdit* lineEditValue = new QLineEdit(m_string);
 
 	treeWidget->setItemWidget(item, 1, lineEditValue);
 

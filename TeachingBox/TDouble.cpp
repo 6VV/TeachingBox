@@ -1,8 +1,8 @@
 ﻿#include "stdafx.h"
 #include "TDouble.h"
 #include "CTreeWidgetItemWithVariate.h"
-#include "CLineEditWithClickedSignal.h"
 #include "CRegExpManager.h"
+#include "CLineEditWithRegExpAndKeyboard.h"
 
 TDouble::TDouble(const QString& scope, const QString& name, const double value)
 	:TVariate(scope, name, CSymbol::TYPE_DOUBLE)
@@ -30,7 +30,7 @@ void TDouble::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeW
 	CTreeWidgetItemWithVariate* VariateItem = new CTreeWidgetItemWithVariate(parentItem, this);
 	QTreeWidgetItem* item = new QTreeWidgetItem(VariateItem, QStringList("Value"));
 
-	CLineEditWithClickedSignal* lineEditValue = new CLineEditWithClickedSignal(
+	CLineEditWithRegExpAndKeyboard* lineEditValue = new CLineEditWithRegExpAndKeyboard(
 		QString::number(m_value), CRegExpManager::STR_REG_FLOAT);
 
 	treeWidget->setItemWidget(item, 1, lineEditValue);

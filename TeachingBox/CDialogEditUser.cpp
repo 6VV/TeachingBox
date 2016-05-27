@@ -187,16 +187,16 @@ void CDialogEditUser::InitLayout()
 	m_lbIdentity = new QLabel;
 
 	/*操作控件*/
-	m_lineEditName = new CLineEditWithClickedSignal;	/*用户名*/
-	m_lineEditName->SetRegExpString(QString(CRegExpManager::STR_REG_NUM_CHAR_UNDERLINE));	/*用户名格式*/
+	m_lineEditName = new CLineEditWithRegExpAndKeyboard;	/*用户名*/
+	m_lineEditName->SetRegExp(QString(CRegExpManager::STR_REG_NUM_CHAR_UNDERLINE));	/*用户名格式*/
 
-	m_lineEditPassword = new CLineEditWithClickedSignal;	/*密码*/
+	m_lineEditPassword = new CLineEditWithRegExpAndKeyboard;	/*密码*/
 	m_lineEditPassword->setEchoMode(QLineEdit::Password);	/*不显示密码*/
-	m_lineEditPassword->SetKeyboardShowModel(CLineEditWithClickedSignal::KEYBOARD_NOT_SHOW_TEXT);	/*键盘不显示密码*/
+	m_lineEditPassword->SetKeyboardShowMode(CLineEditWithRegExpAndKeyboard::KEYBOARD_NOT_SHOW_TEXT);	/*键盘不显示密码*/
 
-	m_lineEditConfirmPassword = new CLineEditWithClickedSignal;
+	m_lineEditConfirmPassword = new CLineEditWithRegExpAndKeyboard;
 	m_lineEditConfirmPassword->setEchoMode(QLineEdit::Password);
-	m_lineEditConfirmPassword->SetKeyboardShowModel(CLineEditWithClickedSignal::KEYBOARD_NOT_SHOW_TEXT);	/*键盘不显示密码*/
+	m_lineEditConfirmPassword->SetKeyboardShowMode(CLineEditWithRegExpAndKeyboard::KEYBOARD_NOT_SHOW_TEXT);	/*键盘不显示密码*/
 
 	CUser user = CUserManager::GetInstance()->GetCurrentUser();	/*获取当前用户*/
 

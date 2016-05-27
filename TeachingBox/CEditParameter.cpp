@@ -13,6 +13,8 @@
 #include "TVariateManager.h"
 #include "TPosition.h"
 #include "TDynamic.h"
+#include "CLineEditWithRegExpAndKeyboard.h"
+#include "TOverlap.h"
 
 
 
@@ -99,13 +101,13 @@ void CEditParameter::SlotOnButtonConfirmClicked()
 	{
 		QWidget* widget = m_treeWidget->itemWidget(item->child(i), 1);
 
-		if (typeid(*widget)==typeid(CComboBoxWithTreeItem))
+		if (typeid(*widget)==typeid(CComboBoxWithTree_Old))
 		{
-			m_strListParameterName.append(static_cast<CComboBoxWithTreeItem*>(widget)->currentText());
+			m_strListParameterName.append(static_cast<CComboBoxWithTree_Old*>(widget)->currentText());
 		}
-		else if (typeid(*widget) == typeid(CLineEditWithClickedSignal))
+		else if (typeid(*widget) == typeid(CLineEditWithRegExpAndKeyboard))
 		{
-			m_strListParameterName.append(static_cast<CLineEditWithClickedSignal*>(widget)->text());
+			m_strListParameterName.append(static_cast<CLineEditWithRegExpAndKeyboard*>(widget)->text());
 		}
 	}
 
@@ -162,7 +164,7 @@ void CEditParameter::SlotOnComboBoxItemChanged(const QString& strText)
 
 	int valueType = symbol->GetType();
 
-	CComboBoxWithTreeItem* comboBox = static_cast<CComboBoxWithTreeItem*>(sender());
+	CComboBoxWithTree_Old* comboBox = static_cast<CComboBoxWithTree_Old*>(sender());
 	/*加载数据*/
 	switch (valueType)
 	{
@@ -229,7 +231,7 @@ void CEditParameter::AddPositionParameter(const QString& strText)
 {
 	QTreeWidgetItem *rootItem = new QTreeWidgetItem(m_treeWidget);
 	rootItem->setText(0, "Pos");
-	CComboBoxWithTreeItem* comboBoxPosition = GetComboBoxPosition();
+	CComboBoxWithTree_Old* comboBoxPosition = GetComboBoxPosition();
 	comboBoxPosition->setCurrentText(strText);
 	comboBoxPosition->SetTreeWidgetItem(rootItem);
 
@@ -242,12 +244,12 @@ void CEditParameter::AddPositionParameter(const QString& strText)
 	QTreeWidgetItem *itemAxis5 = new QTreeWidgetItem(rootItem, QStringList("Axis5"));
 	QTreeWidgetItem *itemAxis6 = new QTreeWidgetItem(rootItem, QStringList("Axis6"));
 
-	CLineEditWithClickedSignal* lineEditAxis1 = new CLineEditWithClickedSignal("0",CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditAxis2 = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditAxis3 = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditAxis4 = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditAxis5 = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditAxis6 = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditAxis1 = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditAxis2 = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditAxis3 = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditAxis4 = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditAxis5 = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditAxis6 = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
 
 
 	lineEditAxis1->setAlignment(Qt::AlignHCenter);
@@ -274,7 +276,7 @@ void CEditParameter::AddDynamicParameter(const QString& strText)
 {
 	QTreeWidgetItem *rootItem = new QTreeWidgetItem(m_treeWidget);
 	rootItem->setText(0, "Dyn");
-	CComboBoxWithTreeItem* comboBoxDynamic = GetComboBoxDynamic();
+	CComboBoxWithTree_Old* comboBoxDynamic = GetComboBoxDynamic();
 	comboBoxDynamic->setCurrentText(strText);
 	comboBoxDynamic->SetTreeWidgetItem(rootItem);
 
@@ -287,12 +289,12 @@ void CEditParameter::AddDynamicParameter(const QString& strText)
 	QTreeWidgetItem* itemPostureAcceleration = new QTreeWidgetItem(rootItem, QStringList("PostureAcceleration"));
 	QTreeWidgetItem* itemPostureDeceleration = new QTreeWidgetItem(rootItem, QStringList("PostureDeceleration"));
 
-	CLineEditWithClickedSignal* lineEditVelocity = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditAcceleration = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditDeceleration = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditPostureVelocity = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditPostureAcceleration = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
-	CLineEditWithClickedSignal* lineEditPostureDeceleration = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditVelocity = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditAcceleration = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditDeceleration = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditPostureVelocity = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditPostureAcceleration = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditPostureDeceleration = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
 
 	m_treeWidget->setItemWidget(itemVelocity, 1, lineEditVelocity);
 	m_treeWidget->setItemWidget(itemAcceleration, 1, lineEditAcceleration);
@@ -311,7 +313,7 @@ void CEditParameter::AddOverlapParameter(const QString& strText)
 {
 	QTreeWidgetItem *rootItem = new QTreeWidgetItem(m_treeWidget);
 	rootItem->setText(0, "Ovl");
-	CComboBoxWithTreeItem* comboBoxOverlap = GetComboBoxOverlap();
+	CComboBoxWithTree_Old* comboBoxOverlap = GetComboBoxOverlap();
 	comboBoxOverlap->setCurrentText(strText);
 	comboBoxOverlap->SetTreeWidgetItem(rootItem);
 
@@ -324,7 +326,7 @@ void CEditParameter::AddOverlapParameter(const QString& strText)
 	QTreeWidgetItem* itemVelocity = new QTreeWidgetItem(rootItem, QStringList("Mode"));
 	QTreeWidgetItem* itemAcceleration = new QTreeWidgetItem(rootItem, QStringList("Parameter"));
 
-	CLineEditWithClickedSignal* lineEditTransitionParamter = new CLineEditWithClickedSignal("0", CRegExpManager::STR_REG_FLOAT);
+	QLineEdit* lineEditTransitionParamter = new CLineEditWithRegExpAndKeyboard("0", CRegExpManager::STR_REG_FLOAT);
 
 	m_treeWidget->setItemWidget(itemVelocity, 1, comboBoxTransitionMode);
 	m_treeWidget->setItemWidget(itemAcceleration, 1, lineEditTransitionParamter);
@@ -335,9 +337,9 @@ void CEditParameter::AddOverlapParameter(const QString& strText)
 	RefreshOverlapParameter(comboBoxOverlap->currentText(), rootItem);
 }
 
-CComboBoxWithTreeItem* CEditParameter::GetComboBoxPosition()
+CComboBoxWithTree_Old* CEditParameter::GetComboBoxPosition()
 {
-	CComboBoxWithTreeItem* comboBox = new CComboBoxWithTreeItem;
+	CComboBoxWithTree_Old* comboBox = new CComboBoxWithTree_Old;
 	CValue* value = CValue::GetInstance();
 
 	QStringList strList;
@@ -357,9 +359,9 @@ CComboBoxWithTreeItem* CEditParameter::GetComboBoxPosition()
 	return comboBox;
 }
 
-CComboBoxWithTreeItem* CEditParameter::GetComboBoxDynamic()
+CComboBoxWithTree_Old* CEditParameter::GetComboBoxDynamic()
 {
-	CComboBoxWithTreeItem* comboBox = new CComboBoxWithTreeItem;
+	CComboBoxWithTree_Old* comboBox = new CComboBoxWithTree_Old;
 
 	QStringList strList;
 	//m_interpreterAdapter->GetDynamicListFromEnclosingScope(strList, m_strScope);
@@ -378,16 +380,18 @@ CComboBoxWithTreeItem* CEditParameter::GetComboBoxDynamic()
 	return comboBox;
 }
 
-CComboBoxWithTreeItem* CEditParameter::GetComboBoxOverlap()
+CComboBoxWithTree_Old* CEditParameter::GetComboBoxOverlap()
 {
-	CComboBoxWithTreeItem* comboBox = new CComboBoxWithTreeItem;
+	CComboBoxWithTree_Old* comboBox = new CComboBoxWithTree_Old;
 
-	QStringList strList;
-	m_interpreterAdapter->GetOverlapListFromEnclosingScope(strList, m_strScope);
+	//QStringList strList;
+	TVariate::SET collection;
+	TVariateManager::GetInstance()->ReadCollection(collection, m_strScope, CSymbol::TYPE_OVERLAP);
+	//m_interpreterAdapter->GetOverlapListFromEnclosingScope(strList, m_strScope);
 
-	for each (auto var in strList)
+	for each (auto var in collection)
 	{
-		comboBox->addItem(var);
+		comboBox->addItem(var->GetName());
 	}
 
 	return comboBox;
@@ -402,10 +406,10 @@ void CEditParameter::RefreshPositionParameter(QString strName,QTreeWidgetItem* w
 		return;
 	}
 	/*添加当前item下的所有LineEidt控件*/
-	QList<CLineEditWithClickedSignal*> listLineEdit;
+	QList<QLineEdit*> listLineEdit;
 	for (int i = 0; i < widgetItem->childCount(); ++i)
 	{
-		listLineEdit.append(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(widgetItem->child(i), 1)));
+		listLineEdit.append(static_cast<QLineEdit*>(m_treeWidget->itemWidget(widgetItem->child(i), 1)));
 	}
 
 	CValue* value = CValue::GetInstance();
@@ -437,10 +441,10 @@ void CEditParameter::RefreshDynamicParameter(QString strName, QTreeWidgetItem* w
 		return;
 	}
 	/*添加当前item下的所有LineEidt控件*/
-	QList<CLineEditWithClickedSignal*> listLineEdit;
+	QList<QLineEdit*> listLineEdit;
 	for (int i = 0; i < widgetItem->childCount(); ++i)
 	{
-		listLineEdit.append(static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(widgetItem->child(i), 1)));
+		listLineEdit.append(static_cast<QLineEdit*>(m_treeWidget->itemWidget(widgetItem->child(i), 1)));
 	}
 
 	CValue* value = CValue::GetInstance();
@@ -469,13 +473,13 @@ void CEditParameter::RefreshOverlapParameter(QString strName, QTreeWidgetItem* w
 	}
 	/*添加当前item下的所有控件*/
 	QComboBox* comboBox = static_cast<QComboBox*>(m_treeWidget->itemWidget(widgetItem->child(0), 1));
-	CLineEditWithClickedSignal* lineEdit = static_cast<CLineEditWithClickedSignal*>(m_treeWidget->itemWidget(widgetItem->child(1), 1));
+	QLineEdit* lineEdit = static_cast<QLineEdit*>(m_treeWidget->itemWidget(widgetItem->child(1), 1));
 
 	CValue* value = CValue::GetInstance();
 
-	CValue::TYPE_OVERLAP overlap;
-	m_interpreterAdapter->GetOverlapValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), overlap);
-
+	
+	//m_interpreterAdapter->GetOverlapValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), overlap);
+	CValue::TYPE_OVERLAP overlap=static_cast<TOverlap*>(TVariateManager::GetInstance()->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))->GetValue();
 	///*若未找到*/
 	//if (iterValue == value->m_mapScopeOverlap.end())
 	//{

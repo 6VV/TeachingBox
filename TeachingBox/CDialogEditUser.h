@@ -2,10 +2,10 @@
 #define _TEACHING_BOX_C_DIALOG_EDIT_USER_H_
 
 #include "qwindowdefs.h"
-#include "CLineEditWithClickedSignal.h"
 #include "CButton.h"
 #include "User.h"
 #include "CScreenUserManager.h"
+#include "CLineEditWithRegExpAndKeyboard.h"
 
 class CDialogEditUser:public QDialog
 {
@@ -51,9 +51,9 @@ private:
 	QLabel* m_lbLanguage;
 	QLabel* m_lbIdentity;
 
-	CLineEditWithClickedSignal* m_lineEditName;
-	CLineEditWithClickedSignal* m_lineEditPassword;
-	CLineEditWithClickedSignal* m_lineEditConfirmPassword;
+	CLineEditWithRegExpAndKeyboard* m_lineEditName;
+	CLineEditWithRegExpAndKeyboard* m_lineEditPassword;
+	CLineEditWithRegExpAndKeyboard* m_lineEditConfirmPassword;
 	QComboBox* m_comboBoxAuthority;
 	QComboBox* m_comboBoxLanguage;
 	QCheckBox* m_checkBoxIdencity;

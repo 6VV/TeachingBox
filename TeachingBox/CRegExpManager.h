@@ -7,6 +7,9 @@ public:
 	CRegExpManager();
 	~CRegExpManager();
 
+	/*任意字符*/
+	static const char* STR_REG_ANY_CHAR;
+
 	/*非负整数（正整数 + 0）*/
 	static const char* STR_REG_NONEGATIVE_INT ;
 
@@ -54,6 +57,7 @@ public:
 
 	/*变量名，首字母为字母或下划线*/
 	static const char* STR_REG_STRING_NAME;
+
 protected:
 	
 private:

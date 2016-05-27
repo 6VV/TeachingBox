@@ -592,12 +592,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_CThreadInterpreterManager.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CLineEditWithClickedSignal.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CLineEditWithClickedSignal.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="CKeyBoardInterface.cpp">
       <Filter>Source Files\Widget</Filter>
     </ClCompile>
@@ -725,18 +719,6 @@
       <Filter>Source Files\MainScreen\ScreenService\Dialog</Filter>
     </ClCompile>
     <ClCompile Include="CVariableTreeItemManager.cpp">
-      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CComboBoxWithTreeItem.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CComboBoxWithTreeItem.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CComboBoxWithTreeItem.cpp">
-      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
-    </ClCompile>
-    <ClCompile Include="CLineEditWithClickedSignal.cpp">
       <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </ClCompile>
     <ClCompile Include="CFileManager.cpp">
@@ -871,9 +853,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_CSymbol.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="CTreeWidgetItemWithVariate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_TVariate.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -927,6 +906,51 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_TDynamic.cpp">
       <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TOverlap.cpp">
+      <Filter>Source Files\Variate</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TOverlap.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TOverlap.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CTreeWidgetItemWithVariate.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboBoxWithTree_Old.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CComboBoxWithTree_Old.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CComboBoxWithTree_Old.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CComboBoxWithTree.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CComboBoxWithTree.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CComboBoxWithTree.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CLineEditWithRegExpAndKeyboard.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CLineEditWithRegExpAndKeyboard.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CLineEditWithTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLineEditWithRegExpAndKeyboard.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="CWidgetWithTree.cpp">
+      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1091,12 +1115,6 @@
     </CustomBuild>
     <CustomBuild Include="CDialogEditUser.h">
       <Filter>Header Files\MainScreen\ScreenService\Dialog</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CLineEditWithClickedSignal.h">
-      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CComboBoxWithTreeItem.h">
-      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </CustomBuild>
     <CustomBuild Include="CCodeEditor.h">
       <Filter>Header Files\MainScreen\CScreenProgram</Filter>
@@ -1293,6 +1311,21 @@
     <CustomBuild Include="TDynamic.h">
       <Filter>Header Files\Variate</Filter>
     </CustomBuild>
+    <CustomBuild Include="TOverlap.h">
+      <Filter>Header Files\Variate</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CComboBoxWithTree_Old.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CComboBoxWithTree.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLineEditWithRegExpAndKeyboard.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CWidgetWithTree.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TeachingBox.rc" />
@@ -1306,6 +1339,9 @@
     </ClInclude>
     <ClInclude Include="TVariateFactory.h">
       <Filter>Header Files\Variate</Filter>
+    </ClInclude>
+    <ClInclude Include="CLineEditWithTree.h">
+      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

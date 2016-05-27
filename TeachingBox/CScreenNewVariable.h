@@ -5,9 +5,9 @@
 #include "CScreenMainParent.h"
 #include "QTableWidget"
 #include "CButton.h"
-#include "CLineEditWithClickedSignal.h"
 #include "CParameterManager.h"
 #include "CInterpreterAdapter.h"
+#include "CLineEditWithRegExpAndKeyboard.h"
 
 
 class CScreenNewVariable:public CScreenMainParent
@@ -60,9 +60,9 @@ private:
 	const char* CLASS_NAME = "CMacroNewParameter";
 	const int INIT_ROW_NUM = 3;
 
-	CLineEditWithClickedSignal* m_lineEidtName;	/*变量名*/
-	CLineEditWithClickedSignal* m_lineEditScope;		/*作用域*/
-	CLineEditWithClickedSignal* m_lineEditType;		/*类型*/
+	CLineEditWithRegExpAndKeyboard* m_lineEidtName;	/*变量名*/
+	CLineEditWithRegExpAndKeyboard* m_lineEditScope;		/*作用域*/
+	CLineEditWithRegExpAndKeyboard* m_lineEditType;		/*类型*/
 
 private:
 	QTreeWidget* m_treeWidget;	/*变量类型*/

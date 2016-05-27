@@ -1,8 +1,8 @@
 ﻿#include "stdafx.h"
 #include "TDynamic.h"
 #include "CTreeWidgetItemWithVariate.h"
-#include "CLineEditWithClickedSignal.h"
 #include "CRegExpManager.h"
+#include "CLineEditWithTree.h"
 
 
 
@@ -40,8 +40,8 @@ void TDynamic::WriteValueStream(QDataStream& dataStream)
 
 void TDynamic::SlotOnTextChanged()
 {
-	CLineEditWithClickedSignal* currentWidget = static_cast<CLineEditWithClickedSignal*>(sender());
-	QTreeWidgetItem* parentItem = currentWidget->GetTreeWidgetItem();
+	CLineEditWithTree* currentWidget = static_cast<CLineEditWithTree*>(sender());
+	QTreeWidgetItem* parentItem = currentWidget->GetParentItem();
 	QTreeWidget* treeWidget = currentWidget->GetTreeWidget();
 
 	m_value.m_Velocity = static_cast<QLineEdit*>(treeWidget->itemWidget(parentItem->child(0), 1))->text().toDouble();
@@ -75,12 +75,11 @@ void TDynamic::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* tree
 		QString::number(m_value.m_PostureAcceleration),
 		QString::number(m_value.m_PostureDeceleration) };
 
-	QVector<CLineEditWithClickedSignal*> lineEdits;
+	QVector<CLineEditWithTree*> lineEdits;
 	for (int i = 0; i < variateValues.size(); ++i)
 	{
-		CLineEditWithClickedSignal* lineEdit = new CLineEditWithClickedSignal(
+		CLineEditWithTree* lineEdit = new CLineEditWithTree(itemVariate,treeWidget,
 			variateValues.at(i), CRegExpManager::STR_REG_FLOAT);
-		lineEdit->SetTreeItem(itemVariate, treeWidget);
 
 		connect(lineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(SlotOnTextChanged()));
 

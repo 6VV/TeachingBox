@@ -90,7 +90,6 @@ private:
 	void GetAllFilesFromTree();
 
 	void UpdateTreeWidget();
-	void UpdateDataFromDatabase();
 
 	void KeyboardNewProject();	/*新建项目*/
 	void KeyboardNewProgram();	/*新建程序*/

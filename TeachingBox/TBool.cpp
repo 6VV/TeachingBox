@@ -1,7 +1,6 @@
 ﻿#include "stdafx.h"
 #include "TBool.h"
 #include "CTreeWidgetItemWithVariate.h"
-#include "CComboBoxWithTreeItem.h"
 
 const QString TBool::STR_VALUE_TRUE = "TRUE";
 const QString TBool::STR_VALUE_FALSE = "FALSE";
@@ -32,9 +31,18 @@ void TBool::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWid
 	CTreeWidgetItemWithVariate* VariateItem = new CTreeWidgetItemWithVariate(parentItem, this);
 	QTreeWidgetItem* item = new QTreeWidgetItem(VariateItem, QStringList("Value"));
 
-	CComboBoxWithTreeItem* comboValue = new CComboBoxWithTreeItem(item);
+	QComboBox* comboValue = new QComboBox;
 	comboValue->addItem(STR_VALUE_FALSE);
 	comboValue->addItem(STR_VALUE_TRUE);
+
+	if (m_value==true)
+	{
+		comboValue->setCurrentText(STR_VALUE_TRUE);
+	}
+	else
+	{
+		comboValue->setCurrentText(STR_VALUE_FALSE);
+	}
 
 	treeWidget->setItemWidget(item, 1, comboValue);
 

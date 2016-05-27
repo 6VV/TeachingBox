@@ -19,15 +19,16 @@
 #include "QComboBox"
 #include "QTreeWidget"
 #include "CTreeWidgetWithMonitor.h"
+#include "CWidgetWithTree.h"
 
-class CComboBoxWithTreeItem:public QComboBox
+class CComboBoxWithTree_Old:public QComboBox
 {
 	Q_OBJECT
 
 public:
-	CComboBoxWithTreeItem(QWidget* parent = 0);
-	CComboBoxWithTreeItem(QTreeWidgetItem* treeWidgetItem,QWidget* parent=0);
-	~CComboBoxWithTreeItem();
+	CComboBoxWithTree_Old(QWidget* parent = 0);
+	CComboBoxWithTree_Old(QTreeWidgetItem* treeWidgetItem,QWidget* parent=0);
+	~CComboBoxWithTree_Old();
 
 	void SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem);
 	void SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem, CTreeWidgetWithMonitor*);
@@ -39,10 +40,7 @@ signals:
 protected slots:
 	void SlotItemChanged();
 
-	
 private:
-	QTreeWidgetItem* m_treeWidgetItem;
-
+	QTreeWidgetItem* m_parentItem;
 };
-
 #endif
