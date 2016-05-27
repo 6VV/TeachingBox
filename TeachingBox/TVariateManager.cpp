@@ -16,17 +16,6 @@ TVariateManager::TVariateManager()
 	LoadInitDataFromDatabase();
 }
 
-void TVariateManager::InitScope()
-{
-	CScope* scopeSystem = new CScope(CScope::STR_SCOPE_SYSTEM);
-	m_scopeRoot.PushScope(scopeSystem);
-
-	CScope* scopeSynergic = new CScope(CScope::STR_SCOPE_SYNERGIC);
-	scopeSystem->PushScope(scopeSynergic);
-
-	scopeSynergic->PushScope(new CScope(CScope::STR_SCOPE_GLOBAL));
-}
-
 TVariateManager::~TVariateManager()
 {
 	ClearMap();
@@ -130,10 +119,15 @@ void TVariateManager::DeleteFromScope(const QString& scope, const QString& name)
 
 void TVariateManager::LoadInitDataFromDatabase()
 {
-	InitScope();
-	LoadScopeDataFromDatabase(CScope::STR_SCOPE_SYSTEM);
-	LoadScopeDataFromDatabase(CScope::STR_SCOPE_SYNERGIC);
-	LoadScopeDataFromDatabase(CScope::STR_SCOPE_GLOBAL);
+	CScope* scope = &m_scopeRoot;
+
+	for (auto var : CScope::SCOPE_ORI)
+	{
+		LoadScopeDataFromDatabase(var);
+		CScope* newScope = new CScope(var);
+		scope->PushScope(newScope);
+		scope = new CScope;
+	}
 }
 
 void TVariateManager::LoadScopeDataFromDatabase(const QString& scope)
@@ -218,13 +212,9 @@ void TVariateManager::PushProjectScopes(const QString& project, const QStringLis
 void TVariateManager::ClearScope()
 {
 	m_scopeRoot.ClearChildren();
-	//m_scopeRoot.ClearSelf();
-	//m_scopeRoot.FindScopeScrollDown(CScope::STR_SCOPE_SYNERGIC)->ClearSelf();
-	//m_scopeRoot.FindScopeScrollDown(CScope::STR_SCOPE_GLOBAL)->ClearSelf();
-	//m_scopeRoot.FindScopeScrollDown(CScope::STR_SCOPE_GLOBAL)->ClearChildren();
 }
 
-void TVariateManager::ReadCollection(TVariate::SET& collection, const QString& scope,
+void TVariateManager::GetCollection(TVariate::SET& collection, const QString& scope,
 	CSymbol::SymbolType type)
 {
 	auto& varMap = m_objectMap[scope];
@@ -234,7 +224,15 @@ void TVariateManager::ReadCollection(TVariate::SET& collection, const QString& s
 	}
 }
 
-void TVariateManager::ReadTreeItemCollection(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget,
+void TVariateManager::GetVariateItems(QTreeWidgetItem* const parentItem, QTreeWidget* const treeWidget, const QString& scope)
+{
+	for (auto type:CSymbol::Map_Type.keys())
+	{
+		GetVariateItemsByType(parentItem, treeWidget, scope, type);
+	}
+}
+
+void TVariateManager::GetVariateItemsByType(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget,
 	const QString scope, const CSymbol::SymbolType type)
 {
 	auto& varMap = m_objectMap[scope];

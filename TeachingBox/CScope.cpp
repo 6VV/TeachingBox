@@ -7,6 +7,8 @@ const QString CScope::STR_SCOPE_GLOBAL = "GLOBAL";		/*全局作用域*/
 const QString CScope::STR_SCOPE_PROJECT = "PROJECT";		/*项目作用域*/
 const QString CScope::STR_SCOPE_LOCAL = "LOCAL";		/*局部作用域*/
 
+const QStringList CScope::SCOPE_ORI = QStringList{ CScope::STR_SCOPE_SYSTEM, CScope::STR_SCOPE_SYNERGIC, CScope::STR_SCOPE_GLOBAL };
+
 QString& CScope::GetScopeName()
 {
 	return m_scopeName;

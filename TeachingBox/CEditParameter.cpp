@@ -344,7 +344,7 @@ CComboBoxWithTree_Old* CEditParameter::GetComboBoxPosition()
 
 	QStringList strList;
 	TVariate::SET collection;
-	TVariateManager::GetInstance()->ReadCollection(collection, m_strScope, CSymbol::TYPE_POSITION);
+	TVariateManager::GetInstance()->GetCollection(collection, m_strScope, CSymbol::TYPE_POSITION);
 	for (auto var:collection)
 	{
 		strList.push_back(var->GetName());
@@ -367,7 +367,7 @@ CComboBoxWithTree_Old* CEditParameter::GetComboBoxDynamic()
 	//m_interpreterAdapter->GetDynamicListFromEnclosingScope(strList, m_strScope);
 
 	TVariate::SET collection;
-	TVariateManager::GetInstance()->ReadCollection(collection, m_strScope, CSymbol::TYPE_DYNAMIC);
+	TVariateManager::GetInstance()->GetCollection(collection, m_strScope, CSymbol::TYPE_DYNAMIC);
 	for (auto var:collection)
 	{
 		strList.push_back(var->GetName());
@@ -386,7 +386,7 @@ CComboBoxWithTree_Old* CEditParameter::GetComboBoxOverlap()
 
 	//QStringList strList;
 	TVariate::SET collection;
-	TVariateManager::GetInstance()->ReadCollection(collection, m_strScope, CSymbol::TYPE_OVERLAP);
+	TVariateManager::GetInstance()->GetCollection(collection, m_strScope, CSymbol::TYPE_OVERLAP);
 	//m_interpreterAdapter->GetOverlapListFromEnclosingScope(strList, m_strScope);
 
 	for each (auto var in collection)

@@ -575,9 +575,13 @@ void CScreenVariables::InitTreeWidgetData()
 
 	CInterpreterAdapter::GetInstance();
 
-	InitTreeWidgetDataFromScope(itemSystem, CScope::STR_SCOPE_SYSTEM.toStdString());
-	InitTreeWidgetDataFromScope(itemSynergic, CScope::STR_SCOPE_SYNERGIC.toStdString());
-	InitTreeWidgetDataFromScope(itemGlobal, CScope::STR_SCOPE_GLOBAL.toStdString());
+	TVariateManager::GetInstance()->GetVariateItems(itemSystem, m_treeWidget, CScope::STR_SCOPE_SYSTEM);
+	TVariateManager::GetInstance()->GetVariateItems(itemSynergic, m_treeWidget, CScope::STR_SCOPE_SYNERGIC);
+	TVariateManager::GetInstance()->GetVariateItems(itemGlobal, m_treeWidget, CScope::STR_SCOPE_GLOBAL);
+
+	//InitTreeWidgetDataFromScope(itemSystem, CScope::STR_SCOPE_SYSTEM.toStdString());
+	//InitTreeWidgetDataFromScope(itemSynergic, CScope::STR_SCOPE_SYNERGIC.toStdString());
+	//InitTreeWidgetDataFromScope(itemGlobal, CScope::STR_SCOPE_GLOBAL.toStdString());
 
 	CScreenProject* projectManager = CScreenProject::GetInstance();
 
@@ -587,7 +591,9 @@ void CScreenVariables::InitTreeWidgetData()
 		QString strProject = projectManager->GetLoadedProjectNameInDatabase();
 		QTreeWidgetItem* itemProject = new QTreeWidgetItem(QStringList{ strProject, "", strProject });
 		m_treeWidget->addTopLevelItem(itemProject);
-		InitTreeWidgetDataFromScope(itemProject, strProject.toStdString());
+		TVariateManager::GetInstance()->GetVariateItems(itemProject, m_treeWidget, strProject);
+
+		//InitTreeWidgetDataFromScope(itemProject, strProject.toStdString());
 
 		/*获取文件节点*/
 		QList<QString> strListFileNames;
@@ -599,7 +605,9 @@ void CScreenVariables::InitTreeWidgetData()
 		{
 			QTreeWidgetItem* item = new QTreeWidgetItem(QStringList{ strListFileNames[i], "", strListFileScopes[i] });
 			m_treeWidget->addTopLevelItem(item);
-			InitTreeWidgetDataFromScope(item, strListFileScopes.at(i).toStdString());
+			TVariateManager::GetInstance()->GetVariateItems(item, m_treeWidget, strListFileScopes.at(i));
+
+			//InitTreeWidgetDataFromScope(item, strListFileScopes.at(i).toStdString());
 		}
 
 	}
@@ -609,36 +617,24 @@ void CScreenVariables::InitTreeWidgetData()
 	}
 }
 
-void CScreenVariables::InitTreeWidgetDataFromScope(QTreeWidgetItem* item, const std::string& strScopeName)
-{
-	CVariableTreeItemManager variableTreeItemManager;
-
-	//variableTreeItemManager.GetAllPositionTreeWidgetItemInExactScope(
-	//	QString::fromStdString(strScopeName), item, m_treeWidget);
-	//variableTreeItemManager.GetAllDynamicTreeWidgetItemInExactScope(
-	//	QString::fromStdString(strScopeName), item, m_treeWidget);
-
-
-	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
-		QString::fromStdString(strScopeName), CSymbol::TYPE_POSITION);
-	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
-		QString::fromStdString(strScopeName), CSymbol::TYPE_DYNAMIC);
-	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
-		QString::fromStdString(strScopeName), CSymbol::TYPE_OVERLAP);
-
-	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
-		QString::fromStdString(strScopeName), CSymbol::TYPE_INTERGER);
-	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
-		QString::fromStdString(strScopeName), CSymbol::TYPE_DOUBLE);
-	TVariateManager::GetInstance()->ReadTreeItemCollection(item,m_treeWidget,
-		QString::fromStdString(strScopeName), CSymbol::TYPE_BOOL);
-	TVariateManager::GetInstance()->ReadTreeItemCollection(item, m_treeWidget,
-		QString::fromStdString(strScopeName), CSymbol::TYPE_STRING);
-	/*variableTreeItemManager.GetAllDoubleTreeWidgetItemInExactScope(
-		QString::fromStdString(strScopeName), item, m_treeWidget);*/
-	//variableTreeItemManager.GetAllBoolTreeWidgetItemInExactScope(
-	//	QString::fromStdString(strScopeName), item, m_treeWidget);
-}
+//void CScreenVariables::InitTreeWidgetDataFromScope(QTreeWidgetItem* item, const std::string& strScopeName)
+//{
+//	TVariateManager::GetInstance()->GetTreeItemCollection(item, m_treeWidget,
+//		QString::fromStdString(strScopeName), CSymbol::TYPE_POSITION);
+//	TVariateManager::GetInstance()->GetTreeItemCollection(item, m_treeWidget,
+//		QString::fromStdString(strScopeName), CSymbol::TYPE_DYNAMIC);
+//	TVariateManager::GetInstance()->GetTreeItemCollection(item, m_treeWidget,
+//		QString::fromStdString(strScopeName), CSymbol::TYPE_OVERLAP);
+//
+//	TVariateManager::GetInstance()->GetTreeItemCollection(item, m_treeWidget,
+//		QString::fromStdString(strScopeName), CSymbol::TYPE_INTERGER);
+//	TVariateManager::GetInstance()->GetTreeItemCollection(item, m_treeWidget,
+//		QString::fromStdString(strScopeName), CSymbol::TYPE_DOUBLE);
+//	TVariateManager::GetInstance()->GetTreeItemCollection(item,m_treeWidget,
+//		QString::fromStdString(strScopeName), CSymbol::TYPE_BOOL);
+//	TVariateManager::GetInstance()->GetTreeItemCollection(item, m_treeWidget,
+//		QString::fromStdString(strScopeName), CSymbol::TYPE_STRING);
+//}
 
 void CScreenVariables::RefreshText()
 {

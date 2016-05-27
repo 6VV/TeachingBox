@@ -9,8 +9,6 @@
 #include "TString.h"
 #include "TPosition.h"
 #include "TDynamic.h"
-#include "CVariableSymbol.h"
-#include "CMethodSymbol.h"
 #include "CParameterManager.h"
 #include "TInteger.h"
 #include "TOverlap.h"

@@ -68,7 +68,7 @@ private:
 	void InitState();
 
 	void InitTreeWidgetData();	/*初始化树形控件*/
-	void InitTreeWidgetDataFromScope(QTreeWidgetItem* item,const std::string& strScopeName);
+	//void InitTreeWidgetDataFromScope(QTreeWidgetItem* item,const std::string& strScopeName);
 
 	void RefreshText();
 

@@ -17,6 +17,8 @@ public:
 	static const QString STR_SCOPE_PROJECT;		/*项目作用域*/
 	static const QString STR_SCOPE_LOCAL;		/*局部作用域*/
 
+	static const QStringList SCOPE_ORI;	/*初始作用域*/
+
 	struct ScopeSymbol 
 	{
 		CScope* scope=nullptr;

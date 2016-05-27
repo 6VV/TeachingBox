@@ -43,10 +43,9 @@ public:
 
 	void LoadProjectDataFromDatabase(const QString& project, const QStringList& programs);
 
-	void ReadCollection(TVariate::SET& collection, const QString& scope,
+	void GetCollection(TVariate::SET& desCollection, const QString& scope,
 		CSymbol::SymbolType type);
-	void ReadTreeItemCollection(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget,
-		const QString scope, const CSymbol::SymbolType type);
+	void GetVariateItems(QTreeWidgetItem* const parentItem, QTreeWidget* const treeWidget, const QString& scope);
 
 	void Update(const QString& scope, const QString& name, TVariate& newVariate);
 
@@ -64,7 +63,8 @@ private:
 	void DeleteFromDatabase(const QString& scope, const QString& name);
 	void DeleteFromScope(const QString& scope, const QString& name);
 
-	void InitScope();
+	void GetVariateItemsByType(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget,
+		const QString scope, const CSymbol::SymbolType type);
 
 	void LoadInitDataFromDatabase();
 	void LoadScopeDataFromDatabase(const QString& scope);

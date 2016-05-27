@@ -35,11 +35,12 @@ public:
 	CSymbol(const QString& scope, const QString& name, const SymbolCategory category, const SymbolType type);
 	CSymbol(QDataStream& dataStream);
 	CSymbol& operator=(const CSymbol& symbol);
-	//CSymbol(){};
+
 	SymbolType GetType() const;
 	SymbolCategory GetCategory() const;
 	QString GetName() const;
 	QString GetScope() const;
+
 	void ReadDataStream(QDataStream& dataStream);
 
 protected:
