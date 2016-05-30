@@ -1,6 +1,5 @@
 ﻿#include "stdafx.h"
 #include "CTreeWidgetWithMonitor.h"
-#include "CInterpreterAdapter.h"
 #include "CParameterManager.h"
 #include "TVariateManager.h"
 #include "TDouble.h"
@@ -10,6 +9,7 @@
 #include "TDynamic.h"
 #include "TVariate.h"
 #include "TOverlap.h"
+#include "CValue.h"
 
 
 
@@ -32,7 +32,6 @@ void CTreeWidgetWithMonitor::SlotItemTextChanged(QTreeWidgetItem* item)
 	QString varType = itemParent->text(1);
 	QString varScope = itemParent->text(2);
 
-	CInterpreterAdapter* interpreterAdapter = CInterpreterAdapter::GetInstance();
 	CValue* valueManager = CValue::GetInstance();
 
 	///*若为整数*/

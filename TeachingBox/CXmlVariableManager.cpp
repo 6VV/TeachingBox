@@ -1,7 +1,8 @@
 ﻿#include "stdafx.h"
 #include "CXmlVariableManager.h"
 #include "QFile"
-#include "CInterpreterAdapter.h"
+#include "CValue.h"
+#include "Init.h"
 
 CXmlVariableManager::CXmlVariableManager()
 {
@@ -121,7 +122,6 @@ void CXmlVariableManager::WriteZoneVariable(QXmlStreamWriter& writer)
 	writer.writeStartElement("Zone");
 
 	{
-		CInterpreterAdapter* interpreter = CInterpreterAdapter::GetInstance();
 		CValue::TYPE_MAP_OVERLAP map;
 		//CDatabaseManager::GetInstance()->SelectOverlapValue(m_projectName, m_programName, map);
 

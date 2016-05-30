@@ -248,7 +248,8 @@ void CScreenProject::DeleteProject()
 	/*清除数据库及内存数据*/
     for  (auto var : strListScopes)
 	{
-		CInterpreterAdapter::GetInstance()->DeleteDatabaseData(var);
+		//CInterpreterAdapter::GetInstance()->DeleteDatabaseData(var);
+		TVariateManager::GetInstance()->DeleteScope(var);
 	}
 
 	/*更新树形控件*/
@@ -544,10 +545,15 @@ bool CScreenProject::LoadProject(QTreeWidgetItem* item)
 
 	/*获取项目下所有文件名*/
 	GetProjectFiles(PROJECT_FILE_PATH + "/" + m_strProjectLoaded, m_strListFileNames);
-
+	QStringList scopeNames;
+	for (auto fileName:m_strListFileNames)
+	{
+		scopeNames.append(m_strProjectLoaded + "." + fileName);
+	}
 	/*从数据库中更新项目数据*/
 	m_isLoadProject = true;
-	TVariateManager::GetInstance()->LoadProjectDataFromDatabase(m_strProjectLoaded,m_strListFileNames);
+	TVariateManager::GetInstance()->LoadProjectDataFromDatabase(m_strProjectLoaded, scopeNames);
+
 	//UpdateDataFromDatabase();
 	QString currentFileName;
 	/*加载项目文本*/
@@ -555,11 +561,11 @@ bool CScreenProject::LoadProject(QTreeWidgetItem* item)
 	{
 		CFileManager fileManager;
 
-        for (auto fileName : m_strListFileNames)
+		for (auto strScope : scopeNames)
 		{
-			currentFileName = fileName;
+			currentFileName = strScope;
 			QString strText;
-			QString strScope = m_strProjectLoaded + "." + fileName;
+			//QString strScope = m_strProjectLoaded + "." + fileName;
 			fileManager.GetFileText(strText, m_mapAllFiles[m_strProjectLoaded][strScope]);
 			m_interpreterManager->AddProgramNode(strScope.toStdString(), strText.toStdString());
 		}

@@ -41,6 +41,8 @@ public:
 	QString GetName() const;
 	QString GetScope() const;
 
+	void SetName(const QString& name);
+
 	void ReadDataStream(QDataStream& dataStream);
 
 protected:

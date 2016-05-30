@@ -47,6 +47,11 @@ QString CSymbol::GetScope() const
 	return m_scope;
 }
 
+void CSymbol::SetName(const QString& name)
+{
+	m_name = name;
+}
+
 void CSymbol::ReadDataStream(QDataStream& dataStream)
 {
 	dataStream << m_scope;

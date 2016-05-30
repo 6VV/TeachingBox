@@ -34,20 +34,26 @@ public:
 	void ClearProjectData();
 
 	void Delete(const QString& scope, const QString& name);
+	void DeleteScope(const QString& scope);
 
 	CScope& GetRootScope();
 	TVariate* GetVariate(const QString& scope, const QString& name);
 	TVariate* GetVariateSrollUp(const QString& scope, const QString& name);
 
+	bool IsExistVariate(const QString& scope, const QString& name);
 	bool IsExistVariateScrollUp(const QString& scope, const QString& name);
 
 	void LoadProjectDataFromDatabase(const QString& project, const QStringList& programs);
 
 	void GetCollection(TVariate::SET& desCollection, const QString& scope,
 		CSymbol::SymbolType type);
+	void GetCollectionScollUp(TVariate::SET& desCollection, const QString& scope,
+		CSymbol::SymbolType type);
+
 	void GetVariateItems(QTreeWidgetItem* const parentItem, QTreeWidget* const treeWidget, const QString& scope);
 
 	void Update(const QString& scope, const QString& name, TVariate& newVariate);
+	void UpdateVariateName(const QString& scope, const QString& oldName, const QString& newName);
 
 private:
 	void AddInMemory(TVariate* const object);

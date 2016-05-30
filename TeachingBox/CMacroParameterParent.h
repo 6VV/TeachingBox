@@ -17,7 +17,6 @@
 *************************************************/
 
 #include "CScreenMainParent.h"
-#include "CInterpreterAdapter.h"
 
 class CMacroParameterParent:public CScreenMainParent
 {
@@ -61,6 +60,8 @@ private:
 	void Init();
 	void InitLayout();
 	void InitSignalSlot();
+
+	bool IsCorrectName(std::string& strName);	/*是否是正确的变量名*/
 
 	/*自定义保护变量*/
 protected:

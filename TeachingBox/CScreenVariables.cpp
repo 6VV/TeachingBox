@@ -76,7 +76,8 @@ void CScreenVariables::KeyboardEdit()
 	currentItem->setText(0, strNewName);
 
 	/*更新数据库、内存*/
-	CInterpreterAdapter::GetInstance()->UpdateVariableName(strOldName, strNewName, strScope, strType);
+	//CInterpreterAdapter::GetInstance()->UpdateVariableName(strOldName, strNewName, strScope, strType);
+	TVariateManager::GetInstance()->UpdateVariateName(strScope, strOldName, strNewName);
 
 	/*更新文件文本*/
 	CFileManager fileManager;
@@ -89,7 +90,7 @@ void CScreenVariables::KeyboardEdit()
         for(auto projectName : m_screenProject->GetAllFiles().keys())
 		{
 			/*若存在同名项目变量*/
-			if (m_databaseManager->IsExistVariable(projectName, strOldName))
+			if (TVariateManager::GetInstance()->IsExistVariate(projectName, strOldName))
 			{
 				continue;
 			}
@@ -98,7 +99,7 @@ void CScreenVariables::KeyboardEdit()
                 for (auto fileName : m_screenProject->GetAllFiles()[projectName].keys())
 				{
 					/*若存在同名程序变量*/
-					if (m_databaseManager->IsExistVariable(fileName, strOldName))
+					if (TVariateManager::GetInstance()->IsExistVariate(fileName, strOldName))
 					{
 						continue;
 					}
@@ -573,8 +574,6 @@ void CScreenVariables::InitTreeWidgetData()
 	m_treeWidget->addTopLevelItem(itemSynergic);
 	m_treeWidget->addTopLevelItem(itemGlobal);
 
-	CInterpreterAdapter::GetInstance();
-
 	TVariateManager::GetInstance()->GetVariateItems(itemSystem, m_treeWidget, CScope::STR_SCOPE_SYSTEM);
 	TVariateManager::GetInstance()->GetVariateItems(itemSynergic, m_treeWidget, CScope::STR_SCOPE_SYNERGIC);
 	TVariateManager::GetInstance()->GetVariateItems(itemGlobal, m_treeWidget, CScope::STR_SCOPE_GLOBAL);
@@ -839,7 +838,7 @@ CScreenVariables::VariableUsingState CScreenVariables::CheckVariableStateInFile(
 	}
 
 	/*若不存在同名程序变量*/
-	if (!m_databaseManager->IsExistVariable(strScope, strName))
+	if (!TVariateManager::GetInstance()->IsExistVariate(strScope, strName))
 	{
 		CFileManager fileManager;
 		/*若正在被该项目内的程序所使用*/
@@ -891,7 +890,7 @@ CScreenVariables::VariableUsingState CScreenVariables::CheckVariableStateInGloba
 		}
 		/*若为其它项目*/
 		/*若存在同名项目变量*/
-		if (m_databaseManager->IsExistVariable(projectName, strName))
+		if (TVariateManager::GetInstance()->IsExistVariate(projectName, strName))
 		{
 			continue;
 		}
@@ -900,7 +899,7 @@ CScreenVariables::VariableUsingState CScreenVariables::CheckVariableStateInGloba
             for (auto fileName : m_screenProject->GetAllFiles()[projectName].keys())
 			{
 				/*若存在同名程序变量*/
-				if (m_databaseManager->IsExistVariable(fileName, strName))
+				if (TVariateManager::GetInstance()->IsExistVariate(fileName, strName))
 				{
 					continue;
 				}

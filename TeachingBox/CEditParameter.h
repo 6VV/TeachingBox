@@ -9,7 +9,6 @@
 #include "QList"
 #include "CRegExpManager.h"
 #include "CComboBoxWithTree_Old.h"
-#include "CInterpreterAdapter.h"
 #include "MacroInterface.h"
 
 
@@ -78,7 +77,6 @@ private:
 private:
 	QString m_strMacroName;
 	QStringList m_strListParameterName;
-	CInterpreterAdapter* m_interpreterAdapter;
 	QString m_strScope;		/*当前文件作用域*/
 
 	MacroInterface* m_macroInterface;

@@ -6,7 +6,6 @@
 #include "QTableWidget"
 #include "CButton.h"
 #include "CParameterManager.h"
-#include "CInterpreterAdapter.h"
 #include "CLineEditWithRegExpAndKeyboard.h"
 
 

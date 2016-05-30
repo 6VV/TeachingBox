@@ -111,18 +111,25 @@ void CTextFormat::FormatLineText(QString& strOldText)
 		/*若为>，<，两边加空格*/
 		case '>':case '<':
 		{
-			switch (strOldText.at(i + 1).toLatin1())
+			if (strOldText.size()<=i+1)
 			{
-				/*若为>=，<=，则两边加空格*/
-			case '=':
+				strNewText.append(' ').append(strOldText.at(i));
+			}
+			else
 			{
-				strNewText.append(' ').append(strOldText.at(i)).append(strOldText.at(i + 1)).append(' ');
-				++i;
-			}break;
-			default:
-			{
-				strNewText.append(' ').append(strOldText.at(i)).append(' ');
-			}break;
+				switch (strOldText.at(i + 1).toLatin1())
+				{
+					/*若为>=，<=，则两边加空格*/
+				case '=':
+				{
+					strNewText.append(' ').append(strOldText.at(i)).append(strOldText.at(i + 1)).append(' ');
+					++i;
+				}break;
+				default:
+				{
+					strNewText.append(' ').append(strOldText.at(i)).append(' ');
+				}break;
+				}
 			}
 
 		}break;

@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "CMacroParameterParent.h"
+#include "CValue.h"
 
 CMacroParameterParent::CMacroParameterParent(QWidget* parent/*=0*/)
 {
@@ -76,10 +77,34 @@ bool CMacroParameterParent::IsCorrectName(QString& strName)
 		QMessageBox::warning(this, "", QCoreApplication::translate(CLASS_NAME, "The length is too long"));
 		return false;
 	}
-	if (!CInterpreterAdapter::GetInstance()->IsCorrectName(strName.toStdString()))
+	if (!IsCorrectName(strName.toStdString()))
 	{
 		QMessageBox::warning(this, "", QCoreApplication::translate(CLASS_NAME, "Wrong name"));
 		return false;
+	}
+	return true;
+}
+
+bool CMacroParameterParent::IsCorrectName(std::string& strName)
+{
+	/*若长度为0或过大*/
+	if (strName.size() == 0 || strName.size() > CValue::GetInstance()->MAX_STRING_LENGTH)
+	{
+		return false;
+	}
+	char c = strName.at(0);
+	/*若第一个不是字母*/
+	if (!((c >= 'a'&& c <= 'z') || (c >= 'A' && c <= 'Z')))
+	{
+		return false;
+	}
+	for each (auto var in strName)
+	{
+		/*若不是字母或数字*/
+		if (!((var >= 'a'&& var <= 'z') || (var >= 'A' && var <= 'Z') || (var >= '0' && var <= '9')))
+		{
+			return false;
+		}
 	}
 	return true;
 }
@@ -111,7 +136,7 @@ void CMacroParameterParent::InitLayout()
 
 	m_btnList.append(m_btnConfirm);
 	m_btnList.append(m_btnEdit);
-	m_btnList.append(btnNull1);	
+	m_btnList.append(btnNull1);
 	m_btnList.append(btnNull2);
 	m_btnList.append(btnNull3);
 	m_btnList.append(btnNull4);
@@ -128,8 +153,8 @@ void CMacroParameterParent::InitSignalSlot()
 	connect(m_btnEdit, SIGNAL(clicked()), this, SLOT(SlotOnButtonEditClicked()));
 }
 
-int CMacroParameterParent::m_operType=0;
+int CMacroParameterParent::m_operType = 0;
 
-QString CMacroParameterParent::m_newParameterName="";
+QString CMacroParameterParent::m_newParameterName = "";
 
-QString CMacroParameterParent::m_oldParameterName="";
+QString CMacroParameterParent::m_oldParameterName = "";

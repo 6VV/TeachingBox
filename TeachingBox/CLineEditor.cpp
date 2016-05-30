@@ -155,22 +155,35 @@ void CLineEditor::InitLabels(const QString& strText)
 		}break;
 		case '>':case '<':
 		{
-			switch (strText.at(i + 1).toLatin1())
-			{
-			case '=':
+			if (strText.size()>i+1 && strText.at(i + 1).toLatin1()=='=')
 			{
 				QString str;
 				str.append(strText.at(i)).append(strText.at(i + 1));
 				CLabelWithSignal* label = new CLabelWithSignal(str);
 				m_vectorLabels.append(label);
 				++i;
-			}break;
-			default:
+			}
+			else
 			{
 				CLabelWithSignal* label = new CLabelWithSignal(strText.at(i));
 				m_vectorLabels.append(label);
-			}break;
 			}
+			/*switch (strText.at(i + 1).toLatin1())
+			{
+			case '=':
+			{
+			QString str;
+			str.append(strText.at(i)).append(strText.at(i + 1));
+			CLabelWithSignal* label = new CLabelWithSignal(str);
+			m_vectorLabels.append(label);
+			++i;
+			}break;
+			default:
+			{
+			CLabelWithSignal* label = new CLabelWithSignal(strText.at(i));
+			m_vectorLabels.append(label);
+			}break;
+			}*/
 		}break;
 		case '=':
 		{

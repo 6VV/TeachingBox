@@ -1,6 +1,6 @@
+MOVL p1, d345, ov1
 i1 = 1 + 2
-f1 = 1.1 + 2.2
-IF b1
-i1=2+1
+IF i1 > 1
+    i1 = 6
 ENDIF
 EOF

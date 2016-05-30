@@ -505,9 +505,6 @@
     <ClCompile Include="CAstTreeNode.cpp">
       <Filter>Source Files\Interpreter</Filter>
     </ClCompile>
-    <ClCompile Include="CInterpreterAdapter.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
     <ClCompile Include="CInterpreterManager.cpp">
       <Filter>Source Files\Interpreter</Filter>
     </ClCompile>
@@ -1213,9 +1210,6 @@
       <Filter>Header Files\Interpreter</Filter>
     </CustomBuild>
     <CustomBuild Include="CInterpreterManager.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CInterpreterAdapter.h">
       <Filter>Header Files\Interpreter</Filter>
     </CustomBuild>
     <CustomBuild Include="CParseGrammar.h">

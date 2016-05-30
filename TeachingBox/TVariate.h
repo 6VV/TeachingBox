@@ -27,6 +27,8 @@ public:
 	QString GetName() const;
 	CSymbol::SymbolType GetType() const;
 
+	void SetName(const QString& name);
+
 	virtual void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget)=0;
 	void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget, 
 		const CSymbol::SymbolType type);

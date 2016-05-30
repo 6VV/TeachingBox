@@ -38,7 +38,6 @@ void CTeachingBox::Init()
 	SlotChangeToScreenSetting();
 	SlotOnButtonModelClicked();
 
-	CInterpreterAdapter::GetInstance();	/*初始化部分参数*/
 	CTcpManager::GetInstance();	/*初始化net，用于在程序启动时建立连接*/
 }
 

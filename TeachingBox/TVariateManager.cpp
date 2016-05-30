@@ -93,6 +93,12 @@ void TVariateManager::Delete(const QString& scope, const QString& name)
 }
 
 
+void TVariateManager::DeleteScope(const QString& scope)
+{
+	ClearProjectData();
+	CDatabaseManager::GetInstance()->DeleteScope(scope);
+}
+
 CScope& TVariateManager::GetRootScope()
 {
 	return m_scopeRoot;
@@ -123,10 +129,11 @@ void TVariateManager::LoadInitDataFromDatabase()
 
 	for (auto var : CScope::SCOPE_ORI)
 	{
-		LoadScopeDataFromDatabase(var);
 		CScope* newScope = new CScope(var);
 		scope->PushScope(newScope);
-		scope = new CScope;
+		scope = newScope;
+
+		LoadScopeDataFromDatabase(var);
 	}
 }
 
@@ -143,6 +150,7 @@ void TVariateManager::LoadScopeDataFromDatabase(const QString& scope)
 	{
 		TVariate* v = TVariateFactory::CreateVariate(var);
 		AddInMemory(v);
+		AddInScope(v);
 	}
 }
 
@@ -176,6 +184,11 @@ TVariate* TVariateManager::GetVariateSrollUp(const QString& scope, const QString
 	return GetVariate(symbol->GetScope(), symbol->GetName());
 }
 
+bool TVariateManager::IsExistVariate(const QString& scope, const QString& name)
+{
+	return GetVariate(scope, name) != nullptr;
+}
+
 bool TVariateManager::IsExistVariateScrollUp(const QString& scope, const QString& name)
 {
 	if (GetVariateSrollUp(scope, name))
@@ -201,7 +214,8 @@ void TVariateManager::LoadProjectDataFromDatabase(const QString& project, const 
 void TVariateManager::PushProjectScopes(const QString& project, const QStringList& programs)
 {
 	CScope* projectScope = new CScope(project);
-	m_scopeRoot.FindScopeScrollDown(CScope::STR_SCOPE_GLOBAL)->PushScope(projectScope);
+	CScope* scope = m_scopeRoot.FindScopeScrollDown(CScope::STR_SCOPE_GLOBAL);
+	scope->PushScope(projectScope);
 
 	for (auto program : programs)
 	{
@@ -221,6 +235,25 @@ void TVariateManager::GetCollection(TVariate::SET& collection, const QString& sc
 	for (auto var : varMap)
 	{
 		var->ReadCollection(collection, type);
+	}
+}
+
+void TVariateManager::GetCollectionScollUp(TVariate::SET& desCollection, const QString& scope, CSymbol::SymbolType type)
+{
+	CScope* currentScope = m_scopeRoot.FindScopeScrollDown(scope);
+
+	while (currentScope != nullptr)
+	{
+		auto& varMap = m_objectMap[currentScope->GetScopeName()];
+		for (auto var : varMap)
+		{
+			if (desCollection.find(var)==desCollection.end())
+			{
+				var->ReadCollection(desCollection, type);
+			}
+		}
+
+		currentScope = currentScope->GetEnclosingScope();
 	}
 }
 
@@ -249,6 +282,13 @@ void TVariateManager::Update(const QString& scope, const QString& name, TVariate
 	UpdateInScope(scope, name, newVariate);
 }
 
+
+void TVariateManager::UpdateVariateName(const QString& scope, const QString& oldName, const QString& newName)
+{
+	TVariate* variate = GetVariate(scope, oldName);
+	variate->SetName(newName);
+	Update(scope, oldName, *variate);
+}
 
 void TVariateManager::UpdateInMap(const QString& scope, const QString& name, TVariate& newVariate)
 {

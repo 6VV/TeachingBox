@@ -21,3 +21,4 @@ RCC_DIR += ./GeneratedFiles
 include(TeachingBox.pri)
 TRANSLATIONS += teachingbox_zh.ts
 win32:RC_FILE = TeachingBox.rc
+LIBS += -lqscintilla2
