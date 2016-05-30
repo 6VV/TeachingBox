@@ -101,18 +101,6 @@
     <Filter Include="Grammar">
       <UniqueIdentifier>{f4ffae0f-aeae-4ebb-ba46-a2be3ab45dec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Test">
-      <UniqueIdentifier>{75b0f488-1118-4bfa-881a-9d8afbdae43d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Test">
-      <UniqueIdentifier>{9d7e3557-0c8e-4e7c-86d1-11b201e69d12}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Macro">
-      <UniqueIdentifier>{a9978523-643c-444c-92fc-c067853ac507}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Macro">
-      <UniqueIdentifier>{2d61c745-c9a9-4de6-94aa-3d05d183b465}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Interpreter">
       <UniqueIdentifier>{1e640b85-b0b9-428c-b706-ddd906483fc5}</UniqueIdentifier>
     </Filter>
@@ -130,12 +118,6 @@
     </Filter>
     <Filter Include="Source Files\User">
       <UniqueIdentifier>{4271b992-6886-4598-a870-9f805e4602b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\MacroParameter">
-      <UniqueIdentifier>{373dd637-4a9b-4ce4-a6a7-4d1f38f426a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\MacroParameter">
-      <UniqueIdentifier>{7a460b3a-b7c9-4b72-9042-19889ff72093}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\MainScreen\ScreenService">
       <UniqueIdentifier>{f53cf814-bf3a-48c3-8b23-01ddf148f7a8}</UniqueIdentifier>
@@ -412,15 +394,6 @@
     <ClCompile Include="CModeMacroFromXml.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenEditMacro.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CScreenEditMacro.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CWidgetTest.cpp">
-      <Filter>Source Files\Test</Filter>
-    </ClCompile>
     <ClCompile Include="CGrammarManagerFactory.cpp">
       <Filter>Source Files\Function</Filter>
     </ClCompile>
@@ -430,68 +403,14 @@
     <ClCompile Include="CGrammarManagerFromXml.cpp">
       <Filter>Source Files\Function</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenEditMacroParameter.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CScreenEditMacroParameter.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterParent.cpp">
-      <Filter>Source Files\Macro</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterParent.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterParent.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CWidgetTest.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CWidgetTest.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterPosition.cpp">
-      <Filter>Source Files\Macro</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterPosition.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterPosition.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CTestMessagebox.cpp">
-      <Filter>Source Files\Test</Filter>
-    </ClCompile>
     <ClCompile Include="CDatabaseManager.cpp">
       <Filter>Source Files\DataPersistence</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterVelocity.cpp">
-      <Filter>Source Files\Macro</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterVelocity.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterVelocity.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterZone.cpp">
-      <Filter>Source Files\Macro</Filter>
     </ClCompile>
     <ClCompile Include="CXmlVariable.cpp">
       <Filter>Source Files\DataPersistence</Filter>
     </ClCompile>
     <ClCompile Include="CXmlVariableManager.cpp">
       <Filter>Source Files\DataPersistence</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterZone.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterZone.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterLabel.cpp">
-      <Filter>Source Files\Macro</Filter>
     </ClCompile>
     <ClCompile Include="CLexer.cpp">
       <Filter>Source Files\Interpreter</Filter>
@@ -520,15 +439,6 @@
     <ClCompile Include="CWidgetStack.cpp">
       <Filter>Source Files\Function</Filter>
     </ClCompile>
-    <ClCompile Include="CMacroParameterFloat.cpp">
-      <Filter>Source Files\Macro</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterFloat.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterFloat.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="CParseGrammar.cpp">
       <Filter>Source Files\Interpreter</Filter>
     </ClCompile>
@@ -540,33 +450,6 @@
     </ClCompile>
     <ClCompile Include="CExceptionInterpreter.cpp">
       <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterInt.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterInt.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterBool.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterBool.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CMacroParameterString.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterString.cpp">
-      <Filter>Source Files\Macro</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterBool.cpp">
-      <Filter>Source Files\Macro</Filter>
-    </ClCompile>
-    <ClCompile Include="CMacroParameterInt.cpp">
-      <Filter>Source Files\Macro</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CMacroParameterString.cpp">
-      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
       <Filter>Source Files\User</Filter>
@@ -592,23 +475,11 @@
     <ClCompile Include="CKeyBoardInterface.cpp">
       <Filter>Source Files\Widget</Filter>
     </ClCompile>
-    <ClCompile Include="CEditParameter.cpp">
-      <Filter>Source Files\MacroParameter</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_CEditParameter.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_CEditParameter.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CTestWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CTestWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CTestWidget.cpp">
-      <Filter>Source Files\Test</Filter>
     </ClCompile>
     <ClCompile Include="CRegExpManager.cpp">
       <Filter>Source Files\Others</Filter>
@@ -764,12 +635,6 @@
       <Filter>Source Files\MainScreen\ScreenVariables</Filter>
     </ClCompile>
     <ClCompile Include="CScreenNewMacro.cpp">
-      <Filter>Source Files\MainScreen\ScreenMacro</Filter>
-    </ClCompile>
-    <ClCompile Include="CScreenEditMacroParameter.cpp">
-      <Filter>Source Files\MainScreen\ScreenMacro</Filter>
-    </ClCompile>
-    <ClCompile Include="CScreenEditMacro.cpp">
       <Filter>Source Files\MainScreen\ScreenMacro</Filter>
     </ClCompile>
     <ClCompile Include="CScreenPragram.cpp">
@@ -937,6 +802,9 @@
     <ClCompile Include="CWidgetWithTree.cpp">
       <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </ClCompile>
+    <ClCompile Include="CEditParameter.cpp">
+      <Filter>Source Files\MainScreen\ScreenMacro</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -1029,44 +897,11 @@
     <CustomBuild Include="CModelMacro.h">
       <Filter>Header Files\Model</Filter>
     </CustomBuild>
-    <CustomBuild Include="CMacroParameterParent.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CWidgetTest.h">
-      <Filter>Header Files\Test</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterPosition.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterVelocity.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterZone.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterFloat.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterInt.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterBool.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterString.h">
-      <Filter>Header Files\Macro</Filter>
-    </CustomBuild>
     <CustomBuild Include="CInterpreter.h">
       <Filter>Header Files\Interpreter</Filter>
     </CustomBuild>
     <CustomBuild Include="CThreadInterpreterManager.h">
       <Filter>Header Files\Function</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CEditParameter.h">
-      <Filter>Header Files\MacroParameter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CTestWidget.h">
-      <Filter>Header Files\Test</Filter>
     </CustomBuild>
     <CustomBuild Include="CWarningManager.h">
       <Filter>Header Files\Function</Filter>
@@ -1117,12 +952,6 @@
       <Filter>Header Files\MainScreen\CScreenProgram</Filter>
     </CustomBuild>
     <CustomBuild Include="CScreenNewMacro.h">
-      <Filter>Header Files\MainScreen\ScreenMacro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CScreenEditMacro.h">
-      <Filter>Header Files\MainScreen\ScreenMacro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CScreenEditMacroParameter.h">
       <Filter>Header Files\MainScreen\ScreenMacro</Filter>
     </CustomBuild>
     <CustomBuild Include="CScreenPragram.h">
@@ -1181,12 +1010,6 @@
     </CustomBuild>
     <CustomBuild Include="CWidgetStack.h">
       <Filter>Header Files\Function</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CTestMessagebox.h">
-      <Filter>Header Files\Test</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMacroParameterLabel.h">
-      <Filter>Header Files\Macro</Filter>
     </CustomBuild>
     <CustomBuild Include="CExceptionInterpreter.h">
       <Filter>Header Files\Interpreter</Filter>
@@ -1301,6 +1124,9 @@
     </CustomBuild>
     <CustomBuild Include="CWidgetWithTree.h">
       <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CEditParameter.h">
+      <Filter>Header Files\MainScreen\ScreenMacro</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

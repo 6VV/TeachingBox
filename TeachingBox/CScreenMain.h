@@ -8,8 +8,6 @@
 #include "CScreenSetting.h"
 #include "CSingleTon.h"
 #include "CScreenNewMacro.h"
-#include "CScreenEditMacro.h"
-#include "CScreenEditMacroParameter.h"
 #include "CScreenNewVariable.h"
 #include "CEditParameter.h"
 #include "CScreenService.h"
@@ -46,12 +44,11 @@ public:
 	void ChangeToScreenService();	/*切换到Setting视图*/
 	void ChangeToScreenNewMacro();	/*切换到NewMacro视图*/
 	void ChangeToScreenEditMacro();	/*切换到EditMacro视图*/
-	void ChangeToScreenEditParameter();	/*切换到EditParameter视图*/
 	void ChangeToScreenNewVariable();	/*切换到NewParameter视图*/
 
 	void ChangeToScreenVariables();	/*切换到变量视图*/
 
-	void RemoveScreenEditParameter();	/*移除EditParameter视图，并释放内存*/
+	//void RemoveScreenEditParameter();	/*移除EditParameter视图，并释放内存*/
 	void RemoveScreenNewParameter();	/*移除NewParameter视图，并释放内存*/
 /*私有函数*/
 private:
@@ -72,7 +69,6 @@ private:
 
 	/*此部分可优先销毁*/
 	CEditParameter* m_screenEditMacro = NULL;
-	CScreenEditMacroParameter* m_screenEditParatmter = NULL;
 	CScreenNewVariable* m_screenNewParameter=NULL;
 
 	CScreenVariables* m_screenVariables = NULL;

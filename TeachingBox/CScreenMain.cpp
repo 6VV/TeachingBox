@@ -177,22 +177,6 @@ void CScreenMain::ChangeToScreenEditMacro()
 
 }
 
-void CScreenMain::ChangeToScreenEditParameter()
-{
-	if (m_isPush)
-	{
-		CWidgetStack::GetInstance()->PushWidget(m_stackedWidget->currentWidget());
-	}
-
-	/*切换窗口*/
-	if (m_screenEditParatmter == NULL)
-	{
-		m_screenEditParatmter = CScreenEditMacroParameter::GetInstance();
-		m_stackedWidget->addWidget(m_screenEditParatmter);
-	}
-	m_stackedWidget->setCurrentWidget(m_screenEditParatmter);
-}
-
 void CScreenMain::ChangeToScreenNewVariable()
 {
 	if (m_isPush)
@@ -225,15 +209,15 @@ void CScreenMain::ChangeToScreenVariables()
 	m_stackedWidget->setCurrentWidget(m_screenVariables);
 }
 
-void CScreenMain::RemoveScreenEditParameter()
-{
-	if (m_screenEditParatmter!=NULL)
-	{
-		m_stackedWidget->removeWidget(m_screenEditParatmter);
-		m_screenEditParatmter = NULL;
-		CSingleTon<CScreenEditMacroParameter>::Destroy();
-	}
-}
+//void CScreenMain::RemoveScreenEditParameter()
+//{
+//	if (m_screenEditParatmter != NULL)
+//	{
+//		m_stackedWidget->removeWidget(m_screenEditParatmter);
+//		m_screenEditParatmter = NULL;
+//		CSingleTon<CScreenEditMacroParameter>::Destroy();
+//	}
+//}
 
 void CScreenMain::RemoveScreenNewParameter()
 {

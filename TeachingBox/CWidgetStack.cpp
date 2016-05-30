@@ -72,16 +72,16 @@ void CWidgetStack::Back()
 	{
 		CScreenMain::GetInstance()->ChangeToScreenService();
 	}
-	/*若为编辑命令窗口*/
-	else if (typeid(*widget)==typeid(CScreenEditMacro))
-	{
-		CScreenMain::GetInstance()->ChangeToScreenEditMacro();
-	}
-	/*若为编辑参数窗口*/
-	else if (typeid(*widget)==typeid(CScreenEditMacroParameter))
-	{
-		CScreenMain::GetInstance()->ChangeToScreenEditParameter();
-	}
+	///*若为编辑命令窗口*/
+	//else if (typeid(*widget)==typeid(CScreenEditMacro))
+	//{
+	//	CScreenMain::GetInstance()->ChangeToScreenEditMacro();
+	//}
+	///*若为编辑参数窗口*/
+	//else if (typeid(*widget)==typeid(CScreenEditMacroParameter))
+	//{
+	//	CScreenMain::GetInstance()->ChangeToScreenEditParameter();
+	//}
 	else if (typeid(*widget) == typeid(CScreenNewVariable))
 	{
 		CScreenMain::GetInstance()->ChangeToScreenNewVariable();
