@@ -5,7 +5,6 @@
 #include "QLineEdit"
 #include "CRegExpManager.h"
 #include "QPushButton"
-#include "CTreeWidgetWithMonitor.h"
 
 
 class CTestWiget:public QWidget
@@ -23,7 +22,6 @@ private:
 	void SlotOnButtonClicked();
 
 private:
-	CTreeWidgetWithMonitor* m_treeWidget;
 	QLineEdit* m_lineEditOldName;
 	QLineEdit* m_lineEditNewName;
 	QLabel* m_label;

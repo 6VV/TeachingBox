@@ -3,7 +3,6 @@
 #include "CWidgetButtonListVertical.h"
 #include "CScreenMain.h"
 #include "CWarningManager.h"
-#include "CVariableTreeItemManager.h"
 #include "CScreenProject.h"
 #include "CFileManager.h"
 #include "CKeyBoard.h"
@@ -316,8 +315,8 @@ void CScreenVariables::SlotOnButtonPasteVariableClicked()
 
 	/*添加树节点*/
 	QTreeWidgetItem* itemNew = new QTreeWidgetItem(itemCurrent,QStringList{newName,m_varCopied.varType,strNewScope});
-	CVariableTreeItemManager manager;
-	manager.GetVariableTreeWidgetItem(newName, m_varCopied.varType, strNewScope, itemNew, m_treeWidget);
+	//manager.GetVariableTreeWidgetItem(newName, m_varCopied.varType, strNewScope, itemNew, m_treeWidget);
+	TVariateManager::GetInstance()->GetVariate(strNewScope, newName)->ReadTreeWidgetItem(itemNew, m_treeWidget);
 
 	/*若为剪切*/
 	if (m_varCopied.copyOperator==CopyOperator::CUT)
@@ -479,7 +478,7 @@ void CScreenVariables::Init()
 void CScreenVariables::InitLayout()
 {
 	/*初始化树形控件*/
-	m_treeWidget = new CTreeWidgetWithMonitor;
+	m_treeWidget = new QTreeWidget;
 	m_treeWidget->setColumnCount(3);
 	m_treeWidget->hideColumn(2);
 

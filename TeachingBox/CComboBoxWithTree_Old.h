@@ -18,7 +18,6 @@
 
 #include "QComboBox"
 #include "QTreeWidget"
-#include "CTreeWidgetWithMonitor.h"
 #include "CWidgetWithTree.h"
 
 class CComboBoxWithTree_Old:public QComboBox
@@ -31,7 +30,7 @@ public:
 	~CComboBoxWithTree_Old();
 
 	void SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem);
-	void SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem, CTreeWidgetWithMonitor*);
+	void SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem, QTreeWidget*);
 	QTreeWidgetItem* GetTreeWidgetItem();
 
 signals:

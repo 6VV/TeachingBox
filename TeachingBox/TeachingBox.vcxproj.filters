@@ -715,9 +715,6 @@
     <ClCompile Include="CDialogEditUser.cpp">
       <Filter>Source Files\MainScreen\ScreenService\Dialog</Filter>
     </ClCompile>
-    <ClCompile Include="CVariableTreeItemManager.cpp">
-      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
-    </ClCompile>
     <ClCompile Include="CFileManager.cpp">
       <Filter>Source Files\MainScreen\ScreenVariables</Filter>
     </ClCompile>
@@ -828,15 +825,6 @@
     </ClCompile>
     <ClCompile Include="TVariate.cpp">
       <Filter>Source Files\Variate</Filter>
-    </ClCompile>
-    <ClCompile Include="CTreeWidgetWithMonitor.cpp">
-      <Filter>Source Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CTreeWidgetWithMonitor.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CTreeWidgetWithMonitor.cpp">
-      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_TInteger.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -1155,9 +1143,6 @@
     <CustomBuild Include="CVariableInterface.h">
       <Filter>Header Files\MainScreen\ScreenVariables</Filter>
     </CustomBuild>
-    <CustomBuild Include="CVariableTreeItemManager.h">
-      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
-    </CustomBuild>
     <CustomBuild Include="CProgramInterface.h">
       <Filter>Header Files\MainScreen\CScreenProgram</Filter>
     </CustomBuild>
@@ -1280,9 +1265,6 @@
     </CustomBuild>
     <CustomBuild Include="TVariateManager.h">
       <Filter>Header Files\Variate</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CTreeWidgetWithMonitor.h">
-      <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
     </CustomBuild>
     <CustomBuild Include="TInteger.h">
       <Filter>Header Files\Variate</Filter>

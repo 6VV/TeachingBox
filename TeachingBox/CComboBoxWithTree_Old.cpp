@@ -22,7 +22,7 @@ void CComboBoxWithTree_Old::SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem)
 	m_parentItem = treeWidgetItem;
 }
 
-void CComboBoxWithTree_Old::SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem, CTreeWidgetWithMonitor* treeWidget)
+void CComboBoxWithTree_Old::SetTreeWidgetItem(QTreeWidgetItem* treeWidgetItem, QTreeWidget* treeWidget)
 {
 	m_parentItem = treeWidgetItem;
 	connect(this, SIGNAL(currentIndexChanged(int)), this, SLOT(SlotItemChanged()));

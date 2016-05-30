@@ -11,7 +11,6 @@
 #include "CScreenProject.h"
 #include "CKeyBoardInterface.h"
 #include "CVariableInterface.h"
-#include "CTreeWidgetWithMonitor.h"
 
 class CScreenVariables:public CScreenMainParent,public CKeyBoardInterface
 {
@@ -117,7 +116,7 @@ private:
 	const char* CLASS_NAME = "CScreenVariable";
 
 
-	CTreeWidgetWithMonitor* m_treeWidget;
+	QTreeWidget* m_treeWidget;
 
 	CButton* m_btnVariable;
 	CButton* m_btnTeach;
