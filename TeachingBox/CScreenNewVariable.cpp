@@ -126,14 +126,14 @@ void CScreenNewVariable::SlotOnButtonConfirmClicked()
 			position.m_AxisPosition[i-INIT_ROW_NUM]=lineEdit->text().toDouble();
 		}
 
-		/*存储变量*/
-		TPosition::TYPE_POSITION vecPosition;
-		for (int i = 0; i < TPosition::AXIS_SIZE;++i)
-		{
-			vecPosition.push_back(position.m_AxisPosition[i]);
-		}
+		///*存储变量*/
+		//TPosition::TYPE_POSITION vecPosition;
+		//for (int i = 0; i < TPosition::AXIS_SIZE;++i)
+		//{
+		//	vecPosition.push_back(position.m_AxisPosition[i]);
+		//}
 		TVariateManager::GetInstance()->Add(
-			new TPosition(m_strScopeInDatabase, varName, vecPosition));
+			new TPosition(m_strScopeInDatabase, varName, position));
 		//CInterpreterAdapter::GetInstance()->InsertPositionValue(m_strScopeInDatabase, pairPosition);
 	}
 	else if (currentType == CParameterManager::STR_TYPE_DYNAMIC)

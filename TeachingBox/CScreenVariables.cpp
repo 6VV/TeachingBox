@@ -448,12 +448,12 @@ void CScreenVariables::SlotOnResivePosition(tAxesAllPositions& position)
 	{
 		QString scope = GetScope(currentItem);
 		QString name = currentItem->text(0);
-		QVector<double> vecPosition;
+		/*QVector<double> vecPosition;
 		for (int i = 0; i < TPosition::AXIS_SIZE;++i)
 		{
 			vecPosition.push_back(position.m_AxisPosition[i]);
-		}
-		TVariateManager::GetInstance()->Update(scope, name, TPosition(scope, name, vecPosition));
+		}*/
+		TVariateManager::GetInstance()->Update(scope, name, TPosition(scope, name, position));
 		//CInterpreterAdapter::GetInstance()->UpdatePositionValue(scope, name.toStdString(), name.toStdString(), position);
 		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(0), 1)))->setText(QString::number(position.m_AxisPosition[0]));
 		(static_cast<QLineEdit*>(m_treeWidget->itemWidget(currentItem->child(1), 1)))->setText(QString::number(position.m_AxisPosition[1]));

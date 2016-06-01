@@ -24,6 +24,7 @@ typedef struct
 const int LOCK_LENGTH = 1;
 const int COMMAND_HEAD_LENGTH = LOCK_LENGTH + sizeof(tTeachCmdAttribute);
 const int COMMAND_MAX_LENGTH = 1024;
+const int AXIS_SIZE = 6;
 
 /*命令Id*/
 enum COMMAND_ID
@@ -71,7 +72,7 @@ enum COMMAND_ID
 /*位置变量*/
 typedef struct
 {
-	double m_AxisPosition[6];
+	double m_AxisPosition[AXIS_SIZE];
 
 }tAxesAllPositions;
 

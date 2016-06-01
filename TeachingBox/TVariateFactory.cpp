@@ -14,7 +14,6 @@ TVariate* TVariateFactory::CreateVariate(QByteArray& dataBytes)
 {
 	QDataStream dataStream(&dataBytes, QIODevice::ReadOnly);
 	CSymbol symbol(dataStream);
-	//TVariate variate(dataStream);
 	dataStream.device()->seek(0);
 	switch (symbol.GetType())
 	{

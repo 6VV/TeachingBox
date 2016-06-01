@@ -3,21 +3,17 @@
 
 #include "TVariate.h"
 #include "QVector"
+#include "DataStruct.h"
 
 class TPosition:public TVariate
 {
 	Q_OBJECT
 
 public:
-	static const int AXIS_SIZE = 6;
-	typedef QVector<double> TYPE_POSITION;
-
-public:
-	TPosition(const QString& scope, const QString& name, const TYPE_POSITION& value);
+	TPosition(const QString& scope, const QString& name, const tAxesAllPositions& value);
 	TPosition(QDataStream& dataStream);
 
-	const TYPE_POSITION& GetValue() const;
-	void SetValue(const TYPE_POSITION& value);
+	const tAxesAllPositions GetValue() const;
 
 	virtual void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget) override;
 
@@ -30,7 +26,7 @@ protected slots:
 	void SlotOnTextChanged();
 
 private:
-	TYPE_POSITION m_value;
+	tAxesAllPositions m_value;
 };
 
 #endif

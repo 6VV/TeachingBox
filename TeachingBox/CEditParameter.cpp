@@ -413,16 +413,18 @@ void CEditParameter::RefreshPositionParameter(QString strName,QTreeWidgetItem* w
 
 	CValue* value = CValue::GetInstance();
 
-	CValue::TYPE_POSITION vecDouble{};
+	tAxesAllPositions vecDouble = static_cast<TPosition*>(TVariateManager::GetInstance()
+		->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))
+		->GetValue();;
 	//m_interpreterAdapter->GetPositionValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), vecDouble);
 
-	TPosition::TYPE_POSITION position = static_cast<TPosition*>(TVariateManager::GetInstance()
-		->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))
-		->GetValue();
-	for (int i = 0; i < position.size();++i)
-	{
-		vecDouble.m_AxisPosition[i] = position[i];
-	}
+	//TPosition::TYPE_POSITION position = static_cast<TPosition*>(TVariateManager::GetInstance()
+	//	->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))
+	//	->GetValue();
+	//for (int i = 0; i < position.size();++i)
+	//{
+	//	vecDouble.m_AxisPosition[i] = position[i];
+	//}
 
 	///*更新字符*/
 	//CValue::TYPE_POSITION vecDouble = iterValue->second;

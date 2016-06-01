@@ -4,6 +4,7 @@
 #include "CSingleTon.h"
 #include "User.h"
 #include "Init.h"
+#include "QSqlDatabase"
 
 class CDatabaseManager
 {

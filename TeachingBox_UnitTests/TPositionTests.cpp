@@ -5,7 +5,7 @@
 
 void TPositionTests::SetUp()
 {
-	TPosition::TYPE_POSITION vec = TPosition::TYPE_POSITION{ 1, 2, 3, 4, 5, 6 };
+	tAxesAllPositions vec = tAxesAllPositions{ { 1, 2, 3, 4, 5, 6 } };
 	m_variate = new TPosition("a", "b", vec);
 }
 
@@ -25,7 +25,7 @@ void TPositionTests::ExpectVariate(QDataStream& dataStream)
 
 	for (int i = 0; i < TPosition::AXIS_SIZE;++i)
 	{
-		EXPECT_EQ(position.GetValue()[i], m_variate->GetValue()[i]);
+		EXPECT_EQ(position.GetValue().m_AxisPosition[i], m_variate->GetValue().m_AxisPosition[i]);
 	}
 }
 
@@ -42,13 +42,14 @@ TEST_F(TPositionTests, ReadDataStream_CreateFromData_Equal)
 
 TEST_F(TPositionTests, UpdateFrom_Update_Equal)
 {
-	TPosition::TYPE_POSITION vec = TPosition::TYPE_POSITION{ 3, 4, 5, 6, 7, 8 };
+	tAxesAllPositions vec = tAxesAllPositions{ { 3, 4, 5, 6, 7, 8 } };
+	//TPosition::TYPE_POSITION vec = TPosition::TYPE_POSITION{ 3, 4, 5, 6, 7, 8 };
 	m_variate->UpdateFromVariate(TPosition("c", "d", vec));
 
 	EXPECT_STREQ(m_variate->GetScope().toStdString().c_str(), "c");
 	EXPECT_STREQ(m_variate->GetName().toStdString().c_str(), "d");
 	for (int i = 0; i < TPosition::AXIS_SIZE; ++i)
 	{
-		EXPECT_EQ(vec[i], m_variate->GetValue()[i]);
+		EXPECT_EQ(vec.m_AxisPosition[i], m_variate->GetValue()[i]);
 	}
 }
