@@ -23,7 +23,7 @@ void TPositionTests::ExpectVariate(QDataStream& dataStream)
 	EXPECT_STREQ(position.GetName().toStdString().c_str(), "b");
 	EXPECT_EQ(position.GetType(), CSymbol::TYPE_POSITION);
 
-	for (int i = 0; i < TPosition::AXIS_SIZE;++i)
+	for (int i = 0; i < AXIS_SIZE;++i)
 	{
 		EXPECT_EQ(position.GetValue().m_AxisPosition[i], m_variate->GetValue().m_AxisPosition[i]);
 	}
@@ -48,8 +48,8 @@ TEST_F(TPositionTests, UpdateFrom_Update_Equal)
 
 	EXPECT_STREQ(m_variate->GetScope().toStdString().c_str(), "c");
 	EXPECT_STREQ(m_variate->GetName().toStdString().c_str(), "d");
-	for (int i = 0; i < TPosition::AXIS_SIZE; ++i)
+	for (int i = 0; i < AXIS_SIZE; ++i)
 	{
-		EXPECT_EQ(vec.m_AxisPosition[i], m_variate->GetValue()[i]);
+		EXPECT_EQ(vec.m_AxisPosition[i], m_variate->GetValue().m_AxisPosition[i]);
 	}
 }

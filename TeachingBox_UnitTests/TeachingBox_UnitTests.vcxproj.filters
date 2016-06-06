@@ -19,6 +19,18 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\TVariate">
+      <UniqueIdentifier>{a17a31b8-1c6d-469d-912e-5283076c7ce0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TVariate">
+      <UniqueIdentifier>{4e5f4972-ff61-42e7-b6a3-8698ea9a6c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TInterpreter">
+      <UniqueIdentifier>{ee06b5bb-0c0a-4912-87c9-cca402945283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TLexerTests">
+      <UniqueIdentifier>{cf564fc8-051a-4441-b9b8-7214cb646ccd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,34 +39,37 @@
     <ClCompile Include="CDatabaseManagerTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TBoolTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TDoubleTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TIntergerTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TPositionTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TStringTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TVariateManagerTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TVariateTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TDynamicTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc" />
+    <ClCompile Include="TBoolTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TDoubleTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TDynamicTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TIntergerTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
     <ClCompile Include="TOverlapTests.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TPositionTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TStringTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TVariateManagerTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TVariateTests.cpp">
+      <Filter>Source Files\TVariate</Filter>
+    </ClCompile>
+    <ClCompile Include="TLexerTests.cpp">
+      <Filter>Source Files\TLexerTests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -64,32 +79,35 @@
     <ClInclude Include="CDatabaseManagerTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TVariateTests.h">
+      <Filter>Header Files\TVariate</Filter>
+    </ClInclude>
     <ClInclude Include="TBoolTests.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TVariate</Filter>
     </ClInclude>
     <ClInclude Include="TDoubleTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TIntergerTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TPositionTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TStringTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TVariateManagerTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TVariateTests.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TVariate</Filter>
     </ClInclude>
     <ClInclude Include="TDynamicTests.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TVariate</Filter>
+    </ClInclude>
+    <ClInclude Include="TIntergerTests.h">
+      <Filter>Header Files\TVariate</Filter>
     </ClInclude>
     <ClInclude Include="TOverlapTests.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TVariate</Filter>
+    </ClInclude>
+    <ClInclude Include="TPositionTests.h">
+      <Filter>Header Files\TVariate</Filter>
+    </ClInclude>
+    <ClInclude Include="TStringTests.h">
+      <Filter>Header Files\TVariate</Filter>
+    </ClInclude>
+    <ClInclude Include="TVariateManagerTests.h">
+      <Filter>Header Files\TVariate</Filter>
+    </ClInclude>
+    <ClInclude Include="TLexerTests.h">
+      <Filter>Header Files\TInterpreter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

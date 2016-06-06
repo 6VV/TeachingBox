@@ -23,7 +23,6 @@ protected:
 protected slots:
 	void SlotOnTextChanged(const QString& newValue);
 
-
 private:
 	int m_value;
 };

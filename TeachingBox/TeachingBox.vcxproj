@@ -24,7 +24,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -691,9 +691,12 @@
     <ClCompile Include="TDouble.cpp" />
     <ClCompile Include="TDynamic.cpp" />
     <ClCompile Include="TInteger.cpp" />
+    <ClCompile Include="TInterpreterException.cpp" />
+    <ClCompile Include="TLexer.cpp" />
     <ClCompile Include="TOverlap.cpp" />
     <ClCompile Include="TPosition.cpp" />
     <ClCompile Include="TString.cpp" />
+    <ClCompile Include="TToken.cpp" />
     <ClCompile Include="TVariate.cpp" />
     <ClCompile Include="TVariateFactory.cpp" />
     <ClCompile Include="TVariateManager.cpp" />
@@ -3220,6 +3223,10 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </Command>
     </CustomBuild>
+    <ClInclude Include="TInterpreterException.h" />
+    <ClInclude Include="TLexer.h" />
+    <ClInclude Include="TToken.h" />
+    <ClInclude Include="TTokenWithValue.h" />
     <ClInclude Include="TVariateFactory.h" />
     <CustomBuild Include="TBool.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

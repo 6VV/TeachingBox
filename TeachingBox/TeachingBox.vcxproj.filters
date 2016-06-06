@@ -179,6 +179,24 @@
     <Filter Include="Source Files\Variate">
       <UniqueIdentifier>{6eac60a7-3ebb-4220-b5cc-c9d7b095c16d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Interpreter\OldInterpreter">
+      <UniqueIdentifier>{38c7ed6c-f713-4008-bc76-95433faaa0d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\OldInterpreter">
+      <UniqueIdentifier>{05fc8c60-3a2d-4950-9763-342427f5c457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\NewInterpreter">
+      <UniqueIdentifier>{16a1eda6-5218-42a3-b9b6-e9315552ef79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter\NewInterpreter">
+      <UniqueIdentifier>{9cc5524b-880c-45c6-b4d4-2153831d7550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\NewInterpreter\Token">
+      <UniqueIdentifier>{a8f0c915-c35e-4bd4-9dc0-7fb7c68906ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter\NewInterpreter\Token">
+      <UniqueIdentifier>{aeaf4ece-195e-4252-8b9a-0ebd2fac20aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -412,56 +430,14 @@
     <ClCompile Include="CXmlVariableManager.cpp">
       <Filter>Source Files\DataPersistence</Filter>
     </ClCompile>
-    <ClCompile Include="CLexer.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CToken.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CValue.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CAstTreeNode.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CInterpreterManager.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CTokenCategory.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CTokenString.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CTokenConstantNum.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
     <ClCompile Include="CWidgetStack.cpp">
       <Filter>Source Files\Function</Filter>
-    </ClCompile>
-    <ClCompile Include="CParseGrammar.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CParseSemantic.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CWarningInformation.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
-    <ClCompile Include="CExceptionInterpreter.cpp">
-      <Filter>Source Files\Interpreter</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
       <Filter>Source Files\User</Filter>
     </ClCompile>
-    <ClCompile Include="CInterpreter.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
     <ClCompile Include="UserManager.cpp">
       <Filter>Source Files\User</Filter>
-    </ClCompile>
-    <ClCompile Include="CInterprerterState.cpp">
-      <Filter>Source Files\Interpreter</Filter>
     </ClCompile>
     <ClCompile Include="CThreadInterpreterManager.cpp">
       <Filter>Source Files\Function</Filter>
@@ -661,9 +637,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_CInterpreterTcpAdapter.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="CInterpreterTcpAdapter.cpp">
-      <Filter>Source Files\Interpreter</Filter>
-    </ClCompile>
     <ClCompile Include="CCommandRemoteParser.cpp">
       <Filter>Source Files\Remote</Filter>
     </ClCompile>
@@ -805,6 +778,60 @@
     <ClCompile Include="CEditParameter.cpp">
       <Filter>Source Files\MainScreen\ScreenMacro</Filter>
     </ClCompile>
+    <ClCompile Include="CAstTreeNode.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CExceptionInterpreter.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterprerterState.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterpreter.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterpreterManager.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CInterpreterTcpAdapter.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CLexer.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CParseGrammar.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CParseSemantic.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CToken.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CTokenCategory.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CTokenConstantNum.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CTokenString.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CValue.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CWarningInformation.cpp">
+      <Filter>Source Files\Interpreter\OldInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="TLexer.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="TToken.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\Token</Filter>
+    </ClCompile>
+    <ClCompile Include="TInterpreterException.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -897,9 +924,6 @@
     <CustomBuild Include="CModelMacro.h">
       <Filter>Header Files\Model</Filter>
     </CustomBuild>
-    <CustomBuild Include="CInterpreter.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
     <CustomBuild Include="CThreadInterpreterManager.h">
       <Filter>Header Files\Function</Filter>
     </CustomBuild>
@@ -960,9 +984,6 @@
     <CustomBuild Include="CTcpManager.h">
       <Filter>Header Files\Internet</Filter>
     </CustomBuild>
-    <CustomBuild Include="CInterpreterTcpAdapter.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
     <CustomBuild Include="DataStruct.h">
       <Filter>Header Files\Init</Filter>
     </CustomBuild>
@@ -1010,45 +1031,6 @@
     </CustomBuild>
     <CustomBuild Include="CWidgetStack.h">
       <Filter>Header Files\Function</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CExceptionInterpreter.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CInterprerterState.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CInterpreterManager.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CParseGrammar.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CParseSemantic.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CToken.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CLexer.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CTokenCategory.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CAstTreeNode.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CTokenConstantNum.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CTokenString.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CValue.h">
-      <Filter>Header Files\Interpreter</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CWarningInformation.h">
-      <Filter>Header Files\Interpreter</Filter>
     </CustomBuild>
     <CustomBuild Include="CMethodSymbol.h">
       <Filter>Header Files\Interpreter\Scope</Filter>
@@ -1128,6 +1110,51 @@
     <CustomBuild Include="CEditParameter.h">
       <Filter>Header Files\MainScreen\ScreenMacro</Filter>
     </CustomBuild>
+    <CustomBuild Include="CAstTreeNode.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CExceptionInterpreter.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterprerterState.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterpreter.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterpreterManager.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CInterpreterTcpAdapter.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CLexer.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CParseGrammar.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CParseSemantic.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CToken.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTokenCategory.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTokenConstantNum.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CTokenString.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CValue.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CWarningInformation.h">
+      <Filter>Header Files\Interpreter\OldInterpreter</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TeachingBox.rc" />
@@ -1144,6 +1171,18 @@
     </ClInclude>
     <ClInclude Include="CLineEditWithTree.h">
       <Filter>Header Files\MainScreen\ScreenVariables\TreeWidgetWithMonitor</Filter>
+    </ClInclude>
+    <ClInclude Include="TToken.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="TTokenWithValue.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="TInterpreterException.h">
+      <Filter>Header Files\Interpreter\NewInterpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="TLexer.h">
+      <Filter>Header Files\Interpreter\NewInterpreter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
