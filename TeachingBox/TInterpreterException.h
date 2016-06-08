@@ -7,19 +7,24 @@
 class TInterpreterException
 {
 public:
-	enum InterpreterException
+	enum InterpreterExceptionCode
 	{
 		UNKNOW_TOKEN,
+		WRONG_GRAMMAR,
+		NOT_FIND_RIGHT_BRACKET,
+		NEGATION_SHOULD_WITH_BOOL,
+		NEGATIVE_SHOULD_WITH_INT_OR_DOUBLE,
 	};
 
 public:
-	TInterpreterException(const InterpreterException id,const int lineNumber,const QString& text);
+	TInterpreterException(const InterpreterExceptionCode id,const int lineNumber,const QString& text);
+	TInterpreterException(const InterpreterExceptionCode id, const int lineNumber);
 
 	const QString GetInfo() const;
 
 private:
 	static QHash<int, QString> m_exceptionText;
-	InterpreterException m_id;
+	InterpreterExceptionCode m_id;
 	int m_lineNumber;
 	QString m_text;
 

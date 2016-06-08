@@ -50,8 +50,8 @@ void TToken::Initlization::InitKeyMap()
 
 void TToken::Initlization::InitReserveValueMap()
 {
-	m_reserveValueMap.insert("TRUE", VALUE_TRUE);
-	m_reserveValueMap.insert("FALSE", VALUE_FALSE);
+	m_reserveValueMap.insert("TRUE", LITERAL_VALUE_TRUE);
+	m_reserveValueMap.insert("FALSE", LITERAL_VALUE_FALSE);
 }
 
 void TToken::Initlization::InitMacroMap()

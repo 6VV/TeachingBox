@@ -12,8 +12,9 @@ class TLexer
 public:
 	TLexer(const QString& text);
 	~TLexer();
-
+	
 	const std::shared_ptr<TToken> GetToken() const;
+	void UnGetToken();
 
 private:
 	void GetInterger(QString &text);
@@ -25,12 +26,24 @@ private:
 
 	void Parse();
 	void PushToken(const TToken::TokenType type);
-	const bool PushDigit(const char c);
-	const bool PushId(const char c);
-	const bool PushKeyWord(const QString& text);
-	const bool PushOtherToken(const char);
+	const bool CheckPushDigit(const char c);
+	const bool CheckPushId(const char c);
+	const bool CheckPushKeyword(const QString& text);
+	const bool CheckPushReserveValue(const TToken::TokenType type);
+	const bool CheckPushOtherToken(const char);
 
-	void ThrowException(const QString& text);
+	void PushTokenNote();
+	void PushTokenString();
+	void PushTokenLess();
+	void PushTokenGreat();
+	void PushTokenNot();
+	void PushTokenEqual();
+
+	void SkipCharInSameLine();
+
+	bool IsEofOrEol(char c);
+
+	void ThrowException_UnknownToken(const QString& text);
 
 private:
 	std::vector < std::shared_ptr<TToken>> m_tokens;

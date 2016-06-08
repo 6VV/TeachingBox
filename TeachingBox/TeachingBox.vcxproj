@@ -687,9 +687,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="CToken.cpp" />
+    <ClCompile Include="TAstNode.cpp" />
+    <ClCompile Include="TAstNodeOperator.cpp" />
     <ClCompile Include="TBool.cpp" />
     <ClCompile Include="TDouble.cpp" />
     <ClCompile Include="TDynamic.cpp" />
+    <ClCompile Include="TGrammarParser.cpp" />
     <ClCompile Include="TInteger.cpp" />
     <ClCompile Include="TInterpreterException.cpp" />
     <ClCompile Include="TLexer.cpp" />
@@ -3223,6 +3226,9 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </Command>
     </CustomBuild>
+    <ClInclude Include="TAstNode.h" />
+    <ClInclude Include="TAstNodeOperator.h" />
+    <ClInclude Include="TGrammarParser.h" />
     <ClInclude Include="TInterpreterException.h" />
     <ClInclude Include="TLexer.h" />
     <ClInclude Include="TToken.h" />

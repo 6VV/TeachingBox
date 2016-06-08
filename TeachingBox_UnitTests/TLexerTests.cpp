@@ -41,7 +41,7 @@ TEST_F(TLexerTests, Parse_ParseId_Equal)
 
 		auto ptr = lexer.GetToken();
 		int index = 0;
-		while (ptr)
+		while (ptr->GetType()!=TToken::SEPARATOR_EOF)
 		{
 			EXPECT_EQ(ptr->GetType(), TToken::ID) << "Not ID";
 			EXPECT_STREQ(static_cast<TTokenWithValue<QString>*>(ptr.get())->GetValue().toStdString().c_str(), strList.at(index).toStdString().c_str());
@@ -58,14 +58,11 @@ TEST_F(TLexerTests, Parse_ParseId_Equal)
 TEST_F(TLexerTests, Parse_ParseKeyWord_Equal)
 {
 	try{
-		QString text("TRUE IF NEXT");
+		QString text(" IF NEXT");
 		TLexer lexer(text);
-		QStringList strList{ "TRUE", "IF", "NEXT" };
+		QStringList strList{  "IF", "NEXT" };
 
 		auto ptr = lexer.GetToken();
-		EXPECT_EQ(ptr->GetType(), TToken::VALUE_TRUE) << "Not TRUE";
-
-		ptr = lexer.GetToken();
 		EXPECT_EQ(ptr->GetType(), TToken::STRUCTURE_IF) << "Not IF";
 
 		ptr = lexer.GetToken();
@@ -91,10 +88,12 @@ TEST_F(TLexerTests, Parse_ParseOtherWord_Equal)
 
 		TLexer lexer(text);
 		int index = 0;
-		while (auto ptr = lexer.GetToken())
+		auto ptr = lexer.GetToken();
+		while (ptr->GetType()!=TToken::SEPARATOR_EOF)
 		{
 			EXPECT_EQ(ptr->GetType(), test[index]);
 			++index;
+			ptr = lexer.GetToken();
 		}
 	}
 	catch (TInterpreterException& e)
@@ -102,4 +101,82 @@ TEST_F(TLexerTests, Parse_ParseOtherWord_Equal)
 		FAIL() << e.GetInfo().toStdString();
 	}
 
+}
+
+TEST_F(TLexerTests, Parse_ParseString_Equal)
+{
+	try
+	{
+		QString text("\"hello world\"");
+		QString strVerify("hello world");
+
+		TLexer lexer(text);
+		auto ptr = lexer.GetToken();
+
+		EXPECT_STREQ(strVerify.toStdString().c_str(), (static_cast<TTokenWithValue<QString>*>(ptr.get()))->GetValue().toStdString().c_str());
+	}
+	catch (TInterpreterException& e)
+	{
+		FAIL() << e.GetInfo().toStdString().c_str();
+	}
+
+}
+
+TEST_F(TLexerTests, Parse_ParseNote_Skip)
+{
+	try
+	{
+		QString text("\\\\hello world");
+
+		TLexer lexer(text);
+		auto ptr = lexer.GetToken();
+
+		if (ptr->GetType()!=TToken::SEPARATOR_EOF)
+		{
+			FAIL() << "Not nullptr";
+		}
+	}
+	catch (TInterpreterException& e)
+	{
+		FAIL() << e.GetInfo().toStdString().c_str();
+	}
+}
+
+TEST_F(TLexerTests, Parse_ParseForbid_Skip)
+{
+	try
+	{
+		QString text1("#hello world");
+		TLexer lexer1(text1);
+
+		if (lexer1.GetToken()->GetType()!=TToken::SEPARATOR_EOF)
+		{
+			FAIL() << "Not nullptr";
+		}
+
+		QString text2("#hello \nworld");
+		TLexer lexer2(text2);
+		EXPECT_EQ(lexer2.GetToken()->GetType(), TToken::SEPARATOR_EOL);
+		EXPECT_EQ(lexer2.GetToken()->GetType(), TToken::ID);
+	}
+	catch (TInterpreterException& e)
+	{
+		FAIL() << e.GetInfo().toStdString().c_str();
+	}
+}
+
+TEST_F(TLexerTests, Parse_ParseReserveValue_Equal)
+{
+	try
+	{
+		QString text("TRUE FALSE");
+		TLexer lexer(text);
+
+		EXPECT_EQ(lexer.GetToken()->GetType(), TToken::LITERAL_VALUE_TRUE);
+		EXPECT_EQ(lexer.GetToken()->GetType(), TToken::LITERAL_VALUE_FALSE);
+	}
+	catch (TInterpreterException& e)
+	{
+		FAIL() << e.GetInfo().toStdString().c_str();
+	}
 }

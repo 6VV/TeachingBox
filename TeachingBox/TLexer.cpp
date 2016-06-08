@@ -13,6 +13,8 @@ TLexer::~TLexer()
 {
 }
 
+
+
 const std::shared_ptr<TToken> TLexer::GetToken() const
 {
 	if (m_index>=m_tokens.size())
@@ -23,7 +25,12 @@ const std::shared_ptr<TToken> TLexer::GetToken() const
 	return m_tokens.at(m_index++);
 }
 
-const bool TLexer::PushDigit(const char c)
+void TLexer::UnGetToken()
+{
+	--m_index;
+}
+
+const bool TLexer::CheckPushDigit(const char c)
 {
 	if (!IsDigit(c))
 	{
@@ -40,7 +47,7 @@ const bool TLexer::PushDigit(const char c)
 
 		if (!IsDigit(m_reader.PeekChar(1)))
 		{
-			ThrowException(text);
+			ThrowException_UnknownToken(text);
 		}
 		else
 		{
@@ -56,7 +63,7 @@ const bool TLexer::PushDigit(const char c)
 	return true;
 }
 
-const bool TLexer::PushId(const char c)
+const bool TLexer::CheckPushId(const char c)
 {
 	if (!IsLetter(c) && c!='_' )
 	{
@@ -66,7 +73,7 @@ const bool TLexer::PushId(const char c)
 	QString text(c);
 	GetId(text);
 
-	if (PushKeyWord(text))
+	if (CheckPushKeyword(text))
 	{
 		return true;
 	}
@@ -75,7 +82,7 @@ const bool TLexer::PushId(const char c)
 	return true;
 }
 
-const bool TLexer::PushOtherToken(const char c)
+const bool TLexer::CheckPushOtherToken(const char c)
 {
 	switch (c)
 	{
@@ -90,39 +97,13 @@ const bool TLexer::PushOtherToken(const char c)
 	case '|':{PushToken(TToken::OPERATOR_OR);}break;
 	case '(':{PushToken(TToken::OPERATOR_LEFT_BRACKET);}break;
 	case ')':{PushToken(TToken::OPERATOR_RIGHT_BRACKET);}break;
-	case '=':{
-		if (m_reader.PeekChar(1)=='='){
-			PushToken(TToken::OPERATOR_EQUAL);
-			m_reader.GetNextChar();
-		}else{
-			PushToken(TToken::OPERATOR_ASSIGN);
-		}
-	}break;
-	case '!':{
-		switch (m_reader.GetNextChar()){
-		case '=':{PushToken(TToken::OPERATOR_NOT_EQUAL); break; };
-		case '>':{PushToken(TToken::OPERATOR_LESS_EQUAL); break; };
-		case '<':{PushToken(TToken::OPERATOR_GREATE_EQUAL); break; };
-		default:{PushToken(TToken::OPERATOR_NOT); m_reader.UnGetChar(); break; };
-		}
-	}break;
-	case '>':{
-		if (m_reader.PeekChar(1)=='='){
-			PushToken(TToken::OPERATOR_GREATE_EQUAL);
-			m_reader.GetNextChar();
-		}else{
-			PushToken(TToken::OPERATOR_GREATE_THAN);
-		}
-	}break;
-	case '<':{
-		if (m_reader.PeekChar(1) == '='){
-			PushToken(TToken::OPERATOR_LESS_EQUAL);
-			m_reader.GetNextChar();
-		}
-		else{
-			PushToken(TToken::OPERATOR_LESS_THAN);
-		}
-	}break;
+	case '=':{PushTokenEqual();}break;
+	case '!':{PushTokenNot();}break;
+	case '>':{PushTokenGreat();}break;
+	case '<':{PushTokenLess();}break;
+	case '"':{PushTokenString();}break;
+	case '\\':{PushTokenNote();}break;
+	case '#':{SkipCharInSameLine();}break;
 	default:{return false;}
 	}
 
@@ -130,7 +111,91 @@ const bool TLexer::PushOtherToken(const char c)
 	return true;
 }
 
-void TLexer::ThrowException(const QString& text)
+void TLexer::PushTokenNote()
+{
+	if (m_reader.GetNextChar() != '\\')
+	{
+		ThrowException_UnknownToken("\\");
+	}
+	else
+	{
+		SkipCharInSameLine();
+	}
+}
+
+void TLexer::PushTokenString()
+{
+	QString text{};
+	char currentChar = 0;
+	while ((currentChar = m_reader.GetNextChar()) != '"' && IsEofOrEol(currentChar))
+	{
+		text.append(currentChar);
+		if (currentChar == '\\')
+		{
+			text.append(m_reader.GetNextChar());
+		}
+	}
+	if (currentChar != '"'){ ThrowException_UnknownToken(text); }
+	else{
+		m_tokens.push_back(std::shared_ptr<TToken>(new TTokenWithValue<QString>(TToken::LITERAL_STRING, m_reader.GetLineNumber(), text)));
+	}
+}
+
+void TLexer::PushTokenLess()
+{
+	if (m_reader.PeekChar(1) == '='){
+		PushToken(TToken::OPERATOR_LESS_EQUAL);
+		m_reader.GetNextChar();
+	}
+	else{
+		PushToken(TToken::OPERATOR_LESS_THAN);
+	}
+}
+
+void TLexer::PushTokenGreat()
+{
+	if (m_reader.PeekChar(1) == '='){
+		PushToken(TToken::OPERATOR_GREATE_EQUAL);
+		m_reader.GetNextChar();
+	}
+	else{
+		PushToken(TToken::OPERATOR_GREATE_THAN);
+	}
+}
+
+void TLexer::PushTokenNot()
+{
+	switch (m_reader.GetNextChar()){
+	case '=':{PushToken(TToken::OPERATOR_NOT_EQUAL); break; };
+	case '>':{PushToken(TToken::OPERATOR_LESS_EQUAL); break; };
+	case '<':{PushToken(TToken::OPERATOR_GREATE_EQUAL); break; };
+	default:{PushToken(TToken::OPERATOR_NEGATION); m_reader.UnGetChar(); break; };
+	}
+}
+
+void TLexer::PushTokenEqual()
+{
+	if (m_reader.PeekChar(1) == '='){
+		PushToken(TToken::OPERATOR_EQUAL);
+		m_reader.GetNextChar();
+	}
+	else{
+		PushToken(TToken::OPERATOR_ASSIGN);
+	}
+}
+
+void TLexer::SkipCharInSameLine()
+{
+	while (IsEofOrEol(m_reader.GetNextChar())){}
+	m_reader.UnGetChar();
+}
+
+bool TLexer::IsEofOrEol(char c)
+{
+	return c != 0 && c != '\n';
+}
+
+void TLexer::ThrowException_UnknownToken(const QString& text)
 {
 	throw TInterpreterException(TInterpreterException::UNKNOW_TOKEN, m_reader.GetLineNumber(), text);
 }
@@ -169,7 +234,7 @@ const bool TLexer::IsIdText(const char c) const
 	return IsLetter(c) || c == '_' || IsDigit(c);
 }
 
-const bool TLexer::PushKeyWord(const QString& text)
+const bool TLexer::CheckPushKeyword(const QString& text)
 {
 	auto iter = TToken::m_keyMap.find(text);
 	if (iter==TToken::m_keyMap.end())
@@ -177,7 +242,27 @@ const bool TLexer::PushKeyWord(const QString& text)
 		return false;
 	}
 
+	if (CheckPushReserveValue(iter.value()))
+	{
+		return true;
+	}
+
 	PushToken(iter.value());
+	return true;
+}
+
+const bool TLexer::CheckPushReserveValue(const TToken::TokenType type)
+{
+	bool value = false;
+
+	switch (type)
+	{
+	case TToken::LITERAL_VALUE_TRUE:value = true;break;
+	case TToken::LITERAL_VALUE_FALSE:break;
+	default:return false;
+	}
+
+	m_tokens.push_back(std::shared_ptr<TToken>(new TTokenWithValue<bool>(type, m_reader.GetLineNumber(), value)));
 	return true;
 }
 
@@ -189,25 +274,13 @@ void TLexer::Parse()
 		m_reader.SkipBlank();
 		c = m_reader.GetCurrentChar();
 
-		if (PushDigit(c))
-		{
-			continue;
-		}
-		else if (PushId(c))
-		{
-			continue;
-		}
-		else if (PushOtherToken(c))
-		{
-			continue;
-		}
-		else
-		{
-			ThrowException(QString(c));
-		}
+		if (CheckPushDigit(c)){continue;}
+		else if (CheckPushId(c)){continue;}
+		else if (CheckPushOtherToken(c)){continue;}
+		else{ThrowException_UnknownToken(QString(c));}
 	}
 
-	m_tokens.push_back(std::shared_ptr<TToken>(nullptr));
+	PushToken(TToken::SEPARATOR_EOF);
 }
 
 void TLexer::PushToken(const TToken::TokenType type)

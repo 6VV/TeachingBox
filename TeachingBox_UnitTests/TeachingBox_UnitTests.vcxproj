@@ -144,6 +144,7 @@
     <ClCompile Include="TBoolTests.cpp" />
     <ClCompile Include="TDoubleTests.cpp" />
     <ClCompile Include="TDynamicTests.cpp" />
+    <ClCompile Include="TGrammarParserTests.cpp" />
     <ClCompile Include="TIntergerTests.cpp" />
     <ClCompile Include="TLexerTests.cpp" />
     <ClCompile Include="TOverlapTests.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="TBoolTests.h" />
     <ClInclude Include="TDoubleTests.h" />
     <ClInclude Include="TDynamicTests.h" />
+    <ClInclude Include="TGrammarParserTests.h" />
     <ClInclude Include="TIntergerTests.h" />
     <ClInclude Include="TLexerTests.h" />
     <ClInclude Include="TOverlapTests.h" />
