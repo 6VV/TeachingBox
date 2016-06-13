@@ -203,6 +203,12 @@
     <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode">
       <UniqueIdentifier>{0e09534c-345e-4c0c-a860-82c7ca02d67d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Interpreter\NewInterpreter\AstNode\IF">
+      <UniqueIdentifier>{d8775909-ed05-40b5-a4ec-4b6b702c5169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode\IF">
+      <UniqueIdentifier>{2706c204-06bc-4420-8a76-baa549605de2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -865,6 +871,18 @@
     <ClCompile Include="TAstNodeRoot.cpp">
       <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClCompile>
+    <ClCompile Include="TAstNodeElseIfSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeElseSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeEndIfSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeIfSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="teachingbox.ui">
@@ -1243,6 +1261,18 @@
     </ClInclude>
     <ClInclude Include="TAstNodeRoot.h">
       <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeEndIfSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeElseSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeElseIfSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeIfSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

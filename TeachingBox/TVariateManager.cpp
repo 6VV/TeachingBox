@@ -283,7 +283,7 @@ void TVariateManager::Update(const QString& scope, const QString& name, TVariate
 }
 
 
-void TVariateManager::UpdateInMemory(const QString& scope, const QString& name, TVariate& newVariate)
+void TVariateManager::UpdateInMemory(const QString& scope, const QString& name, const TVariate& newVariate)
 {
 	UpdateInMap(scope, name, newVariate);
 	UpdateInScope(scope, name, newVariate);
@@ -296,7 +296,7 @@ void TVariateManager::UpdateVariateName(const QString& scope, const QString& old
 	Update(scope, oldName, *variate);
 }
 
-void TVariateManager::UpdateInMap(const QString& scope, const QString& name, TVariate& newVariate)
+void TVariateManager::UpdateInMap(const QString& scope, const QString& name, const TVariate& newVariate)
 {
 	auto iterMap = m_objectMap.find(scope);
 	auto iterVar = iterMap.value().find(name);
@@ -310,7 +310,7 @@ void TVariateManager::UpdateInMap(const QString& scope, const QString& name, TVa
 }
 
 
-void TVariateManager::UpdateInDatabase(const QString& scope, const QString& name, TVariate& newVariate)
+void TVariateManager::UpdateInDatabase(const QString& scope, const QString& name, const TVariate& newVariate)
 {
 	QByteArray data;
 	QDataStream dataStream(&data, QIODevice::ReadWrite);
@@ -318,7 +318,7 @@ void TVariateManager::UpdateInDatabase(const QString& scope, const QString& name
 	CDatabaseManager::GetInstance()->UpdateVariate(scope, name, dataStream);
 }
 
-void TVariateManager::UpdateInScope(const QString& scope, const QString& name, TVariate& newVariate)
+void TVariateManager::UpdateInScope(const QString& scope, const QString& name, const TVariate& newVariate)
 {
 	CVariableSymbol* symbol = new CVariableSymbol(scope, newVariate.GetName(), newVariate.GetType());
 	CScope* scopeFound = m_scopeRoot.FindScopeScrollDown(scope);

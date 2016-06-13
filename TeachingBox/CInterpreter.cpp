@@ -634,7 +634,7 @@ void CInterpreter::ExecuteSwitchSentence()
 	CAstTreeNode* currentNode = firstChild->m_nextSiblingNode;
 
 	/*是否遇到匹配值*/
-	bool isMatch = false;
+	//bool isMatch = false;
 
 	while (currentNode != NULL)
 	{

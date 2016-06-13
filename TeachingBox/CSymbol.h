@@ -43,7 +43,7 @@ public:
 
 	void SetName(const QString& name);
 
-	void ReadDataStream(QDataStream& dataStream);
+	void ReadDataStream(QDataStream& dataStream) const;
 
 protected:
 	QString m_scope;

@@ -71,6 +71,9 @@ TEST_F(TAstNodeForSentenceTests, ParseSenmatic_NoException)
 		TLexer lexer(text);
 		auto node = TAstNodeForSentence::GetAstNode(&lexer);
 		node->ParseSemantic();
+
+		TVariateManager::GetInstance()->Delete("SYSTEM", "a");
+		TVariateManager::GetInstance()->Delete("SYSTEM", "b");
 	}
 	catch (TInterpreterException& e)
 	{
@@ -93,6 +96,9 @@ TEST_F(TAstNodeForSentenceTests, Execute_IntergerPlus_GetRightValue)
 		node->ParseSemantic();
 		node->Execute();*/
 		EXPECT_EQ(3, static_cast<TInteger*>(TVariateManager::GetInstance()->GetVariateSrollUp("SYSTEM", "b"))->GetValue());
+
+		TVariateManager::GetInstance()->Delete("SYSTEM", "a");
+		TVariateManager::GetInstance()->Delete("SYSTEM", "b");
 	}
 	catch (TInterpreterException& e)
 	{

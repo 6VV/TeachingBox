@@ -76,7 +76,7 @@ void CKeyboard::SetCurrentWidget(QWidget* currentWidget)
 	m_currentWidget = currentWidget;
 }
 
-void CKeyboard::SetCurrentText(QString& currentText)
+void CKeyboard::SetCurrentText(const QString& currentText)
 {
 	m_lineEditText->setText(currentText);
 	m_lineEditText->selectAll();
@@ -576,12 +576,15 @@ void CKeyboard::Clear()
 
 void CKeyboard::showEvent(QShowEvent *event)
 {
+	QWidget::showEvent(event);
 	this->move(CScreenMain::GetInstance()->GetLeftPosition(),
 		CScreenMain::GetInstance()->GetTopPosition() + CScreenMain::GetInstance()->geometry().height() / 4);
 }
 
 void CKeyboard::hideEvent(QHideEvent *event)
 {
+	QWidget::hideEvent(event);
+
 	m_lineEditText->clear();
 }
 

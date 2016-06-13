@@ -18,8 +18,8 @@ public:
 
 
 protected:
-	virtual void ReadValueStream(QDataStream& dataStream) override;
-	virtual void UpdateFromValue(TVariate& variate) override;
+	virtual void ReadValueStream(QDataStream& dataStream) const override;
+	virtual void UpdateFromValue(const TVariate& variate) override;
 
 protected slots:
 	void SlotOnTextChanged(const QString& text);

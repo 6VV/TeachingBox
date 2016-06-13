@@ -104,30 +104,13 @@ const std::shared_ptr<TAstNode> TAstNodeForSentence::GetAstNode(TLexer* const le
 	AddToNode(lexer, token, result);
 	AddStepNode(lexer, token, result);
 
-	CheckLineBreak(lexer, token);
+	CheckLineBreak(lexer);
 
 	AddSentenceNodes(lexer, result);
 
 	result->AddChild(TAstNodeNextSentence::GetAstNode(lexer));
 
 	return result;
-}
-
-void TAstNodeForSentence::CheckLineBreak(TLexer* const lexer, std::shared_ptr<TToken> token)
-{
-	if (lexer->GetToken()->GetType()!=TToken::SEPARATOR_EOL)
-	{
-		throw TInterpreterException(TInterpreterException::SENTENCE_SHOULD_END_WITH_LINE_BREAK, token->GetLineNumber());
-	}
-}
-
-void TAstNodeForSentence::AddSentenceNodes(TLexer* const lexer, std::shared_ptr<TAstNode> result)
-{
-	std::shared_ptr<TAstNode> childNode{};
-	while (childNode = TGrammarParser::GetOneNode(lexer))
-	{
-		result->AddChild(childNode);
-	}
 }
 
 void TAstNodeForSentence::AddStepNode(TLexer* const lexer, std::shared_ptr<TToken> token, std::shared_ptr<TAstNode> result)

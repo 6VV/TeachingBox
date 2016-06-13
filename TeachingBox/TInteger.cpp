@@ -29,14 +29,14 @@ void TInteger::SetValue(const int value)
 	m_value = value;
 }
 
-void TInteger::ReadValueStream(QDataStream& dataStream)
+void TInteger::ReadValueStream(QDataStream& dataStream)const
 {
 	dataStream << m_value;
 }
 
-void TInteger::UpdateFromValue(TVariate& variate)
+void TInteger::UpdateFromValue(const TVariate& variate)
 {
-	m_value = static_cast<TInteger&>(variate).m_value;
+	m_value = static_cast<const TInteger&>(variate).m_value;
 }
 
 void TInteger::SlotOnTextChanged(const QString& newValue)

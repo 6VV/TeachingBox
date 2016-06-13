@@ -690,7 +690,11 @@
     <ClCompile Include="CToken.cpp" />
     <ClCompile Include="TAstNode.cpp" />
     <ClCompile Include="TAstNodeAssignSentence.cpp" />
+    <ClCompile Include="TAstNodeElseIfSentence.cpp" />
+    <ClCompile Include="TAstNodeElseSentence.cpp" />
+    <ClCompile Include="TAstNodeEndIfSentence.cpp" />
     <ClCompile Include="TAstNodeForSentence.cpp" />
+    <ClCompile Include="TAstNodeIfSentence.cpp" />
     <ClCompile Include="TAstNodeNextSentence.cpp" />
     <ClCompile Include="TAstNodeOperator.cpp" />
     <ClCompile Include="TAstNodeRoot.cpp" />
@@ -3235,7 +3239,11 @@
     </CustomBuild>
     <ClInclude Include="TAstNode.h" />
     <ClInclude Include="TAstNodeAssignSentence.h" />
+    <ClInclude Include="TAstNodeElseIfSentence.h" />
+    <ClInclude Include="TAstNodeElseSentence.h" />
+    <ClInclude Include="TAstNodeEndIfSentence.h" />
     <ClInclude Include="TAstNodeForSentence.h" />
+    <ClInclude Include="TAstNodeIfSentence.h" />
     <ClInclude Include="TAstNodeNextSentence.h" />
     <ClInclude Include="TAstNodeOperator.h" />
     <ClInclude Include="TAstNodeRoot.h" />

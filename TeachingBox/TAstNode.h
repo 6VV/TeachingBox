@@ -1,9 +1,11 @@
 ﻿#ifndef _TEACHING_BOX_T_AST_NODE_H_
 #define _TEACHING_BOX_T_AST_NODE_H_
 
+#include <memory>
+
 class TToken;
 class TVariate;
-#include <memory>
+class TLexer;
 
 class TAstNode
 {
@@ -27,6 +29,11 @@ public:
 	virtual void ParseSemantic() const{};
 
 protected:
+	static void AddSentenceNodes(TLexer* const lexer, std::shared_ptr<TAstNode> parentNode);
+
+	static void CheckLineBreak(TLexer* const lexer);
+	static void CheckEofEol(TLexer* const lexer);
+
 	static bool IsEofOrEol(const int type);
 	TAstNode* FindNextValidNode() const;
 

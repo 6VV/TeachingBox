@@ -61,15 +61,15 @@ void TOverlap::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* tree
 	connect(paraEdit, SIGNAL(textChanged(const QString&)), this, SLOT(SlotOnTextChanged()));
 }
 
-void TOverlap::ReadValueStream(QDataStream& dataStream)
+void TOverlap::ReadValueStream(QDataStream& dataStream)const
 {
 	dataStream << m_value.m_TransitionMode;
 	dataStream << m_value.m_TransitionParameter;
 }
 
-void TOverlap::UpdateFromValue(TVariate& variate)
+void TOverlap::UpdateFromValue(const TVariate& variate)
 {
-	m_value = static_cast<TOverlap&>(variate).m_value;
+	m_value = static_cast<const TOverlap&>(variate).m_value;
 }
 
 void TOverlap::WriteValueSteam(QDataStream& dataStream)

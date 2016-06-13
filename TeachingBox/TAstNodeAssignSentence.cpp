@@ -63,10 +63,7 @@ const std::shared_ptr<TAstNode> TAstNodeAssignSentence::GetAstNode(TLexer* const
 {
 	auto assignNode = GetAssignException(lexer);
 
-	if (!IsEofOrEol(lexer->GetToken()->GetType()))
-	{
-		throw TInterpreterException(TInterpreterException::SENTENCE_NOT_END_WITH_ABNORMAL_END, assignNode->GetToken()->GetLineNumber());
-	}
+	CheckEofEol(lexer);
 
 	return assignNode;
 }

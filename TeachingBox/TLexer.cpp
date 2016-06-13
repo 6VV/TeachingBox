@@ -19,7 +19,7 @@ const std::shared_ptr<TToken> TLexer::GetToken() const
 {
 	if (m_index>=m_tokens.size())
 	{
-		return std::shared_ptr<TToken>(new TToken(TToken::SEPARATOR_EOF,-1));
+		return std::shared_ptr<TToken>(new TToken(TToken::SEPARATOR_EOF,m_reader.GetLineNumber()));
 	}
 
 	return m_tokens.at(m_index++);
@@ -29,7 +29,7 @@ const std::shared_ptr<TToken> TLexer::PeekToken() const
 {
 	if (m_index >= m_tokens.size())
 	{
-		return std::shared_ptr<TToken>(new TToken(TToken::SEPARATOR_EOF, -1));
+		return std::shared_ptr<TToken>(new TToken(TToken::SEPARATOR_EOF, m_reader.GetLineNumber()));
 	}
 
 	return m_tokens.at(m_index);

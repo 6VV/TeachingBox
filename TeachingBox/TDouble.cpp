@@ -39,14 +39,14 @@ void TDouble::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeW
 
 }
 
-void TDouble::ReadValueStream(QDataStream& dataStream)
+void TDouble::ReadValueStream(QDataStream& dataStream)const
 {
 	dataStream << m_value;
 }
 
-void TDouble::UpdateFromValue(TVariate& variate)
+void TDouble::UpdateFromValue(const TVariate& variate)
 {
-	m_value = static_cast<TDouble&>(variate).m_value;
+	m_value = static_cast<const TDouble&>(variate).m_value;
 }
 
 void TDouble::SlotOnTextChanged(const QString& newValue)

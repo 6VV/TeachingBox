@@ -13,21 +13,16 @@ public:
 	~TAstNodeForSentence();
 
 	static void UpdateValue(CSymbol::SymbolType type, const QString& scope, const QString& name, double value);
+
+	static const std::shared_ptr<TAstNode> GetAstNode(TLexer* const lexer);
 	static double GetValue(CSymbol::SymbolType type, const QString& scope, const QString& name);
 
 	virtual ValueReturned Execute() const override;
-
-	static const std::shared_ptr<TAstNode> GetAstNode(TLexer* const lexer);
-
 	virtual void ParseSemantic() const override;
 	
 private:
 	static void AddToNode(TLexer* const lexer, std::shared_ptr<TToken> token, std::shared_ptr<TAstNode> result);
-	static void AddSentenceNodes(TLexer* const lexer, std::shared_ptr<TAstNode> result);
 	static void AddStepNode(TLexer* const lexer, std::shared_ptr<TToken> token, std::shared_ptr<TAstNode> result);
-
-	static void CheckLineBreak(TLexer* const lexer, std::shared_ptr<TToken> token);
-
 
 };
 

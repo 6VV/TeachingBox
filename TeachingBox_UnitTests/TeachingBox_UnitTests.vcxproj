@@ -143,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TAstNodeAssignSentenceTests.cpp" />
     <ClCompile Include="TAstNodeForSentenceTests.cpp" />
+    <ClCompile Include="TAstNodeIfSentenceTests.cpp" />
     <ClCompile Include="TAstNodeOperatorTests.cpp" />
     <ClCompile Include="TBoolTests.cpp" />
     <ClCompile Include="TDoubleTests.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="CDatabaseManagerTests.h" />
     <ClInclude Include="TAstNodeAssignSentenceTests.h" />
     <ClInclude Include="TAstNodeForSentenceTests.h" />
+    <ClInclude Include="TAstNodeIfSentenceTests.h" />
     <ClInclude Include="TAstNodeOperatorTests.h" />
     <ClInclude Include="TBoolTests.h" />
     <ClInclude Include="TDoubleTests.h" />

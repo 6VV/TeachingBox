@@ -33,15 +33,15 @@ public:
 	void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget, 
 		const CSymbol::SymbolType type);
 
-	void ReadDataStream(QDataStream& dataStream);
+	void ReadDataStream(QDataStream& dataStream) const;
 	void ReadCollection(SET& collection,const CSymbol::SymbolType type);
 
-	void UpdateFromVariate(TVariate& variate);
+	void UpdateFromVariate(const TVariate& variate);
 	void UpdateRamAndDatabaseFrom(TVariate& variate) const;
 
 protected:
-	virtual void ReadValueStream(QDataStream& dataStream)=0;
-	virtual void UpdateFromValue(TVariate& variate) =0;
+	virtual void ReadValueStream(QDataStream& dataStream) const=0;
+	virtual void UpdateFromValue(const TVariate& variate) =0;
 
 protected:
 	CSymbol m_symbol;

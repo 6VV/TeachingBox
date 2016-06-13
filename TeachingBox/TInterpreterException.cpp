@@ -22,6 +22,8 @@ TInterpreterException::ExceptionInitialization::ExceptionInitialization()
 	m_exceptionText.insert(TYPE_NOT_MATCH, "type not match");
 	m_exceptionText.insert(FOR_SENTENCE_SHOULD_END_WITH_NEXT, "for sentence should end with next");
 	m_exceptionText.insert(FOR_SENTENCE_SHOULD_USE_INTERGER_OR_DOUBLE, "for sentence should use interger or double");
+	m_exceptionText.insert(IF_SENTENCE_SHOULD_END_WITH_ENDIF, "if sentence should end with endif");
+	m_exceptionText.insert(IF_SENTENCE_SHOULD_WITH_BOOL, "if sentence should  with bool");
 
 }
 

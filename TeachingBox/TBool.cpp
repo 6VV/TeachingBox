@@ -50,14 +50,14 @@ void TBool::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWid
 		this, SLOT(SlotOnIndexChanged(const QString&)));
 }
 
-void TBool::ReadValueStream(QDataStream& dataStream)
+void TBool::ReadValueStream(QDataStream& dataStream)const
 {
 	dataStream << m_value;
 }
 
-void TBool::UpdateFromValue(TVariate& variate)
+void TBool::UpdateFromValue(const TVariate& variate)
 {
-	m_value = static_cast<TBool&>(variate).m_value;
+	m_value = static_cast<const TBool&>(variate).m_value;
 }
 
 void TBool::SlotOnIndexChanged(const QString& text)

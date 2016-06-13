@@ -88,7 +88,7 @@ void TDynamic::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* tree
 	}
 }
 
-void TDynamic::ReadValueStream(QDataStream& dataStream)
+void TDynamic::ReadValueStream(QDataStream& dataStream)const
 {
 	dataStream << m_value.m_Velocity;
 	dataStream << m_value.m_Acceleration;
@@ -99,7 +99,7 @@ void TDynamic::ReadValueStream(QDataStream& dataStream)
 	dataStream << m_value.m_PostureDeceleration;
 }
 
-void TDynamic::UpdateFromValue(TVariate& variate)
+void TDynamic::UpdateFromValue(const TVariate& variate)
 {
-	m_value = static_cast<TDynamic&>(variate).m_value;
+	m_value = static_cast<const TDynamic&>(variate).m_value;
 }

@@ -42,7 +42,7 @@ void TVariate::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* tree
 	}
 }
 
-void TVariate::ReadDataStream(QDataStream& dataStream)
+void TVariate::ReadDataStream(QDataStream& dataStream) const
 {
 	m_symbol.ReadDataStream(dataStream);
 
@@ -57,7 +57,7 @@ void TVariate::ReadCollection(SET& collection, const CSymbol::SymbolType type)
 	}
 }
 
-void TVariate::UpdateFromVariate(TVariate& variate)
+void TVariate::UpdateFromVariate(const TVariate& variate)
 {
 	m_symbol = variate.m_symbol;
 	UpdateFromValue(variate);

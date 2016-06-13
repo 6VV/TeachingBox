@@ -40,6 +40,7 @@ private:
 	ValueReturned ReturnTerminalValue(const TAstNode* const node) const;
 	ValueReturned ReturnNonTerminalValue(const TAstNode* const node) const;
 
+
 private:
 	struct OperatorProperty 
 	{

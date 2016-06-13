@@ -17,8 +17,8 @@ public:
 	virtual void ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* treeWidget) override;
 
 protected:
-	virtual void ReadValueStream(QDataStream& dataStream) override;
-	virtual void UpdateFromValue(TVariate& variate) override;
+	virtual void ReadValueStream(QDataStream& dataStream) const override;
+	virtual void UpdateFromValue(const TVariate& variate) override;
 
 	void WriteValueStream(QDataStream& dataStream);
 

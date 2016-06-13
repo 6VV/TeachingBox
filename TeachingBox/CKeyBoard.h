@@ -27,7 +27,7 @@ public:
 	QString GetCurrentText();	/*获取当前文本*/
 	void SetConfirmCommand(int);	/*设置确认按钮对应命令*/
 	void SetCurrentWidget(QWidget*);	/*设置调用本键盘的窗口*/
-	void SetCurrentText(QString&);	/*设置键盘当前文本*/
+	void SetCurrentText(const QString&);	/*设置键盘当前文本*/
 	void SetKeyboardInterface(CKeyBoardInterface*);	/*设置Confirm按钮按下时调用的函数*/
 
 

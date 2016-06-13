@@ -54,7 +54,7 @@ void TPosition::ReadTreeWidgetItem(QTreeWidgetItem* parentItem, QTreeWidget* tre
 
 }
 
-void TPosition::ReadValueStream(QDataStream& dataStream)
+void TPosition::ReadValueStream(QDataStream& dataStream)const
 {
 	for (int i = 0; i < AXIS_SIZE;++i)
 	{
@@ -62,9 +62,9 @@ void TPosition::ReadValueStream(QDataStream& dataStream)
 	}
 }
 
-void TPosition::UpdateFromValue(TVariate& variate)
+void TPosition::UpdateFromValue(const TVariate& variate)
 {
-	m_value = static_cast<TPosition&>(variate).m_value;
+	m_value = static_cast<const TPosition&>(variate).m_value;
 }
 
 void TPosition::SlotOnTextChanged()

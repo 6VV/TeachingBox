@@ -1,6 +1,9 @@
 ﻿#include "stdafx.h"
 #include "TAstNode.h"
 #include "TToken.h"
+#include "TLexer.h"
+#include "TInterpreterException.h"
+#include "TGrammarParser.h"
 
 
 TAstNode::TAstNode(const std::shared_ptr<TToken> token /*= nullptr*/)
@@ -52,9 +55,35 @@ TAstNode::ValueReturned TAstNode::Execute() const
 	return ValueReturned{};
 }
 
+void TAstNode::AddSentenceNodes(TLexer* const lexer, std::shared_ptr<TAstNode> parentNode)
+{
+	std::shared_ptr<TAstNode> childNode{};
+	while (childNode = TGrammarParser::GetOneNode(lexer))
+	{
+		parentNode->AddChild(childNode);
+	}
+}
+
+void TAstNode::CheckLineBreak(TLexer* const lexer)
+{
+	if (lexer->GetToken()->GetType() != TToken::SEPARATOR_EOL)
+	{
+		throw TInterpreterException(TInterpreterException::SENTENCE_SHOULD_END_WITH_LINE_BREAK, lexer->GetToken()->GetLineNumber());
+	}
+}
+
+void TAstNode::CheckEofEol(TLexer* const lexer)
+{
+	if (!IsEofOrEol(lexer->GetToken()->GetType()))
+	{
+		throw TInterpreterException(TInterpreterException::SENTENCE_NOT_END_WITH_ABNORMAL_END, lexer->GetToken()->GetLineNumber());
+	}
+
+}
+
 bool TAstNode::IsEofOrEol(const int type)
 {
-	if (type==TToken::SEPARATOR_EOF || type==TToken::SEPARATOR_EOL)
+	if (type == TToken::SEPARATOR_EOF || type == TToken::SEPARATOR_EOL)
 	{
 		return true;
 	}

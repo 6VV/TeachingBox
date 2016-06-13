@@ -63,6 +63,7 @@ void CScreenLineEditor::changeEvent(QEvent *event)
 
 void CScreenLineEditor::hideEvent(QHideEvent *event)
 {
+	QWidget::hideEvent(event);
 	//delete(this);
 }
 
