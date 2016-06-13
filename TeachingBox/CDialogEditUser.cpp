@@ -220,7 +220,6 @@ void CDialogEditUser::InitLayout()
 
 	/*布局*/
 	QVBoxLayout* layoutMain = new QVBoxLayout(this);
-	QHBoxLayout* layoutTitle = new QHBoxLayout;
 	QGridLayout* layoutUser = new QGridLayout;
 	QHBoxLayout* layoutButton = new QHBoxLayout;
 

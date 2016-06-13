@@ -796,8 +796,8 @@ void CLexer::Init()
 	m_currentLine = 1;
 	m_currentPointer = 0;
 	m_currentChar = (*m_pStrContext)[m_currentPointer];
-	int contextLength = m_pStrContext->size();
-	CToken* currentToken;
+	//int contextLength = m_pStrContext->size();
+	//CToken* currentToken;
 	/*获取词法单元并存储*/
 	while (GetNextToken())
 	{

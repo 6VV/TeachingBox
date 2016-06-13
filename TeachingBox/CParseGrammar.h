@@ -23,6 +23,7 @@ private:
 	const int TYPE_BOOL = 4;	/*布尔变量*/
 
 private:
+	CParseGrammar& operator=(const CParseGrammar&){};
 	void Init();
 
 	//void MatchAllSentences();		/*匹配所有语句*/
@@ -95,7 +96,7 @@ private:
 
 	bool m_meetEof = false;	/*是否遇到eof语句*/
 
-	int m_tokenPointer = 0;	/*当前token指针*/
+	unsigned m_tokenPointer = 0;	/*当前token指针*/
 	int m_lastTokenPointer = 0;	/*前一语法对应指针*/
 	int m_numOfLoopOrSwitch = 0;	/*用于统计循环或开关的嵌套层数*/
 };

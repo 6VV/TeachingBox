@@ -8,7 +8,7 @@ CButtonKeyBoard::CButtonKeyBoard(QWidget* parent/*=0*/) :QToolButton(parent)
 	Init();
 }
 
-CButtonKeyBoard::CButtonKeyBoard(QString& text, QWidget* parent /*= 0*/) : QToolButton(parent)
+CButtonKeyBoard::CButtonKeyBoard(const QString& text, QWidget* parent /*= 0*/) : QToolButton(parent)
 {
 	Init();
 	this->setText(text);

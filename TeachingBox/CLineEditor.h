@@ -9,7 +9,7 @@ class CLineEditor:public QWidget
 	Q_OBJECT
 
 public:
-	CLineEditor(const QString& strText,QWidget* parent = 0);
+	//CLineEditor(const QString& strText,QWidget* parent = 0);
 	CLineEditor(QWidget* parent=0);
 	~CLineEditor();
 

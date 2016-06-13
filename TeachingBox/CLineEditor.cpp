@@ -10,10 +10,10 @@ CLineEditor::CLineEditor(QWidget* parent/*=0*/) :QWidget(parent)
 	Init();
 }
 
-CLineEditor::CLineEditor(const QString& strText, QWidget* parent /*= 0*/) : CLineEditor(parent)
-{
-
-}
+//CLineEditor::CLineEditor(const QString& strText, QWidget* parent /*= 0*/) : QWidget(parent)
+//{
+//
+//}
 
 CLineEditor::~CLineEditor()
 {

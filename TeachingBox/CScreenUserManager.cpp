@@ -32,6 +32,7 @@ void CScreenUserManager::changeEvent(QEvent *event)
 
 void CScreenUserManager::showEvent(QShowEvent *event)
 {
+	QWidget::showEvent(event);
 	RefreshUserTable();
 }
 

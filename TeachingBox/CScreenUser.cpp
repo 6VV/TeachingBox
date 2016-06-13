@@ -17,6 +17,7 @@ CScreenUser::~CScreenUser()
 
 void CScreenUser::showEvent(QShowEvent *event)
 {
+	QWidget::showEvent(event);
 	RefreshInformation();
 }
 

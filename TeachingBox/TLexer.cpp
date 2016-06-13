@@ -19,10 +19,20 @@ const std::shared_ptr<TToken> TLexer::GetToken() const
 {
 	if (m_index>=m_tokens.size())
 	{
-		return nullptr;
+		return std::shared_ptr<TToken>(new TToken(TToken::SEPARATOR_EOF,-1));
 	}
 
 	return m_tokens.at(m_index++);
+}
+
+const std::shared_ptr<TToken> TLexer::PeekToken() const
+{
+	if (m_index >= m_tokens.size())
+	{
+		return std::shared_ptr<TToken>(new TToken(TToken::SEPARATOR_EOF, -1));
+	}
+
+	return m_tokens.at(m_index);
 }
 
 void TLexer::UnGetToken()
@@ -298,9 +308,26 @@ const char TLexer::Reader::GetNextChar()
 	if (GetCurrentChar()=='\n')
 	{
 		++m_lineNumber;
+
+		while (++m_index < m_text->size())
+		{
+			SkipBlank();
+			if (m_text->at(m_index) == '\n')
+			{
+				++m_lineNumber;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		++m_index;
 	}
 
-	return m_text->at(++m_index).toLatin1();
+	return m_text->at(m_index).toLatin1();
 }
 
 const char TLexer::Reader::GetCurrentChar() const

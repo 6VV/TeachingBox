@@ -22,17 +22,17 @@ class CExceptionInterpreter
 {
 public:
 	CExceptionInterpreter(int infoCode);
-	CExceptionInterpreter(CExceptionInterpreter& e);
-	CExceptionInterpreter(int infoCode, int lineNum, std::string& strText);
+	CExceptionInterpreter(const CExceptionInterpreter& e);
+	CExceptionInterpreter(int infoCode, int lineNum, const std::string& strText);
 	CExceptionInterpreter(int infoCode, int lineNum);
 	~CExceptionInterpreter();
 
 	void SetLineNumber(int lineNumber);
 	void SetWrongText(std::string& strText);
 
-	const int GetInfoCode();
-	const int GetLineNumber();
-	const std::string GetWrongText();
+	const int GetInfoCode() const;
+	const int GetLineNumber() const;
+	const std::string GetWrongText() const;
 
 protected:
 	

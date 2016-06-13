@@ -30,6 +30,11 @@ const TToken::TokenType TToken::GetType() const
 }
 
 
+void TToken::SetType(const TokenType type)
+{
+	m_type = type;
+}
+
 TToken::Initlization TToken::m_initlization = TToken::Initlization{};
 
 TToken::Initlization::Initlization()
@@ -63,6 +68,8 @@ void TToken::Initlization::InitMacroMap()
 void TToken::Initlization::InitStructureMap()
 {
 	m_structureMap.insert("FOR", STRUCTURE_FOR);
+	m_structureMap.insert("TO", STRUCTURE_TO);
+	m_structureMap.insert("STEP", STRUCTURE_STEP);
 	m_structureMap.insert("NEXT", STRUCTURE_NEXT);
 	m_structureMap.insert("BREAK", STRUCTURE_BREAK);
 	m_structureMap.insert("CONTINUE", STRUCTURE_CONTINUE);

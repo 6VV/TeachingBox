@@ -22,6 +22,8 @@ CDialogLockScreen::~CDialogLockScreen()
 
 void CDialogLockScreen::timerEvent(QTimerEvent *event)
 {
+	QDialog::timerEvent(event);
+
 	m_lbRemainingTime->setText(QString::number(--m_lockTime));
 
 	if (m_lockTime<=0)

@@ -91,7 +91,7 @@ void CFileManager::GetFileText(QString& strFileText, const QString& strFilePath)
 	}
 }
 
-void CFileManager::SetFileText(QString& strFileText, const QString& strFilePath)
+void CFileManager::SetFileText(const QString& strFileText, const QString& strFilePath)
 {
 	QFile file(strFilePath);
 	if (file.open(QFile::WriteOnly))

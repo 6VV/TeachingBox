@@ -436,18 +436,18 @@ void CKeyboard::OnButtonConfirmClicked()
 	this->hide();
 	return;
 
-	switch (m_confirmCommand)
-	{
-	/*编辑*/
-	case CONFIRM_SCREEN_PROGRAM_EDIT_PROGRAM:
-	{
-		CScreenPragram::GetInstance()->KeyboardEdit();
-	}break;
-	default:
-		break;
-	}
+	//switch (m_confirmCommand)
+	//{
+	///*编辑*/
+	//case CONFIRM_SCREEN_PROGRAM_EDIT_PROGRAM:
+	//{
+	//	CScreenPragram::GetInstance()->KeyboardEdit();
+	//}break;
+	//default:
+	//	break;
+	//}
 
-	this->hide();
+	//this->hide();
 }
 
 void CKeyboard::ChangeToLower()

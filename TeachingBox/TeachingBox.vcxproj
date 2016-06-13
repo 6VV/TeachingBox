@@ -83,6 +83,7 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <WarningLevel>Level4</WarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -688,12 +689,18 @@
     </ClCompile>
     <ClCompile Include="CToken.cpp" />
     <ClCompile Include="TAstNode.cpp" />
+    <ClCompile Include="TAstNodeAssignSentence.cpp" />
+    <ClCompile Include="TAstNodeForSentence.cpp" />
+    <ClCompile Include="TAstNodeNextSentence.cpp" />
     <ClCompile Include="TAstNodeOperator.cpp" />
+    <ClCompile Include="TAstNodeRoot.cpp" />
     <ClCompile Include="TBool.cpp" />
+    <ClCompile Include="TContext.cpp" />
     <ClCompile Include="TDouble.cpp" />
     <ClCompile Include="TDynamic.cpp" />
     <ClCompile Include="TGrammarParser.cpp" />
     <ClCompile Include="TInteger.cpp" />
+    <ClCompile Include="TInterpreter.cpp" />
     <ClCompile Include="TInterpreterException.cpp" />
     <ClCompile Include="TLexer.cpp" />
     <ClCompile Include="TOverlap.cpp" />
@@ -3227,8 +3234,14 @@
       </Command>
     </CustomBuild>
     <ClInclude Include="TAstNode.h" />
+    <ClInclude Include="TAstNodeAssignSentence.h" />
+    <ClInclude Include="TAstNodeForSentence.h" />
+    <ClInclude Include="TAstNodeNextSentence.h" />
     <ClInclude Include="TAstNodeOperator.h" />
+    <ClInclude Include="TAstNodeRoot.h" />
+    <ClInclude Include="TContext.h" />
     <ClInclude Include="TGrammarParser.h" />
+    <ClInclude Include="TInterpreter.h" />
     <ClInclude Include="TInterpreterException.h" />
     <ClInclude Include="TLexer.h" />
     <ClInclude Include="TToken.h" />

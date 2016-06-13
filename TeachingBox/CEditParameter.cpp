@@ -57,6 +57,8 @@ void CEditParameter::SetMacroInterface(MacroInterface* macroInterface)
 
 void CEditParameter::resizeEvent(QResizeEvent *event)
 {
+	CScreenMainParent::resizeEvent(event);
+
 	/*平分各行*/
 	m_treeWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 	m_treeWidget->setColumnWidth(0, m_treeWidget->width() / 2);
@@ -150,8 +152,6 @@ void CEditParameter::SlotOnButtonConfirmClicked()
 
 void CEditParameter::SlotOnComboBoxItemChanged(const QString& strText)
 {
-	CValue* value = CValue::GetInstance();
-
 	CSymbol* symbol = TVariateManager::GetInstance()->GetRootScope().FindScopeScrollDown(
 		CScreenProject::GetInstance()->GetOpenedFileName())
 		->FindSymbolScrollUp(strText);
@@ -339,7 +339,6 @@ void CEditParameter::AddOverlapParameter(const QString& strText)
 CComboBoxWithTree_Old* CEditParameter::GetComboBoxPosition()
 {
 	CComboBoxWithTree_Old* comboBox = new CComboBoxWithTree_Old;
-	CValue* value = CValue::GetInstance();
 
 	QStringList strList;
 	TVariate::SET collection;
@@ -411,8 +410,6 @@ void CEditParameter::RefreshPositionParameter(QString strName,QTreeWidgetItem* w
 		listLineEdit.append(static_cast<QLineEdit*>(m_treeWidget->itemWidget(widgetItem->child(i), 1)));
 	}
 
-	CValue* value = CValue::GetInstance();
-
 	tAxesAllPositions vecDouble = static_cast<TPosition*>(TVariateManager::GetInstance()
 		->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))
 		->GetValue();;
@@ -448,9 +445,6 @@ void CEditParameter::RefreshDynamicParameter(QString strName, QTreeWidgetItem* w
 		listLineEdit.append(static_cast<QLineEdit*>(m_treeWidget->itemWidget(widgetItem->child(i), 1)));
 	}
 
-	CValue* value = CValue::GetInstance();
-
-
 	CValue::TYPE_DYNAMIC dynamic = static_cast<TDynamic*>(TVariateManager::GetInstance()
 		->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))
 		->GetValue();
@@ -476,10 +470,6 @@ void CEditParameter::RefreshOverlapParameter(QString strName, QTreeWidgetItem* w
 	QComboBox* comboBox = static_cast<QComboBox*>(m_treeWidget->itemWidget(widgetItem->child(0), 1));
 	QLineEdit* lineEdit = static_cast<QLineEdit*>(m_treeWidget->itemWidget(widgetItem->child(1), 1));
 
-	CValue* value = CValue::GetInstance();
-
-	
-	//m_interpreterAdapter->GetOverlapValueFromEnclosingScope(CScreenProject::GetInstance()->GetOpenedFileName(), strName.toStdString(), overlap);
 	CValue::TYPE_OVERLAP overlap=static_cast<TOverlap*>(TVariateManager::GetInstance()->GetVariateSrollUp(CScreenProject::GetInstance()->GetOpenedFileName(), strName))->GetValue();
 	///*若未找到*/
 	//if (iterValue == value->m_mapScopeOverlap.end())
@@ -504,7 +494,6 @@ void CEditParameter::RefreshOverlapParameter(QString strName, QTreeWidgetItem* w
 
 void CEditParameter::ChangeToMovl()
 {
-	QTreeWidgetItem* itemHead = new QTreeWidgetItem(m_treeWidget, QStringList("MOVL Pos, Dyn, Ovl"));
 	AddPositionParameter(m_strListParameterName.at(0));
 	AddDynamicParameter(m_strListParameterName.at(1));
 	AddOverlapParameter(m_strListParameterName.at(2));
@@ -512,7 +501,6 @@ void CEditParameter::ChangeToMovl()
 
 void CEditParameter::ChangeToMovc()
 {
-	QTreeWidgetItem* itemHead = new QTreeWidgetItem(m_treeWidget, QStringList("MOVL Pos, Pos, Dyn, Ovl"));
 	AddPositionParameter(m_strListParameterName.at(0));
 	AddPositionParameter(m_strListParameterName.at(1));
 	AddDynamicParameter(m_strListParameterName.at(2));

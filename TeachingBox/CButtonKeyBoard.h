@@ -8,7 +8,7 @@ class CButtonKeyBoard:public QToolButton
 {
 public:
 	CButtonKeyBoard(QWidget* parent=0);
-	CButtonKeyBoard(QString& text, QWidget* parent = 0);
+	CButtonKeyBoard(const QString& text, QWidget* parent = 0);
 	~CButtonKeyBoard();
 
 protected:

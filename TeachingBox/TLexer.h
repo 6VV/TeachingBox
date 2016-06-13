@@ -14,6 +14,7 @@ public:
 	~TLexer();
 	
 	const std::shared_ptr<TToken> GetToken() const;
+	const std::shared_ptr<TToken> PeekToken() const;
 	void UnGetToken();
 
 private:
@@ -47,7 +48,7 @@ private:
 
 private:
 	std::vector < std::shared_ptr<TToken>> m_tokens;
-	mutable int m_index=0;
+	mutable unsigned m_index=0;
 
 private:
 	class Reader

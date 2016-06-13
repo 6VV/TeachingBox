@@ -53,6 +53,7 @@ public:
 	void GetVariateItems(QTreeWidgetItem* const parentItem, QTreeWidget* const treeWidget, const QString& scope);
 
 	void Update(const QString& scope, const QString& name, TVariate& newVariate);
+	void UpdateInMemory(const QString& scope, const QString& name, TVariate& newVariate);
 	void UpdateVariateName(const QString& scope, const QString& oldName, const QString& newName);
 
 private:

@@ -27,6 +27,8 @@ private:
 		CAstTreeNode* lastNode;	/*上个函数的下一个节点*/
 	};
 
+	CInterpreter& operator=(const CInterpreter&);
+
 public:
 	//CInterpreter(CParseSemantic& parseSemantic);
 	CInterpreter(CAstTreeNode* rootNode);

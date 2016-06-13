@@ -86,22 +86,16 @@ void CGrammarManagerFactory::UpdateCategoryData()
 {
 }
 
-
-void CGrammarManagerFactory::UpdateMacroData(QModelIndex& indexCategory)
-{
-}
-
-
-
-/*选取宏定义*/
-void CGrammarManagerFactory::SelectMacro(QModelIndex& indexSelected)
-{
-}
-
-void CGrammarManagerFactory::EditText(const QString& text)
-{
-
-}
+//
+///*选取宏定义*/
+//void CGrammarManagerFactory::SelectMacro(QModelIndex& indexSelected)
+//{
+//}
+//
+//void CGrammarManagerFactory::EditText(const QString& text)
+//{
+//
+//}
 
 QList<QString> CGrammarManagerFactory::GetTokens(const QString& text)
 {

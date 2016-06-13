@@ -74,6 +74,15 @@
     <ClCompile Include="TGrammarParserTests.cpp">
       <Filter>Source Files\TLexerTests</Filter>
     </ClCompile>
+    <ClCompile Include="TAstNodeOperatorTests.cpp">
+      <Filter>Source Files\TLexerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeAssignSentenceTests.cpp">
+      <Filter>Source Files\TLexerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeForSentenceTests.cpp">
+      <Filter>Source Files\TLexerTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -113,6 +122,15 @@
       <Filter>Header Files\TInterpreter</Filter>
     </ClInclude>
     <ClInclude Include="TGrammarParserTests.h">
+      <Filter>Header Files\TInterpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeOperatorTests.h">
+      <Filter>Header Files\TInterpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeAssignSentenceTests.h">
+      <Filter>Header Files\TInterpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeForSentenceTests.h">
       <Filter>Header Files\TInterpreter</Filter>
     </ClInclude>
   </ItemGroup>

@@ -845,7 +845,25 @@
       <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClCompile>
     <ClCompile Include="TAstNodeOperator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeAssignSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeForSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeNextSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClCompile>
+    <ClCompile Include="TInterpreter.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="TContext.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeRoot.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1206,6 +1224,24 @@
       <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClInclude>
     <ClInclude Include="TAstNodeOperator.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClInclude>
+    <ClInclude Include="TContext.h">
+      <Filter>Header Files\Interpreter\NewInterpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeAssignSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeForSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeNextSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClInclude>
+    <ClInclude Include="TInterpreter.h">
+      <Filter>Header Files\Interpreter\NewInterpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeRoot.h">
       <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClInclude>
   </ItemGroup>

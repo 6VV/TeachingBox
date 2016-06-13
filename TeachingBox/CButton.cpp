@@ -8,7 +8,7 @@ CButton::CButton(const QString &text, QWidget* parent /*= 0*/) : QPushButton(par
 	this->setText(text);
 }
 
-CButton::CButton(QWidget* parent /*= 0*/)
+CButton::CButton(QWidget* parent /*= 0*/) :QPushButton(parent)
 {
 	Init();
 }

@@ -45,7 +45,9 @@ public:
 		SEPARATOR_EOL = 300,
 		SEPARATOR_EOF,
 
-		STRUCTURE_FOR=500,
+		STRUCTURE_FOR = 500,
+		STRUCTURE_TO,
+		STRUCTURE_STEP,
 		STRUCTURE_NEXT,
 		STRUCTURE_BREAK,
 		STRUCTURE_CONTINUE,
@@ -73,6 +75,7 @@ public:
 
 	const int GetLineNumber() const;
 	const TokenType GetType() const;
+	void SetType(const TokenType type);
 
 private:
 	TokenType m_type;

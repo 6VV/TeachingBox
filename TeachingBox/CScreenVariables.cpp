@@ -172,6 +172,7 @@ void CScreenVariables::changeEvent(QEvent *event)
 
 void CScreenVariables::resizeEvent(QResizeEvent *event)
 {
+	CScreenMainParent::resizeEvent(event);
 	m_treeWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 	m_treeWidget->setColumnWidth(0, m_treeWidget->width() / 2);
 }
@@ -186,6 +187,7 @@ void CScreenVariables::showEvent(QShowEvent *event)
 
 void CScreenVariables::hideEvent(QHideEvent *event)
 {
+	CScreenMainParent::hideEvent(event);
 	m_btnConfirm->setEnabled(false);
 }
 

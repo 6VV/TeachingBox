@@ -9,11 +9,10 @@
 //	m_tokenList = &tokenList;
 //}
 
-CParseGrammar::CParseGrammar(CLexer& lexer,CAstTreeNode* rootNode)
+CParseGrammar::CParseGrammar(CLexer& lexer, CAstTreeNode* rootNode) :m_rootNode(rootNode)
 {
 	m_tokenList = lexer.GetTokenList();
 	m_temporaryTokenList = new std::vector<CToken*>;
-	m_rootNode = rootNode;
 
 	Init();
 }

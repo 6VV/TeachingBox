@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "TAstNode.h"
+#include "TToken.h"
 
 
 TAstNode::TAstNode(const std::shared_ptr<TToken> token /*= nullptr*/)
@@ -16,7 +17,7 @@ TAstNode::~TAstNode()
 void TAstNode::AddChild(std::shared_ptr<TAstNode> child)
 {
 	child->m_parentNode = this;
-	child->m_siblingChild = nullptr;
+	child->m_siblingNode = nullptr;
 
 	if (!m_firstChild)
 	{
@@ -25,10 +26,11 @@ void TAstNode::AddChild(std::shared_ptr<TAstNode> child)
 	}
 	else
 	{
-		m_endChild->m_siblingChild = child;
+		m_endChild->m_siblingNode = child;
 		m_endChild = child;
 	}
 }
+
 
 std::shared_ptr<TToken> TAstNode::GetToken() const
 {
@@ -42,10 +44,35 @@ std::shared_ptr<TAstNode> TAstNode::GetFirstChild() const
 
 std::shared_ptr<TAstNode> TAstNode::GetSibling() const
 {
-	return m_siblingChild;
+	return m_siblingNode;
 }
 
-std::shared_ptr<TVariate> TAstNode::Execute()
+TAstNode::ValueReturned TAstNode::Execute() const
 {
+	return ValueReturned{};
+}
+
+bool TAstNode::IsEofOrEol(const int type)
+{
+	if (type==TToken::SEPARATOR_EOF || type==TToken::SEPARATOR_EOL)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+TAstNode* TAstNode::FindNextValidNode() const
+{
+	if (m_siblingNode != nullptr)
+	{
+		return m_siblingNode.get();
+	}
+
+	if (m_parentNode != nullptr)
+	{
+		return m_parentNode->FindNextValidNode();
+	}
+
 	return nullptr;
 }

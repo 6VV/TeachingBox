@@ -25,10 +25,9 @@
 //	//FindFunctionNode();
 //}
 
-CInterpreter::CInterpreter(CAstTreeNode* rootNode)
+CInterpreter::CInterpreter(CAstTreeNode* rootNode) :m_rootNode(rootNode)
 {
 	m_value = CValue::GetInstance();
-	m_rootNode = rootNode;
 
 	m_interpreterTcpAdapter = new CInterpreterTcpAdatper;
 }
@@ -888,8 +887,6 @@ bool CInterpreter::GetBoolResult(CAstTreeNode* rootNode)
 		}
 	}break;
 	}
-
-	return false;
 }
 
 bool CInterpreter::GetLogicalExpResult(CAstTreeNode* rootNode)

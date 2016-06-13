@@ -283,6 +283,12 @@ void TVariateManager::Update(const QString& scope, const QString& name, TVariate
 }
 
 
+void TVariateManager::UpdateInMemory(const QString& scope, const QString& name, TVariate& newVariate)
+{
+	UpdateInMap(scope, name, newVariate);
+	UpdateInScope(scope, name, newVariate);
+}
+
 void TVariateManager::UpdateVariateName(const QString& scope, const QString& oldName, const QString& newName)
 {
 	TVariate* variate = GetVariate(scope, oldName);
@@ -292,8 +298,8 @@ void TVariateManager::UpdateVariateName(const QString& scope, const QString& old
 
 void TVariateManager::UpdateInMap(const QString& scope, const QString& name, TVariate& newVariate)
 {
-	auto& iterMap = m_objectMap.find(scope);
-	auto& iterVar = iterMap.value().find(name);
+	auto iterMap = m_objectMap.find(scope);
+	auto iterVar = iterMap.value().find(name);
 
 	auto ptrVariate = iterVar.value();
 	ptrVariate->UpdateFromVariate(newVariate);

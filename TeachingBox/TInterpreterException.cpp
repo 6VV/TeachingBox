@@ -3,6 +3,8 @@
 
 QHash<int, QString> TInterpreterException::m_exceptionText = QHash<int, QString>{};
 
+TInterpreterException::ExceptionInitialization TInterpreterException::m_initialzation{};
+
 TInterpreterException::ExceptionInitialization::ExceptionInitialization()
 {
 	m_exceptionText.insert(UNKNOW_TOKEN, "unknown token");
@@ -10,6 +12,16 @@ TInterpreterException::ExceptionInitialization::ExceptionInitialization()
 	m_exceptionText.insert(NOT_FIND_RIGHT_BRACKET, "not find right bracket");
 	m_exceptionText.insert(NEGATION_SHOULD_WITH_BOOL, "\"!\" should with bool");
 	m_exceptionText.insert(NEGATIVE_SHOULD_WITH_INT_OR_DOUBLE, "\"-\" should with integer or double");
+	m_exceptionText.insert(NOT_FIND_VARIATE, "not find variate");
+	m_exceptionText.insert(ONLY_NUMBER_COULD_TAKE_ARITHMETICAL_OPERATION, "only number could take part in arithmetical opration");
+	m_exceptionText.insert(ONLY_NUMBER_COULD_TAKE_RELATIONAL_OPERATION, "only number could take part in relational opration");
+	m_exceptionText.insert(ONLY_BOOL_COULD_TAKE_LOGICAL_OPERATION, "only bool could take part in logical opration");
+	m_exceptionText.insert(ONLY_INTERGER_COULD_TAKE_MOD_OPERATION, "only interger could take part in mod opration");
+	m_exceptionText.insert(SENTENCE_NOT_END_WITH_ABNORMAL_END, "sentence not end with abnormal end");
+	m_exceptionText.insert(SENTENCE_SHOULD_END_WITH_LINE_BREAK, "sentence should end with line break");
+	m_exceptionText.insert(TYPE_NOT_MATCH, "type not match");
+	m_exceptionText.insert(FOR_SENTENCE_SHOULD_END_WITH_NEXT, "for sentence should end with next");
+	m_exceptionText.insert(FOR_SENTENCE_SHOULD_USE_INTERGER_OR_DOUBLE, "for sentence should use interger or double");
 
 }
 

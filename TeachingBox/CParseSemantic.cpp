@@ -152,10 +152,10 @@ void CParseSemantic::ParseSentence(CAstTreeNode* rootNode)
 	{
 		switch (rootNode->m_token->m_smallCategory)
 		{
-		case CTokenCategory::commLabel:
+	/*	case CTokenCategory::commLabel:
 		{
 			ParseSentenceLabel(rootNode);
-		}break;
+		}break;*/
 		case CTokenCategory::commIf:
 		{
 			ParseSentenceIf(rootNode);
@@ -293,14 +293,14 @@ void CParseSemantic::ParseSentenceElseIf(CAstTreeNode* rootNode)
 	}
 }
 
-void CParseSemantic::ParseSentenceLabel(CAstTreeNode* rootNode)
-{
-	//CTokenString* tokenLabel = (CTokenString*)(rootNode->m_firstChildNode->m_token);
-	//if (m_value->m_setLabel.find(tokenLabel->m_strName)==m_value->m_setLabel.end())
-	//{
-	//	throw CExceptionInterpreter(CWarningInformation::UNKNOWN_LABEL, tokenLabel->m_lineNum,tokenLabel->m_strName);
-	//}
-}
+//void CParseSemantic::ParseSentenceLabel(CAstTreeNode* rootNode)
+//{
+//	//CTokenString* tokenLabel = (CTokenString*)(rootNode->m_firstChildNode->m_token);
+//	//if (m_value->m_setLabel.find(tokenLabel->m_strName)==m_value->m_setLabel.end())
+//	//{
+//	//	throw CExceptionInterpreter(CWarningInformation::UNKNOWN_LABEL, tokenLabel->m_lineNum,tokenLabel->m_strName);
+//	//}
+//}
 
 void CParseSemantic::ParseSentenceFor(CAstTreeNode* rootNode)
 {

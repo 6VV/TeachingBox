@@ -40,9 +40,9 @@ public:
 	static CGrammarManagerFactory* GetInstance();
 	
 	virtual void UpdateCategoryData(); /*更新分类模型*/
-	virtual void UpdateMacroData(QModelIndex& indexCategory);	/*更新宏定义模型*/
-	virtual void SelectMacro(QModelIndex& indexSelected);	/*选取宏定义*/
-	virtual void EditText(const QString& text);	/*编辑程序文本*/
+	virtual void UpdateMacroData(QModelIndex& indexCategory){};	/*更新宏定义模型*/
+	virtual void SelectMacro(QModelIndex& indexSelected){};	/*选取宏定义*/
+	virtual void EditText(const QString& text){};	/*编辑程序文本*/
 
 protected:
 	QList<QString> GetTokens(const QString& text);

@@ -35,7 +35,7 @@ private:
 	void ParseSentenceMovl(CAstTreeNode* rootNode);		/*解析Movl语句*/
 	void ParseSentenceMovc(CAstTreeNode* rootNode);		/*解析Movc语句*/
 
-	void ParseSentenceLabel(CAstTreeNode* rootNode);	/*解析label语句*/
+	//void ParseSentenceLabel(CAstTreeNode* rootNode);	/*解析label语句*/
 
 	int GetExpType(CAstTreeNode* rootNode);	/*返回表达式类型*/
 	

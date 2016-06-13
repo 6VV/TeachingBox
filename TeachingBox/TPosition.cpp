@@ -73,7 +73,7 @@ void TPosition::SlotOnTextChanged()
 	QTreeWidgetItem* parentItem = currentWidget->GetParentItem();
 	QTreeWidget* treeWidget = currentWidget->GetTreeWidget();
 
-	tAxesAllPositions position;
+	tAxesAllPositions position{};
 	for (int i = 0; i < parentItem->childCount();++i)
 	{
 		QLineEdit* lineEdit=static_cast<QLineEdit*>(treeWidget->itemWidget(parentItem->child(i), 1));
