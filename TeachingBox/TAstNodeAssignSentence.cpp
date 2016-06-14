@@ -37,17 +37,17 @@ TAstNode::ValueReturned TAstNodeAssignSentence::Execute() const
 	{
 	case CSymbol::TYPE_INTERGER:
 	{
-		TVariateManager::GetInstance()->UpdateInMemory(var->GetScope(), var->GetName(), TInteger(var->GetScope(), var->GetName(), value.value));
+		TVariateManager::GetInstance()->UpdateInMap(var->GetScope(), var->GetName(), TInteger(var->GetScope(), var->GetName(), value.value));
 		result.type = CSymbol::TYPE_INTERGER;
 	}break;
 	case CSymbol::TYPE_DOUBLE:
 	{
-		TVariateManager::GetInstance()->UpdateInMemory(var->GetScope(), var->GetName(), TDouble(var->GetScope(), var->GetName(), value.value));
+		TVariateManager::GetInstance()->UpdateInMap(var->GetScope(), var->GetName(), TDouble(var->GetScope(), var->GetName(), value.value));
 		result.type = CSymbol::TYPE_DOUBLE;
 	}break;
 	case CSymbol::TYPE_BOOL:
 	{
-		TVariateManager::GetInstance()->UpdateInMemory(var->GetScope(), var->GetName(), TBool(var->GetScope(), var->GetName(), value.value));
+		TVariateManager::GetInstance()->UpdateInMap(var->GetScope(), var->GetName(), TBool(var->GetScope(), var->GetName(), value.value));
 		result.type = CSymbol::TYPE_BOOL;
 	}break;
 	default:

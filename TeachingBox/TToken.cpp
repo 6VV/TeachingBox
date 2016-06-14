@@ -81,4 +81,6 @@ void TToken::Initlization::InitStructureMap()
 	m_structureMap.insert("CASE", STURCTURE_CASE);
 	m_structureMap.insert("DEFAULT", STURCTURE_DEFAULT);
 	m_structureMap.insert("ENDSWITCH", STURCTURE_END_SWITCH);
+
+	m_structureMap.insert("EOF", SEPARATOR_EOF);
 }

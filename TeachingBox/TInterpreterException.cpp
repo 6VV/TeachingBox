@@ -24,7 +24,9 @@ TInterpreterException::ExceptionInitialization::ExceptionInitialization()
 	m_exceptionText.insert(FOR_SENTENCE_SHOULD_USE_INTERGER_OR_DOUBLE, "for sentence should use interger or double");
 	m_exceptionText.insert(IF_SENTENCE_SHOULD_END_WITH_ENDIF, "if sentence should end with endif");
 	m_exceptionText.insert(IF_SENTENCE_SHOULD_WITH_BOOL, "if sentence should  with bool");
-
+	m_exceptionText.insert(NOT_MOVL_SENTENCE, "not movl sentence");
+	m_exceptionText.insert(MOVL_SHOULD_WITH_POSITOIN_DYNAMIC_OVERLAP, "movl should should be with position,dynamic,overlap");
+	m_exceptionText.insert(LOSE_COMMA, "lose comma");
 }
 
 TInterpreterException::TInterpreterException(const InterpreterExceptionCode id, const int lineNumber,const QString& text)

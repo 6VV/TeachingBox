@@ -114,6 +114,7 @@ const bool TLexer::CheckPushOtherToken(const char c)
 	case '"':{PushTokenString();}break;
 	case '\\':{PushTokenNote();}break;
 	case '#':{SkipCharInSameLine();}break;
+	case  ',':{PushToken((TToken::SEPARATOR_COMMA)); }break;
 	default:{return false;}
 	}
 

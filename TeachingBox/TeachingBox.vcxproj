@@ -707,6 +707,7 @@
     <ClCompile Include="TInterpreter.cpp" />
     <ClCompile Include="TInterpreterException.cpp" />
     <ClCompile Include="TLexer.cpp" />
+    <ClCompile Include="TAstNodeMovlSentence.cpp" />
     <ClCompile Include="TOverlap.cpp" />
     <ClCompile Include="TPosition.cpp" />
     <ClCompile Include="TString.cpp" />
@@ -3252,6 +3253,7 @@
     <ClInclude Include="TInterpreter.h" />
     <ClInclude Include="TInterpreterException.h" />
     <ClInclude Include="TLexer.h" />
+    <ClInclude Include="TAstNodeMovlSentence.h" />
     <ClInclude Include="TToken.h" />
     <ClInclude Include="TTokenWithValue.h" />
     <ClInclude Include="TVariateFactory.h" />

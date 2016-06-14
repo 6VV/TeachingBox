@@ -45,9 +45,19 @@ std::shared_ptr<TAstNode> TAstNode::GetFirstChild() const
 	return m_firstChild;
 }
 
+std::shared_ptr<TAstNode> TAstNode::GetEndChild() const
+{
+	return m_endChild;
+}
+
 std::shared_ptr<TAstNode> TAstNode::GetSibling() const
 {
 	return m_siblingNode;
+}
+
+TAstNode* TAstNode::GetParentNode() const
+{
+	return m_parentNode;
 }
 
 TAstNode::ValueReturned TAstNode::Execute() const
@@ -95,6 +105,12 @@ TAstNode* TAstNode::FindNextValidNode() const
 {
 	if (m_siblingNode != nullptr)
 	{
+		/*若兄弟节点与当前节点在同一行，则继续寻找下一节点*/
+		if (m_siblingNode->GetToken()->GetLineNumber() == m_token->GetLineNumber())
+		{
+			return m_siblingNode->FindNextValidNode();
+		}
+
 		return m_siblingNode.get();
 	}
 

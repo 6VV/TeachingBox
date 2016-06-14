@@ -2,6 +2,7 @@
 #include "TAstNodeEndIfSentence.h"
 #include "TLexer.h"
 #include "TInterpreterException.h"
+#include "TContext.h"
 
 
 
@@ -31,9 +32,22 @@ const std::shared_ptr<TAstNode> TAstNodeEndIfSentence::GetAstNode(TLexer* const 
 
 TAstNode::ValueReturned TAstNodeEndIfSentence::Execute() const
 {
-	throw std::logic_error("The method or operation is not implemented.");
+	TContext::SetNextNode(FindNextValidNode());
+
+	return ValueReturned();
 }
 
 void TAstNodeEndIfSentence::ParseSemantic() const
 {
+}
+
+TAstNode* TAstNodeEndIfSentence::FindNextValidNode() const
+{
+	auto desNode = m_parentNode;
+	while (desNode->GetToken()->GetType() != TToken::STRUCTURE_IF)
+	{
+		desNode = desNode->GetParentNode();
+	}
+
+	return desNode->FindNextValidNode();
 }

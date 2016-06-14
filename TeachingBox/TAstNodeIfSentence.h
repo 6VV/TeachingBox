@@ -18,10 +18,12 @@ public:
 
 	virtual void ParseSemantic() const override;
 
+
 private:
-	static void AddIfChild(TLexer* const lexer, std::shared_ptr<TAstNode> result);
+	static void AddThenChild(TLexer* const lexer, std::shared_ptr<TAstNode> result);
 	static void AddContent(TLexer* const lexer, std::shared_ptr<TAstNode> result);
 
+	void ParseChildren(std::shared_ptr<TAstNode> child) const;
 
 };
 

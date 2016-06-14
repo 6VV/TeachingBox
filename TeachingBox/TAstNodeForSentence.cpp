@@ -69,11 +69,11 @@ void TAstNodeForSentence::UpdateValue(CSymbol::SymbolType type, const QString& s
 {
 	if (type == CSymbol::TYPE_INTERGER)
 	{
-		TVariateManager::GetInstance()->UpdateInMemory(scope, name, TInteger(scope, name, value));
+		TVariateManager::GetInstance()->UpdateInMap(scope, name, TInteger(scope, name, value));
 	}
 	else
 	{
-		TVariateManager::GetInstance()->UpdateInMemory(scope, name, TDouble(scope, name, value));
+		TVariateManager::GetInstance()->UpdateInMap(scope, name, TDouble(scope, name, value));
 	}
 }
 

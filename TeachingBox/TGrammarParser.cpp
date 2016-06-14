@@ -7,6 +7,7 @@
 #include "TAstNodeAssignSentence.h"
 #include "TAstNodeForSentence.h"
 #include "TAstNodeRoot.h"
+#include "TAstNodeIfSentence.h"
 
 const std::shared_ptr<TAstNode> TGrammarParser::GetRootNode(TLexer* const lexer)
 {
@@ -38,6 +39,10 @@ const std::shared_ptr<TAstNode> TGrammarParser::GetOneNode(TLexer* const lexer)
 	case TToken::STRUCTURE_FOR:
 	{
 		return TAstNodeForSentence::GetAstNode(lexer);
+	}break;
+	case TToken::STRUCTURE_IF:
+	{
+		return TAstNodeIfSentence::GetAstNode(lexer);
 	}break;
 	default:
 	{

@@ -22,9 +22,14 @@ public:
 
 public:
 	void AddChild(std::shared_ptr<TAstNode> child);
+	virtual TAstNode* FindNextValidNode() const;
+
 	std::shared_ptr<TToken> GetToken() const;
 	std::shared_ptr<TAstNode> GetFirstChild() const;
+	std::shared_ptr<TAstNode> GetEndChild() const;
 	std::shared_ptr<TAstNode> GetSibling() const;
+	TAstNode* GetParentNode() const;
+
 	virtual ValueReturned Execute() const;
 	virtual void ParseSemantic() const{};
 
@@ -35,7 +40,6 @@ protected:
 	static void CheckEofEol(TLexer* const lexer);
 
 	static bool IsEofOrEol(const int type);
-	TAstNode* FindNextValidNode() const;
 
 protected:
 	std::shared_ptr<TToken> m_token=nullptr;

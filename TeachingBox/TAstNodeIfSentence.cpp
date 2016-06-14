@@ -7,6 +7,7 @@
 #include "TAstNodeEndIfSentence.h"
 #include "TAstNodeElseSentence.h"
 #include "TAstNodeElseIfSentence.h"
+#include "TContext.h"
 
 TAstNodeIfSentence::TAstNodeIfSentence(const std::shared_ptr<TToken> token /*= nullptr*/)
 	:TAstNode(token)
@@ -32,7 +33,7 @@ const std::shared_ptr<TAstNode> TAstNodeIfSentence::GetAstNode(TLexer* const lex
 	result->AddChild(TAstNodeOperator::GetAstNode(lexer));
 	CheckLineBreak(lexer);
 
-	AddIfChild(lexer, result);
+	AddThenChild(lexer, result);
 
 	AddContent(lexer, result);
 
@@ -65,19 +66,34 @@ void TAstNodeIfSentence::AddContent(TLexer* const lexer, std::shared_ptr<TAstNod
 	}
 }
 
-void TAstNodeIfSentence::AddIfChild(TLexer* const lexer, std::shared_ptr<TAstNode> result)
+void TAstNodeIfSentence::AddThenChild(TLexer* const lexer, std::shared_ptr<TAstNode> result)
 {
+	std::shared_ptr<TAstNode> thenNode(new TAstNode(std::shared_ptr<TToken>(new TToken(TToken::STRUCTURE_THEN, result->GetToken()->GetLineNumber()))));
+	result->AddChild(thenNode);
+
 	std::shared_ptr<TAstNode> childNode{};
 	while (childNode = TGrammarParser::GetOneNode(lexer))
 	{
-		result->AddChild(childNode);
+		thenNode->AddChild(childNode);
 	}
+
+	thenNode->AddChild(std::shared_ptr<TAstNode>(new TAstNodeEndIfSentence(
+		std::shared_ptr<TToken>(new TToken(TToken::STURCTURE_END_IF, thenNode->GetEndChild()->GetToken()->GetLineNumber())))));
 }
 
 TAstNode::ValueReturned TAstNodeIfSentence::Execute() const
 {
-	throw std::logic_error("The method or operation is not implemented.");
-}
+	if (m_firstChild->Execute().value)
+	{
+		TContext::SetNextNode(m_firstChild->GetSibling()->GetFirstChild().get());
+	}
+	else
+	{
+		TContext::SetNextNode(m_firstChild->GetSibling()->GetSibling().get());
+	}
+
+	return ValueReturned();
+};
 
 void TAstNodeIfSentence::ParseSemantic() const
 {
@@ -86,8 +102,13 @@ void TAstNodeIfSentence::ParseSemantic() const
 		throw TInterpreterException(TInterpreterException::IF_SENTENCE_SHOULD_WITH_BOOL, m_token->GetLineNumber());
 	}
 
-	auto child = m_firstChild->GetSibling();
+	ParseChildren(m_firstChild->GetSibling()->GetFirstChild());
 
+	ParseChildren(m_firstChild->GetSibling()->GetSibling());
+}
+
+void TAstNodeIfSentence::ParseChildren(std::shared_ptr<TAstNode> child) const
+{
 	while (child)
 	{
 		child->ParseSemantic();

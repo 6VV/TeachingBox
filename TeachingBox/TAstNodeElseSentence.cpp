@@ -2,6 +2,8 @@
 #include "TAstNodeElseSentence.h"
 #include "TLexer.h"
 #include "TInterpreterException.h"
+#include "TAstNodeEndIfSentence.h"
+#include "TContext.h"
 
 
 
@@ -31,12 +33,17 @@ const std::shared_ptr<TAstNode> TAstNodeElseSentence::GetAstNode(TLexer* const l
 
 	AddSentenceNodes(lexer, result);
 
+	result->AddChild(std::shared_ptr<TAstNode>(new TAstNodeEndIfSentence(
+		std::shared_ptr<TToken>(new TToken(TToken::STURCTURE_END_IF, result->GetEndChild()->GetToken()->GetLineNumber())))));
+
 	return result;
 }
 
 TAstNode::ValueReturned TAstNodeElseSentence::Execute() const
 {
-	throw std::logic_error("The method or operation is not implemented.");
+	TContext::SetNextNode(m_firstChild.get());
+
+	return ValueReturned();
 }
 
 void TAstNodeElseSentence::ParseSemantic() const

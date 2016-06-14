@@ -15,6 +15,8 @@ public:
 
 	virtual void ParseSemantic() const override;
 
+	virtual TAstNode* FindNextValidNode() const override;
+
 };
 
 #endif

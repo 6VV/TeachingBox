@@ -203,11 +203,29 @@
     <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode">
       <UniqueIdentifier>{0e09534c-345e-4c0c-a860-82c7ca02d67d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interpreter\NewInterpreter\AstNode\IF">
+    <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode\If">
+      <UniqueIdentifier>{2706c204-06bc-4420-8a76-baa549605de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode\For">
+      <UniqueIdentifier>{c86c2758-c3de-40ad-ba2b-cecaeb80d024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter\NewInterpreter\AstNode\For">
+      <UniqueIdentifier>{5d67c24a-4df8-4ebd-9e0c-22e5d251a20b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter\NewInterpreter\AstNode\If">
       <UniqueIdentifier>{d8775909-ed05-40b5-a4ec-4b6b702c5169}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode\IF">
-      <UniqueIdentifier>{2706c204-06bc-4420-8a76-baa549605de2}</UniqueIdentifier>
+    <Filter Include="Header Files\Interpreter\NewInterpreter\AstNode\Operator">
+      <UniqueIdentifier>{bf3c0d42-ee28-467d-9772-86d865ed0ae8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode\Operator">
+      <UniqueIdentifier>{d7eede1f-21ec-4640-8caf-8d831847d73b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter\NewInterpreter\AstNode\Macro">
+      <UniqueIdentifier>{3e2a8929-0634-47c3-bb0b-4702c54505b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode\Macro">
+      <UniqueIdentifier>{174611f7-c2a9-493e-beab-e9b086ae4071}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -850,18 +868,6 @@
     <ClCompile Include="TAstNode.cpp">
       <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClCompile>
-    <ClCompile Include="TAstNodeOperator.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
-    </ClCompile>
-    <ClCompile Include="TAstNodeAssignSentence.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
-    </ClCompile>
-    <ClCompile Include="TAstNodeForSentence.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
-    </ClCompile>
-    <ClCompile Include="TAstNodeNextSentence.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
-    </ClCompile>
     <ClCompile Include="TInterpreter.cpp">
       <Filter>Source Files\Interpreter\NewInterpreter</Filter>
     </ClCompile>
@@ -872,16 +878,31 @@
       <Filter>Source Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClCompile>
     <ClCompile Include="TAstNodeElseIfSentence.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\If</Filter>
     </ClCompile>
     <ClCompile Include="TAstNodeElseSentence.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\If</Filter>
     </ClCompile>
     <ClCompile Include="TAstNodeEndIfSentence.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\If</Filter>
     </ClCompile>
     <ClCompile Include="TAstNodeIfSentence.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\If</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeForSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\For</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeNextSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\For</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeOperator.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeAssignSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeMovlSentence.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\Macro</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1241,20 +1262,8 @@
     <ClInclude Include="TAstNode.h">
       <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClInclude>
-    <ClInclude Include="TAstNodeOperator.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
-    </ClInclude>
     <ClInclude Include="TContext.h">
       <Filter>Header Files\Interpreter\NewInterpreter</Filter>
-    </ClInclude>
-    <ClInclude Include="TAstNodeAssignSentence.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
-    </ClInclude>
-    <ClInclude Include="TAstNodeForSentence.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
-    </ClInclude>
-    <ClInclude Include="TAstNodeNextSentence.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClInclude>
     <ClInclude Include="TInterpreter.h">
       <Filter>Header Files\Interpreter\NewInterpreter</Filter>
@@ -1263,16 +1272,31 @@
       <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
     </ClInclude>
     <ClInclude Include="TAstNodeEndIfSentence.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\If</Filter>
     </ClInclude>
     <ClInclude Include="TAstNodeElseSentence.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\If</Filter>
     </ClInclude>
     <ClInclude Include="TAstNodeElseIfSentence.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\If</Filter>
     </ClInclude>
     <ClInclude Include="TAstNodeIfSentence.h">
-      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\IF</Filter>
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\If</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeForSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\For</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeNextSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\For</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeOperator.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeAssignSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeMovlSentence.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\Macro</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
