@@ -3,7 +3,7 @@
 #include "TLexer.h"
 #include "TInterpreterException.h"
 #include "TAstNodeOperator.h"
-#include "TGrammarParser.h"
+#include "TAstNodeFactory.h"
 #include "TAstNodeEndIfSentence.h"
 #include "TAstNodeElseSentence.h"
 #include "TAstNodeElseIfSentence.h"
@@ -72,7 +72,7 @@ void TAstNodeIfSentence::AddThenChild(TLexer* const lexer, std::shared_ptr<TAstN
 	result->AddChild(thenNode);
 
 	std::shared_ptr<TAstNode> childNode{};
-	while (childNode = TGrammarParser::GetOneNode(lexer))
+	while (childNode = TAstNodeFactory::GetOneNode(lexer))
 	{
 		thenNode->AddChild(childNode);
 	}

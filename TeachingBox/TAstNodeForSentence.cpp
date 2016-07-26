@@ -2,7 +2,7 @@
 #include "TAstNodeForSentence.h"
 #include "TLexer.h"
 #include "TInterpreterException.h"
-#include "TGrammarParser.h"
+#include "TAstNodeFactory.h"
 #include "TAstNodeAssignSentence.h"
 #include "TAstNodeOperator.h"
 #include "TAstNodeNextSentence.h"

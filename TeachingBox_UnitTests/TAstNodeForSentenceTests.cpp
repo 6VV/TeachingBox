@@ -90,7 +90,8 @@ TEST_F(TAstNodeForSentenceTests, Execute_IntergerPlus_GetRightValue)
 		TVariateManager::GetInstance()->Add(new TInteger("SYSTEM", "b", 0));
 
 		QString text("FOR a=0 TO 5 STEP 2\nb=b+1\nNEXT");
-		TInterpreter::Interpret(text);
+		TInterpreter interpreter;
+		interpreter.Interpret(text);
 		/*TLexer lexer(text);
 		auto node = TAstNodeForSentence::GetAstNode(&lexer);
 		node->ParseSemantic();

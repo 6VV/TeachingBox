@@ -1,6 +1,9 @@
 MOVL p1, d345, ov1
 i1 = 1 + 2
 IF i1 > 1
-    i1 = 6
+    i1 = 1
 ENDIF
+FOR i1 = 1 TO 2 STEP 0
+    i1 = 1
+NEXT
 EOF

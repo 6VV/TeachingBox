@@ -44,7 +44,9 @@ int CCodeEditor::GetLineNumberAreaWidth()
 
 void CCodeEditor::HighlightPCLine(const int lineNumber)
 {
-	QTextBlock block = this->document()->findBlockByLineNumber(lineNumber - 1);
+	int currentLine = lineNumber >= this->document()->blockCount()?1:lineNumber;
+
+	QTextBlock block = this->document()->findBlockByLineNumber(currentLine - 1);
 	QTextCursor cursor(block);
 
 	m_extraSelections.clear();

@@ -1,6 +1,6 @@
 ﻿#include "stdafx.h"
 #include "CWidgetStack.h"
-#include "CScreenPragram.h"
+#include "CScreenProgram.h"
 #include "CScreenProject.h"
 #include "CScreenMain.h"
 
@@ -58,7 +58,7 @@ void CWidgetStack::Back()
 		return;
 	}
 	/*若为程序窗口*/
-	if (typeid(*widget)==typeid(CScreenPragram))
+	if (typeid(*widget)==typeid(CScreenProgram))
 	{
 		CScreenMain::GetInstance()->ChangeToScreenProgram();
 	}

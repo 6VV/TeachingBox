@@ -6,6 +6,7 @@
 
 
 TAstNodeRoot::TAstNodeRoot(const std::shared_ptr<TToken> token /*= nullptr*/)
+	:TAstNode(token)
 {
 
 }
@@ -17,13 +18,6 @@ TAstNodeRoot::~TAstNodeRoot()
 
 TAstNode::ValueReturned TAstNodeRoot::Execute() const
 {
-	/*auto child = m_firstChild;
-
-	while (child)
-	{
-		child->Execute();
-		child = child->GetSibling();
-	}*/
 	TContext::SetNextNode(m_firstChild.get());
 
 	return ValueReturned{ 0, CSymbol::TYPE_VOID };

@@ -3,6 +3,8 @@
 #include "QString"
 #include "DataStruct.h"
 #include "CScreenProject.h"
+#include "TAstNode.h"
+#include "TTokenWithValue.h"
 
 
 
@@ -86,8 +88,9 @@ void CCommandRemoteParser::SendNextCommand()
 
 void CCommandRemoteParser::RefreshLineNumber(const tTeachCmdAttribute& attribute)
 {
-	CAstTreeNode* programNode = (CAstTreeNode*)attribute.m_programAddress;
-	CScreenProject::GetInstance()->RefreshProgramLineNumber(QString::fromStdString(programNode->m_token->m_strName), attribute.m_LineNumber);
+	TAstNode* programNode = (TAstNode*)attribute.m_programAddress;
+	CScreenProject::GetInstance()->RefreshProgramLineNumber(
+		dynamic_cast<TTokenWithValue<QString>*>(programNode->GetToken().get())->GetValue(), attribute.m_LineNumber);
 }
 
 void CCommandRemoteParser::OnResivePosition(QByteArray& command)

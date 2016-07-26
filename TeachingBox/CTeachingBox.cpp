@@ -4,6 +4,9 @@
 #include "CRefreshDateTime.h"
 #include "CInterprerterState.h"
 #include "CTcpSpecialCommand.h"
+#include "TInterpreterThread.h"
+#include "TInterpreterManager.h"
+#include "TContext.h"
 
 CTeachingBox::CTeachingBox(QWidget *parent)
 	: QWidget(parent)
@@ -331,6 +334,8 @@ void CTeachingBox::InitThread()
 	connect(this, SIGNAL(SignalExecuteStep()), m_thrdInterpreterManager, SLOT(SlotExecuteStep()));
 	connect(this, SIGNAL(SignalStopExecute()), m_thrdInterpreterManager, SLOT(SlotStopExecute()));
 	m_thrdIntepreter->start();
+
+	m_newInterpreterManager = new TInterpreterManager(this);
 }
 
 void CTeachingBox::SlotChangeToScreenProject()
@@ -355,8 +360,9 @@ void CTeachingBox::SlotChangeToScreenVariable()
 
 void CTeachingBox::SlotOnButtonStartPressed()
 {
-	/*若未加载任何程序*/
-	if (CScreenProject::GetInstance()->GetLoadedFileNames().size()==0)
+	/*若未加载任何程序或正在执行*/
+	if (CScreenProject::GetInstance()->GetLoadedFileNames().size()==0
+		|| TContext::GetExecuteState())
 	{
 		return;
 	}
@@ -365,11 +371,12 @@ void CTeachingBox::SlotOnButtonStartPressed()
 	{
 	case CTeachingBox::AUTO_EXECUTE:case CTeachingBox::MANUAL_EXECUTE:
 	{
-		emit SignalBeginExecute();
+		m_newInterpreterManager->StartExecuteFromCurrentLine();
 	}break;
 	case CTeachingBox::STEP_EXECUTE:
 	{
-		emit SignalExecuteStep();
+		m_newInterpreterManager->StepExecuteFromCurrentLine();
+		//emit SignalExecuteStep();
 	}break;
 	default:
 		break;
@@ -382,7 +389,7 @@ void CTeachingBox::SlotOnButtonStartReleased()
 	{
 	case CTeachingBox::MANUAL_EXECUTE:
 	{
-		StopExecute();
+		m_newInterpreterManager->StopExecute();
 	}
 		break;
 	default:
@@ -481,6 +488,5 @@ void CTeachingBox::SlotOnButtonStopMoveAxis()
 
 void CTeachingBox::StopExecute()
 {
-	CInterpreterState::GetInstance()->SetAdmit(false);
-	CTcpManager::GetInstance()->SendData(CTcpSpecialCommand::CommandStopExecute());
+	m_newInterpreterManager->StopExecute();
 }

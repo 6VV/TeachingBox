@@ -11,7 +11,7 @@ public:
 
 	bool FindVariable(const QString& strFilePath, const QString& strVariableName);	/*查找文件内是否存在变量（不包括注释及引号范围内的字符）*/
 
-	void GetFileText(QString& strFileText, const QString& strFilePath);	/*读取文件文本*/
+	static void GetFileText(QString& strFileText, const QString& strFilePath);	/*读取文件文本*/
 	void SetFileText(const QString& strFileText, const QString& strFilePath);	/*写入文本文件*/
 
 	void RenameFileText(const QString& strFilePath,const QString& strOldName,const QString& strNewName);

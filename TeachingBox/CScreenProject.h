@@ -107,7 +107,6 @@ protected:
 
 	/*槽函数*/
 protected slots:
-	void SlotOpenFile();
 	void SlotOnBtnOpenClicked();
 	void SlotOnBtnLoadClicked();
 	void SlotOnBtnFileClicked();

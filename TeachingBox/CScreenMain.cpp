@@ -80,7 +80,7 @@ void CScreenMain::ChangeToScreenProgram()
 
 	if (m_screenProgram == NULL)
 	{
-		m_screenProgram = CScreenPragram::GetInstance();
+		m_screenProgram = CScreenProgram::GetInstance();
 		m_stackedWidget->addWidget(m_screenProgram);
 	}
 	m_stackedWidget->setCurrentWidget(m_screenProgram);

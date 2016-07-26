@@ -41,6 +41,8 @@ protected:
 
 	static bool IsEofOrEol(const int type);
 
+	static void SkipEol(TLexer* const lexer);
+
 protected:
 	std::shared_ptr<TToken> m_token=nullptr;
 	TAstNode* m_parentNode = nullptr;	/*采用普通指针而非智能指针是为了避免循环引用*/

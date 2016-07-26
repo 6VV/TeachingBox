@@ -25,9 +25,9 @@ public:
 public:
 	static CWarningManager* GetInstance();
 
-	void Warning(QWidget* widget, QString strText);
+	static void Warning(QWidget* widget, QString strText);
 
-	void Warning(QWidget* widget, WarningCode);
+	static void Warning(QWidget* widget, WarningCode);
 
 private:
 	CWarningManager();

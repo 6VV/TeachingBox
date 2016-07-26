@@ -56,6 +56,8 @@ TAstNode::ValueReturned TAstNodeAssignSentence::Execute() const
 
 	TContext::SetNextNode(FindNextValidNode());
 
+	qDebug() << result.value;
+
 	return result;
 }
 

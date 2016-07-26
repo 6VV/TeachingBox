@@ -17,17 +17,17 @@
 #include "CScreenLineEditor.h"
 #include "MacroInterface.h"
 
-class CScreenPragram: public CScreenMainParent,public CProgramInterface,public MacroInterface
+class CScreenProgram: public CScreenMainParent,public CProgramInterface,public MacroInterface
 {
-	friend class CSingleTon<CScreenPragram>;
+	friend class CSingleTon<CScreenProgram>;
 
 	Q_OBJECT
 
 private:
-	CScreenPragram(QWidget* parent=0);
-	CScreenPragram(const CScreenPragram&);
-	CScreenPragram& operator=(const CScreenPragram&);
-	~CScreenPragram();
+	CScreenProgram(QWidget* parent=0);
+	CScreenProgram(const CScreenProgram&);
+	CScreenProgram& operator=(const CScreenProgram&);
+	~CScreenProgram();
 
 	/*自定义父类函数*/
 protected:
@@ -41,12 +41,12 @@ protected:
 
 	/*回调函数*/
 private:
-	typedef void (CScreenPragram::*EditMacro)(const QString& strText);
+	typedef void (CScreenProgram::*EditMacro)(const QString& strText);
 	EditMacro EditMacroCallback;
 
 	/*自定义公有函数*/
 public:
-	static CScreenPragram* GetInstance();
+	static CScreenProgram* GetInstance();
 	static bool IsCreated();
 	void EditNormalParameter(const QString& strLineText);	/*编辑某一行*/
 

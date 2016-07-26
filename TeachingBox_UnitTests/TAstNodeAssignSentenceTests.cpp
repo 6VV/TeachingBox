@@ -39,7 +39,8 @@ TEST_F(TAstNodeAssignSentenceTests, Execute_NoException)
 		auto node = TAstNodeAssignSentence::GetAstNode(&lexer);
 		node->ParseSemantic();
 		node->Execute();*/
-		TInterpreter::Interpret(text);
+		TInterpreter interpreter;
+		interpreter.Interpret(text);
 
 		EXPECT_EQ(3, static_cast<TInteger*>(TVariateManager::GetInstance()->GetVariateSrollUp("SYSTEM", "b"))->GetValue());
 

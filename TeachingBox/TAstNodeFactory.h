@@ -7,10 +7,11 @@
 class TLexer;
 class TAstNode;
 
-class TGrammarParser
+class TAstNodeFactory
 {
 public:
-	static const std::shared_ptr<TAstNode> GetRootNode(TLexer* const lexer);
+	static const std::shared_ptr<TAstNode> CreateAst();
+
 	static const std::shared_ptr<TAstNode> GetOneNode(TLexer* const lexer);
 
 };

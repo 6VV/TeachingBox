@@ -7,6 +7,7 @@
 #include "CDatabaseManager.h"
 #include "CWarningManager.h"
 #include "TVariateManager.h"
+#include "TContext.h"
 
 CScreenProject::CScreenProject(QWidget* parent /*= 0*/) :CScreenMainParent(parent)
 {
@@ -102,7 +103,7 @@ void CScreenProject::RefreshProgramLineNumber(const QString& programName, const 
 	{
 		OpenFile(programName);
 	}
-	CScreenPragram::GetInstance()->RefreshPCLineNumber(lineNumber);
+	CScreenProgram::GetInstance()->RefreshPCLineNumber(lineNumber);
 }
 
 void CScreenProject::KeyboardEdit()
@@ -180,13 +181,11 @@ void CScreenProject::KeyboardNewProgram()
 	/*若为项目*/
 	if (!parent.isValid())
 	{
-		//strProjectName = m_modelProject->index(index.row(), 0, parent).data().toString();
 		strProjectName = m_treeWidget->currentItem()->text(0);
 	}
 	/*若为程序*/
 	else if (!parent.parent().isValid())
 	{
-		//strProjectName = m_modelProject->index(parent.row(), 0,parent.parent()).data().toString();
 		strProjectName = m_treeWidget->currentItem()->parent()->text(0);
 	}
 	else
@@ -209,7 +208,6 @@ void CScreenProject::KeyboardNewProgram()
 		{
 			file.write("EOF");
 			file.close();
-			//m_modelProject->UpdateData();
 			UpdateTreeWidget();
 			return;
 		}
@@ -248,7 +246,6 @@ void CScreenProject::DeleteProject()
 	/*清除数据库及内存数据*/
     for  (auto var : strListScopes)
 	{
-		//CInterpreterAdapter::GetInstance()->DeleteDatabaseData(var);
 		TVariateManager::GetInstance()->DeleteScope(var);
 	}
 
@@ -299,9 +296,6 @@ void CScreenProject::Init()
 
 void CScreenProject::InitSignalSlot()
 {
-	///*鼠标双击*/
-	//connect(m_viewTree, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(SlotOpenFile()));
-
 	/*打开按钮*/
 	connect(m_btnOpen, SIGNAL(clicked()), this, SLOT(SlotOnBtnOpenClicked()));
 
@@ -329,14 +323,8 @@ void CScreenProject::InitSignalSlot()
 
 void CScreenProject::InitLayout()
 {
-	//m_modelProject = CModelProject::GetInstance();
-
-	/*树形视图*/
-	//m_viewTree = new QTreeView;
-	//m_viewTree->setModel(m_modelProject);
 	m_treeWidget = new QTreeWidget;
 	m_treeWidget->setColumnCount(3);
-	//GetAllFilesFromPath(PROJECT_FILE_PATH, m_treeWidget->invisibleRootItem());
 	UpdateTreeWidget();
 
 	/*底部按钮*/
@@ -378,77 +366,6 @@ void CScreenProject::InitLayout()
 }
 
 /*************************************************
-//  Function: 		GetProjectFileName
-//  Description: 	获取当前选取的文件及项目信息
-//  Calls:		 	
-//  Called By: 		SlotFile
-					SlotOpenFile
-//  Parameter:      
-//  Return: 		
-//  Others: 		只有在选取项目下的文件时，才获取文件及项目名并返回真
-*************************************************/
-//bool CScreenProject::GetFileName()
-//{
-//	QModelIndex index = m_treeWidget->currentIndex();
-//
-//	if (!index.isValid())
-//	{
-//		return false;
-//	}
-//
-//	if (!index.parent().isValid()){
-//		return false;
-//	}
-//
-//	//QModelIndex indexParent = index.parent();
-//	//QModelIndex indexProject = m_modelProject->index(indexParent.row(), 0, indexParent.parent());
-//	//QModelIndex indexFile = m_modelProject->index(index.row(), 0, indexParent);
-//
-//	m_strProjectLoaded =m_treeWidget->currentItem()->parent()->text(0);
-//	m_strFileOpened = m_treeWidget->currentItem()->text(0);
-//
-//	return true;
-//}
-
-/*************************************************
-//  Function: 		GetProjectName
-//  Description: 	获取选取的项目名
-//  Calls:		 	
-//  Called By: 		
-//  Parameter:      
-//  Return: 		
-//  Others: 		若选取的为项目名，则获取项目名，若选取的为文件，则获取文件名及项目名
-*************************************************/
-//bool CScreenProject::GetProjectName()
-//{
-//	QModelIndex index = m_treeWidget->currentIndex();
-//
-//	/*若未进行任何选择*/
-//	if (!index.isValid())
-//	{
-//		return false;
-//	}
-//
-//	QModelIndex indexParent = index.parent();
-//	/*若选择的为项目*/
-//	if (!indexParent.isValid())
-//	{
-//		//m_strProjectLoaded = m_modelProject->index(index.row(),0,indexParent.parent()).data().toString();
-//		m_strProjectLoaded = m_treeWidget->currentItem()->text(0);
-//	}
-//	/*若选择的为文件*/
-//	else
-//	{
-//		/*	QModelIndex indexProject = m_modelProject->index(indexParent.row(), 0, indexParent.parent());
-//			QModelIndex indexFile = m_modelProject->index(index.row(), 0, indexParent);*/
-//
-//		m_strProjectLoaded = m_treeWidget->currentItem()->parent()->text(0);
-//		m_strFileOpened = m_treeWidget->currentItem()->text(0);
-//	}
-//	return true;
-//}
-
-/*************************************************
 //  Function: 		RefreshText
 //  Description: 	刷新控件文本，用于国际化支持
 //  Calls:
@@ -481,10 +398,6 @@ void CScreenProject::RefreshText()
 	m_btnFileDelete->setText(QCoreApplication::translate(CLASS_NAME, "Delete"));
 	m_btnFileExport->setText(QCoreApplication::translate(CLASS_NAME, "Export"));
 	m_btnFileImport->setText(QCoreApplication::translate(CLASS_NAME, "Import"));
-	
-	/*刷新列名*/
-	/*m_modelProject->UpdateRootData();*/
-	//UpdateTreeWidget();
 }
 
 bool CScreenProject::IsCorrectName(const QString& strName)
@@ -608,6 +521,8 @@ void CScreenProject::LoadFile(QTreeWidgetItem* item)
 	m_isLoadFile = true;
 
 	item->setText(1, QCoreApplication::translate(CLASS_NAME,"Loaded"));
+
+	TContext::SetCurrentScope(m_strProjectLoaded+"."+m_strFileOpened);
 }
 
 void CScreenProject::GetProjectFiles(const QString& strProjectPath, QStringList& strListFiles)
@@ -742,55 +657,10 @@ void CScreenProject::resizeEvent(QResizeEvent *event)
 	m_treeWidget->setColumnWidth(1, this->width() / 4);
 }
 
-/*打开文件并显示程序界面*/
-void CScreenProject::SlotOpenFile()
-{
-	/*if (GetFileName())
-	{
-		CScreenMain::GetInstance()->ChangeToScreenProgram();
-		CInterpreterAdapter::GetInstance()->UpdateValueFromDatabase();
-	}*/
-}
-
 /*打开按钮按下*/
 void CScreenProject::SlotOnBtnOpenClicked()
 {
 	SlotOnBtnLoadClicked();
-	//QModelIndex index = m_viewTree->currentIndex();
-
-	///*若为根节点*/
-	//if (!index.isValid())
-	//{
-	//	return;
-	//}
-
-	///*若为项目节点*/
-	//if (!index.parent().isValid()){
-	//	return;
-	//}
-
-	///*若为文件节点*/
-	//QModelIndex indexParent = index.parent();	
-	//QModelIndex indexProject = m_modelProject->index(indexParent.row(), 0, indexParent.parent()); /*获取项目节点*/
-	//QModelIndex indexFile = m_modelProject->index(index.row(), 0, indexParent);	/*获取文件节点*/
-
-	//QString strProject = indexProject.data().toString();
-	//QString strFile = strProject + "." + indexFile.data().toString();
-
-	///*若没有项目被加载*/
-	//if (!m_isLoadProject)
-	//{
-	//	LoadProject(indexProject);
-	//	m_isLoadProject = true;
-	//}
-
-	//m_strProjectLoaded = strProject;
-	//m_strFileOpened = strFile;
-
-	//qDebug() << m_strFileOpened;
-	//qDebug() << m_strProjectLoaded;
-
-	//return;
 }
 
 void CScreenProject::SlotOnBtnLoadClicked()
@@ -831,11 +701,6 @@ void CScreenProject::SlotOnBtnLoadClicked()
 		}
 		return;
 	}
-
-	/*若为文件节点*/
-	//QModelIndex indexParent = index.parent();
-	//QModelIndex indexProject = m_modelProject->index(indexParent.row(), 0, indexParent.parent()); /*获取项目节点*/
-	//QModelIndex indexFile = m_modelProject->index(index.row(), 0, indexParent);	/*获取文件节点*/
 
 	QString strProject = m_treeWidget->currentItem()->parent()->text(0);
 	QString strFile = strProject + "." + m_treeWidget->currentItem()->text(0);
@@ -1010,20 +875,9 @@ void CScreenProject::SlotFile()
 	/*导出数据*/
 	else if (button == m_btnFileExport)
 	{
-		/*if (GetFileName())
-		{
-			CXmlVariableManager manager;
-			manager.SetProjectName(m_strProjectLoaded);
-			manager.SetProgramName(m_strFileOpened);
-			manager.WriteProgramVariable();
-		}*/
 	}
 	else if (button==m_btnFileImport)
 	{
-		/*if (GetFileName())
-		{
-
-		}*/
 	}
 
 	m_widgetFile->hide();

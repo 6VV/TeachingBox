@@ -3,7 +3,7 @@
 
 #include "QVBoxLayout"
 #include "CScreenProject.h"
-#include "CScreenPragram.h"
+#include "CScreenProgram.h"
 #include "CScreenBottom.h"
 #include "CScreenSetting.h"
 #include "CSingleTon.h"
@@ -63,7 +63,7 @@ private:
 	QStackedWidget* m_stackedWidget;	/*堆栈窗体*/
 	//QWidget* m_currentWidgetItem = NULL;	/*当前显示的窗口*/
 	CScreenProject* m_screenProject=NULL;
-	CScreenPragram* m_screenProgram=NULL;
+	CScreenProgram* m_screenProgram=NULL;
 	CScreenService* m_screenService = NULL;
 	CScreenNewMacro* m_screenNewMacro = NULL;
 

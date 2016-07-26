@@ -1,5 +1,5 @@
 ﻿#include "stdafx.h"
-#include "CScreenPragram.h"
+#include "CScreenProgram.h"
 #include "CScreenProject.h"
 #include "QFile"
 #include "CKeyBoard.h"
@@ -7,13 +7,13 @@
 #include "CScreenMain.h"
 
 
-CScreenPragram::CScreenPragram(QWidget* parent/*=0*/) :CScreenMainParent(parent)
+CScreenProgram::CScreenProgram(QWidget* parent/*=0*/) :CScreenMainParent(parent)
 {
 	Init();
 	qDebug() << "ScreenProgram Created";
 }
 
-CScreenPragram::~CScreenPragram()
+CScreenProgram::~CScreenProgram()
 {
 	qDebug() << "ScreenProgram Destroyed";
 	m_btnList.clear();
@@ -21,7 +21,7 @@ CScreenPragram::~CScreenPragram()
 	delete(m_widgetEdit);
 }
 
-void CScreenPragram::showEvent(QShowEvent *event)
+void CScreenProgram::showEvent(QShowEvent *event)
 {
 	CScreenMainParent::showEvent(event);
 	//QString fileName=CScreenProject::GetInstance()->GetOpenedFilePath();
@@ -53,7 +53,7 @@ void CScreenPragram::showEvent(QShowEvent *event)
 
 }
 
-void CScreenPragram::RemoveLineEditor()
+void CScreenProgram::RemoveLineEditor()
 {
 	CScreenLineEditor* lineEditor = CScreenLineEditor::GetInstance(this);
 	m_layoutMain->removeWidget(lineEditor);
@@ -65,17 +65,17 @@ void CScreenPragram::RemoveLineEditor()
 	ResizeControlers();
 }
 
-void CScreenPragram::UpdateCurrentLine(const QString& text)
+void CScreenProgram::UpdateCurrentLine(const QString& text)
 {
 	m_codeEditor->UpdateLineText(text);
 }
 
-void CScreenPragram::EditMacroInterface(const QString& strText)
+void CScreenProgram::EditMacroInterface(const QString& strText)
 {
 	(this->*EditMacroCallback)(strText);
 }
 
-void CScreenPragram::Init()
+void CScreenProgram::Init()
 {
 	InitLayout();
 	InitSignalSlot();
@@ -84,7 +84,7 @@ void CScreenPragram::Init()
 	m_highLighter = new CHighLighter(m_codeEditor->document());
 }
 
-void CScreenPragram::InitLayout()
+void CScreenProgram::InitLayout()
 {
 	m_codeEditor = CCodeEditor::GetInstance();
 
@@ -146,7 +146,7 @@ void CScreenPragram::InitLayout()
 	m_widgetAddvance = new CWidgetButtonListVertical(m_btnListAddvance);
 }
 
-void CScreenPragram::InitSignalSlot()
+void CScreenProgram::InitSignalSlot()
 {
 	/*修改按钮*/
 	connect(m_btnModify, SIGNAL(clicked()), this, SLOT(SlotOnButtonModifyClicked()));
@@ -190,7 +190,7 @@ void CScreenPragram::InitSignalSlot()
 //  Return: 		void
 //  Others: 		本函数重写父类函数，父类函数在CScreenMainParent中定义
 *************************************************/
-void CScreenPragram::RefreshText()
+void CScreenProgram::RefreshText()
 {
 	/*底部按钮文本*/
 	m_btnModify->setText(QCoreApplication::translate("CScreenProgram", "Modefy"));
@@ -219,12 +219,12 @@ void CScreenPragram::RefreshText()
 	m_btnAddvanceDisable->setText(QCoreApplication::translate("CScreenProgram", "Disable"));
 }
 
-void CScreenPragram::RefreshPCLineNumber(const int lineNumber)
+void CScreenProgram::RefreshPCLineNumber(const int lineNumber)
 {
 	m_codeEditor->HighlightPCLine(lineNumber);
 }
 
-void CScreenPragram::KeyboardEdit()
+void CScreenProgram::KeyboardEdit()
 {
 	/*更新当前行数据*/
 	QTextCursor cursor = m_codeEditor->textCursor();
@@ -235,7 +235,7 @@ void CScreenPragram::KeyboardEdit()
 	m_codeEditor->SaveFile();
 }
 
-void CScreenPragram::InsertTextBeforeLine(const QString& strText)
+void CScreenProgram::InsertTextBeforeLine(const QString& strText)
 {
 	QStringList strList = strText.split(' ');
 	QString macro = strList.at(0);
@@ -264,31 +264,31 @@ void CScreenPragram::InsertTextBeforeLine(const QString& strText)
 //  Return: 		void
 //  Others: 		
 *************************************************/
-void CScreenPragram::SlotOnButtonModifyClicked()
+void CScreenProgram::SlotOnButtonModifyClicked()
 {
-	EditMacroCallback = &CScreenPragram::UpdateCurrentLine;
+	EditMacroCallback = &CScreenProgram::UpdateCurrentLine;
 	CEditParameter::GetInstance()->SetMacroInterface(this);;
 	CGrammarManagerFactory::GetInstance()->EditText(GetCurrentLineText());
 }
 
-void CScreenPragram::SlotOnButtonEditClicked()
+void CScreenProgram::SlotOnButtonEditClicked()
 {
 	m_widgetEdit->show();
 	m_widgetEdit->SetBottomPosition(m_btnEdit);
 
 }
 
-void CScreenPragram::SlotOnButtonAddvanceClicked()
+void CScreenProgram::SlotOnButtonAddvanceClicked()
 {
 	m_widgetAddvance->show();
 	m_widgetAddvance->SetBottomPosition(m_btnAddvance);
 }
 
-void CScreenPragram::SlotOnButtonNewClicked()
+void CScreenProgram::SlotOnButtonNewClicked()
 {
 	//CScreenEditMacroParameter::GetInstance()->ChangeToNewParameterWidget();
 	//CScreenMain::GetInstance()->ChangeToScreenNewVariable();
-	EditMacroCallback = &CScreenPragram::InsertTextBeforeLine;
+	EditMacroCallback = &CScreenProgram::InsertTextBeforeLine;
 	CEditParameter::GetInstance()->SetMacroInterface(this);
 	CScreenMain::GetInstance()->ChangeToScreenNewMacro();
 }
@@ -298,17 +298,17 @@ void CScreenPragram::SlotOnButtonNewClicked()
 //	CInterpreterAdapter::GetInstance()->Interpreter(m_codeEditor->toPlainText().toStdString());
 //}
 
-void CScreenPragram::SlotOnButtonMacroClicked()
+void CScreenProgram::SlotOnButtonMacroClicked()
 {
 	CScreenMain::GetInstance()->ChangeToScreenNewMacro();
 }
 
-void CScreenPragram::SlotOnSetPcClicked()
+void CScreenProgram::SlotOnSetPcClicked()
 {
-	m_codeEditor->HighlightPCLine(m_codeEditor->textCursor().blockNumber());
+	m_codeEditor->HighlightPCLine(m_codeEditor->textCursor().blockNumber()+1);
 }
 
-void CScreenPragram::SlotEdit()
+void CScreenProgram::SlotEdit()
 {
 	CButton* button = (CButton*)sender();
 	QTextCursor currentCursor = m_codeEditor->textCursor();
@@ -365,7 +365,7 @@ void CScreenPragram::SlotEdit()
 	m_widgetEdit->hide();
 }
 
-void CScreenPragram::SlotAddvance()
+void CScreenProgram::SlotAddvance()
 {
 	CButton* button = (CButton*)sender();
 
@@ -398,7 +398,7 @@ void CScreenPragram::SlotAddvance()
 	m_widgetAddvance->hide();
 }
 
-void CScreenPragram::EditCurrentLine()
+void CScreenProgram::EditCurrentLine()
 {
 	QTextCursor cursor = m_codeEditor->textCursor();
 	cursor.select(QTextCursor::LineUnderCursor);
@@ -406,7 +406,7 @@ void CScreenPragram::EditCurrentLine()
 	EditNormalParameter(str);
 }
 
-void CScreenPragram::EditNormalParameter(const QString& strLineText)
+void CScreenProgram::EditNormalParameter(const QString& strLineText)
 {
 	CScreenLineEditor* lineEditor = CScreenLineEditor::GetInstance(this);
 	lineEditor->SetButtonSize(m_btnModify->size());
@@ -418,7 +418,7 @@ void CScreenPragram::EditNormalParameter(const QString& strLineText)
 	lineEditor->show();
 }
 
-QString CScreenPragram::GetCurrentLineText()
+QString CScreenProgram::GetCurrentLineText()
 {
 	/*获取光标所在行文本*/
 	CCodeEditor* codeEditor = CCodeEditor::GetInstance();
@@ -428,13 +428,13 @@ QString CScreenPragram::GetCurrentLineText()
 	return text;
 }
 
-CScreenPragram* CScreenPragram::GetInstance()
+CScreenProgram* CScreenProgram::GetInstance()
 {
-	return CSingleTon<CScreenPragram>::GetInstance();
+	return CSingleTon<CScreenProgram>::GetInstance();
 }
 
-bool CScreenPragram::IsCreated()
+bool CScreenProgram::IsCreated()
 {
-	return CSingleTon<CScreenPragram>::IsCreated();
+	return CSingleTon<CScreenProgram>::IsCreated();
 }
 

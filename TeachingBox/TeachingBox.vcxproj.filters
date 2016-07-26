@@ -227,6 +227,12 @@
     <Filter Include="Source Files\Interpreter\NewInterpreter\AstNode\Macro">
       <UniqueIdentifier>{174611f7-c2a9-493e-beab-e9b086ae4071}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Interpreter\NewInterpreter\InterpreterManager">
+      <UniqueIdentifier>{f1da68d3-4e83-4f5c-9392-b45c27854753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpreter\NewInterpreter\InterpreterManager">
+      <UniqueIdentifier>{51276498-51d1-4567-8a91-4734e5d7037d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -643,15 +649,6 @@
     <ClCompile Include="CScreenNewMacro.cpp">
       <Filter>Source Files\MainScreen\ScreenMacro</Filter>
     </ClCompile>
-    <ClCompile Include="CScreenPragram.cpp">
-      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenPragram.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CScreenPragram.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="CTcpManager.cpp">
       <Filter>Source Files\Internet</Filter>
     </ClCompile>
@@ -859,9 +856,6 @@
     <ClCompile Include="TInterpreterException.cpp">
       <Filter>Source Files\Interpreter\NewInterpreter</Filter>
     </ClCompile>
-    <ClCompile Include="TGrammarParser.cpp">
-      <Filter>Source Files\Interpreter\NewInterpreter</Filter>
-    </ClCompile>
     <ClCompile Include="TLexer.cpp">
       <Filter>Source Files\Interpreter\NewInterpreter</Filter>
     </ClCompile>
@@ -903,6 +897,45 @@
     </ClCompile>
     <ClCompile Include="TAstNodeMovlSentence.cpp">
       <Filter>Source Files\Interpreter\NewInterpreter\AstNode\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="TInterpreterThread.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\InterpreterManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CScreenProgram.cpp">
+      <Filter>Source Files\MainScreen\CScreenProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CScreenProgram.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CScreenProgram.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TInterpreterManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TInterpreterManager.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TInterpreterManager.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TInterpreterThread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TInterpreterThread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TMacroData.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter\AstNode\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TAstNodeFactory.cpp">
+      <Filter>Source Files\Interpreter\NewInterpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="CRemote.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1049,9 +1082,6 @@
     </CustomBuild>
     <CustomBuild Include="CScreenNewMacro.h">
       <Filter>Header Files\MainScreen\ScreenMacro</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CScreenPragram.h">
-      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
     </CustomBuild>
     <CustomBuild Include="CTcpManager.h">
       <Filter>Header Files\Internet</Filter>
@@ -1227,6 +1257,15 @@
     <CustomBuild Include="CWarningInformation.h">
       <Filter>Header Files\Interpreter\OldInterpreter</Filter>
     </CustomBuild>
+    <CustomBuild Include="CScreenProgram.h">
+      <Filter>Header Files\MainScreen\CScreenProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TInterpreterManager.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\InterpreterManager</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TInterpreterThread.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\InterpreterManager</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TeachingBox.rc" />
@@ -1251,9 +1290,6 @@
       <Filter>Header Files\Interpreter\NewInterpreter\Token</Filter>
     </ClInclude>
     <ClInclude Include="TInterpreterException.h">
-      <Filter>Header Files\Interpreter\NewInterpreter</Filter>
-    </ClInclude>
-    <ClInclude Include="TGrammarParser.h">
       <Filter>Header Files\Interpreter\NewInterpreter</Filter>
     </ClInclude>
     <ClInclude Include="TLexer.h">
@@ -1297,6 +1333,18 @@
     </ClInclude>
     <ClInclude Include="TAstNodeMovlSentence.h">
       <Filter>Header Files\Interpreter\NewInterpreter\AstNode\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="TMacroData.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeProgram.h">
+      <Filter>Header Files\Interpreter\NewInterpreter\AstNode</Filter>
+    </ClInclude>
+    <ClInclude Include="TAstNodeFactory.h">
+      <Filter>Header Files\Interpreter\NewInterpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="CRemote.h">
+      <Filter>Header Files\Remote</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

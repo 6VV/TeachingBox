@@ -41,11 +41,11 @@ TInterpreterException::TInterpreterException(const InterpreterExceptionCode id, 
 
 const QString TInterpreterException::GetInfo() const
 {
-	QString text = m_exceptionText[m_id] + "\nLine Number:" + QString::number(m_lineNumber);
+	QString text = "Information: "+m_exceptionText[m_id] + "\nLine Number: " + QString::number(m_lineNumber);
 
 	if (m_text.size()>0)
 	{
-		text.append("\nText:" + m_text);
+		text.append("\nText: " + m_text);
 	}
 	return text;
 }

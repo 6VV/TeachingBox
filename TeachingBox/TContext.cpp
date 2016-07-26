@@ -18,6 +18,16 @@ TAstNode* TContext::GetNextNode()
 	return m_nextNode;
 }
 
+bool TContext::GetExecuteState()
+{
+	return m_executeState;
+}
+
+const TAstNode* TContext::GetCurrentProgramNode()
+{
+	return m_currentProgramNode;
+}
+
 void TContext::SetCurrentScope(const QString& scope)
 {
 	m_currentScope = scope;
@@ -33,6 +43,20 @@ void TContext::SetNextNode(TAstNode* const nextNode)
 {
 	m_nextNode = nextNode;
 }
+
+void TContext::SetExecuteState(bool state)
+{
+	m_executeState = state;
+}
+
+void TContext::SetCurrentProgramNode(const TAstNode* const currentProgramNode)
+{
+	m_currentProgramNode = currentProgramNode;
+}
+
+bool TContext::m_executeState = false;
+
+const TAstNode* TContext::m_currentProgramNode{ nullptr };
 
 TAstNode* TContext::m_nextNode{};
 

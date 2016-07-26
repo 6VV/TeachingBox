@@ -3,7 +3,7 @@
 #include "TToken.h"
 #include "TLexer.h"
 #include "TInterpreterException.h"
-#include "TGrammarParser.h"
+#include "TAstNodeFactory.h"
 
 
 TAstNode::TAstNode(const std::shared_ptr<TToken> token /*= nullptr*/)
@@ -68,7 +68,7 @@ TAstNode::ValueReturned TAstNode::Execute() const
 void TAstNode::AddSentenceNodes(TLexer* const lexer, std::shared_ptr<TAstNode> parentNode)
 {
 	std::shared_ptr<TAstNode> childNode{};
-	while (childNode = TGrammarParser::GetOneNode(lexer))
+	while (childNode = TAstNodeFactory::GetOneNode(lexer))
 	{
 		parentNode->AddChild(childNode);
 	}
@@ -99,6 +99,14 @@ bool TAstNode::IsEofOrEol(const int type)
 	}
 
 	return false;
+}
+
+void TAstNode::SkipEol(TLexer* const lexer)
+{
+	while (lexer->PeekToken()->GetType() == TToken::SEPARATOR_EOL)
+	{
+		lexer->GetToken();
+	}
 }
 
 TAstNode* TAstNode::FindNextValidNode() const

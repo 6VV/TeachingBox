@@ -8,7 +8,7 @@
 #include "CParameterManager.h"
 #include "QAbstractItemModel"
 #include "CWidgetStack.h"
-#include "CScreenPragram.h"
+#include "CScreenProgram.h"
 #include "CScreenProject.h"
 #include "TVariateManager.h"
 #include "TPosition.h"
@@ -87,7 +87,7 @@ void CEditParameter::BackToWidget(QWidget* widget)
 
 void CEditParameter::Back()
 {
-	BackToWidget(CScreenPragram::GetInstance());
+	BackToWidget(CScreenProgram::GetInstance());
 }
 
 void CEditParameter::SlotOnButtonConfirmClicked()

@@ -287,7 +287,7 @@ void CGrammarManagerFromProgram::GetMacroDataFromXml(QList<QString>& categoryLis
 
 void CGrammarManagerFromProgram::InsertMacro(QString strMacro)
 {
-	CScreenPragram::GetInstance()->InsertTextBeforeLine(strMacro);
+	CScreenProgram::GetInstance()->InsertTextBeforeLine(strMacro);
 	CScreenMain::GetInstance()->ChangeToScreenProgram();
 }
 
@@ -367,6 +367,6 @@ void CGrammarManagerFromProgram::EditMacroParameter(const QString& macroName, co
 
 void CGrammarManagerFromProgram::EditNormalParameter(const QString& text)
 {
-	CScreenPragram::GetInstance()->EditNormalParameter(text);
+	CScreenProgram::GetInstance()->EditNormalParameter(text);
 }
 

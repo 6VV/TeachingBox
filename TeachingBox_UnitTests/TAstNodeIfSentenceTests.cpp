@@ -161,19 +161,20 @@ TEST_F(TAstNodeIfSentenceTests, Execute_CheckEndIf_Else_ElseIf_Equal)
 			"b=5\n"
 			"ENDIF");
 
-		TInterpreter::Interpret(text);
+		TInterpreter interpreter;
+		interpreter.Interpret(text);
 		EXPECT_EQ(5, static_cast<TInteger*>(TVariateManager::GetInstance()->GetVariateSrollUp("SYSTEM", "b"))->GetValue());
 
 		TVariateManager::GetInstance()->UpdateInMap("SYSTEM", "a", TInteger("SYSTEM", "a", 11));
-		TInterpreter::Interpret(text);
+		interpreter.Interpret(text);
 		EXPECT_EQ(1, static_cast<TInteger*>(TVariateManager::GetInstance()->GetVariateSrollUp("SYSTEM", "b"))->GetValue());
 
 		TVariateManager::GetInstance()->UpdateInMap("SYSTEM", "a", TInteger("SYSTEM", "a", 6));
-		TInterpreter::Interpret(text);
+		interpreter.Interpret(text);
 		EXPECT_EQ(2, static_cast<TInteger*>(TVariateManager::GetInstance()->GetVariateSrollUp("SYSTEM", "b"))->GetValue());
 
 		TVariateManager::GetInstance()->UpdateInMap("SYSTEM", "a", TInteger("SYSTEM", "a", 0));
-		TInterpreter::Interpret(text);
+		interpreter.Interpret(text);
 		EXPECT_EQ(3, static_cast<TInteger*>(TVariateManager::GetInstance()->GetVariateSrollUp("SYSTEM", "b"))->GetValue());
 
 		TVariateManager::GetInstance()->Delete("SYSTEM", "a");

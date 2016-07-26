@@ -34,6 +34,10 @@
 #include "CInterpreterManager.h"
 #include "CThreadInterpreterManager.h"
 
+
+class TInterpreterThread;
+class TInterpreterManager;
+
 class CTeachingBox : public QWidget
 {
 	friend class CSingleTon<CTeachingBox>; /*单例模式*/
@@ -105,6 +109,9 @@ private:
 private:
 	QThread* m_thrdRefreshDateTime;
 	QTimer* m_timerRefreshDateTime;
+
+	//TInterpreterThread* m_interpreterThread=nullptr;
+	TInterpreterManager* m_newInterpreterManager = nullptr;
 
 	QThread* m_thrdIntepreter;
 	CThreadInterpreterManager* m_thrdInterpreterManager;
